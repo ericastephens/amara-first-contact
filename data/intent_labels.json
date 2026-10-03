@@ -1,0 +1,28 @@
+{
+  "description": "Fixed list of symptoms and exposures the intent model can output. The model never outputs anything outside this list. 'other' means not a symptom; low confidence means 'not sure'.",
+  "review": "pending: Swahili labels need native-speaker review",
+  "labels": [
+    {"id": "fever", "en": "Fever", "sw": "Homa"},
+    {"id": "fever_not_cleared", "en": "Fever not cleared by malaria treatment, or lasting a long time", "sw": "Homa isiyoisha baada ya dawa za malaria, au ya muda mrefu"},
+    {"id": "headache", "en": "Headache", "sw": "Maumivu ya kichwa"},
+    {"id": "blurred_vision", "en": "Blurred vision or seeing spots", "sw": "Kuona ukungu au nyota nyota"},
+    {"id": "swelling_face_hands", "en": "Swelling of face, hands or feet", "sw": "Kuvimba uso, mikono au miguu"},
+    {"id": "convulsions", "en": "Convulsions or fits", "sw": "Degedege"},
+    {"id": "vaginal_bleeding", "en": "Vaginal bleeding in pregnancy", "sw": "Kutoka damu ukeni wakati wa ujauzito"},
+    {"id": "heavy_bleeding_postpartum", "en": "Heavy bleeding after birth", "sw": "Kutoka damu nyingi baada ya kujifungua"},
+    {"id": "foul_discharge", "en": "Foul-smelling discharge", "sw": "Uchafu wenye harufu mbaya ukeni"},
+    {"id": "abdominal_pain_severe", "en": "Severe abdominal pain", "sw": "Maumivu makali ya tumbo"},
+    {"id": "breathing_difficulty", "en": "Difficult or fast breathing", "sw": "Kupumua kwa shida au haraka"},
+    {"id": "reduced_fetal_movement", "en": "Baby moving less in the womb", "sw": "Mtoto tumboni kucheza kidogo"},
+    {"id": "diarrhoea", "en": "Diarrhoea", "sw": "Kuharisha"},
+    {"id": "vomiting_everything", "en": "Vomiting everything", "sw": "Kutapika kila kitu"},
+    {"id": "rash", "en": "Rash", "sw": "Vipele"},
+    {"id": "cough", "en": "Cough", "sw": "Kikohozi"},
+    {"id": "low_mood", "en": "Low mood, crying, no interest", "sw": "Huzuni, kulia, kukosa hamu"},
+    {"id": "not_feeding", "en": "Child not able to drink or breastfeed", "sw": "Mtoto hawezi kunywa au kunyonya"},
+    {"id": "lethargic", "en": "Child very sleepy, weak or hard to wake", "sw": "Mtoto amelegea au haamki vizuri"},
+    {"id": "exposure_animals", "en": "Contact with livestock, animal births or raw milk", "sw": "Kugusana na mifugo, uzazi wa wanyama au maziwa yasiyochemshwa"},
+    {"id": "exposure_water_rats", "en": "Rats, flood or stream water, muddy fields", "sw": "Panya, maji ya mafuriko au mto, mashamba yenye matope"},
+    {"id": "other", "en": "Not a symptom", "sw": "Si dalili"}
+  ]
+}

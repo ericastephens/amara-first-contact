@@ -1,0 +1,201 @@
+label,lang,text
+fever,sw,nina homa
+fever,sw,nina homa kali
+fever,sw,mwili unachemka
+fever,sw,nina joto jingi mwilini
+fever,sw,nasikia baridi na kutetemeka
+fever,sw,homa imeanza jana usiku
+fever,sw,mtoto ana homa
+fever,sw,mtoto mwili wake una joto sana
+fever,sw,nina homa siku tatu sasa
+fever,sw,naumwa homa
+fever,sw,joto la mwili liko juu
+fever,en,i have a fever
+fever,en,my body is very hot
+fever,en,the child has a high temperature
+fever,en,fever and chills since yesterday
+fever_not_cleared,sw,nilimeza dawa za mseto lakini homa bado ipo
+fever_not_cleared,sw,nimetumia dawa za malaria bado sijapona
+fever_not_cleared,sw,homa haiishi hata baada ya dawa
+fever_not_cleared,sw,nimekunywa dawa za malaria wiki iliyopita bado naumwa
+fever_not_cleared,sw,kipimo cha malaria kilikuwa hasi lakini bado nina homa
+fever_not_cleared,sw,nimemaliza dozi ya mseto homa imerudi
+fever_not_cleared,sw,homa inarudi rudi kila wiki
+fever_not_cleared,sw,nimeumwa homa wiki mbili sasa
+fever_not_cleared,sw,dawa za malaria hazijasaidia
+fever_not_cleared,sw,homa imekaa muda mrefu
+fever_not_cleared,sw,nimeshameza mseto mara mbili bado homa
+fever_not_cleared,en,i took malaria tablets but the fever is still there
+fever_not_cleared,en,the fever keeps coming back after treatment
+fever_not_cleared,en,malaria test was negative but i still have fever
+fever_not_cleared,en,fever for two weeks
+headache,sw,kichwa kinauma sana
+headache,sw,nina maumivu makali ya kichwa
+headache,sw,kichwa kinagonga
+headache,sw,naumwa kichwa kila siku
+headache,sw,kichwa kinaniuma upande mmoja
+headache,sw,maumivu ya kichwa hayaishi
+headache,sw,kichwa kinanipasua
+headache,en,severe headache
+headache,en,my head hurts a lot
+headache,en,headache that will not go away
+blurred_vision,sw,naona giza giza
+blurred_vision,sw,macho yanaona ukungu
+blurred_vision,sw,sioni vizuri
+blurred_vision,sw,naona nyota nyota
+blurred_vision,sw,macho yanafifia
+blurred_vision,sw,naona vitu viwili viwili
+blurred_vision,en,blurred vision
+blurred_vision,en,i see spots in front of my eyes
+blurred_vision,en,my eyes are dim
+swelling_face_hands,sw,miguu imevimba
+swelling_face_hands,sw,uso umevimba
+swelling_face_hands,sw,mikono na uso vimevimba
+swelling_face_hands,sw,nimevimba mwili
+swelling_face_hands,sw,vidole vimevimba siwezi kuvaa pete
+swelling_face_hands,sw,uso umejaa asubuhi
+swelling_face_hands,en,my face is swollen
+swelling_face_hands,en,swollen hands and feet
+convulsions,sw,nimepata degedege
+convulsions,sw,mtoto anapata degedege
+convulsions,sw,nilianguka na kutetemeka mwili mzima
+convulsions,sw,alikuwa anarusha mikono na miguu bila kujitambua
+convulsions,sw,mtoto amekakamaa na kutetemeka
+convulsions,sw,alipoteza fahamu na kutetemeka
+convulsions,en,she had a fit
+convulsions,en,the child had convulsions
+convulsions,en,shaking and fell unconscious
+vaginal_bleeding,sw,natoka damu ukeni
+vaginal_bleeding,sw,nimeona damu na nina mimba
+vaginal_bleeding,sw,damu inatoka nikiwa mjamzito
+vaginal_bleeding,sw,nimeanza kutoka damu leo asubuhi
+vaginal_bleeding,sw,matone ya damu kwenye nguo ya ndani
+vaginal_bleeding,sw,nina ujauzito na natokwa na damu
+vaginal_bleeding,en,i am bleeding and i am pregnant
+vaginal_bleeding,en,vaginal bleeding
+heavy_bleeding_postpartum,sw,baada ya kujifungua damu inatoka nyingi
+heavy_bleeding_postpartum,sw,natoka damu nyingi tangu nijifungue
+heavy_bleeding_postpartum,sw,pedi zinajaa damu haraka
+heavy_bleeding_postpartum,sw,damu nyingi na mabonge baada ya kujifungua
+heavy_bleeding_postpartum,sw,nimejifungua jana damu haikomi
+heavy_bleeding_postpartum,en,heavy bleeding after delivery
+heavy_bleeding_postpartum,en,soaking pads with blood since the birth
+foul_discharge,sw,uchafu unatoka ukeni wenye harufu mbaya
+foul_discharge,sw,nina majimaji yenye harufu baada ya kujifungua
+foul_discharge,sw,kunatoka usaha sehemu za siri
+foul_discharge,sw,harufu mbaya ukeni
+foul_discharge,en,smelly discharge after giving birth
+foul_discharge,en,foul smelling discharge
+abdominal_pain_severe,sw,tumbo linauma sana
+abdominal_pain_severe,sw,maumivu makali chini ya tumbo
+abdominal_pain_severe,sw,naumwa juu ya tumbo upande wa kulia
+abdominal_pain_severe,sw,tumbo linakata kama kisu
+abdominal_pain_severe,sw,maumivu ya tumbo hayavumiliki
+abdominal_pain_severe,en,severe stomach pain
+abdominal_pain_severe,en,strong pain in the lower belly
+breathing_difficulty,sw,napumua kwa shida
+breathing_difficulty,sw,nashindwa kupumua
+breathing_difficulty,sw,mtoto anapumua haraka haraka
+breathing_difficulty,sw,kifua kinabana
+breathing_difficulty,sw,mtoto mbavu zinaingia ndani akipumua
+breathing_difficulty,sw,pumzi inakatika
+breathing_difficulty,en,difficulty breathing
+breathing_difficulty,en,the child breathes very fast
+breathing_difficulty,en,i am short of breath
+reduced_fetal_movement,sw,mtoto tumboni hachezi
+reduced_fetal_movement,sw,sijamsikia mtoto akicheza leo
+reduced_fetal_movement,sw,mtoto amepunguza kucheza
+reduced_fetal_movement,sw,mtoto tumboni ametulia sana tangu jana
+reduced_fetal_movement,sw,simsikii mtoto tumboni
+reduced_fetal_movement,en,the baby is not moving
+reduced_fetal_movement,en,baby moving less than usual
+diarrhoea,sw,naharisha
+diarrhoea,sw,mtoto anaharisha maji maji
+diarrhoea,sw,naenda chooni mara nyingi
+diarrhoea,sw,kuhara tangu jana
+diarrhoea,sw,mtoto anaharisha mara tano kwa siku
+diarrhoea,sw,choo cha maji
+diarrhoea,en,diarrhoea
+diarrhoea,en,watery stools many times a day
+vomiting_everything,sw,natapika kila kitu
+vomiting_everything,sw,mtoto anatapika kila anachokula
+vomiting_everything,sw,kila nikinywa maji natapika
+vomiting_everything,sw,mtoto hawezi kubakiza chochote tumboni
+vomiting_everything,sw,anatapika kila mara
+vomiting_everything,en,vomiting everything
+vomiting_everything,en,the child vomits everything
+rash,sw,nina vipele mwili mzima
+rash,sw,mtoto ana upele na homa
+rash,sw,madoa mekundu kwenye ngozi
+rash,sw,vipele vimeanza usoni vikaenea mwili
+rash,sw,ngozi ina vipele vyekundu
+rash,en,rash all over the body
+rash,en,red spots on the skin
+cough,sw,nakohoa
+cough,sw,kikohozi kimekaa wiki mbili
+cough,sw,mtoto anakohoa sana
+cough,sw,nakohoa usiku
+cough,sw,kikohozi kikavu
+cough,sw,nakohoa makohozi
+cough,en,i have a cough
+cough,en,coughing for weeks
+low_mood,sw,najisikia huzuni kila siku
+low_mood,sw,sina hamu ya kitu chochote
+low_mood,sw,nalia bila sababu
+low_mood,sw,silali na nina mawazo mengi
+low_mood,sw,sijisikii kumtunza mtoto
+low_mood,sw,najiona sina thamani
+low_mood,sw,moyo umeniuma tangu nimpoteze mtoto
+low_mood,en,i feel sad all the time
+low_mood,en,i cannot stop crying
+low_mood,en,i have no interest in anything
+not_feeding,sw,mtoto hanyonyi
+not_feeding,sw,mtoto hawezi kunywa
+not_feeding,sw,mtoto amekataa kula
+not_feeding,sw,mtoto hawezi kunyonya ziwa
+not_feeding,sw,mtoto hataki kunyonya tangu jana
+not_feeding,en,the baby is not breastfeeding
+not_feeding,en,the child cannot drink
+lethargic,sw,mtoto amelegea
+lethargic,sw,mtoto analala tu haamki vizuri
+lethargic,sw,hana nguvu kabisa
+lethargic,sw,mtoto hachezi amezubaa
+lethargic,sw,mtoto haamki hata ukimwamsha
+lethargic,en,the child is very sleepy and weak
+lethargic,en,floppy baby hard to wake
+exposure_animals,sw,nafuga ng'ombe na mbuzi
+exposure_animals,sw,mbuzi wetu wametupa mimba
+exposure_animals,sw,nilisaidia ng'ombe kuzaa
+exposure_animals,sw,tunakunywa maziwa bila kuchemsha
+exposure_animals,sw,ng'ombe wetu wanaumwa
+exposure_animals,sw,nimechinja mbuzi aliyekuwa mgonjwa
+exposure_animals,sw,tunalala karibu na mifugo
+exposure_animals,en,we keep cows and goats
+exposure_animals,en,our goats had miscarriages
+exposure_animals,en,we drink raw milk
+exposure_water_rats,sw,kuna panya wengi nyumbani
+exposure_water_rats,sw,nilitembea kwenye maji ya mafuriko
+exposure_water_rats,sw,ninalima shamba lenye matope na maji
+exposure_water_rats,sw,tunakunywa maji ya mto
+exposure_water_rats,sw,maji yamejaa shambani baada ya mvua
+exposure_water_rats,sw,panya wanaingia kwenye chakula
+exposure_water_rats,en,there are many rats in the house
+exposure_water_rats,en,i walked through flood water
+exposure_water_rats,en,we drink river water
+other,sw,nataka kununua sabuni
+other,sw,bei ya dawa ni kiasi gani
+other,sw,habari za asubuhi
+other,sw,nimekuja kumchukua mama
+other,sw,mvua imenyesha sana leo
+other,sw,naomba risiti
+other,sw,kahawa imeanza kuiva
+other,sw,nitarudi kesho
+other,sw,asante sana
+other,sw,una chenji ya elfu kumi
+other,sw,soko liko wapi
+other,sw,nataka kuongeza salio la simu
+other,en,good morning
+other,en,how much is this
+other,en,i came to buy soap
+other,en,thank you
+other,en,where is the market
