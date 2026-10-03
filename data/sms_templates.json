@@ -1,0 +1,53 @@
+{
+  "description": "Messages to the mother. Rules: max 160 characters after filling; never include a symptom, diagnosis or test; only name, clinic, day, time, code. Voice scripts are read aloud by recorded audio or speech synthesis.",
+  "review": "pending: Swahili wording needs native-speaker review",
+  "swahili_time_note": "Swahili time starts at 7am = saa moja (1). Convert: swahili_hour = ((hour24 + 5) % 12) + 1 for 7am to 6pm, period words: asubuhi (morning, 7-11am), mchana (12-3pm), jioni (4-6pm), usiku (night). 9:00 -> 'saa 3 asubuhi'; 14:00 -> 'saa 8 mchana'.",
+  "templates": {
+    "referral": {
+      "sw": "Habari {name}. Nenda {clinic} {day} {time_sw}. Namba yako: {code}. Onyesha namba hii ukifika. Ukishindwa kwenda, jibu 2.",
+      "en": "Hello {name}. Go to {clinic} on {day} at {time_en}. Your number: {code}. Show it when you arrive. If you cannot go, reply 2."
+    },
+    "go_now": {
+      "sw": "{name}, nenda {clinic} SASA HIVI. Usisubiri. Namba yako: {code}.",
+      "en": "{name}, go to {clinic} NOW. Do not wait. Your number: {code}."
+    },
+    "slot_confirmed": {
+      "sw": "Nafasi yako imethibitishwa: {clinic} {day} {time_sw}. Namba: {code}.",
+      "en": "Your visit is confirmed: {clinic} on {day} at {time_en}. Number: {code}."
+    },
+    "slot_moved": {
+      "sw": "Samahani, muda umebadilika. Nenda {clinic} {day} {time_sw}. Namba: {code}.",
+      "en": "Sorry, your time has changed. Go to {clinic} on {day} at {time_en}. Number: {code}."
+    },
+    "did_you_go": {
+      "sw": "Habari {name}. Je, ulifika {clinic}? Jibu 1 = ndiyo, 2 = hapana.",
+      "en": "Hello {name}. Did you reach {clinic}? Reply 1 = yes, 2 = no."
+    },
+    "followup_reminder": {
+      "sw": "Habari {name}. Kumbuka kurudi {clinic} {day} {time_sw}. Namba: {code}.",
+      "en": "Hello {name}. Remember to return to {clinic} on {day} at {time_en}. Number: {code}."
+    },
+    "outbreak_alert_public": {
+      "sw": "Taarifa ya afya: wagonjwa wa {syndrome_sw} wameongezeka {ward}. Ukiwa na dalili hizi, nenda kliniki mapema.",
+      "en": "Health notice: more cases of {syndrome_en} in {ward}. If you have these signs, go to the clinic early."
+    }
+  },
+  "voice_scripts": {
+    "referral": {
+      "sw": "Habari {name}. Huu ni ujumbe kutoka kwa {responder}. Nenda {clinic}, {day}, {time_sw}. Namba yako ni {code_spoken}. Kurudia, bonyeza 1.",
+      "en": "Hello {name}. This is a message from {responder}. Please go to {clinic}, {day}, at {time_en}. Your number is {code_spoken}. To hear again, press 1."
+    },
+    "did_you_go": {
+      "sw": "Habari {name}. Je, ulifika {clinic}? Kama ndiyo, bonyeza 1. Kama hapana, bonyeza 2.",
+      "en": "Hello {name}. Did you reach {clinic}? If yes, press 1. If no, press 2."
+    }
+  },
+  "privacy": {
+    "pin_before_personal": true,
+    "banned_content": "Any symptom label, ICD-10 title, test name or diagnosis. Phase 10 test checks this."
+  },
+  "days": {
+    "sw": ["Jumatatu", "Jumanne", "Jumatano", "Alhamisi", "Ijumaa", "Jumamosi", "Jumapili"],
+    "en": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  }
+}

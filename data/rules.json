@@ -1,0 +1,289 @@
+{
+  "version": "0.1",
+  "review": "pending: every rule must be reviewed by a clinician on the team before the video is recorded. Reason texts paraphrase the cited guideline; they are not new medical advice.",
+  "semantics": "A rule fires when ALL of these hold: encounter.group is in rule.groups; every id in when.all is in encounter.symptoms; if when.any is given, at least one id in when.any is in encounter.symptoms; every key in when.answers equals encounter.answers[key]; min_gest_weeks <= encounter.gest_weeks; days_postpartum_max >= encounter.days_postpartum; child_age_months_lt > encounter.child_age_months; if when.bp is given, encounter.bp.sys >= bp.sys_gte OR encounter.bp.dia >= bp.dia_gte (no BP reading = the bp condition fails). A missing gest_weeks, days_postpartum or child_age_months counts as MEETING that condition (safer to refer) and the question is listed as unanswered. Final urgency = highest urgency among fired rules (order below). If nothing fires and any symptom chunk was 'uncertain', urgency = ask_clinic. If nothing fires at all, urgency = home_care_followup.",
+  "intent_threshold_note": "The confidence threshold lives in public/models/intent_model.json (currently 0.40).",
+  "urgency_order": ["go_now", "refer_today", "ask_clinic", "refer_routine", "home_care_followup"],
+  "urgency_labels": {
+    "go_now": {"en": "Go now", "sw": "Nenda sasa hivi"},
+    "refer_today": {"en": "Refer today", "sw": "Mpeleke kliniki leo"},
+    "ask_clinic": {"en": "Not sure — ask the clinic", "sw": "Sina uhakika — uliza kliniki"},
+    "refer_routine": {"en": "Clinic visit within 3 days", "sw": "Kliniki ndani ya siku 3"},
+    "home_care_followup": {"en": "Advice and follow-up", "sw": "Ushauri na ufuatiliaji"}
+  },
+  "sources": {
+    "TZ_STG_2021": {"title": "Tanzania Standard Treatment Guidelines and NEMLIT, 6th ed., 2021", "url": "https://www.moh.go.tz/storage/app/uploads/public/663/c8f/ceb/663c8fceb418d132695047.pdf"},
+    "WHO_ANC_2016": {"title": "WHO recommendations on antenatal care for a positive pregnancy experience, 2016", "url": "https://www.who.int/publications/i/item/9789241549912"},
+    "WHO_PNC_2022": {"title": "WHO recommendations on maternal and newborn care for a positive postnatal experience, 2022", "url": "https://www.ncbi.nlm.nih.gov/books/NBK579660/"},
+    "WHO_IMCI_2014": {"title": "WHO IMCI chart booklet, 2014", "url": "https://cdn.who.int/media/docs/default-source/mca-documents/child/imci-integrated-management-of-childhood-illness/imci-in-service-training/imci-chart-booklet.pdf?sfvrsn=f63af425_1"},
+    "WHO_PE_FACTSHEET": {"title": "WHO pre-eclampsia fact sheet", "url": "https://www.who.int/news-room/fact-sheets/detail/pre-eclampsia"},
+    "WHO_IDSR": {"title": "WHO AFRO Integrated Disease Surveillance and Response technical guidelines", "url": "https://www.afro.who.int/sites/default/files/2017-06/IDSR-Technical-Guidelines_Final_2010_0.pdf"}
+  },
+  "rules": [
+    {
+      "id": "child_general_danger_sign",
+      "groups": ["child"],
+      "when": {"any": ["convulsions", "not_feeding", "vomiting_everything", "lethargic"]},
+      "urgency": "go_now", "facility_level": "hospital",
+      "reason": {"en": "Child has a general danger sign (convulsions, cannot drink or breastfeed, vomits everything, or very sleepy). Urgent referral.", "sw": "Mtoto ana dalili ya hatari (degedege, hawezi kunywa au kunyonya, anatapika kila kitu, au amelegea). Rufaa ya haraka."},
+      "rule_out": ["B50.9", "J18.9", "A41.9"],
+      "source": "WHO_IMCI_2014", "section": "Check for general danger signs"
+    },
+    {
+      "id": "child_fever",
+      "groups": ["child"],
+      "when": {"any": ["fever", "fever_not_cleared"]},
+      "urgency": "refer_today", "facility_level": "dispensary",
+      "reason": {"en": "Child with fever needs a malaria test and assessment today.", "sw": "Mtoto mwenye homa anahitaji kipimo cha malaria na uchunguzi leo."},
+      "rule_out": ["B54", "A01.0", "J18.9"],
+      "source": "WHO_IMCI_2014", "section": "Does the child have fever?"
+    },
+    {
+      "id": "child_breathing",
+      "groups": ["child"],
+      "when": {"any": ["breathing_difficulty"]},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "Child with cough or fast or difficult breathing needs assessment for pneumonia today.", "sw": "Mtoto mwenye kikohozi au kupumua haraka au kwa shida anahitaji uchunguzi wa nimonia leo."},
+      "rule_out": ["J18.9"],
+      "source": "WHO_IMCI_2014", "section": "Does the child have cough or difficult breathing?"
+    },
+    {
+      "id": "child_diarrhoea",
+      "groups": ["child"],
+      "when": {"any": ["diarrhoea"]},
+      "urgency": "refer_today", "facility_level": "dispensary",
+      "reason": {"en": "Child with diarrhoea needs a dehydration check. ORS and zinc as the guideline says.", "sw": "Mtoto anayeharisha anahitaji kuchunguzwa upungufu wa maji. ORS na zinki kama mwongozo unavyoelekeza."},
+      "rule_out": ["A09.9"],
+      "source": "WHO_IMCI_2014", "section": "Does the child have diarrhoea?", "syndrome": "acute_watery_diarrhoea"
+    },
+    {
+      "id": "pregnancy_danger_sign",
+      "groups": ["pregnant"],
+      "when": {"any": ["vaginal_bleeding", "convulsions", "abdominal_pain_severe", "breathing_difficulty"]},
+      "urgency": "go_now", "facility_level": "hospital",
+      "reason": {"en": "Pregnancy danger sign (bleeding, fits, severe abdominal pain or difficult breathing). Go to hospital now.", "sw": "Dalili ya hatari ya ujauzito (damu, degedege, maumivu makali ya tumbo au kupumua kwa shida). Nenda hospitali sasa."},
+      "rule_out": ["O46.9", "O20.9", "O15.9"],
+      "source": "WHO_ANC_2016", "section": "Danger signs in pregnancy"
+    },
+    {
+      "id": "pregnancy_preeclampsia_symptoms",
+      "groups": ["pregnant"],
+      "when": {"any": ["headache", "blurred_vision", "swelling_face_hands"], "min_gest_weeks": 20},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "After 20 weeks, headache, vision problems or swelling need a blood pressure and urine check today.", "sw": "Baada ya wiki 20, maumivu ya kichwa, matatizo ya kuona au kuvimba vinahitaji kipimo cha shinikizo la damu na mkojo leo."},
+      "rule_out": ["O14.9", "O13"],
+      "source": "WHO_PE_FACTSHEET", "section": "Symptoms"
+    },
+    {
+      "id": "pregnancy_severe_preeclampsia_signs",
+      "groups": ["pregnant"],
+      "when": {"all": ["headache", "blurred_vision"], "min_gest_weeks": 20},
+      "urgency": "go_now", "facility_level": "hospital",
+      "reason": {"en": "Severe headache with vision problems after 20 weeks. Go to hospital now.", "sw": "Maumivu makali ya kichwa pamoja na matatizo ya kuona baada ya wiki 20. Nenda hospitali sasa."},
+      "rule_out": ["O14.9", "O15.9"],
+      "source": "WHO_PE_FACTSHEET", "section": "Severe pre-eclampsia"
+    },
+    {
+      "id": "pregnancy_bp_raised",
+      "groups": ["pregnant"],
+      "when": {"bp": {"sys_gte": 140, "dia_gte": 90}, "min_gest_weeks": 20},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "Blood pressure 140/90 or higher after 20 weeks. Needs urine protein test and review today.", "sw": "Shinikizo la damu 140/90 au zaidi baada ya wiki 20. Anahitaji kipimo cha protini kwenye mkojo leo."},
+      "rule_out": ["O14.9", "O13"],
+      "source": "WHO_PE_FACTSHEET", "section": "Definition"
+    },
+    {
+      "id": "pregnancy_bp_severe",
+      "groups": ["pregnant", "postpartum"],
+      "when": {"bp": {"sys_gte": 160, "dia_gte": 110}},
+      "urgency": "go_now", "facility_level": "hospital",
+      "reason": {"en": "Severely raised blood pressure (160/110 or higher). Go to hospital now.", "sw": "Shinikizo la damu liko juu sana (160/110 au zaidi). Nenda hospitali sasa."},
+      "rule_out": ["O14.9", "O15.9"],
+      "source": "TZ_STG_2021", "section": "11.7 Antenatal care: hypertensive disorders"
+    },
+    {
+      "id": "pregnancy_fever",
+      "groups": ["pregnant"],
+      "when": {"any": ["fever", "fever_not_cleared"]},
+      "urgency": "refer_today", "facility_level": "dispensary",
+      "reason": {"en": "Fever in pregnancy needs a malaria test and review today. Do not self-treat.", "sw": "Homa wakati wa ujauzito inahitaji kipimo cha malaria na uchunguzi leo. Usijitibu."},
+      "rule_out": ["B50.9", "A01.0"],
+      "source": "WHO_ANC_2016", "section": "Danger signs in pregnancy"
+    },
+    {
+      "id": "pregnancy_reduced_movement",
+      "groups": ["pregnant"],
+      "when": {"any": ["reduced_fetal_movement"]},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "Baby moving less than usual. Needs a check today.", "sw": "Mtoto tumboni anacheza kidogo kuliko kawaida. Anahitaji kuchunguzwa leo."},
+      "rule_out": [],
+      "source": "WHO_ANC_2016", "section": "Fetal movement"
+    },
+    {
+      "id": "postpartum_heavy_bleeding",
+      "groups": ["postpartum", "stillbirth"],
+      "when": {"any": ["heavy_bleeding_postpartum", "vaginal_bleeding"]},
+      "urgency": "go_now", "facility_level": "hospital",
+      "reason": {"en": "Heavy bleeding after birth. Go to hospital now.", "sw": "Damu nyingi baada ya kujifungua. Nenda hospitali sasa."},
+      "rule_out": ["O72.1"],
+      "source": "WHO_PNC_2022", "section": "Maternal danger signs after birth"
+    },
+    {
+      "id": "postpartum_infection",
+      "groups": ["postpartum", "stillbirth"],
+      "when": {"all": ["fever", "foul_discharge"]},
+      "urgency": "go_now", "facility_level": "hospital",
+      "reason": {"en": "Fever with foul-smelling discharge after birth. Go to hospital now.", "sw": "Homa pamoja na uchafu wenye harufu mbaya baada ya kujifungua. Nenda hospitali sasa."},
+      "rule_out": ["O85", "A41.9"],
+      "source": "WHO_PNC_2022", "section": "Maternal danger signs after birth"
+    },
+    {
+      "id": "postpartum_fever",
+      "groups": ["postpartum", "stillbirth"],
+      "when": {"any": ["fever", "fever_not_cleared", "foul_discharge"]},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "Fever or discharge after birth needs review today.", "sw": "Homa au uchafu baada ya kujifungua unahitaji uchunguzi leo."},
+      "rule_out": ["O85", "B54"],
+      "source": "WHO_PNC_2022", "section": "Maternal danger signs after birth"
+    },
+    {
+      "id": "postpartum_preeclampsia_symptoms",
+      "groups": ["postpartum", "stillbirth"],
+      "when": {"any": ["headache", "blurred_vision", "convulsions"], "days_postpartum_max": 42},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "Headache, vision problems or fits in the 6 weeks after birth need a blood pressure check today.", "sw": "Maumivu ya kichwa, matatizo ya kuona au degedege ndani ya wiki 6 baada ya kujifungua yanahitaji kipimo cha shinikizo la damu leo."},
+      "rule_out": ["O14.9", "O15.9"],
+      "source": "WHO_PNC_2022", "section": "Maternal danger signs after birth"
+    },
+    {
+      "id": "postpartum_convulsions",
+      "groups": ["postpartum", "stillbirth"],
+      "when": {"any": ["convulsions"]},
+      "urgency": "go_now", "facility_level": "hospital",
+      "reason": {"en": "Fits after birth. Go to hospital now.", "sw": "Degedege baada ya kujifungua. Nenda hospitali sasa."},
+      "rule_out": ["O15.9"],
+      "source": "WHO_PNC_2022", "section": "Maternal danger signs after birth"
+    },
+    {
+      "id": "mood_support",
+      "groups": ["postpartum", "stillbirth", "pregnant"],
+      "when": {"any": ["low_mood"]},
+      "urgency": "refer_routine", "facility_level": "health_centre",
+      "reason": {"en": "Low mood or grief that affects daily life. Offer a supportive follow-up with a health worker.", "sw": "Huzuni au majonzi yanayoathiri maisha ya kila siku. Mpangie ufuatiliaji na mhudumu wa afya."},
+      "rule_out": ["F53.0"],
+      "source": "WHO_PNC_2022", "section": "Maternal mental health"
+    },
+    {
+      "id": "self_harm_thoughts",
+      "groups": ["postpartum", "stillbirth", "pregnant", "adult_other"],
+      "when": {"answers": {"q_selfharm": "yes"}},
+      "urgency": "go_now", "facility_level": "health_centre",
+      "reason": {"en": "She has had thoughts of harming herself. Same-day support from a health worker. Stay with her and do not leave her alone.", "sw": "Amekuwa na mawazo ya kujidhuru. Apate msaada wa mhudumu wa afya leo. Kaa naye, usimwache peke yake."},
+      "rule_out": [],
+      "source": "WHO_PNC_2022", "section": "Maternal mental health"
+    },
+    {
+      "id": "fever_not_cleared_any",
+      "groups": ["pregnant", "postpartum", "stillbirth", "child", "adult_other"],
+      "when": {"any": ["fever_not_cleared"]},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "Fever not cleared by malaria treatment. Test before any more antimalarials; other causes need checking.", "sw": "Homa haijaisha baada ya dawa za malaria. Apimwe kabla ya kupewa dawa nyingine za malaria; visababishi vingine vichunguzwe."},
+      "rule_out": ["B54", "A01.0", "A27.9", "A23.9", "A78", "A77.9"],
+      "source": "TZ_STG_2021", "section": "Malaria: confirm diagnosis before treatment; fever of unknown origin", "syndrome": "fever_not_cleared"
+    },
+    {
+      "id": "fever_animal_exposure",
+      "groups": ["pregnant", "postpartum", "stillbirth", "child", "adult_other"],
+      "when": {"any": ["fever", "fever_not_cleared"], "all": ["exposure_animals"]},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "Fever with livestock contact or raw milk. Infections caught from animals should be checked.", "sw": "Homa pamoja na kugusana na mifugo au maziwa yasiyochemshwa. Maambukizi kutoka kwa wanyama yachunguzwe."},
+      "rule_out": ["A23.9", "A78", "A92.4"],
+      "source": "TZ_STG_2021", "section": "Brucellosis; Rift Valley fever", "syndrome": "fever_animal_exposure"
+    },
+    {
+      "id": "fever_water_rats_exposure",
+      "groups": ["pregnant", "postpartum", "stillbirth", "child", "adult_other"],
+      "when": {"any": ["fever", "fever_not_cleared"], "all": ["exposure_water_rats"]},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "Fever with rats, flood water or muddy fields. Leptospirosis should be checked.", "sw": "Homa pamoja na panya, maji ya mafuriko au mashamba ya matope. Leptospirosis ichunguzwe."},
+      "rule_out": ["A27.9"],
+      "source": "TZ_STG_2021", "section": "Leptospirosis"
+    },
+    {
+      "id": "fever_rash",
+      "groups": ["pregnant", "postpartum", "stillbirth", "child", "adult_other"],
+      "when": {"all": ["fever", "rash"]},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "Fever with rash. Check vaccination status; suspected measles must be reported.", "sw": "Homa pamoja na vipele. Angalia hali ya chanjo; surua inayoshukiwa lazima iripotiwe."},
+      "rule_out": ["B05.9", "A97.9"],
+      "source": "WHO_IDSR", "section": "Measles case definition", "syndrome": "fever_rash"
+    },
+    {
+      "id": "adult_watery_diarrhoea",
+      "groups": ["pregnant", "postpartum", "stillbirth", "adult_other"],
+      "when": {"all": ["diarrhoea"], "any": ["vomiting_everything"]},
+      "urgency": "refer_today", "facility_level": "health_centre",
+      "reason": {"en": "Watery diarrhoea with vomiting. Start oral rehydration and check for cholera if cases are rising.", "sw": "Kuharisha maji pamoja na kutapika. Anza ORS na chunguza kipindupindu kama wagonjwa wanaongezeka."},
+      "rule_out": ["A00.9", "A09.9"],
+      "source": "WHO_IDSR", "section": "Cholera case definition", "syndrome": "acute_watery_diarrhoea"
+    },
+    {
+      "id": "long_cough",
+      "groups": ["pregnant", "postpartum", "stillbirth", "adult_other", "child"],
+      "when": {"all": ["cough"], "answers": {"q_cough_2weeks": "yes"}},
+      "urgency": "refer_routine", "facility_level": "health_centre",
+      "reason": {"en": "Cough for 2 weeks or more needs a TB test.", "sw": "Kikohozi cha wiki 2 au zaidi kinahitaji kipimo cha TB."},
+      "rule_out": ["A16.9"],
+      "source": "TZ_STG_2021", "section": "Tuberculosis"
+    },
+    {
+      "id": "bp_never_checked",
+      "groups": ["adult_other", "postpartum", "stillbirth"],
+      "when": {"answers": {"q_bp_ever_checked": "no"}},
+      "urgency": "refer_routine", "facility_level": "dispensary",
+      "reason": {"en": "Blood pressure has never been checked. Many adults with high blood pressure do not know it. Book a check.", "sw": "Shinikizo la damu halijawahi kupimwa. Watu wazima wengi wenye shinikizo la juu hawajui. Mpangie kipimo."},
+      "rule_out": ["I10"],
+      "source": "TZ_STG_2021", "section": "Hypertension"
+    },
+    {
+      "id": "adult_bp_raised",
+      "groups": ["adult_other"],
+      "when": {"bp": {"sys_gte": 140, "dia_gte": 90}},
+      "urgency": "refer_routine", "facility_level": "dispensary",
+      "reason": {"en": "Blood pressure 140/90 or higher. Needs a repeat reading and review.", "sw": "Shinikizo la damu 140/90 au zaidi. Anahitaji kupimwa tena na kuchunguzwa."},
+      "rule_out": ["I10"],
+      "source": "TZ_STG_2021", "section": "Hypertension"
+    }
+  ],
+  "outbreak": {
+    "method": "Per ward and syndrome: flag when this week's count >= min_count AND count > mean + sd_multiplier * SD (population SD) of the previous baseline_weeks (EARS-style). A human approves before any escalation.",
+    "min_count": 3, "sd_multiplier": 2, "baseline_weeks": 4, "share_radius_km": 25,
+    "notifiable_note": "Verify this list against Tanzania's current IDSR technical guidelines before the demo.",
+    "syndromes": [
+      {
+        "id": "fever_rash", "en": "Fever with rash (suspected measles)", "sw": "Homa na vipele (surua inayoshukiwa)",
+        "immediately_notifiable": true,
+        "guidance": {"en": "Ask about measles vaccination. Isolate the patient from other children. Report each suspected case immediately to the district surveillance officer.", "sw": "Uliza kuhusu chanjo ya surua. Mtenge mgonjwa na watoto wengine. Ripoti kila mgonjwa anayeshukiwa mara moja kwa afisa ufuatiliaji wa wilaya."},
+        "source": "WHO_IDSR"
+      },
+      {
+        "id": "acute_watery_diarrhoea", "en": "Acute watery diarrhoea (suspected cholera)", "sw": "Kuharisha maji (kipindupindu kinachoshukiwa)",
+        "immediately_notifiable": true,
+        "guidance": {"en": "Start oral rehydration. Ask about water source. Report suspected cholera immediately to the district surveillance officer.", "sw": "Anza ORS. Uliza chanzo cha maji. Ripoti kipindupindu kinachoshukiwa mara moja kwa afisa ufuatiliaji wa wilaya."},
+        "source": "WHO_IDSR"
+      },
+      {
+        "id": "fever_not_cleared", "en": "Fever not cleared by malaria treatment", "sw": "Homa isiyoisha baada ya dawa za malaria",
+        "immediately_notifiable": false,
+        "guidance": {"en": "Test before giving more antimalarials. Consider leptospirosis, brucellosis, typhoid and rickettsial infection. Ask about animals, rats and flood water.", "sw": "Pima kabla ya kutoa dawa zaidi za malaria. Fikiria leptospirosis, brucellosis, homa ya matumbo na rickettsia. Uliza kuhusu wanyama, panya na maji ya mafuriko."},
+        "source": "TZ_STG_2021"
+      },
+      {
+        "id": "fever_animal_exposure", "en": "Fever with livestock contact", "sw": "Homa na kugusana na mifugo",
+        "immediately_notifiable": false,
+        "guidance": {"en": "Ask about sick or aborting animals and raw milk. Inform the district veterinary officer as well as the surveillance officer (One Health).", "sw": "Uliza kuhusu wanyama wagonjwa au waliotupa mimba na maziwa yasiyochemshwa. Mjulishe afisa mifugo wa wilaya pamoja na afisa ufuatiliaji."},
+        "source": "TZ_STG_2021"
+      }
+    ]
+  }
+}

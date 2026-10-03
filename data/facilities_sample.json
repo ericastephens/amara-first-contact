@@ -1,0 +1,91 @@
+{
+  "synthetic": true,
+  "description": "SAMPLE DATA for the demo. Ondera is fictional (from the World Bank brief); coordinates are placed in a Kilimanjaro-like highland area but these facilities do not exist. For real facilities run scripts/fetch_facilities_osm.py.",
+  "level_order": [
+    "drug_shop",
+    "dispensary",
+    "health_centre",
+    "hospital"
+  ],
+  "responder_sites": [
+    {
+      "id": "R1",
+      "name": "Duka la Dawa Ondera (ADDO)",
+      "type": "drug_shop",
+      "lat": -3.23,
+      "lon": 37.33,
+      "ward": "Ondera"
+    }
+  ],
+  "facilities": [
+    {
+      "id": "F1",
+      "name": "Zahanati ya Ondera",
+      "name_en": "Ondera Dispensary",
+      "level": "dispensary",
+      "lat": -3.2385,
+      "lon": 37.3362,
+      "ward": "Ondera",
+      "has_bp_cuff": true,
+      "has_malaria_rdt": true,
+      "phone_sms": "+255700000001",
+      "synthetic": true
+    },
+    {
+      "id": "F2",
+      "name": "Kituo cha Afya Mlima",
+      "name_en": "Mlima Health Centre",
+      "level": "health_centre",
+      "lat": -3.262,
+      "lon": 37.355,
+      "ward": "Mlima",
+      "has_bp_cuff": true,
+      "has_malaria_rdt": true,
+      "has_lab": true,
+      "phone_sms": "+255700000002",
+      "synthetic": true
+    },
+    {
+      "id": "F3",
+      "name": "Zahanati ya Kati",
+      "name_en": "Kati Dispensary",
+      "level": "dispensary",
+      "lat": -3.211,
+      "lon": 37.3105,
+      "ward": "Kati",
+      "has_bp_cuff": false,
+      "has_malaria_rdt": true,
+      "phone_sms": "+255700000003",
+      "synthetic": true
+    },
+    {
+      "id": "F4",
+      "name": "Hospitali ya Wilaya ya Ondera",
+      "name_en": "Ondera District Hospital",
+      "level": "hospital",
+      "lat": -3.335,
+      "lon": 37.39,
+      "ward": "Juu",
+      "has_bp_cuff": true,
+      "has_malaria_rdt": true,
+      "has_lab": true,
+      "has_mgso4": true,
+      "phone_sms": "+255700000004",
+      "synthetic": true
+    },
+    {
+      "id": "F5",
+      "name": "Kituo cha Afya Juu",
+      "name_en": "Juu Health Centre",
+      "level": "health_centre",
+      "lat": -3.301,
+      "lon": 37.372,
+      "ward": "Juu",
+      "has_bp_cuff": true,
+      "has_malaria_rdt": true,
+      "has_lab": false,
+      "phone_sms": "+255700000005",
+      "synthetic": true
+    }
+  ]
+}

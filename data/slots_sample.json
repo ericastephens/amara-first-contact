@@ -1,0 +1,607 @@
+{
+ "synthetic": true,
+ "description": "SAMPLE DATA. Referral slots each clinic reserves per day, synced to responder phones weekly. Demo 'today' = 2026-10-05 (Monday).",
+ "demo_today": "2026-10-05",
+ "slots": [
+  {
+   "facility_id": "F1",
+   "date": "2026-10-05",
+   "time": "08:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-05",
+   "time": "09:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-05",
+   "time": "09:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-05",
+   "time": "10:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-06",
+   "time": "08:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-06",
+   "time": "09:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-06",
+   "time": "09:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-06",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-07",
+   "time": "08:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-07",
+   "time": "09:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-07",
+   "time": "09:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-07",
+   "time": "10:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-08",
+   "time": "08:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-08",
+   "time": "09:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-08",
+   "time": "09:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F1",
+   "date": "2026-10-08",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-05",
+   "time": "08:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-05",
+   "time": "08:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-05",
+   "time": "09:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-05",
+   "time": "09:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-05",
+   "time": "10:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-05",
+   "time": "11:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-06",
+   "time": "08:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-06",
+   "time": "08:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-06",
+   "time": "09:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-06",
+   "time": "09:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-06",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-06",
+   "time": "11:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-07",
+   "time": "08:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-07",
+   "time": "08:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-07",
+   "time": "09:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-07",
+   "time": "09:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-07",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-07",
+   "time": "11:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-08",
+   "time": "08:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-08",
+   "time": "08:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-08",
+   "time": "09:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-08",
+   "time": "09:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-08",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F2",
+   "date": "2026-10-08",
+   "time": "11:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-05",
+   "time": "08:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-05",
+   "time": "09:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-05",
+   "time": "09:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-05",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-06",
+   "time": "08:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-06",
+   "time": "09:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-06",
+   "time": "09:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-06",
+   "time": "10:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-07",
+   "time": "08:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-07",
+   "time": "09:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-07",
+   "time": "09:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-07",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-08",
+   "time": "08:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-08",
+   "time": "09:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-08",
+   "time": "09:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F3",
+   "date": "2026-10-08",
+   "time": "10:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-05",
+   "time": "08:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-05",
+   "time": "09:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-05",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-05",
+   "time": "11:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-05",
+   "time": "14:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-06",
+   "time": "08:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-06",
+   "time": "09:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-06",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-06",
+   "time": "11:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-06",
+   "time": "14:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-07",
+   "time": "08:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-07",
+   "time": "09:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-07",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-07",
+   "time": "11:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-07",
+   "time": "14:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-08",
+   "time": "08:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-08",
+   "time": "09:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-08",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-08",
+   "time": "11:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F4",
+   "date": "2026-10-08",
+   "time": "14:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-05",
+   "time": "08:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-05",
+   "time": "08:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-05",
+   "time": "09:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-05",
+   "time": "09:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-05",
+   "time": "10:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-05",
+   "time": "11:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-06",
+   "time": "08:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-06",
+   "time": "08:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-06",
+   "time": "09:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-06",
+   "time": "09:30",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-06",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-06",
+   "time": "11:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-07",
+   "time": "08:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-07",
+   "time": "08:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-07",
+   "time": "09:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-07",
+   "time": "09:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-07",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-07",
+   "time": "11:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-08",
+   "time": "08:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-08",
+   "time": "08:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-08",
+   "time": "09:00",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-08",
+   "time": "09:30",
+   "status": "taken"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-08",
+   "time": "10:00",
+   "status": "free"
+  },
+  {
+   "facility_id": "F5",
+   "date": "2026-10-08",
+   "time": "11:00",
+   "status": "free"
+  }
+ ]
+}

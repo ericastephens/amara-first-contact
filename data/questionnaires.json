@@ -1,0 +1,108 @@
+{
+  "description": "Intake questions shown by the Responder app. A yes answer to a question with maps_to adds that symptom id to the encounter. Keypad: 1 = yes, 2 = no, 3 = don't know. Audio prompts: data/audio/<id>_<lang>.mp3 (placeholders until community recordings exist).",
+  "review": "pending: Swahili wording needs native-speaker and clinician review",
+  "groups": [
+    {"id": "pregnant", "en": "Pregnant", "sw": "Mjamzito"},
+    {"id": "postpartum", "en": "Gave birth in the last 6 weeks", "sw": "Amejifungua ndani ya wiki 6"},
+    {"id": "stillbirth", "en": "After a stillbirth or loss", "sw": "Baada ya mtoto kuzaliwa mfu au kupoteza mimba"},
+    {"id": "child", "en": "Her child (under 18)", "sw": "Mtoto wake (chini ya miaka 18)"},
+    {"id": "adult_other", "en": "The mother herself (other)", "sw": "Mama mwenyewe (mengine)"}
+  ],
+  "modules": [
+    {
+      "id": "common", "applies_to": ["pregnant", "postpartum", "stillbirth", "child", "adult_other"],
+      "questions": [
+        {"id": "q_complaint", "type": "free_text", "en": "In your own words, what is the problem?", "sw": "Kwa maneno yako, tatizo ni nini?", "ai": "intent_model"},
+        {"id": "q_fever", "type": "yes_no", "maps_to": "fever", "en": "Fever or feeling hot?", "sw": "Homa au mwili kuwa na joto?"},
+        {"id": "q_fever_days", "type": "number", "unit": "days", "show_if": {"q_fever": "yes"}, "en": "For how many days?", "sw": "Kwa siku ngapi?"},
+        {"id": "q_malaria_meds", "type": "yes_no", "show_if": {"q_fever": "yes"}, "en": "Already took malaria tablets (mseto) for this fever?", "sw": "Umeshameza dawa za malaria (mseto) kwa homa hii?"},
+        {"id": "q_fever_after_meds", "type": "yes_no", "maps_to": "fever_not_cleared", "show_if": {"q_malaria_meds": "yes"}, "en": "Is the fever still there after the tablets?", "sw": "Homa bado ipo baada ya dawa?"},
+        {"id": "q_meds_bought", "type": "free_text", "en": "Which medicines did you already buy or take?", "sw": "Umeshanunua au kumeza dawa gani?"},
+        {"id": "q_cough", "type": "yes_no", "maps_to": "cough", "en": "Cough?", "sw": "Kikohozi?"},
+        {"id": "q_cough_2weeks", "type": "yes_no", "show_if": {"q_cough": "yes"}, "en": "Cough for 2 weeks or more?", "sw": "Kikohozi kwa wiki 2 au zaidi?"},
+        {"id": "q_breathing", "type": "yes_no", "maps_to": "breathing_difficulty", "en": "Fast or difficult breathing?", "sw": "Kupumua haraka au kwa shida?"},
+        {"id": "q_diarrhoea", "type": "yes_no", "maps_to": "diarrhoea", "en": "Diarrhoea?", "sw": "Kuharisha?"},
+        {"id": "q_vomit_all", "type": "yes_no", "maps_to": "vomiting_everything", "en": "Vomiting everything?", "sw": "Kutapika kila kitu?"},
+        {"id": "q_rash", "type": "yes_no", "maps_to": "rash", "en": "Rash on the body?", "sw": "Vipele mwilini?"},
+        {"id": "q_convulsions", "type": "yes_no", "maps_to": "convulsions", "en": "Any fits or convulsions?", "sw": "Degedege lolote?"}
+      ]
+    },
+    {
+      "id": "pregnancy", "applies_to": ["pregnant"], "source": "WHO_ANC_2016",
+      "questions": [
+        {"id": "q_gest_weeks", "type": "number", "unit": "weeks", "field": "gest_weeks", "en": "How many weeks pregnant (or months x 4)?", "sw": "Mimba ina wiki ngapi (au miezi x 4)?"},
+        {"id": "q_bleeding", "type": "yes_no", "maps_to": "vaginal_bleeding", "en": "Any bleeding from the vagina?", "sw": "Unatoka damu ukeni?"},
+        {"id": "q_headache", "type": "yes_no", "maps_to": "headache", "en": "Severe headache?", "sw": "Maumivu makali ya kichwa?"},
+        {"id": "q_vision", "type": "yes_no", "maps_to": "blurred_vision", "en": "Blurred vision or seeing spots?", "sw": "Kuona ukungu au nyota nyota?"},
+        {"id": "q_swelling", "type": "yes_no", "maps_to": "swelling_face_hands", "en": "Swelling of face or hands?", "sw": "Kuvimba uso au mikono?"},
+        {"id": "q_abd_pain", "type": "yes_no", "maps_to": "abdominal_pain_severe", "en": "Severe pain in the belly?", "sw": "Maumivu makali ya tumbo?"},
+        {"id": "q_fetal_move", "type": "yes_no", "maps_to": "reduced_fetal_movement", "show_if_min": {"gest_weeks": 20}, "en": "Is the baby moving less than usual?", "sw": "Mtoto tumboni anacheza kidogo kuliko kawaida?"},
+        {"id": "q_anc_visits", "type": "number", "en": "How many clinic visits for this pregnancy so far?", "sw": "Umehudhuria kliniki mara ngapi kwa mimba hii?"},
+        {"id": "q_mood_preg", "type": "yes_no", "maps_to": "low_mood", "en": "Feeling very sad or hopeless most days?", "sw": "Unajisikia huzuni sana au kukata tamaa siku nyingi?"},
+        {"id": "q_selfharm", "type": "yes_no", "sensitive": true, "show_if": {"q_mood_preg": "yes"}, "en": "Have you had thoughts of harming yourself?", "sw": "Umewahi kuwa na mawazo ya kujidhuru?"}
+      ]
+    },
+    {
+      "id": "postpartum", "applies_to": ["postpartum", "stillbirth"], "source": "WHO_PNC_2022",
+      "questions": [
+        {"id": "q_days_pp", "type": "number", "unit": "days", "field": "days_postpartum", "en": "How many days since the birth?", "sw": "Siku ngapi tangu kujifungua?"},
+        {"id": "q_pp_bleeding", "type": "yes_no", "maps_to": "heavy_bleeding_postpartum", "en": "Heavy bleeding (soaking a pad in under an hour)?", "sw": "Damu nyingi (pedi kujaa chini ya saa moja)?"},
+        {"id": "q_discharge", "type": "yes_no", "maps_to": "foul_discharge", "en": "Bad-smelling discharge?", "sw": "Uchafu wenye harufu mbaya?"},
+        {"id": "q_pp_headache", "type": "yes_no", "maps_to": "headache", "en": "Severe headache?", "sw": "Maumivu makali ya kichwa?"},
+        {"id": "q_pp_vision", "type": "yes_no", "maps_to": "blurred_vision", "en": "Blurred vision?", "sw": "Kuona ukungu?"},
+        {"id": "q_bp_ever_checked", "type": "yes_no", "en": "Has your blood pressure been checked since the birth?", "sw": "Shinikizo lako la damu limepimwa tangu ujifungue?"},
+        {"id": "q_mood", "type": "yes_no", "maps_to": "low_mood", "en": "Feeling very sad, crying, or no interest in things most days?", "sw": "Unajisikia huzuni sana, kulia, au kukosa hamu ya mambo siku nyingi?"},
+        {"id": "q_selfharm", "type": "yes_no", "sensitive": true, "show_if": {"q_mood": "yes"}, "en": "Have you had thoughts of harming yourself?", "sw": "Umewahi kuwa na mawazo ya kujidhuru?"},
+        {"id": "q_breastfeeding", "type": "choice", "applies_to": ["postpartum"], "options": ["well", "problems", "not_breastfeeding"], "en": "How is breastfeeding going?", "sw": "Kunyonyesha kunaendeleaje?"}
+      ]
+    },
+    {
+      "id": "stillbirth_support", "applies_to": ["stillbirth"], "source": "WHO_PNC_2022",
+      "note": "Ask gently. Offer condolences first. The responder can skip any question.",
+      "questions": [
+        {"id": "q_support_person", "type": "yes_no", "en": "Is there someone at home who can support you?", "sw": "Kuna mtu nyumbani anayeweza kukusaidia?"},
+        {"id": "q_followup_wanted", "type": "yes_no", "en": "Would you like a health worker to follow up with you?", "sw": "Ungependa mhudumu wa afya akufuatilie?"}
+      ]
+    },
+    {
+      "id": "child_imci", "applies_to": ["child"], "source": "WHO_IMCI_2014",
+      "questions": [
+        {"id": "q_child_age_months", "type": "number", "unit": "months", "field": "child_age_months", "en": "Child's age in months (years x 12)?", "sw": "Umri wa mtoto kwa miezi (miaka x 12)?"},
+        {"id": "q_not_feeding", "type": "yes_no", "maps_to": "not_feeding", "en": "Not able to drink or breastfeed?", "sw": "Hawezi kunywa au kunyonya?"},
+        {"id": "q_lethargic", "type": "yes_no", "maps_to": "lethargic", "en": "Very sleepy, weak, or hard to wake?", "sw": "Amelegea, hana nguvu, au haamki vizuri?"},
+        {"id": "q_vaccines", "type": "choice", "options": ["up_to_date", "missed_some", "dont_know"], "en": "Vaccinations up to date (check the clinic card)?", "sw": "Chanjo zimekamilika (angalia kadi ya kliniki)?"}
+      ]
+    },
+    {
+      "id": "adult_screen", "applies_to": ["adult_other"],
+      "questions": [
+        {"id": "q_bp_ever_checked", "type": "yes_no", "en": "Has your blood pressure ever been checked?", "sw": "Shinikizo lako la damu limewahi kupimwa?"},
+        {"id": "q_adult_headache", "type": "yes_no", "maps_to": "headache", "en": "Frequent headaches?", "sw": "Maumivu ya kichwa mara kwa mara?"},
+        {"id": "q_mood_adult", "type": "yes_no", "maps_to": "low_mood", "en": "Feeling very sad or hopeless most days?", "sw": "Unajisikia huzuni sana au kukata tamaa siku nyingi?"},
+        {"id": "q_selfharm", "type": "yes_no", "sensitive": true, "show_if": {"q_mood_adult": "yes"}, "en": "Have you had thoughts of harming yourself?", "sw": "Umewahi kuwa na mawazo ya kujidhuru?"}
+      ]
+    },
+    {
+      "id": "social_environment", "applies_to": ["pregnant", "postpartum", "stillbirth", "child", "adult_other"],
+      "note": "Social determinants and exposures. Ask about the household, not only the patient.",
+      "questions": [
+        {"id": "q_farmer", "type": "yes_no", "en": "Does the family farm?", "sw": "Familia inalima?"},
+        {"id": "q_animals", "type": "yes_no", "maps_to": "exposure_animals", "en": "Animals at home (cows, goats, sheep), helping with animal births, or drinking unboiled milk?", "sw": "Mifugo nyumbani (ng'ombe, mbuzi, kondoo), kusaidia wanyama kuzaa, au kunywa maziwa bila kuchemsha?"},
+        {"id": "q_animals_sick", "type": "yes_no", "show_if": {"q_animals": "yes"}, "en": "Any animals sick or losing pregnancies recently?", "sw": "Wanyama wowote wagonjwa au waliotupa mimba hivi karibuni?"},
+        {"id": "q_rats_water", "type": "yes_no", "maps_to": "exposure_water_rats", "en": "Rats at home, walking in flood or stream water, or muddy fields?", "sw": "Panya nyumbani, kutembea kwenye maji ya mafuriko au mto, au mashamba ya matope?"},
+        {"id": "q_water_source", "type": "choice", "options": ["tap", "well", "river_stream", "rain", "other"], "en": "Main drinking water source?", "sw": "Chanzo kikuu cha maji ya kunywa?"},
+        {"id": "q_travel_time", "type": "choice", "options": ["under_30_min", "30_60_min", "1_2_hours", "over_2_hours"], "en": "How long to reach the nearest clinic?", "sw": "Inachukua muda gani kufika kliniki iliyo karibu?"},
+        {"id": "q_transport", "type": "choice", "options": ["walk", "boda_boda", "bus", "other"], "en": "How would you travel there?", "sw": "Utasafiri vipi kufika huko?"},
+        {"id": "q_activity", "type": "choice", "options": ["heavy_farm_work", "moderate", "mostly_sitting"], "en": "Daily activity?", "sw": "Shughuli za kila siku?"},
+        {"id": "q_phone", "type": "choice", "options": ["own_basic_phone", "shared_phone", "family_smartphone", "no_phone"], "en": "Which phone can you use?", "sw": "Unatumia simu ipi?"},
+        {"id": "q_reader", "type": "choice", "options": ["reads_sms", "someone_reads", "prefers_voice"], "en": "Can you read SMS, or would you prefer a voice call?", "sw": "Unaweza kusoma SMS, au ungependa simu ya sauti?"},
+        {"id": "q_language", "type": "choice", "options": ["sw", "en", "local_other"], "en": "Preferred language for messages?", "sw": "Lugha unayopendelea kwa ujumbe?"},
+        {"id": "q_call_time", "type": "choice", "options": ["morning", "evening"], "en": "Best time for a call (when the phone is with you)?", "sw": "Muda mzuri wa kupigiwa simu (simu ikiwa nawe)?"},
+        {"id": "q_consent", "type": "yes_no", "required": true, "en": "May we send your referral to the clinic and send you SMS or calls about it?", "sw": "Tunaweza kutuma rufaa yako kliniki na kukutumia SMS au simu kuhusu hilo?"}
+      ]
+    }
+  ],
+  "optional": [
+    {"id": "q_bp", "type": "bp", "show_if_role": "has_bp_cuff", "en": "Blood pressure reading (systolic / diastolic)", "sw": "Kipimo cha shinikizo la damu (juu / chini)"}
+  ]
+}
