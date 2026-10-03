@@ -37,7 +37,7 @@ Fill the "Evidence" column with links to code, tests, screenshots or video times
 
 | Deliverable | Status |
 | --- | --- |
-| Prototype: working tool with code or link | [ ] |
+| Prototype: working tool with code or link | [x] code in this repo; Pages link after merge to `main` |
 | Video 2–5 min (without it: not shortlisted) | [ ] |
 | — Problem statement in the format "Because of this tool, [user] will [action] by [when] that they would otherwise [not do / do late / do worse]; we know because [evidence]" | [ ] |
 | — AI capabilities, why a simpler tool would not do, guardrails | [ ] |
@@ -63,3 +63,19 @@ Fill the "Evidence" column with links to code, tests, screenshots or video times
 - [ ] No medical imaging or diagnosis datasets ("interpreting them is out of bounds"). → We use none; draft codes are for clinician confirmation only.
 - [ ] State where the data sits, who can read it, and what happens when the phone is lost or shared. → `docs/RESPONSIBLE_AI.md`.
 - [ ] Preconditions: connectivity, clinician trust, regulatory acceptance. → Offline-first; clinician confirms; dispensers refer, never diagnose.
+
+## Where each build phase lives (code and tests)
+
+| Phase | Code | Tests |
+| --- | --- | --- |
+| 1 Offline PWA, roles, i18n, PIN, IndexedDB | `vite.config.ts`, `src/ui/App.tsx`, `src/ui/PinLock.tsx`, `src/i18n/`, `src/storage/db.ts`, `.github/workflows/deploy.yml` | build + offline e2e run |
+| 2 Data layer | `src/data/schemas.ts`, `src/data/index.ts` | `tests/data.test.ts`, `scripts/check_data.py` |
+| 3 Intake | `src/ui/responder/Intake.tsx`, `QuestionField.tsx`, `src/logic/encounter.ts` | — |
+| 4 Intent model | `src/ai/intent.ts`, `src/ui/responder/Complaint.tsx` | `tests/intent.test.ts` (parity < 1e-6) |
+| 5 Rules, note, three views | `src/logic/rules.ts`, `note.ts`, `views.ts`, `src/ui/responder/Result.tsx` | `tests/rules.test.ts` (19/19 golden cases) |
+| 6 Referral, slot, code, SMS | `src/logic/referral.ts`, `sms.ts`, `src/services/referrals.ts`, `src/ui/responder/ReferralView.tsx` | `tests/referral.test.ts` |
+| 7 Store-and-forward sync | `src/sync/sync.ts`, `mockServer.ts`, `network.ts`, `clock.ts` | `tests/sync.test.ts` |
+| 8 Clinic dashboard, outbreak, escalation | `src/logic/outbreak.ts`, `src/ui/clinician/Clinician.tsx`, `src/ui/OutbreakPanel.tsx`, `src/ui/district/District.tsx` | `tests/outbreak.test.ts` |
+| 9 Speech/translation (optional) | Not built. Typed + keypad path covers the journey | — |
+| 10 Hardening, demo mode | Demo mode in `src/ui/App.tsx` | `tests/guardrails.test.ts` |
+| 11 Docs | `docs/MODEL_CARD.md`, `DATA_CARD.md`, `RESPONSIBLE_AI.md`, `VIDEO_SCRIPT.md` | — |

@@ -21,6 +21,21 @@ Clinics share flags when cases rise, and escalation to the district surveillance
 | `scripts/` | `check_data.py` (reference rules engine + checks), `train_intent.py` (small model), `intent_reference.mjs` (JS inference + parity test), `fetch_facilities_osm.py` (real facilities) |
 | `public/models/intent_model.json` | Trained intent model (~660 KB) |
 
+## Run the app
+
+```bash
+npm install
+npm run dev          # http://localhost:5173 — PIN 1234
+npm test             # Vitest: rules golden cases, intent parity, SMS, outbreak, sync, guardrails
+npm run build        # production PWA in dist/ (works offline after first load)
+```
+
+Deploy: pushing to `main` runs `.github/workflows/deploy.yml` (data checks, tests, build) and publishes to GitHub Pages.
+In the repo settings set **Pages → Source: GitHub Actions** once.
+
+Demo: Settings → Reset demo data, then **Demo mode** for the three scripted patients, or Responder for a full intake.
+The ✈️/📶 button in the top bar simulates the network for the video; real flight mode works too.
+
 ## Quick checks
 
 ```bash

@@ -107,7 +107,8 @@ export function toEncounterInput(q: Questionnaires, enc: Encounter): EncounterIn
     const n = numericAnswer(enc.answers, f);
     if (n !== undefined) input[f] = n;
   }
-  if (enc.bp) input.bp = enc.bp;
+  // only a complete reading counts; a half-typed one is treated as "no reading"
+  if (enc.bp && Number.isFinite(enc.bp.sys) && Number.isFinite(enc.bp.dia)) input.bp = enc.bp;
   return input;
 }
 
