@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-export const Bilingual = z.object({ en: z.string().min(1), sw: z.string().min(1) });
+/** English and Swahili are required; any other language code (e.g. "tw") may be added and is kept. */
+export const Bilingual = z.object({ en: z.string().min(1), sw: z.string().min(1) }).catchall(z.string());
 export type Bilingual = z.infer<typeof Bilingual>;
 
 export const Urgency = z.enum(["go_now", "refer_today", "ask_clinic", "refer_routine", "home_care_followup"]);
@@ -35,7 +36,7 @@ export type Question = z.infer<typeof Question>;
 export const Questionnaires = z.object({
   description: z.string(),
   review: z.string(),
-  groups: z.array(z.object({ id: Group, en: z.string(), sw: z.string() })),
+  groups: z.array(z.object({ id: Group, en: z.string(), sw: z.string() }).catchall(z.string())),
   modules: z.array(
     z.object({
       id: z.string(),
@@ -115,20 +116,54 @@ export type Icd10Doc = z.infer<typeof Icd10Doc>;
 export const IntentLabelsDoc = z.object({
   description: z.string(),
   review: z.string(),
-  labels: z.array(z.object({ id: z.string(), en: z.string(), sw: z.string() })),
+  labels: z.array(z.object({ id: z.string(), en: z.string(), sw: z.string() }).catchall(z.string())),
 });
 export type IntentLabelsDoc = z.infer<typeof IntentLabelsDoc>;
 
-// ---- sms_templates.json
-const LangPair = z.object({ sw: z.string(), en: z.string() });
+// ---- sms_templates.json (+ language packs in data/sms/<code>.json merged in at load)
+const LangTexts = z.object({ sw: z.string(), en: z.string() }).catchall(z.string());
 export const SmsDoc = z.object({
   description: z.string(),
   review: z.string(),
-  templates: z.record(z.string(), LangPair),
-  voice_scripts: z.record(z.string(), LangPair),
-  days: z.object({ sw: z.array(z.string()).length(7), en: z.array(z.string()).length(7) }),
+  templates: z.record(z.string(), LangTexts),
+  voice_scripts: z.record(z.string(), LangTexts),
+  days: z.object({ sw: z.array(z.string()).length(7), en: z.array(z.string()).length(7) }).catchall(z.array(z.string()).length(7)),
+  /** How times are written per language: "swahili" (saa 3 asubuhi), "12h" (9:00 am) or "24h" (09:00). */
+  time_format: z.record(z.string(), z.enum(["swahili", "12h", "24h"])).optional(),
+  /** Digits read aloud in voice calls, per language ("2".."9"). */
+  digits: z.record(z.string(), z.record(z.string(), z.string())).optional(),
 });
 export type SmsDoc = z.infer<typeof SmsDoc>;
+
+/** data/sms/<code>.json: messages for the mother in one more language. Keep every text <= 160 characters filled. */
+export const SmsPack = z.object({
+  code: z.string().min(2),
+  name: z.string(),
+  review: z.string(),
+  templates: z.record(z.string(), z.string()),
+  voice_scripts: z.record(z.string(), z.string()).optional(),
+  days: z.array(z.string()).length(7),
+  time_format: z.enum(["swahili", "12h", "24h"]).default("12h"),
+  digits: z.record(z.string(), z.string()).optional(),
+  default_name: z.string().optional(),
+});
+export type SmsPack = z.infer<typeof SmsPack>;
+
+// ---- admin_areas.json (regions and districts, select-only in setup)
+export const AdminAreasDoc = z.object({
+  description: z.string(),
+  source_url: z.string(),
+  countries: z.record(
+    z.string(),
+    z.object({
+      source: z.string(),
+      licence: z.string(),
+      source_year: z.union([z.string(), z.number()]).optional(),
+      regions: z.array(z.object({ name: z.string().min(1), districts: z.array(z.string().min(1)) })).min(1),
+    }),
+  ),
+});
+export type AdminAreasDoc = z.infer<typeof AdminAreasDoc>;
 
 // ---- facilities_sample.json
 export const Facility = z.object({
@@ -264,7 +299,7 @@ export type Country = z.infer<typeof Country>;
 export const LocalesDoc = z.object({
   description: z.string(),
   support_levels: z.record(Support, Bilingual),
-  roles: z.array(z.object({ id: z.string(), en: z.string(), sw: z.string() })),
+  roles: z.array(z.object({ id: z.string(), en: z.string(), sw: z.string() }).catchall(z.string())),
   countries: z.array(Country).min(1),
 });
 export type LocalesDoc = z.infer<typeof LocalesDoc>;

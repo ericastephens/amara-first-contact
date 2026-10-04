@@ -1,4 +1,5 @@
 {
+  "_native": "Kiswahili",
   "app.name": "Amara",
   "app.tagline": "Mawasiliano ya kwanza kwa mama na mtoto",
   "lang.toggle": "English",
@@ -272,5 +273,9 @@
   "level.health_centre": "Kituo cha afya",
   "level.hospital": "Hospitali",
   "start.clinics.real": "Kliniki: {n} halisi, kutoka OpenStreetMap",
-  "start.clinics.sample": "Kliniki: data ya mfano (ingia mtandaoni na ufungue Badilisha mipangilio kupata kliniki halisi)"
+  "start.clinics.sample": "Kliniki: data ya mfano (ingia mtandaoni na ufungue Badilisha mipangilio kupata kliniki halisi)",
+  "setup.region.first": "Chagua mkoa kwanza",
+  "setup.areas.source": "Orodha rasmi ya wilaya (geoBoundaries, data huria). Chagua kutoka kwenye orodha ili majina yalingane na kumbukumbu za kliniki na ufuatiliaji.",
+  "lang.pending": "Bado haijatafsiriwa: inaonyesha Kiingereza",
+  "setup.district.select": "Wilaya"
 }

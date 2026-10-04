@@ -10,6 +10,7 @@ import { demoNowIso } from "../sync/clock";
 import { notify } from "../sync/sync";
 import { Card, SampleBadge, SourceLink } from "./common";
 import { useI18n } from "./i18n";
+import { tr } from "../logic/lang";
 import type { OutbreakState } from "./outbreakData";
 
 export function OutbreakPanel({ state, role, onChange }: { state: OutbreakState; role: "clinician" | "district"; onChange: () => void }) {
@@ -52,7 +53,7 @@ export function OutbreakPanel({ state, role, onChange }: { state: OutbreakState;
             {syn && (
               <div className="knowledge">
                 <p className="small muted">{t("clin.knowledge", { km: cfg.share_radius_km })}</p>
-                <blockquote>{syn.guidance[lang]}</blockquote>
+                <blockquote>{tr(syn.guidance, lang)}</blockquote>
                 {src && <SourceLink title={src.title} url={src.url} />}
                 <p className="small">
                   {clinics.map((c) => `${lang === "sw" ? c.facility.name : c.facility.name_en} (${c.km.toFixed(0)} km)`).join(" · ")}

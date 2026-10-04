@@ -12,6 +12,7 @@ import { listClinicReferrals, markNotArrived, updateClinicReferral, type ClinicR
 import { Card, UrgencyPill } from "../common";
 import { useDemoClock, useLive } from "../hooks";
 import { useI18n } from "../i18n";
+import { tr } from "../../logic/lang";
 import { OutbreakPanel, SiteSyncList } from "../OutbreakPanel";
 import { loadOutbreakState, type OutbreakState } from "../outbreakData";
 
@@ -84,7 +85,7 @@ export function Clinician() {
                 <span className="code-big small-code">{r.code}</span>
                 <UrgencyPill urgency={r.urgency} label={urgencyLabel(rulesDoc, r.urgency, lang)} />
               </div>
-              <p className="small">{r.reasons.map((x) => x[lang]).join(" · ") || t("result.askclinic.hint")}</p>
+              <p className="small">{r.reasons.map((x) => tr(x, lang)).join(" · ") || t("result.askclinic.hint")}</p>
               <p className="small muted">
                 {r.facilityNameEn}
                 {r.slot ? ` · ${r.slot.date} ${r.slot.time} (${t(`ref.slot.${r.slotStatus}`)})` : ""}

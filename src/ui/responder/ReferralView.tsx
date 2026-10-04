@@ -3,8 +3,7 @@
 import { responderSite } from "../../facilities/registry";
 import { useState } from "react";
 import { rulesDoc, smsDoc } from "../../data";
-import { renderVoice } from "../../logic/sms";
-import { weekdayIndex } from "../../logic/referral";
+import { dayName, renderVoice } from "../../logic/sms";
 import { motherView, urgencyLabel } from "../../logic/views";
 import { db, type Referral, type SmsMessage } from "../../storage/db";
 import { Card, SampleBadge, UrgencyPill, speak } from "../common";
@@ -28,7 +27,7 @@ export function ReferralView({ referralId, onDone }: { referralId: string; onDon
   if (!ref) return <div className="screen">…</div>;
 
   const clinic = lang === "sw" ? ref.facilityName : ref.facilityNameEn;
-  const day = ref.slot ? smsDoc.days[lang][weekdayIndex(ref.slot.date)] : "";
+  const day = ref.slot ? dayName(smsDoc, lang, ref.slot.date) : "";
   const mv = motherView(
     rulesDoc,
     { urgency: ref.urgency, fired: [], ruleOut: [], unanswered: [], facilityLevel: null },
@@ -43,7 +42,7 @@ export function ReferralView({ referralId, onDone }: { referralId: string; onDon
         : t("ref.slot.nofree");
   const latestSms = [...data.sms].sort((a, b) => a.createdAt.localeCompare(b.createdAt));
   const voiceText =
-    ref.channel === "voice" && ref.slot
+    ref.channel === "voice" && ref.slot && smsDoc.voice_scripts.referral?.[ref.lang]?.trim()
       ? renderVoice(smsDoc, "referral", ref.lang, {
           name: ref.patientName,
           clinic: ref.lang === "sw" ? ref.facilityName : ref.facilityNameEn,

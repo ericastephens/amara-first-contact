@@ -1,4 +1,5 @@
 {
+  "_native": "English",
   "app.name": "Amara",
   "app.tagline": "First contact for mothers and children",
   "lang.toggle": "Kiswahili",
@@ -272,5 +273,9 @@
   "level.health_centre": "Health centre",
   "level.hospital": "Hospital",
   "start.clinics.real": "Clinics: {n} real, from OpenStreetMap",
-  "start.clinics.sample": "Clinics: sample data (go online and open Change setup to load real clinics)"
+  "start.clinics.sample": "Clinics: sample data (go online and open Change setup to load real clinics)",
+  "setup.region.first": "Choose the region first",
+  "setup.areas.source": "Official district list (geoBoundaries, open data). Choose from the list so names match clinic and surveillance records.",
+  "lang.pending": "Not yet translated: showing English",
+  "setup.district.select": "District"
 }

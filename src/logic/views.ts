@@ -2,6 +2,7 @@
 // No reason text, no "rule out" list and no ICD-10 code ever reaches it.
 import type { RulesDoc, Urgency } from "../data/schemas";
 import type { Lang, RulesResult } from "./rules";
+import { tr } from "./lang";
 
 export interface ReferralSummary {
   clinic: string;
@@ -36,7 +37,8 @@ export interface ClinicianView extends ResponderView {
 export const DRAFT_LABEL = "Draft — clinician to confirm";
 
 export function urgencyLabel(rulesDoc: RulesDoc, u: Urgency, lang: Lang): string {
-  return rulesDoc.urgency_labels[u]?.[lang] ?? u;
+  const label = rulesDoc.urgency_labels[u];
+  return label ? tr(label, lang) : u;
 }
 
 export function motherView(rulesDoc: RulesDoc, result: RulesResult, referral: ReferralSummary | null, lang: Lang): MotherView {
@@ -56,7 +58,7 @@ export function responderView(rulesDoc: RulesDoc, result: RulesResult, lang: Lan
     urgencyLabel: urgencyLabel(rulesDoc, result.urgency, lang),
     reasons: result.fired.map((f) => ({
       ruleId: f.id,
-      text: f.reason[lang],
+      text: tr(f.reason, lang),
       source: f.sourceTitle,
       sourceUrl: f.sourceUrl,
     })),

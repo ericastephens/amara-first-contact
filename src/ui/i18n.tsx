@@ -1,37 +1,40 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-import en from "../i18n/en.json";
-import sw from "../i18n/sw.json";
+import { hasUi, UI_PACKS } from "../languages/packs";
+import { tr, type Lang, type Localized } from "../logic/lang";
 
-export type Lang = "sw" | "en";
-const STRINGS: Record<Lang, Record<string, string>> = { en, sw };
+// Every src/i18n/<code>.json is a UI language. Missing strings fall back to English.
+export type { Lang };
 
 interface I18n {
   lang: Lang;
   setLang: (l: Lang) => void;
   t: (key: string, vars?: Record<string, string | number>) => string;
-  /** Pick the current-language field from a data record with en/sw keys. */
-  pick: (rec: { en: string; sw: string }) => string;
+  /** Pick the current-language field from a data record (en/sw/... keys), falling back to English. */
+  pick: (rec: Localized) => string;
 }
 
 const Ctx = createContext<I18n | null>(null);
 
 function readLang(): Lang {
   try {
-    return localStorage.getItem("amara.lang") === "en" ? "en" : "sw";
+    const saved = localStorage.getItem("amara.lang");
+    return saved && hasUi(saved) ? saved : "sw";
   } catch {
     return "sw";
   }
 }
 
 export function translate(lang: Lang, key: string, vars?: Record<string, string | number>): string {
-  let s = STRINGS[lang][key] ?? STRINGS.en[key] ?? key;
+  let s = UI_PACKS[lang]?.[key] ?? UI_PACKS.en?.[key] ?? key;
   if (vars) for (const [k, v] of Object.entries(vars)) s = s.replaceAll(`{${k}}`, String(v));
   return s;
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>(readLang);
-  const setLang = (l: Lang) => {
+  const setLang = (requested: Lang) => {
+    // a language without a UI pack shows English (its patients still get keypad + audio)
+    const l = hasUi(requested) ? requested : "en";
     setLangState(l);
     try {
       localStorage.setItem("amara.lang", l);
@@ -44,7 +47,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     lang,
     setLang,
     t: (key, vars) => translate(lang, key, vars),
-    pick: (rec) => rec[lang],
+    pick: (rec) => tr(rec, lang),
   };
   return <Ctx.Provider value={value}>{children}</Ctx.Provider>;
 }

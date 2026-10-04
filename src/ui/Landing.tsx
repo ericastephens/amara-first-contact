@@ -3,6 +3,7 @@ import { demoSetup, saveSetup } from "../setup/setup";
 import { geocode, loadNearby } from "../facilities/registry";
 import { demoNowIso, demoToday } from "../sync/clock";
 import { useI18n } from "./i18n";
+import { UI_NATIVE, uiLanguages } from "../languages/packs";
 
 const ICONS = [
   // works offline
@@ -43,9 +44,9 @@ export function Landing({ onStart, onDemoReady }: { onStart: () => void; onDemoR
           <span>{t("app.full")}</span>
         </div>
         <div className="seg" role="group" aria-label={t("landing.lang")}>
-          {(["sw", "en"] as const).map((l) => (
+          {uiLanguages().map((l) => (
             <button type="button" key={l} aria-pressed={lang === l} onClick={() => setLang(l)}>
-              {l === "sw" ? "Kiswahili" : "English"}
+              {UI_NATIVE[l] ?? l}
             </button>
           ))}
         </div>

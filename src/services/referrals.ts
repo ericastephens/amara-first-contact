@@ -1,7 +1,8 @@
 // Creates the referral on the device: facility, provisional slot, code, note, SMS/voice, case counts.
 // Everything is written to the outbox; sync sends it when the network is available.
 import { activeFacilities, activeSlots, responderSite } from "../facilities/registry";
-import { getSetup, patientLanguage, responderLabel } from "../setup/setup";
+import { countryByIso, getSetup, patientLanguage, responderLabel } from "../setup/setup";
+import { firstAvailable, type Lang } from "../logic/lang";
 import { intentLabels, questionnaires, rulesDoc, smsDoc } from "../data";
 import type { Encounter } from "../logic/encounter";
 import { buildNote } from "../logic/note";
@@ -9,7 +10,7 @@ import { isoWeekOf, latestWeek } from "../logic/outbreak";
 import { outbreakRows } from "../data";
 import { chooseReferral, generateCode, slotKey, type FacilityChoice } from "../logic/referral";
 import type { FlagDecision, RulesResult } from "../logic/rules";
-import { renderSms, renderVoice } from "../logic/sms";
+import { hasTemplate, renderSms, renderVoice } from "../logic/sms";
 import { urgencyLabel } from "../logic/views";
 import { db, getMeta, setMeta, uid, type Referral, type SmsMessage } from "../storage/db";
 import { notify } from "../sync/sync";
@@ -35,10 +36,16 @@ export async function planReferral(result: RulesResult, today: string, nowTime?:
   return { choice: r.choice, slot: r.slot ? { date: r.slot.date, time: r.slot.time } : null };
 }
 
-/** Message text language: English or Swahili. Other patient languages fall back to Swahili text
- *  and are delivered as a voice call (recorded community audio, see messageChannel). */
-export function messageLang(enc: Encounter): "sw" | "en" {
-  return enc.answers.q_language === "en" ? "en" : "sw";
+/** Message text language: the patient's language if messages exist in it (base file or a pack in
+ *  data/sms/<code>.json), else the staff language chosen in setup, else the country's main staff language,
+ *  else English. Without a setup (tests, first run) the Tanzanian default is Swahili.
+ *  Languages without written messages are also delivered as a voice call (see messageChannel). */
+export function messageLang(enc: Encounter): Lang {
+  const s = getSetup();
+  const chain = s
+    ? [enc.answers.q_language, s.staffLang, countryByIso(s.country)?.staff_default]
+    : [enc.answers.q_language, "sw"];
+  return firstAvailable(chain, (l) => hasTemplate(smsDoc, "referral", l));
 }
 
 export function messageChannel(enc: Encounter): "sms" | "voice" {
@@ -100,7 +107,7 @@ export async function createReferral(
     slotStatus: plan.slot ? "provisional" : "none",
     status: "queued",
     note,
-    reasons: result.fired.map((f) => ({ ruleId: f.id, en: f.reason.en, sw: f.reason.sw, source: f.sourceTitle })),
+    reasons: result.fired.map((f) => ({ ...f.reason, ruleId: f.id, source: f.sourceTitle })),
     ruleOut: result.ruleOut.map((r) => ({ code: r.code, title: r.title })),
     decisions,
     syndromes,
@@ -124,8 +131,9 @@ export async function createReferral(
       code,
     };
     const templateId = result.urgency === "go_now" || !plan.slot ? "go_now" : "referral";
+    // a voice call reads the voice script when the language has one, otherwise the SMS text
     const text =
-      channel === "voice" && templateId === "referral"
+      channel === "voice" && templateId === "referral" && smsDoc.voice_scripts.referral?.[lang]?.trim()
         ? renderVoice(smsDoc, "referral", lang, { ...input, responder })
         : renderSms(smsDoc, templateId, lang, input);
     messages.push({

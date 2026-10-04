@@ -1,0 +1,5374 @@
+{
+ "description": "Regions (ADM1) and districts (ADM2) offered as select-only dropdowns in setup. Built by scripts/build_admin_areas.py.",
+ "source_url": "https://www.geoboundaries.org",
+ "countries": {
+  "BD": {
+   "source": "geoBoundaries gbOpen BGD ADM1/ADM2",
+   "licence": "CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Barisal",
+     "districts": [
+      "Barguna",
+      "Barisal",
+      "Bhola",
+      "Jhalokati",
+      "Patuakhali",
+      "Pirojpur"
+     ]
+    },
+    {
+     "name": "Chittagong",
+     "districts": [
+      "Bandarban",
+      "Brahamanbaria",
+      "Chandpur",
+      "Chittagong",
+      "Comilla",
+      "Cox's Bazar",
+      "Feni",
+      "Khagrachhari",
+      "Lakshmipur",
+      "Noakhali",
+      "Rangamati"
+     ]
+    },
+    {
+     "name": "Dhaka",
+     "districts": [
+      "Dhaka",
+      "Faridpur",
+      "Gazipur",
+      "Gopalganj",
+      "Kishoreganj",
+      "Madaripur",
+      "Manikganj",
+      "Munshiganj",
+      "Narayanganj",
+      "Narsingdi",
+      "Rajbari",
+      "Shariatpur",
+      "Tangail"
+     ]
+    },
+    {
+     "name": "Khulna",
+     "districts": [
+      "Bagerhat",
+      "Chuadanga",
+      "Jessore",
+      "Jhenaidah",
+      "Khulna",
+      "Kushtia",
+      "Magura",
+      "Meherpur",
+      "Narail",
+      "Satkhira"
+     ]
+    },
+    {
+     "name": "Mymensingh",
+     "districts": [
+      "Jamalpur",
+      "Mymensingh",
+      "Netrakona",
+      "Sherpur"
+     ]
+    },
+    {
+     "name": "Rajshani",
+     "districts": [
+      "Bogra",
+      "Joypurhat",
+      "Naogaon",
+      "Natore",
+      "Nawabganj",
+      "Pabna",
+      "Rajshahi",
+      "Sirajganj"
+     ]
+    },
+    {
+     "name": "Rangpur",
+     "districts": [
+      "Dinajpur",
+      "Gaibandha",
+      "Kurigram",
+      "Lalmonirhat",
+      "Nilphamari",
+      "Panchagarh",
+      "Rangpur",
+      "Thakurgaon"
+     ]
+    },
+    {
+     "name": "Sylhet",
+     "districts": [
+      "Habiganj",
+      "Maulvibazar",
+      "Sunamganj",
+      "Sylhet"
+     ]
+    }
+   ]
+  },
+  "CD": {
+   "source": "geoBoundaries gbOpen COD ADM1/ADM2",
+   "licence": "Open Data Commons Open Database License 1.0",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Central Kasai",
+     "districts": [
+      "Demba",
+      "Dibaya",
+      "Dimbelenge",
+      "Kananga",
+      "Kazumba",
+      "Luiza",
+      "Tshimbulu"
+     ]
+    },
+    {
+     "name": "Haut-Katanga",
+     "districts": [
+      "Kambove",
+      "Kasenga",
+      "Kipushi",
+      "Likasi",
+      "Lubumbashi",
+      "Mitwaba",
+      "Pweto",
+      "Sakania"
+     ]
+    },
+    {
+     "name": "Haut-Lomami",
+     "districts": [
+      "Bukama",
+      "Kabongo",
+      "Kamina",
+      "Kaniama",
+      "Malemba-Nkulu"
+     ]
+    },
+    {
+     "name": "Ituri",
+     "districts": [
+      "Ariwara",
+      "Aru",
+      "Bunia",
+      "Djugu",
+      "Ingbokolo",
+      "Irumu",
+      "Mahagi",
+      "Mambasa",
+      "Mongwalu"
+     ]
+    },
+    {
+     "name": "Kasai",
+     "districts": [
+      "Dekese",
+      "Ilebo",
+      "Kamonia",
+      "Luebo",
+      "Mweka",
+      "Tshikapa"
+     ]
+    },
+    {
+     "name": "Kasai-Oriental",
+     "districts": [
+      "Kabeya-Kamwanga",
+      "Katanda",
+      "Lukalaba",
+      "Lupatapata",
+      "Mbuji-Mayi",
+      "Miabi",
+      "Tshilenge"
+     ]
+    },
+    {
+     "name": "Kinshasa",
+     "districts": [
+      "Kinshasa"
+     ]
+    },
+    {
+     "name": "Kongo-Central",
+     "districts": [
+      "Bangu",
+      "Boma",
+      "Inkisi",
+      "Kasangulu",
+      "Kimvula",
+      "Lukula",
+      "Luozi",
+      "Madimba",
+      "Matadi",
+      "Mbanza-Ngungu",
+      "Moanda",
+      "Seke-Banza",
+      "Songololo",
+      "Tshela"
+     ]
+    },
+    {
+     "name": "Kwango",
+     "districts": [
+      "Feshi",
+      "Kahemba",
+      "Kasongo-Lunda",
+      "Kenge",
+      "Popokabaka"
+     ]
+    },
+    {
+     "name": "Kwilu",
+     "districts": [
+      "Bagata",
+      "Bandundu",
+      "Bulungu",
+      "Dibaya-Lubwe",
+      "Gungu",
+      "Idiofa",
+      "Kikwit",
+      "Mangai",
+      "Masi-Manimba"
+     ]
+    },
+    {
+     "name": "Lomami",
+     "districts": [
+      "Kabinda",
+      "Kamiji",
+      "Lubao",
+      "Luilu",
+      "Mwene-Ditu",
+      "Ngandajika"
+     ]
+    },
+    {
+     "name": "Lower Uele",
+     "districts": [
+      "Aketi",
+      "Ango",
+      "Bambesa",
+      "Bondo",
+      "Buta",
+      "Dingila",
+      "Poko"
+     ]
+    },
+    {
+     "name": "Lualaba",
+     "districts": [
+      "Dilolo",
+      "Kapanga",
+      "Kasaji",
+      "Kolwezi",
+      "Lubudi",
+      "Mutshatsha",
+      "Sandoa"
+     ]
+    },
+    {
+     "name": "Mai-Ndombe",
+     "districts": [
+      "Bolobo",
+      "Inongo",
+      "Kiri",
+      "Kutu",
+      "Kwamouth",
+      "Mushie",
+      "Nioki",
+      "Oshwe",
+      "Yumbi"
+     ]
+    },
+    {
+     "name": "Maniema",
+     "districts": [
+      "Kabambare",
+      "Kailo",
+      "Kalima",
+      "Kasongo",
+      "Kibombo",
+      "Kindu",
+      "Lubutu",
+      "Namoya",
+      "Pangi",
+      "Punia"
+     ]
+    },
+    {
+     "name": "Mongala",
+     "districts": [
+      "Bongandanga",
+      "Bumba",
+      "Lisala"
+     ]
+    },
+    {
+     "name": "Nord-Ubangi",
+     "districts": [
+      "Bosobolo",
+      "Businga",
+      "Gbadolite",
+      "Mobayi-Mbongo",
+      "Yakoma"
+     ]
+    },
+    {
+     "name": "North Kivu",
+     "districts": [
+      "Beni",
+      "Butembo",
+      "Goma",
+      "Lubero",
+      "Masisi",
+      "Nyiragongo",
+      "Oïcha",
+      "Rutshuru",
+      "Walikale"
+     ]
+    },
+    {
+     "name": "Sankuru",
+     "districts": [
+      "Bena-Dibele",
+      "Katako-Kombe",
+      "Kole",
+      "Lodja",
+      "Lomela",
+      "Lubefu",
+      "Lusambo",
+      "Tshumbe"
+     ]
+    },
+    {
+     "name": "South Kivu",
+     "districts": [
+      "Baraka",
+      "Bukavu",
+      "Fizi",
+      "Idjwi",
+      "Kabare",
+      "Kalehe",
+      "Kamituga",
+      "Mwenga",
+      "Shabunda",
+      "Uvira",
+      "Walungu"
+     ]
+    },
+    {
+     "name": "Sud-Ubangi",
+     "districts": [
+      "Budjala",
+      "Gemena",
+      "Kungu",
+      "Libenge",
+      "Zongo"
+     ]
+    },
+    {
+     "name": "Tanganyika",
+     "districts": [
+      "Kabalo",
+      "Kalemie",
+      "Kaoze",
+      "Kongolo",
+      "Manono",
+      "Moba",
+      "Nyunzu"
+     ]
+    },
+    {
+     "name": "Tshopo",
+     "districts": [
+      "Bafwasende",
+      "Banalia",
+      "Basoko",
+      "Isangi",
+      "Kisangani",
+      "Opala",
+      "Ubundu",
+      "Yahuma",
+      "Yangambi"
+     ]
+    },
+    {
+     "name": "Tshuapa",
+     "districts": [
+      "Befale",
+      "Boende",
+      "Bokungu",
+      "Djolu",
+      "Ikela",
+      "Monkoto"
+     ]
+    },
+    {
+     "name": "Upper Uele",
+     "districts": [
+      "Aba",
+      "Dungu",
+      "Faradje",
+      "Isiro",
+      "Niangara",
+      "Rungu",
+      "Wamba",
+      "Watsa"
+     ]
+    },
+    {
+     "name": "Équateur",
+     "districts": [
+      "Basankusu",
+      "Bikoro",
+      "Bolomba",
+      "Bomongo",
+      "Ingende",
+      "Lukolela",
+      "Makanza",
+      "Mbandaka"
+     ]
+    }
+   ]
+  },
+  "ET": {
+   "source": "geoBoundaries gbOpen ETH ADM1/ADM2",
+   "licence": "Creative Commons Attribution 4.0 (CC BY 4.0)",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Addis Ababa",
+     "districts": [
+      "Region 14"
+     ]
+    },
+    {
+     "name": "Afar",
+     "districts": [
+      "Zone 1",
+      "Zone 2",
+      "Zone 3",
+      "Zone 4",
+      "Zone 5"
+     ]
+    },
+    {
+     "name": "Amhara",
+     "districts": [
+      "Awi/Agew",
+      "East Gojam",
+      "North Gonder",
+      "North Shewa(R3)",
+      "North Wollo",
+      "Oromia",
+      "South Gonder",
+      "South Wollo",
+      "Special Woreda",
+      "Wag Himra",
+      "West Gojam"
+     ]
+    },
+    {
+     "name": "Beneshangul Gumu",
+     "districts": [
+      "Asosa",
+      "Kemashi",
+      "Metekel"
+     ]
+    },
+    {
+     "name": "Dire Dawa",
+     "districts": [
+      "Dire Dawa"
+     ]
+    },
+    {
+     "name": "Gambela",
+     "districts": [
+      "Agnuak",
+      "Majang",
+      "Nuer"
+     ]
+    },
+    {
+     "name": "Hareri",
+     "districts": [
+      "Hareri"
+     ]
+    },
+    {
+     "name": "Oromia",
+     "districts": [
+      "Arsi",
+      "Bale",
+      "Borena",
+      "East Harerge",
+      "East Shewa",
+      "East Wellega",
+      "Guji",
+      "Horo Guduru",
+      "Ilubabor",
+      "Jimma",
+      "Kelem Wellega",
+      "North Shewa(R4)",
+      "South West Shewa",
+      "West Arsi",
+      "West Harerge",
+      "West Shewa",
+      "West Wellega"
+     ]
+    },
+    {
+     "name": "SNNPR",
+     "districts": [
+      "Alaba",
+      "Basketo",
+      "Bench Maji",
+      "Dawro",
+      "Gamo Gofa",
+      "Gedio",
+      "Gurage",
+      "Hadiya",
+      "KT",
+      "Keffa",
+      "Konta",
+      "Segen Peoples'",
+      "Selti",
+      "Sheka",
+      "Sidama",
+      "South Omo",
+      "Wolayita",
+      "Yem"
+     ]
+    },
+    {
+     "name": "Somali",
+     "districts": [
+      "Afder",
+      "Doolo",
+      "Fafan",
+      "Jarar",
+      "Korahe",
+      "Liben",
+      "Nogob",
+      "Shabelle",
+      "Siti"
+     ]
+    },
+    {
+     "name": "Tigray",
+     "districts": [
+      "Central",
+      "Eastern",
+      "North Western",
+      "Southern",
+      "Western"
+     ]
+    }
+   ]
+  },
+  "GH": {
+   "source": "geoBoundaries gbOpen GHA ADM1/ADM2",
+   "licence": "Creative Commons Attribution-ShareAlike 2.0",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Ahafo Region",
+     "districts": [
+      "Asunafo North Municipal",
+      "Asunafo South",
+      "Asutifi North",
+      "Asutifi South",
+      "Tano North Municipal",
+      "Tano South Municipal"
+     ]
+    },
+    {
+     "name": "Ashanti Region",
+     "districts": [
+      "Adansi Akrofuom",
+      "Adansi Asokwa",
+      "Adansi North",
+      "Adansi South",
+      "Afigya Kwabre North",
+      "Afigya Kwabre South",
+      "Ahafo Ano North",
+      "Ahafo Ano South East",
+      "Ahafo Ano South West",
+      "Amansie Central",
+      "Amansie South",
+      "Amansie West",
+      "Asante Akim Central Municipal",
+      "Asante Akim North",
+      "Asante Akim South",
+      "Asokore Mampong Municipal",
+      "Asokwa Municipal",
+      "Atwima Kwanwoma",
+      "Atwima Mponua",
+      "Atwima Nwabiagya North",
+      "Atwima Nwabiagya South",
+      "Bekwai Municipal",
+      "Bosome Freho",
+      "Bosomtwe",
+      "Ejisu Municipal",
+      "Ejura-sekyedumase",
+      "Juaben Municipal",
+      "Kumasi Metropolitan",
+      "Kwabre East",
+      "Kwadaso Municipal",
+      "Mampong Municipal",
+      "Obuasi East",
+      "Obuasi Municipal",
+      "Offinso Municipal",
+      "Offinso North",
+      "Oforikrom Municipal",
+      "Old Tafo Municipal",
+      "Sekyere Afram Plains North",
+      "Sekyere Central",
+      "Sekyere East",
+      "Sekyere Kumawu",
+      "Sekyere South",
+      "Suame Municipal"
+     ]
+    },
+    {
+     "name": "Bono East Region",
+     "districts": [
+      "Atebubu Amantin",
+      "Kintampo North Municipal",
+      "Kintampo South",
+      "Nkoranza North",
+      "Nkoranza South",
+      "Pru East",
+      "Pru West",
+      "Sene East",
+      "Sene West",
+      "Techiman Municipal",
+      "Techiman North"
+     ]
+    },
+    {
+     "name": "Bono Region",
+     "districts": [
+      "Banda",
+      "Berekum East Municipal",
+      "Berekum West",
+      "Dormaa East",
+      "Dormaa Municipal",
+      "Dormaa West",
+      "Jaman North",
+      "Jaman South Municipal",
+      "Sunyani Municipal",
+      "Sunyani West",
+      "Tain",
+      "Wenchi Municipal"
+     ]
+    },
+    {
+     "name": "Central Region",
+     "districts": [
+      "Abura-asebu-kwamankese",
+      "Agona East",
+      "Agona West Municipal",
+      "Ajumako-enyan-essiam",
+      "Asikuma-odoben-brakwa",
+      "Assin Fosu",
+      "Assin North",
+      "Assin South",
+      "Awutu Senya",
+      "Awutu Senya East",
+      "Cape Coast Metropolitan",
+      "Effutu Municipal",
+      "Ekumfi",
+      "Gomoa Central",
+      "Gomoa East",
+      "Gomoa West",
+      "Komenda-edina-eguafo-abirem Municipal",
+      "Mfantseman Municipal",
+      "Twifo Atti-morkwa",
+      "Twifo Hemang Lower Denkyira",
+      "Upper Denkyira East Municipal",
+      "Upper Denkyira West"
+     ]
+    },
+    {
+     "name": "Eastern Region",
+     "districts": [
+      "Abuakwa North",
+      "Abuakwa South",
+      "Achiase",
+      "Akwapem North",
+      "Akwapem South",
+      "Akyem Mansa",
+      "Asene Akroso Manso",
+      "Asuogyaman",
+      "Atiwa East",
+      "Atiwa West",
+      "Ayensuano",
+      "Birim Central Municipal",
+      "Birim North",
+      "Birim South",
+      "Denkyembour",
+      "Fanteakwa North",
+      "Fanteakwa South",
+      "Kwaebibirem",
+      "Kwahu Afram Plains North",
+      "Kwahu Afram Plains South",
+      "Kwahu East",
+      "Kwahu South",
+      "Kwahu West",
+      "Lower Manya",
+      "New Juaben North Municipal",
+      "New Juaben South Municipal",
+      "Nsawam Adoagyiri",
+      "Okere",
+      "Suhum Municipal",
+      "Upper Manya",
+      "Upper West Akim",
+      "West Akim",
+      "Yilo Krobo"
+     ]
+    },
+    {
+     "name": "Greater Accra Region",
+     "districts": [
+      "Ablekuma Central Municipal",
+      "Ablekuma North Municipal",
+      "Ablekuma West Municipal",
+      "Accra Metropolis",
+      "Ada East",
+      "Ada West",
+      "Adenta Municipal",
+      "Ashaiman Municipal",
+      "Ayawaso Central Municipal",
+      "Ayawaso East Municipal",
+      "Ayawaso North Municipal",
+      "Ayawaso West",
+      "Ga Central Municipal",
+      "Ga East",
+      "Ga North Municipal",
+      "Ga South Municipal",
+      "Ga West Municipal",
+      "Korle Klottey Municipal",
+      "Kpone Katamanso",
+      "Krowor Municipal",
+      "La Dade-kotopon",
+      "La-nkwantanang-madina",
+      "Ledzokuku Municipal",
+      "Ningo/prampram",
+      "Okaikwei North Municipal",
+      "Shai Osudoku",
+      "Tema Metropolitan",
+      "Tema West Municipal",
+      "Weija Gbawe Municipal"
+     ]
+    },
+    {
+     "name": "North East Region",
+     "districts": [
+      "Bunkpurugu Nakpanduri",
+      "Chereponi",
+      "East Mamprusi",
+      "Mamprugu Moagduri",
+      "West Mamprusi Municipal",
+      "Yunyoo-nasuan"
+     ]
+    },
+    {
+     "name": "Northern Region",
+     "districts": [
+      "Gushegu",
+      "Karaga",
+      "Kpandai",
+      "Kumbungu",
+      "Mion",
+      "Nanton",
+      "Nanumba North",
+      "Nanumba South",
+      "Saboba",
+      "Sagnerigu",
+      "Savelugu",
+      "Tamale Metropolitan",
+      "Tatale Sanguli",
+      "Tolon",
+      "Yendi Municipal",
+      "Zabzugu"
+     ]
+    },
+    {
+     "name": "Oti Region",
+     "districts": [
+      "Biakoye",
+      "Jasikan",
+      "Kadjebi",
+      "Krachi East Municipal",
+      "Krachi Nchumuru",
+      "Krachi West",
+      "Nkwanta North",
+      "Nkwanta South Municipal"
+     ]
+    },
+    {
+     "name": "Savannah Region",
+     "districts": [
+      "Bole",
+      "Central Gonja",
+      "East Gonja Municipal",
+      "North East Gonja",
+      "North Gonja",
+      "Sawla-tuna-kalba",
+      "West Gonja"
+     ]
+    },
+    {
+     "name": "Upper East Region",
+     "districts": [
+      "Bawku Municipal",
+      "Bawku West",
+      "Binduri",
+      "Bolga East",
+      "Bolgatanga Municipal",
+      "Bongo",
+      "Builsa North",
+      "Builsa South",
+      "Garu",
+      "Kasena Nankana East",
+      "Kasena Nankana West",
+      "Nabdam",
+      "Pusiga",
+      "Talensi",
+      "Tempane"
+     ]
+    },
+    {
+     "name": "Upper West Region",
+     "districts": [
+      "Daffiama Bussie Issa",
+      "Jirapa",
+      "Lambussie-karni",
+      "Lawra",
+      "Nadowli-kaleo",
+      "Nandom",
+      "Sissala East",
+      "Sissala West",
+      "Wa East",
+      "Wa Municipal",
+      "Wa West"
+     ]
+    },
+    {
+     "name": "Volta Region",
+     "districts": [
+      "Adaklu",
+      "Afadzato South",
+      "Agotime Ziope",
+      "Akatsi North",
+      "Akatsi South",
+      "Anloga",
+      "Central Tongu",
+      "Ho Municipal",
+      "Ho West",
+      "Hohoe Municipal",
+      "Keta Municipal",
+      "Ketu North",
+      "Ketu South",
+      "Kpando Municipal",
+      "North Dayi",
+      "North Tongu",
+      "South Dayi",
+      "South Tongu"
+     ]
+    },
+    {
+     "name": "Western North Region",
+     "districts": [
+      "Aowin",
+      "Bia East",
+      "Bia West",
+      "Bibiani-anhwiaso-bekwai Municipal",
+      "Bodi",
+      "Juaboso",
+      "Sefwi Akontombra",
+      "Sefwi-wiawso",
+      "Suaman"
+     ]
+    },
+    {
+     "name": "Western Region",
+     "districts": [
+      "Ahanta West Municipal",
+      "Effia Kwesimintsim Municipal",
+      "Ellembelle",
+      "Jomoro",
+      "Mpohor",
+      "Nzema East",
+      "Prestea/huni Valley",
+      "Sekondi Takoradi Metropolis",
+      "Shama",
+      "Tarkwa Nsuaem",
+      "Wassa Amenfi Central",
+      "Wassa Amenfi East",
+      "Wassa Amenfi West",
+      "Wassa East"
+     ]
+    }
+   ]
+  },
+  "GT": {
+   "source": "geoBoundaries gbOpen GTM ADM1/ADM2",
+   "licence": "Open Data Commons Open Database License 1.0",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Alta Verapaz",
+     "districts": [
+      "Cahabón",
+      "Chahal",
+      "Chicamán",
+      "Chisec",
+      "Cobán",
+      "Fray Bartolomé de Las Casas",
+      "Lanquín",
+      "Panzós",
+      "Raxruhá",
+      "San Cristóbal Verapaz",
+      "San Juan Chamelco",
+      "San Pedro Carchá",
+      "Santa Catalina La Tinta",
+      "Santa Cruz Verapaz",
+      "Senahú",
+      "Tactic",
+      "Tamahú",
+      "Tucurú"
+     ]
+    },
+    {
+     "name": "Baja Verapaz",
+     "districts": [
+      "Cubulco",
+      "El Chol",
+      "Granados",
+      "Purulhá",
+      "Rabinal",
+      "Salamá",
+      "San Jerónimo",
+      "San Miguel Chicaj"
+     ]
+    },
+    {
+     "name": "Chimaltenango",
+     "districts": [
+      "Acatenango",
+      "Chimaltenango",
+      "Comalapa",
+      "El Tejar",
+      "Parramos",
+      "Patzicía",
+      "Patzún",
+      "Pochuta",
+      "San Andrés Itzapa",
+      "San José Poaquil",
+      "San Martín Jilotepeque",
+      "Santa Apolonia",
+      "Santa Cruz Balanyá",
+      "Tecpán Guatemala",
+      "Yepocapa",
+      "Zaragoza"
+     ]
+    },
+    {
+     "name": "Chiquimula",
+     "districts": [
+      "Camotán",
+      "Chiquimula",
+      "Concepción Las Minas",
+      "Esquipulas",
+      "Ipala",
+      "Jocotán",
+      "Olopa",
+      "Quezaltepeque",
+      "San Jacinto",
+      "San José La Arada",
+      "San Juan Ermita"
+     ]
+    },
+    {
+     "name": "El Progreso",
+     "districts": [
+      "El Jícaro",
+      "Guastatoya",
+      "Morazán",
+      "San Agustín Acasaguastlán",
+      "San Antonio La Paz",
+      "San Cristóbal Acasaguastlán",
+      "Sanarate",
+      "Sansare"
+     ]
+    },
+    {
+     "name": "Escuintla",
+     "districts": [
+      "Escuintla",
+      "Guanagazapa",
+      "Iztapa",
+      "La Democracia",
+      "La Gomera",
+      "Masagua",
+      "Nueva Concepción",
+      "Palín",
+      "San José",
+      "San Vicente Pacaya",
+      "Santa Lucía Cotzumalguapa",
+      "Sipacate",
+      "Siquinalá",
+      "Tiquisate"
+     ]
+    },
+    {
+     "name": "Guatemala",
+     "districts": [
+      "Amatitlán",
+      "Chinautla",
+      "Chuarrancho",
+      "Fraijanes",
+      "Guatemala",
+      "Mixco",
+      "Palencia",
+      "Petapa",
+      "San José Pinula",
+      "San José del Golfo",
+      "San Juan Sacatepéquez",
+      "San Pedro Ayampuc",
+      "San Pedro Sacatepéquez",
+      "San Raimundo",
+      "Santa Catarina Pinula",
+      "Villa Canales",
+      "Villa Nueva"
+     ]
+    },
+    {
+     "name": "Huehuetenango",
+     "districts": [
+      "Aguacatán",
+      "Barillas",
+      "Chiantla",
+      "Colotenango",
+      "Concepción Huista",
+      "Cuilco",
+      "Huehuetenango",
+      "Ixtahuacán",
+      "Jacaltenango",
+      "La Democracia",
+      "La Libertad",
+      "Malacatancito",
+      "Nentón",
+      "Petatán",
+      "San Antonio Huista",
+      "San Gaspar Ixchil",
+      "San Juan Atitán",
+      "San Juan Ixcoy",
+      "San Mateo Ixtatán",
+      "San Miguel Acatán",
+      "San Pedro Necta",
+      "San Rafael La Independencia",
+      "San Rafael Petzal",
+      "San Sebastián Coatán",
+      "San Sebastián Huehuetenango",
+      "Santa Ana Huista",
+      "Santa Bárbara",
+      "Santa Eulalia",
+      "Santiago Chimaltenango",
+      "Soloma",
+      "Tectitán",
+      "Todos Santos Cuchumatán",
+      "Unión Cantinil"
+     ]
+    },
+    {
+     "name": "Izabal",
+     "districts": [
+      "El Estor",
+      "Los Amates",
+      "Lívingston",
+      "Morales",
+      "Puerto Barrios"
+     ]
+    },
+    {
+     "name": "Jalapa",
+     "districts": [
+      "Jalapa",
+      "Mataquescuintla",
+      "Monjas",
+      "San Carlos Alzatate",
+      "San Luis Jilotepeque",
+      "San Manuel Chaparrón",
+      "San Pedro Pinula"
+     ]
+    },
+    {
+     "name": "Jutiapa",
+     "districts": [
+      "Agua Blanca",
+      "Asunción Mita",
+      "Atescatempa",
+      "Comapa",
+      "Conguaco",
+      "El Adelanto",
+      "El Progreso",
+      "Jalpatagua",
+      "Jerez",
+      "Jutiapa",
+      "Moyuta",
+      "Pasaco",
+      "Quesada",
+      "San José Acatempa",
+      "Santa Catarina Mita",
+      "Yupiltepeque",
+      "Zapotitlán"
+     ]
+    },
+    {
+     "name": "Petén",
+     "districts": [
+      "Dolores",
+      "El Chal",
+      "Flores",
+      "La Libertad",
+      "Las Cruces",
+      "Melchor de Mencos",
+      "Poptún",
+      "San Andrés",
+      "San Benito",
+      "San Francisco",
+      "San José",
+      "San Luis",
+      "Santa Ana",
+      "Sayaxché"
+     ]
+    },
+    {
+     "name": "Quetzaltenango",
+     "districts": [
+      "Almolonga",
+      "Cabricán",
+      "Cajolá",
+      "Cantel",
+      "Coatepeque",
+      "Colomba",
+      "Concepción Chiquirichapa",
+      "El Palmar",
+      "Flores Costa Cuca",
+      "Génova",
+      "Huitán",
+      "La Esperanza",
+      "Olintepeque",
+      "Ostuncalco",
+      "Palestina de Los Altos",
+      "Quetzaltenango",
+      "Salcajá",
+      "San Carlos Sija",
+      "San Felipe",
+      "San Francisco La Unión",
+      "San Martín Sacatepéquez",
+      "San Mateo",
+      "San Miguel Sigüila",
+      "Sibilia",
+      "Zunil"
+     ]
+    },
+    {
+     "name": "Quiché",
+     "districts": [
+      "Canillá",
+      "Chajul",
+      "Chichicastenango",
+      "Chiché",
+      "Chinique",
+      "Cunén",
+      "Ixcán",
+      "Joyabaj",
+      "Nebaj",
+      "Pachalum",
+      "Patzité",
+      "Sacapulas",
+      "San Andrés Sajcabajá",
+      "San Antonio Ilotenango",
+      "San Bartolomé Jocotenango",
+      "San Juan Cotzal",
+      "San Pedro Jocopilas",
+      "Santa Cruz del Quiché",
+      "Uspantán",
+      "Zacualpa"
+     ]
+    },
+    {
+     "name": "Retalhuleu",
+     "districts": [
+      "Champerico",
+      "El Asintal",
+      "Nuevo San Carlos",
+      "Retalhuleu",
+      "San Andrés Villa Seca",
+      "San Martín Zapotitlán",
+      "San Sebastián",
+      "Santa Cruz Muluá"
+     ]
+    },
+    {
+     "name": "Sacatepéquez",
+     "districts": [
+      "Alotenango",
+      "Antigua Guatemala",
+      "Ciudad Vieja",
+      "Jocotenango",
+      "Magdalena Milpas Altas",
+      "Pastores",
+      "San Antonio Aguas Calientes",
+      "San Bartolomé Milpas Altas",
+      "San Lucas Sacatepéquez",
+      "San Miguel Dueñas",
+      "Santa Catarina Barahona",
+      "Santa Lucía Milpas Altas",
+      "Santa María de Jesús",
+      "Santiago Sacatepéquez",
+      "Santo Domingo Xenacoj",
+      "Sumpango"
+     ]
+    },
+    {
+     "name": "San Marcos",
+     "districts": [
+      "Ayutla",
+      "Catarina",
+      "Comitancillo",
+      "Concepción Tutuapa",
+      "El Quetzal",
+      "El Rodeo",
+      "El Tumbador",
+      "Esquipulas Palo Gordo",
+      "Ixchiguán",
+      "La Blanca",
+      "La Reforma",
+      "Malacatán",
+      "Nuevo Progreso",
+      "Ocós",
+      "Pajapita",
+      "Río Blanco",
+      "San Antonio Sacatepéquez",
+      "San Cristóbal Cucho",
+      "San José Ojetenam",
+      "San Lorenzo",
+      "San Marcos",
+      "San Miguel Ixtahuacán",
+      "San Pablo",
+      "San Pedro Sacatepéquez",
+      "San Rafael Pie de la Cuesta",
+      "Sibinal",
+      "Sipacapa",
+      "Tacaná",
+      "Tajumulco",
+      "Tejutla"
+     ]
+    },
+    {
+     "name": "Santa Rosa",
+     "districts": [
+      "Barberena",
+      "Casillas",
+      "Chiquimulilla",
+      "Cuilapa",
+      "Guazacapán",
+      "Nueva Santa Rosa",
+      "Oratorio",
+      "Pueblo Nuevo Viñas",
+      "San Juan Tecuaco",
+      "San Rafael Las Flores",
+      "Santa Cruz Naranjo",
+      "Santa María Ixhuatán",
+      "Santa Rosa de Lima",
+      "Taxisco"
+     ]
+    },
+    {
+     "name": "Sololá",
+     "districts": [
+      "Concepción",
+      "Nahualá",
+      "Panajachel",
+      "San Andrés Semetabaj",
+      "San Antonio Palopó",
+      "San José Chacayá",
+      "San Juan La Laguna",
+      "San Lucas Tolimán",
+      "San Marcos La Laguna",
+      "San Pablo La Laguna",
+      "San Pedro La Laguna",
+      "Santa Catarina Ixtahuacán",
+      "Santa Catarina Palopó",
+      "Santa Clara La Laguna",
+      "Santa Cruz La Laguna",
+      "Santa Lucía Utatlán",
+      "Santa María Visitación",
+      "Santiago Atitlán",
+      "Sololá"
+     ]
+    },
+    {
+     "name": "Suchitepéquez",
+     "districts": [
+      "Chicacao",
+      "Cuyotenango",
+      "Mazatenango",
+      "Patulul",
+      "Pueblo Nuevo",
+      "Río Bravo",
+      "Samayac",
+      "San Antonio Suchitepéquez",
+      "San Bernardino",
+      "San Francisco Zapotitlán",
+      "San Gabriel",
+      "San José El Ídolo",
+      "San José La Máquina",
+      "San Juan Bautista",
+      "San Lorenzo",
+      "San Miguel Panán",
+      "San Pablo Jocopilas",
+      "Santa Bárbara",
+      "Santo Domingo Suchitepéquez",
+      "Santo Tomás La Unión",
+      "Zunilito"
+     ]
+    },
+    {
+     "name": "Totonicapán",
+     "districts": [
+      "Momostenango",
+      "San Andrés Xecul",
+      "San Bartolo",
+      "San Cristóbal Totonicapán",
+      "San Francisco El Alto",
+      "Santa Lucía La Reforma",
+      "Santa María Chiquimula",
+      "Totonicapán"
+     ]
+    },
+    {
+     "name": "Zacapa",
+     "districts": [
+      "Cabañas",
+      "Estanzuela",
+      "Gualán",
+      "Huité",
+      "La Unión",
+      "Río Hondo",
+      "San Diego",
+      "San Jorge",
+      "Teculután",
+      "Usumatlán",
+      "Zacapa"
+     ]
+    }
+   ]
+  },
+  "IN": {
+   "source": "geoBoundaries gbOpen IND ADM1/ADM2",
+   "licence": "Creative Commons Attribution 2.5 India (CC BY 2.5 IN)",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Andaman and Nicobar Islands",
+     "districts": [
+      "Nicobars",
+      "North & Middle Andaman",
+      "South Andaman"
+     ]
+    },
+    {
+     "name": "Andhra Pradesh",
+     "districts": [
+      "Anantapur",
+      "Chittoor",
+      "East Godavari",
+      "Guntur",
+      "Kadapa(YSR)",
+      "Krishna",
+      "Kurnool",
+      "Prakasam",
+      "Sri Potti Sriramulu Nellore",
+      "Srikakulam",
+      "Visakhapatnam",
+      "Vizianagaram",
+      "West Godavari",
+      "Yanam"
+     ]
+    },
+    {
+     "name": "Arunāchal Pradesh",
+     "districts": [
+      "Anjaw",
+      "Changlang",
+      "Dibang Valley",
+      "East Kameng",
+      "East Siang",
+      "Kamle",
+      "Kra Daadi",
+      "Kurung Kumey",
+      "Leparada",
+      "Lohit",
+      "Longding",
+      "Lower Dibang Valley",
+      "Lower Siang",
+      "Lower Subansiri",
+      "Namsai",
+      "Pakke Kessang",
+      "Papum Pare",
+      "Shi Yomi",
+      "Siang",
+      "Tawang",
+      "Tirap",
+      "Upper Siang",
+      "Upper Subansiri",
+      "West Kameng",
+      "West Siang"
+     ]
+    },
+    {
+     "name": "Assam",
+     "districts": [
+      "Baksa",
+      "Barpeta",
+      "Biswanath",
+      "Bongaigaon",
+      "Cachar",
+      "Charaideo",
+      "Chirang",
+      "Darrang",
+      "Dhemaji",
+      "Dhubri",
+      "Dibrugarh",
+      "Dima Hasao",
+      "Goalpara",
+      "Golaghat",
+      "Hailakandi",
+      "Hojai",
+      "Jorhat",
+      "Kamrup",
+      "Karbi Anglong East",
+      "Karbi Anglong West",
+      "Karimganj",
+      "Kokrajhar",
+      "Lakhimpur",
+      "Majuli",
+      "Morigaon",
+      "Nagaon",
+      "Nalbari",
+      "Sivasagar",
+      "Sonitpur",
+      "South Salmara-Mankachar",
+      "Tinsukia",
+      "Udalguri"
+     ]
+    },
+    {
+     "name": "Bihār",
+     "districts": [
+      "Araria",
+      "Arwal",
+      "Aurangabad",
+      "Banka",
+      "Begusarai",
+      "Bhagalpur",
+      "Bhojpur",
+      "Buxar",
+      "Darbhanga",
+      "Gaya",
+      "Gopalganj",
+      "Jamui",
+      "Jehanabad",
+      "Kaimur (Bhabua)",
+      "Katihar",
+      "Khagaria",
+      "Kishanganj",
+      "Lakhisarai",
+      "Madhepura",
+      "Madhubani",
+      "Munger",
+      "Muzaffarpur",
+      "Nalanda",
+      "Nawada",
+      "Pashchim Champaran",
+      "Patna",
+      "Purba Champaran",
+      "Purnia",
+      "Rohtas",
+      "Saharsa",
+      "Samastipur",
+      "Saran",
+      "Sheikhpura",
+      "Sheohar",
+      "Sitamarhi",
+      "Siwan",
+      "Supaul",
+      "Vaishali"
+     ]
+    },
+    {
+     "name": "Chandīgarh",
+     "districts": [
+      "Chandigarh"
+     ]
+    },
+    {
+     "name": "Chhattīsgarh",
+     "districts": [
+      "Balod",
+      "Baloda Bazar",
+      "Balrampur",
+      "Bastar",
+      "Bemetra",
+      "Bijapur",
+      "Bilaspur",
+      "Dakshin Bastar Dantewada",
+      "Dhamtari",
+      "Durg",
+      "Gariaband",
+      "Gaurella Pendra Marwahi",
+      "Janjgir-Champa",
+      "Jashpur",
+      "Kabeerdham",
+      "Kondagaon",
+      "Korba",
+      "Koriya",
+      "Mahasamund",
+      "Mungeli",
+      "Narayanpur",
+      "Raigarh",
+      "Raipur",
+      "Rajnandgaon",
+      "Sukma",
+      "Surajpur",
+      "Surguja",
+      "Uttar Bastar Kanker"
+     ]
+    },
+    {
+     "name": "Delhi",
+     "districts": [
+      "Central",
+      "East",
+      "New Delhi",
+      "North",
+      "North East",
+      "North West",
+      "Shahdara",
+      "South",
+      "South East",
+      "South West",
+      "West"
+     ]
+    },
+    {
+     "name": "Dādra and Nagar Haveli and Damān and Diu",
+     "districts": [
+      "Daman",
+      "Diu"
+     ]
+    },
+    {
+     "name": "Goa",
+     "districts": [
+      "North Goa",
+      "South Goa"
+     ]
+    },
+    {
+     "name": "Gujarāt",
+     "districts": [
+      "Ahmadabad",
+      "Amreli",
+      "Anand",
+      "Aravali",
+      "Banas Kantha",
+      "Batod",
+      "Bharuch",
+      "Bhavnagar",
+      "Chhota Udaipur",
+      "Dadra & Nagar Haveli",
+      "Devbhumi Dwarka",
+      "Dohad",
+      "Gandhinagar",
+      "Gir Somnath",
+      "Jamnagar",
+      "Junagadh",
+      "Kachchh",
+      "Kheda",
+      "Mahesana",
+      "Mahisagar",
+      "Morbi",
+      "Narmada",
+      "Navsari",
+      "Panch Mahals",
+      "Patan",
+      "Porbandar",
+      "Rajkot",
+      "Sabar Kantha",
+      "Surat",
+      "Surendranagar",
+      "Tapi",
+      "The Dangs",
+      "Vadodara",
+      "Valsad"
+     ]
+    },
+    {
+     "name": "Haryāna",
+     "districts": [
+      "Ambala",
+      "Bhiwani",
+      "Faridabad",
+      "Fatehabad",
+      "Gurgaon",
+      "Hisar",
+      "Jhajjar",
+      "Jind",
+      "Kaithal",
+      "Karnal",
+      "Kurukshetra",
+      "Mahendragarh",
+      "Mewat",
+      "Palwal",
+      "Panchkula",
+      "Panipat",
+      "Rewari",
+      "Rohtak",
+      "Sirsa",
+      "Sonipat",
+      "Yamunanagar"
+     ]
+    },
+    {
+     "name": "Himāchal Pradesh",
+     "districts": [
+      "Bilaspur",
+      "Chamba",
+      "Hamirpur",
+      "Kangra",
+      "Kinnaur",
+      "Kullu",
+      "Lahul & Spiti",
+      "Mandi",
+      "Shimla",
+      "Sirmaur",
+      "Solan",
+      "Una"
+     ]
+    },
+    {
+     "name": "Jammu and Kashmīr",
+     "districts": [
+      "Anantnag",
+      "Badgam",
+      "Bandipore",
+      "Baramula",
+      "Doda",
+      "Ganderbal",
+      "Jammu",
+      "Kathua",
+      "Kishtwar",
+      "Kulgam",
+      "Kupwara",
+      "Pulwama",
+      "Punch",
+      "Rajouri",
+      "Ramban",
+      "Reasi",
+      "Samba",
+      "Shupiyan",
+      "Srinagar",
+      "Udhampur"
+     ]
+    },
+    {
+     "name": "Jhārkhand",
+     "districts": [
+      "Bokaro",
+      "Chatra",
+      "Deoghar",
+      "Dhanbad",
+      "Dumka",
+      "Garhwa",
+      "Giridih",
+      "Godda",
+      "Gumla",
+      "Hazaribagh",
+      "Jamtara",
+      "Khunti",
+      "Kodarma",
+      "Latehar",
+      "Lohardaga",
+      "Pakur",
+      "Palamu",
+      "Pashchimi Singhbhum",
+      "Purbi Singhbhum",
+      "Ramgarh",
+      "Ranchi",
+      "Sahibganj",
+      "Saraikela-Kharsawan",
+      "Simdega"
+     ]
+    },
+    {
+     "name": "Karnātaka",
+     "districts": [
+      "Bagalkot",
+      "Bangalore",
+      "Bangalore Rural",
+      "Belgaum",
+      "Bellary",
+      "Bidar",
+      "Bijapur",
+      "Chamarajanagar",
+      "Chikkaballapura",
+      "Chikmagalur",
+      "Chitradurga",
+      "Dakshina Kannada",
+      "Davanagere",
+      "Dharwad",
+      "Gadag",
+      "Gulbarga",
+      "Hassan",
+      "Haveri",
+      "Kodagu",
+      "Kolar",
+      "Koppal",
+      "Mandya",
+      "Mysore",
+      "Raichur",
+      "Ramanagara",
+      "Shimoga",
+      "Tumkur",
+      "Udupi",
+      "Uttara Kannada",
+      "Yadgir"
+     ]
+    },
+    {
+     "name": "Kerala",
+     "districts": [
+      "Alappuzha",
+      "Ernakulam",
+      "Idukki",
+      "Kannur",
+      "Kasaragod",
+      "Kollam",
+      "Kottayam",
+      "Kozhikode",
+      "Malappuram",
+      "Palakkad",
+      "Pathanamthitta",
+      "Thiruvananthapuram",
+      "Thrissur",
+      "Wayanad"
+     ]
+    },
+    {
+     "name": "Ladākh",
+     "districts": [
+      "DATA NOT AVAILABLE",
+      "Kargil",
+      "Leh(Ladakh)"
+     ]
+    },
+    {
+     "name": "Lakshadweep",
+     "districts": [
+      "Lakshadweep"
+     ]
+    },
+    {
+     "name": "Madhya Pradesh",
+     "districts": [
+      "Agar",
+      "Alirajpur",
+      "Anuppur",
+      "Ashoknagar",
+      "Balaghat",
+      "Barwani",
+      "Betul",
+      "Bhind",
+      "Bhopal",
+      "Burhanpur",
+      "Chhatarpur",
+      "Chhindwara",
+      "Damoh",
+      "Datia",
+      "Dewas",
+      "Dhar",
+      "Dindori",
+      "Guna",
+      "Gwalior",
+      "Harda",
+      "Hoshangabad",
+      "Indore",
+      "Jabalpur",
+      "Jhabua",
+      "Katni",
+      "Khandwa (East Nimar)",
+      "Khargone (West Nimar)",
+      "Mandla",
+      "Mandsaur",
+      "Morena",
+      "Narsimhapur",
+      "Neemuch",
+      "Niwari",
+      "Panna",
+      "Raisen",
+      "Rajgarh",
+      "Ratlam",
+      "Rewa",
+      "Sagar",
+      "Satna",
+      "Sehore",
+      "Seoni",
+      "Shahdol",
+      "Shajapur",
+      "Sheopur",
+      "Shivpuri",
+      "Sidhi",
+      "Singrauli",
+      "Tikamgarh",
+      "Ujjain",
+      "Umaria",
+      "Vidisha"
+     ]
+    },
+    {
+     "name": "Mahārāshtra",
+     "districts": [
+      "Ahmadnagar",
+      "Akola",
+      "Amravati",
+      "Aurangabad",
+      "Bhandara",
+      "Bid",
+      "Buldana",
+      "Chandrapur",
+      "Dhule",
+      "Gadchiroli",
+      "Gondiya",
+      "Hingoli",
+      "Jalgaon",
+      "Jalna",
+      "Kolhapur",
+      "Latur",
+      "Mumbai",
+      "Mumbai Suburban",
+      "Nagpur",
+      "Nanded",
+      "Nandurbar",
+      "Nashik",
+      "Osmanabad",
+      "Palghar",
+      "Parbhani",
+      "Pune",
+      "Raigarh",
+      "Ratnagiri",
+      "Sangli",
+      "Satara",
+      "Sindhudurg",
+      "Solapur",
+      "Thane",
+      "Wardha",
+      "Washim",
+      "Yavatmal"
+     ]
+    },
+    {
+     "name": "Manipur",
+     "districts": [
+      "Bishnupur",
+      "Chandel",
+      "Churachandpur",
+      "Imphal East",
+      "Imphal West",
+      "Jiribam",
+      "Kakching",
+      "Kamjong",
+      "Kangpokpi",
+      "Noney",
+      "Phek",
+      "Pherzawl",
+      "Senapati",
+      "Tamenglong",
+      "Tengnoupal",
+      "Thoubal",
+      "Ukhrul"
+     ]
+    },
+    {
+     "name": "Meghālaya",
+     "districts": [
+      "East Garo Hills",
+      "East Jaintia Hills",
+      "East Khasi Hills",
+      "Kamrup Metropolitan",
+      "North Garo Hills",
+      "Ribhoi",
+      "South Garo Hills",
+      "South West Garo Hills",
+      "South West Khasi Hills",
+      "West Garo Hills",
+      "West Jaintia Hills",
+      "West Khasi Hills"
+     ]
+    },
+    {
+     "name": "Mizoram",
+     "districts": [
+      "Aizawl",
+      "Champhai",
+      "Hnahthial",
+      "Khawzawl",
+      "Kolasib",
+      "Lawngtlai",
+      "Lunglei",
+      "Mamit",
+      "Saiha",
+      "Saitual",
+      "Serchhip"
+     ]
+    },
+    {
+     "name": "Nāgāland",
+     "districts": [
+      "Dimapur",
+      "Kiphire",
+      "Kohima",
+      "Longleng",
+      "Mokokchung",
+      "Mon",
+      "Peren",
+      "Tuensang",
+      "Wokha",
+      "Zunheboto"
+     ]
+    },
+    {
+     "name": "Odisha",
+     "districts": [
+      "Anugul",
+      "Balangir",
+      "Baleshwar",
+      "Bargarh",
+      "Baudh",
+      "Bhadrak",
+      "Cuttack",
+      "Debagarh",
+      "Dhenkanal",
+      "Gajapati",
+      "Ganjam",
+      "Jagatsinghapur",
+      "Jajapur",
+      "Jharsuguda",
+      "Kalahandi",
+      "Kandhamal",
+      "Kendrapara",
+      "Kendujhar",
+      "Khordha",
+      "Koraput",
+      "Malkangiri",
+      "Mayurbhanj",
+      "Nabarangapur",
+      "Nayagarh",
+      "Nuapada",
+      "Puri",
+      "Rayagada",
+      "Sambalpur",
+      "Subarnapur",
+      "Sundargarh"
+     ]
+    },
+    {
+     "name": "Puducherry",
+     "districts": [
+      "Karaikal",
+      "Mahe",
+      "Puducherry"
+     ]
+    },
+    {
+     "name": "Punjab",
+     "districts": [
+      "Amritsar",
+      "Barnala",
+      "Bathinda",
+      "Faridkot",
+      "Fatehgarh Sahib",
+      "Fazilka",
+      "Firozpur",
+      "Gurdaspur",
+      "Hoshiarpur",
+      "Jalandhar",
+      "Kapurthala",
+      "Ludhiana",
+      "Mansa",
+      "Moga",
+      "Muktsar",
+      "Pathankot",
+      "Patiala",
+      "Rupnagar",
+      "Sahibzada Ajit Singh Nagar",
+      "Sangrur",
+      "Shahid Bhagat Singh Nagar",
+      "Tarn Taran"
+     ]
+    },
+    {
+     "name": "Rājasthān",
+     "districts": [
+      "Ajmer",
+      "Alwar",
+      "Banswara",
+      "Baran",
+      "Barmer",
+      "Bharatpur",
+      "Bhilwara",
+      "Bikaner",
+      "Bundi",
+      "Chittaurgarh",
+      "Churu",
+      "Dausa",
+      "Dhaulpur",
+      "Dungarpur",
+      "Ganganagar",
+      "Hanumangarh",
+      "Jaipur",
+      "Jaisalmer",
+      "Jalor",
+      "Jhalawar",
+      "Jhunjhunun",
+      "Jodhpur",
+      "Karauli",
+      "Kota",
+      "Nagaur",
+      "Pali",
+      "Pratapgarh",
+      "Rajsamand",
+      "Sawai Madhopur",
+      "Sikar",
+      "Sirohi",
+      "Tonk",
+      "Udaipur"
+     ]
+    },
+    {
+     "name": "Sikkim",
+     "districts": [
+      "East District",
+      "North District",
+      "South District",
+      "West District"
+     ]
+    },
+    {
+     "name": "Tamil Nādu",
+     "districts": [
+      "Ariyalur",
+      "Chengalputtu",
+      "Chennai",
+      "Coimbatore",
+      "Cuddalore",
+      "Dharmapuri",
+      "Dindigul",
+      "Erode",
+      "Kallakurichi",
+      "Kancheepuram",
+      "Kanniyakumari",
+      "Karur",
+      "Krishnagiri",
+      "Madurai",
+      "Mayiladuthurai",
+      "Nagapattinam",
+      "Namakkal",
+      "Perambalur",
+      "Pudukkottai",
+      "Ramanathapuram",
+      "Ranipet",
+      "Salem",
+      "Sivaganga",
+      "Tenkasi",
+      "Thanjavur",
+      "The Nilgiris",
+      "Theni",
+      "Thiruvallur",
+      "Thiruvarur",
+      "Thoothukkudi",
+      "Tiruchirappalli",
+      "Tirunelveli",
+      "Tirupathur",
+      "Tiruppur",
+      "Tiruvannamalai",
+      "Vellore",
+      "Viluppuram",
+      "Virudhunagar"
+     ]
+    },
+    {
+     "name": "Telangāna",
+     "districts": [
+      "Adilabad",
+      "Bhadradri",
+      "Hydrabad",
+      "Jagtial",
+      "Jangaon",
+      "Jayashankar",
+      "Jogulamba",
+      "Kamareddy",
+      "Karimnagar",
+      "Khammam",
+      "Komaram Bheem",
+      "Mahabubabad",
+      "Mahabubnagar",
+      "Mancherial",
+      "Medak",
+      "Medchal",
+      "Mulugu",
+      "Nagarkurnool",
+      "Nalgonda",
+      "Narayanpet",
+      "Nirmal",
+      "Nizamabad",
+      "Peddapalli",
+      "Rajanna Sircilla",
+      "Rangareddy",
+      "Sangareddy",
+      "Siddipet",
+      "Suryapet",
+      "Vikarabad",
+      "Wanaparthy",
+      "Warangal (R)",
+      "Warangal (U)",
+      "Yadadri Bhongiri"
+     ]
+    },
+    {
+     "name": "Tripura",
+     "districts": [
+      "Dhalai",
+      "Gomati",
+      "Khowai",
+      "North Tripura",
+      "Sipahijula",
+      "South Tripura",
+      "Unokoti",
+      "West Tripura"
+     ]
+    },
+    {
+     "name": "Uttar Pradesh",
+     "districts": [
+      "Agra",
+      "Aligarh",
+      "Allahabad",
+      "Ambedkar Nagar",
+      "Amethi",
+      "Auraiya",
+      "Azamgarh",
+      "Baghpat",
+      "Bahraich",
+      "Ballia",
+      "Balrampur",
+      "Banda",
+      "Bara Banki",
+      "Bareilly",
+      "Basti",
+      "Bijnor",
+      "Budaun",
+      "Bulandshahr",
+      "Chandauli",
+      "Chitrakoot",
+      "Deoria",
+      "Etah",
+      "Etawah",
+      "Faizabad",
+      "Farrukhabad",
+      "Fatehpur",
+      "Firozabad",
+      "Gautam Buddha Nagar",
+      "Ghaziabad",
+      "Ghazipur",
+      "Gonda",
+      "Gorakhpur",
+      "Hamirpur",
+      "Hapur",
+      "Hardoi",
+      "Jalaun",
+      "Jaunpur",
+      "Jhansi",
+      "Jyotiba Phule Nagar",
+      "Kannauj",
+      "Kanpur Dehat",
+      "Kanpur Nagar",
+      "Kanshiram Nagar",
+      "Kaushambi",
+      "Kheri",
+      "Kushinagar",
+      "Lalitpur",
+      "Lucknow",
+      "Mahamaya Nagar",
+      "Mahoba",
+      "Mahrajganj",
+      "Mainpuri",
+      "Mathura",
+      "Mau",
+      "Meerut",
+      "Mirzapur",
+      "Moradabad",
+      "Muzaffarnagar",
+      "Pilibhit",
+      "Pratapgarh",
+      "Rae Bareli",
+      "Rampur",
+      "Saharanpur",
+      "Sambhal",
+      "Samli",
+      "Sant Kabir Nagar",
+      "Sant Ravidas Nagar (Bhadohi)",
+      "Shahjahanpur",
+      "Shrawasti",
+      "Siddharthnagar",
+      "Sitapur",
+      "Sonbhadra",
+      "Sultanpur",
+      "Unnao",
+      "Varanasi"
+     ]
+    },
+    {
+     "name": "Uttarākhand",
+     "districts": [
+      "Almora",
+      "Bageshwar",
+      "Chamoli",
+      "Champawat",
+      "Dehradun",
+      "Garhwal",
+      "Hardwar",
+      "Nainital",
+      "Pithoragarh",
+      "Rudraprayag",
+      "Tehri Garhwal",
+      "Udham Singh Nagar",
+      "Uttarkashi"
+     ]
+    },
+    {
+     "name": "West Bengal",
+     "districts": [
+      "Alipurduar",
+      "Bankura",
+      "Barddhaman",
+      "Birbhum",
+      "Dakshin Dinajpur",
+      "Darjiling",
+      "Haora",
+      "Hugli",
+      "Jalpaiguri",
+      "Jhargram",
+      "Kalimpong",
+      "Koch Bihar",
+      "Kolkata",
+      "Maldah",
+      "Murshidabad",
+      "Nadia",
+      "North Twenty Four Parganas",
+      "Paschim Barddhaman",
+      "Paschim Medinipur",
+      "Purba Medinipur",
+      "Puruliya",
+      "South Twenty Four Parganas",
+      "Uttar Dinajpur"
+     ]
+    }
+   ]
+  },
+  "KE": {
+   "source": "geoBoundaries gbOpen KEN ADM1/ADM2",
+   "licence": "Public Domain",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Baringo",
+     "districts": [
+      "Baringo Central",
+      "Baringo North",
+      "Baringo South",
+      "Eldama Ravine",
+      "Mogotio",
+      "Tiaty"
+     ]
+    },
+    {
+     "name": "Bomet",
+     "districts": [
+      "Bomet Central",
+      "Bomet East",
+      "Buret",
+      "Chepalungu",
+      "Konoin",
+      "Sotik"
+     ]
+    },
+    {
+     "name": "Bungoma",
+     "districts": [
+      "Bumula",
+      "Kabuchai",
+      "Kanduyi",
+      "Kimilili",
+      "Mt. Elgon",
+      "Sirisia",
+      "Tongaren",
+      "Webuye East",
+      "Webuye West"
+     ]
+    },
+    {
+     "name": "Busia",
+     "districts": [
+      "Budalangi",
+      "Butula",
+      "Funyula",
+      "Matayos",
+      "Nambale",
+      "Teso North",
+      "Teso South"
+     ]
+    },
+    {
+     "name": "Elgeyo-Marakwet",
+     "districts": [
+      "Keiyo North",
+      "Keiyo South",
+      "Marakwet East",
+      "Marakwet West"
+     ]
+    },
+    {
+     "name": "Embu",
+     "districts": [
+      "Gachoka",
+      "Manyatta",
+      "Runyenjes",
+      "Siakago"
+     ]
+    },
+    {
+     "name": "Garissa",
+     "districts": [
+      "Balambala",
+      "Dadaab",
+      "Dujis",
+      "Fafi",
+      "Ijara",
+      "Lagdera"
+     ]
+    },
+    {
+     "name": "Homa Bay",
+     "districts": [
+      "Homa Bay",
+      "Kabondo Kasipul",
+      "Karachuonyo",
+      "Kasipul",
+      "Ndhiwa",
+      "Rangwe",
+      "Suba North",
+      "Suba South"
+     ]
+    },
+    {
+     "name": "Isiolo",
+     "districts": [
+      "Isiolo North",
+      "Isiolo South"
+     ]
+    },
+    {
+     "name": "Kajiado",
+     "districts": [
+      "Kajiado Central",
+      "Kajiado East",
+      "Kajiado North",
+      "Kajiado South",
+      "Kajiado West"
+     ]
+    },
+    {
+     "name": "Kakamega",
+     "districts": [
+      "Butere",
+      "Ikolomani",
+      "Khwisero",
+      "Likuyani",
+      "Lugari",
+      "Lurambi",
+      "Malava",
+      "Matungu",
+      "Mumias East",
+      "Mumias West",
+      "Navakholo",
+      "Shinyalu"
+     ]
+    },
+    {
+     "name": "Kericho",
+     "districts": [
+      "Ainamoi",
+      "Belgut",
+      "Kipkelion East",
+      "Kipkelion West",
+      "Sigowet/Soin"
+     ]
+    },
+    {
+     "name": "Kiambu",
+     "districts": [
+      "Gatundu North",
+      "Gatundu South",
+      "Githunguri",
+      "Juja",
+      "Kabete",
+      "Kiambaa",
+      "Kiambu",
+      "Kikuyu",
+      "Lari",
+      "Limuru",
+      "Ruiru",
+      "Thika Town"
+     ]
+    },
+    {
+     "name": "Kilifi",
+     "districts": [
+      "Ganze",
+      "Kaloleni",
+      "Kilifi North",
+      "Kilifi South",
+      "Magarini",
+      "Malindi",
+      "Rabai"
+     ]
+    },
+    {
+     "name": "Kirinyaga",
+     "districts": [
+      "Gichugu",
+      "Kirinyaga Central",
+      "Mwea",
+      "Ndia"
+     ]
+    },
+    {
+     "name": "Kisii",
+     "districts": [
+      "Bobasi",
+      "Bomachoge Borabu",
+      "Bomachoge Chache",
+      "Bonchari",
+      "Kitutu Chache North",
+      "Kitutu Chache South",
+      "Nyaribari Chache",
+      "Nyaribari Masaba",
+      "South Mugirango"
+     ]
+    },
+    {
+     "name": "Kisumu",
+     "districts": [
+      "Kisumu Central",
+      "Kisumu East",
+      "Kisumu West",
+      "Muhoroni",
+      "Nyakach",
+      "Nyando",
+      "Seme"
+     ]
+    },
+    {
+     "name": "Kitui",
+     "districts": [
+      "Kitui Central",
+      "Kitui East",
+      "Kitui Rural",
+      "Kitui South",
+      "Kitui West",
+      "Mwingi East",
+      "Mwingi North",
+      "Mwingi West"
+     ]
+    },
+    {
+     "name": "Kwale",
+     "districts": [
+      "Kinango",
+      "Lunga Lunga",
+      "Matuga",
+      "Msambweni"
+     ]
+    },
+    {
+     "name": "Laikipia",
+     "districts": [
+      "Kieni",
+      "Laikipia East",
+      "Laikipia North",
+      "Laikipia West"
+     ]
+    },
+    {
+     "name": "Lamu",
+     "districts": [
+      "Lamu East",
+      "Lamu West"
+     ]
+    },
+    {
+     "name": "Machakos",
+     "districts": [
+      "Kangundo",
+      "Kathiani",
+      "Machakos Town",
+      "Masinga",
+      "Matungulu",
+      "Mavoko",
+      "Mwala",
+      "Yatta"
+     ]
+    },
+    {
+     "name": "Makueni",
+     "districts": [
+      "Kaiti",
+      "Kibwezi East",
+      "Kibwezi West",
+      "Kilome",
+      "Makueni",
+      "Mbooni"
+     ]
+    },
+    {
+     "name": "Mandera",
+     "districts": [
+      "Banissa",
+      "Lafey",
+      "Mandera East",
+      "Mandera North",
+      "Mandera South",
+      "Mandera West"
+     ]
+    },
+    {
+     "name": "Marsabit",
+     "districts": [
+      "Laisamis",
+      "Moyale",
+      "North Horr",
+      "Saku"
+     ]
+    },
+    {
+     "name": "Meru",
+     "districts": [
+      "Buuri",
+      "Cental Imenti",
+      "Igembe Central",
+      "Igembe North",
+      "Igembe South",
+      "North Imenti",
+      "South Imenti",
+      "Tigania East",
+      "Tigania West"
+     ]
+    },
+    {
+     "name": "Migori",
+     "districts": [
+      "Awendo",
+      "Kuria East",
+      "Kuria West",
+      "Nyatike",
+      "Rongo",
+      "Suna East",
+      "Suna West",
+      "Uriri"
+     ]
+    },
+    {
+     "name": "Mombasa",
+     "districts": [
+      "Changamwe",
+      "Jomvu",
+      "Kisauni",
+      "Likoni",
+      "Mvita",
+      "Nyali"
+     ]
+    },
+    {
+     "name": "Murang'a",
+     "districts": [
+      "Gatanga",
+      "Kandara",
+      "Kangema",
+      "Kigumo",
+      "Kiharu",
+      "Maragwa",
+      "Mathioya"
+     ]
+    },
+    {
+     "name": "Nairobi",
+     "districts": [
+      "Dagoretti",
+      "Embakasi Central",
+      "Embakasi East",
+      "Embakasi North",
+      "Embakasi South",
+      "Embakasi West",
+      "Kamukunji",
+      "Kasarani",
+      "Kibra",
+      "Kilimani",
+      "Langata",
+      "Makadara",
+      "Mathare",
+      "Roysambu",
+      "Ruaraka",
+      "Starehe",
+      "Westlands"
+     ]
+    },
+    {
+     "name": "Nakuru",
+     "districts": [
+      "Bahati",
+      "Gilgil",
+      "Kuresoi North",
+      "Kuresoi South",
+      "Molo",
+      "Naivasha",
+      "Nakuru Town East",
+      "Nakuru Town West",
+      "Njoro",
+      "Rongai",
+      "Subukia"
+     ]
+    },
+    {
+     "name": "Nandi",
+     "districts": [
+      "Aldai",
+      "Chesumei",
+      "Emgwen",
+      "Mosop",
+      "Nandi Hills",
+      "Tinderet"
+     ]
+    },
+    {
+     "name": "Narok",
+     "districts": [
+      "Emurua Dikirr",
+      "Kilgoris",
+      "Narok East",
+      "Narok North",
+      "Narok South",
+      "Narok West"
+     ]
+    },
+    {
+     "name": "Nyamira",
+     "districts": [
+      "Borabu",
+      "Kitutu Masaba",
+      "North Mugirango",
+      "West Mugirango"
+     ]
+    },
+    {
+     "name": "Nyandarua",
+     "districts": [
+      "Kinangop",
+      "Kipipiri",
+      "Ndaragwa",
+      "Ol Jorok",
+      "Ol Kalou"
+     ]
+    },
+    {
+     "name": "Nyeri",
+     "districts": [
+      "Mathira",
+      "Mukurweni",
+      "Nyeri Town",
+      "Othaya",
+      "Tetu"
+     ]
+    },
+    {
+     "name": "Samburu",
+     "districts": [
+      "Samburu East",
+      "Samburu North",
+      "Samburu West"
+     ]
+    },
+    {
+     "name": "Siaya",
+     "districts": [
+      "Alego Usonga",
+      "Bondo",
+      "Gem",
+      "Rarieda",
+      "Ugenya",
+      "Ugunja"
+     ]
+    },
+    {
+     "name": "Taita Taveta",
+     "districts": [
+      "Mwatate",
+      "Taveta",
+      "Voi",
+      "Wundanyi"
+     ]
+    },
+    {
+     "name": "Tana River",
+     "districts": [
+      "Bura",
+      "Galole",
+      "Garsen"
+     ]
+    },
+    {
+     "name": "Tharaka",
+     "districts": [
+      "Maara",
+      "Nithi",
+      "Tharaka"
+     ]
+    },
+    {
+     "name": "Trans Nzoia",
+     "districts": [
+      "Cherangany",
+      "Endebess",
+      "Kiminini",
+      "Kwanza",
+      "Saboti"
+     ]
+    },
+    {
+     "name": "Turkana",
+     "districts": [
+      "Loima",
+      "Turkana Central",
+      "Turkana East",
+      "Turkana North",
+      "Turkana South",
+      "Turkana West"
+     ]
+    },
+    {
+     "name": "Uasin Gishu",
+     "districts": [
+      "Ainabkoi",
+      "Kapseret",
+      "Kesses",
+      "Moiben",
+      "Soy",
+      "Turbo"
+     ]
+    },
+    {
+     "name": "Vihiga",
+     "districts": [
+      "Emuhaya",
+      "Hamisi",
+      "Luanda",
+      "Sabatia",
+      "Vihiga"
+     ]
+    },
+    {
+     "name": "Wajir",
+     "districts": [
+      "Eldas",
+      "Tarbaj",
+      "Wajir East",
+      "Wajir North",
+      "Wajir South",
+      "Wajir West"
+     ]
+    },
+    {
+     "name": "West Pokot",
+     "districts": [
+      "Kacheliba",
+      "Kapenguria",
+      "Pokot South",
+      "Sigor"
+     ]
+    }
+   ]
+  },
+  "MW": {
+   "source": "geoBoundaries gbOpen MWI ADM1/ADM2",
+   "licence": "Open Data Commons Open Database License 1.0",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Central Region",
+     "districts": [
+      "Dedza",
+      "Dowa",
+      "Kasungu",
+      "Lilongwe",
+      "Mchinji",
+      "Nkhotakota",
+      "Ntcheu",
+      "Ntchisi",
+      "Salima"
+     ]
+    },
+    {
+     "name": "Northern Region",
+     "districts": [
+      "Chitipa",
+      "Karonga",
+      "Likoma",
+      "Mzimba",
+      "Nkhata Bay",
+      "Rumphi"
+     ]
+    },
+    {
+     "name": "Southern Region",
+     "districts": [
+      "Balaka",
+      "Blantyre",
+      "Chikwawa",
+      "Chiradzulu",
+      "Machinga",
+      "Mangochi",
+      "Mulanje",
+      "Mwanza",
+      "Neno",
+      "Nsanje",
+      "Phalombe",
+      "Thyolo",
+      "Zomba"
+     ]
+    }
+   ]
+  },
+  "MZ": {
+   "source": "geoBoundaries gbOpen MOZ ADM1/ADM2",
+   "licence": "Open Data Commons Open Database License 1.0",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Cabo Delgado",
+     "districts": [
+      "Ancuabe",
+      "Balama",
+      "Chiure",
+      "Cidade De Pemba",
+      "Ibo",
+      "Macomia",
+      "Mecufi",
+      "Meluco",
+      "Metuge",
+      "Mocimboa Da Praia",
+      "Montepuez",
+      "Mueda",
+      "Muidumbe",
+      "Namuno",
+      "Nangade",
+      "Palma",
+      "Quissanga"
+     ]
+    },
+    {
+     "name": "Gaza",
+     "districts": [
+      "Bilene",
+      "Chibuto",
+      "Chicualacuala",
+      "Chigubo",
+      "Chokwe",
+      "Chongoene",
+      "Cidade De Xai-Xai",
+      "Guija",
+      "Limpopo",
+      "Mabalane",
+      "Mandlakaze",
+      "Mapai",
+      "Massangena",
+      "Massingir"
+     ]
+    },
+    {
+     "name": "Inhambane",
+     "districts": [
+      "Cidade De Inhambane",
+      "Funhalouro",
+      "Govuro",
+      "Homoine",
+      "Inharrime",
+      "Inhassoro",
+      "Jangamo",
+      "Mabote",
+      "Massinga",
+      "Maxixe",
+      "Morrumbene",
+      "Panda",
+      "Vilankulo",
+      "Zavala"
+     ]
+    },
+    {
+     "name": "Manica",
+     "districts": [
+      "Barue",
+      "Cidade De Chimoio",
+      "Gondola",
+      "Guro",
+      "Macate",
+      "Machaze",
+      "Macossa",
+      "Manica",
+      "Mossurize",
+      "Sussundenga",
+      "Tambara",
+      "Vanduzi"
+     ]
+    },
+    {
+     "name": "Maputo",
+     "districts": [
+      "Boane",
+      "Cidade Da Matola",
+      "Cidade De Maputo",
+      "Magude",
+      "Manhiça",
+      "Marracuene",
+      "Matutuine",
+      "Moamba",
+      "Namaacha"
+     ]
+    },
+    {
+     "name": "Nampula",
+     "districts": [
+      "Angoche",
+      "Cidade De Nampula",
+      "Erati",
+      "Ilha De Moçambique",
+      "Lalaua",
+      "Larde",
+      "Liúpo",
+      "Malema",
+      "Meconta",
+      "Mecuburi",
+      "Memba",
+      "Mogincual",
+      "Mogovolas",
+      "Moma",
+      "Monapo",
+      "Mossuril",
+      "Muecate",
+      "Murrupula",
+      "Nacala",
+      "Nacala-A-Velha",
+      "Nacaroa",
+      "Rapale",
+      "Ribaue"
+     ]
+    },
+    {
+     "name": "Niassa",
+     "districts": [
+      "Chimbonila",
+      "Cidade De Lichinga",
+      "Cuamba",
+      "Ilha Licom",
+      "Ilha Risunodo",
+      "Lago",
+      "Lago Niassa",
+      "Majune",
+      "Mandimba",
+      "Marrupa",
+      "Maua",
+      "Mavago",
+      "Mecanhelas",
+      "Mecula",
+      "Metarica",
+      "Muembe",
+      "Ngauma",
+      "Nipepe",
+      "Sanga"
+     ]
+    },
+    {
+     "name": "Sofala",
+     "districts": [
+      "Buzi",
+      "Caia",
+      "Chemba",
+      "Cheringoma",
+      "Chibabava",
+      "Cidade Da Beira",
+      "Dondo",
+      "Gorongosa",
+      "Machanga",
+      "Maringue",
+      "Marromeu",
+      "Muanza",
+      "Nhamatanda"
+     ]
+    },
+    {
+     "name": "Tete",
+     "districts": [
+      "Angonia",
+      "Cahora Bassa",
+      "Changara",
+      "Chifunde",
+      "Chiuta",
+      "Cidade De Tete",
+      "Doa",
+      "Macanga",
+      "Magoe",
+      "Marara",
+      "Maravia",
+      "Moatize",
+      "Mutarara",
+      "Tsangano",
+      "Zumbu"
+     ]
+    },
+    {
+     "name": "Zambézia",
+     "districts": [
+      "Alto Molocue",
+      "Chinde",
+      "Cidade De Quelimane",
+      "Derre",
+      "Gile",
+      "Gurue",
+      "Ile",
+      "Inhassunge",
+      "Luabo",
+      "Lugela",
+      "Maganja Da Costa",
+      "Maquival",
+      "Milange",
+      "Mocuba",
+      "Mocubela",
+      "Molumbo",
+      "Mopeia",
+      "Morrumbala",
+      "Mulevala",
+      "Namacurra",
+      "Namarroi",
+      "Nicoadala",
+      "Pebane"
+     ]
+    }
+   ]
+  },
+  "NG": {
+   "source": "geoBoundaries gbOpen NGA ADM1/ADM2",
+   "licence": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Abia",
+     "districts": [
+      "Aba North",
+      "Aba South",
+      "Arochukwu",
+      "Bende",
+      "Ikwuano",
+      "Isiala-Ngwa North",
+      "Isiala-Ngwa South",
+      "Isuikwuato",
+      "Obi Nwga",
+      "Ohafia",
+      "Osisioma Ngwa",
+      "Ugwunagbo",
+      "Ukwa East",
+      "Ukwa West",
+      "Umu-Nneochi",
+      "Umuahia North",
+      "Umuahia South"
+     ]
+    },
+    {
+     "name": "Abuja Federal Capital Territory",
+     "districts": [
+      "Abaji",
+      "Bwari",
+      "Gwagwalada",
+      "Kuje",
+      "Kwali",
+      "Municipal Area Council"
+     ]
+    },
+    {
+     "name": "Adamawa",
+     "districts": [
+      "Demsa",
+      "Fufore",
+      "Ganye",
+      "Girei",
+      "Gombi",
+      "Guyuk",
+      "Hong",
+      "Jada",
+      "Lamurde",
+      "Madagali",
+      "Maiha",
+      "Mayo-Belwa",
+      "Michika",
+      "Mubi North",
+      "Mubi South",
+      "Numan",
+      "Shelleng",
+      "Song",
+      "Toungo",
+      "Yola North",
+      "Yola South"
+     ]
+    },
+    {
+     "name": "Akwa Ibom",
+     "districts": [
+      "Abak",
+      "Eastern Obolo",
+      "Eket",
+      "Esit Eket",
+      "Essien Udim",
+      "Etim Ekpo",
+      "Etinan",
+      "Ibeno",
+      "Ibesikpo Asutan",
+      "Ibiono Ibom",
+      "Ika",
+      "Ikono",
+      "Ikot Abasi",
+      "Ikot Ekpene",
+      "Ini",
+      "Itu",
+      "Mbo",
+      "Mkpat Enin",
+      "Nsit Atai",
+      "Nsit Ibom",
+      "Nsit Ubium",
+      "Obot Akara",
+      "Okobo",
+      "Onna",
+      "Oron",
+      "Oruk Anam",
+      "Udung Uko",
+      "Ukanafun",
+      "Uruan",
+      "Urue Offong/Oruko",
+      "Uyo"
+     ]
+    },
+    {
+     "name": "Anambra",
+     "districts": [
+      "Aguata",
+      "Anambra East",
+      "Anambra West",
+      "Anaocha",
+      "Awka North",
+      "Awka South",
+      "Ayamelum",
+      "Dunukofia",
+      "Ekwusigo",
+      "Idemili North",
+      "Idemili South",
+      "Ihiala",
+      "Njikoka",
+      "Nnewi North",
+      "Nnewi South",
+      "Ogbaru",
+      "Onitsha North",
+      "Onitsha South",
+      "Orumba North",
+      "Orumba South",
+      "Oyi"
+     ]
+    },
+    {
+     "name": "Bauchi",
+     "districts": [
+      "Alkaleri",
+      "Bauchi",
+      "Bogoro",
+      "Dambam",
+      "Darazo",
+      "Dass",
+      "Gamawa",
+      "Ganjuwa",
+      "Giade",
+      "Itas/Gadau",
+      "Jama'Are",
+      "Katagum",
+      "Kirfi",
+      "Misau",
+      "Ningi",
+      "Shira",
+      "Tafawa-Balewa",
+      "Toro",
+      "Warji",
+      "Zaki"
+     ]
+    },
+    {
+     "name": "Bayelsa",
+     "districts": [
+      "Brass",
+      "Ekeremor",
+      "Kolokuma/Opokuma",
+      "Nembe",
+      "Ogbia",
+      "Sagbama",
+      "Southern Ijaw",
+      "Yenegoa"
+     ]
+    },
+    {
+     "name": "Benue",
+     "districts": [
+      "Ado",
+      "Agatu",
+      "Apa",
+      "Buruku",
+      "Gboko",
+      "Guma",
+      "Gwer East",
+      "Gwer West",
+      "Katsina-Ala",
+      "Konshisha",
+      "Kwande",
+      "Logo",
+      "Makurdi",
+      "Obi",
+      "Ogbadibo",
+      "Ohimini",
+      "Oju",
+      "Okpokwu",
+      "Oturkpo",
+      "Tarka",
+      "Ukum",
+      "Ushongo",
+      "Vandeikya"
+     ]
+    },
+    {
+     "name": "Borno",
+     "districts": [
+      "Abadam",
+      "Askira Uba",
+      "Bama",
+      "Bayo",
+      "Biu",
+      "Chibok",
+      "Damboa",
+      "Dikwa",
+      "Gubio",
+      "Guzamala",
+      "Gwoza",
+      "Hawul",
+      "Jere",
+      "Kaga",
+      "Kala Balge",
+      "Konduga",
+      "Kukawa",
+      "Kwaya Kusar",
+      "Mafa",
+      "Magumeri",
+      "Maiduguri",
+      "Marte",
+      "Mobbar",
+      "Monguno",
+      "Ngala",
+      "Nganzai",
+      "Shani"
+     ]
+    },
+    {
+     "name": "Cross River",
+     "districts": [
+      "Abi",
+      "Akamkpa",
+      "Akpabuyo",
+      "Bakassi",
+      "Bekwarra",
+      "Biase",
+      "Boki",
+      "Calabar Municipal",
+      "Calabar South",
+      "Etung",
+      "Ikom",
+      "Obanliku",
+      "Obubra",
+      "Obudu",
+      "Odukpani",
+      "Ogoja",
+      "Yakurr",
+      "Yala"
+     ]
+    },
+    {
+     "name": "Delta",
+     "districts": [
+      "Aniocha North",
+      "Aniocha South",
+      "Bomadi",
+      "Burutu",
+      "Ethiope East",
+      "Ethiope West",
+      "Ika North East",
+      "Ika South",
+      "Isoko North",
+      "Isoko South",
+      "Ndokwa East",
+      "Ndokwa West",
+      "Okpe",
+      "Oshimili North",
+      "Oshimili South",
+      "Patani",
+      "Sapele",
+      "Udu",
+      "Ughelli North",
+      "Ughelli South",
+      "Ukwuani",
+      "Uvwie",
+      "Warri North",
+      "Warri South",
+      "Warri South-West"
+     ]
+    },
+    {
+     "name": "Ebonyi",
+     "districts": [
+      "Abakaliki",
+      "Afikpo North",
+      "Afikpo South",
+      "Ebonyi",
+      "Ezza North",
+      "Ezza South",
+      "Ikwo",
+      "Ishielu",
+      "Ivo",
+      "Izzi",
+      "Ohaozara",
+      "Ohaukwu",
+      "Onicha"
+     ]
+    },
+    {
+     "name": "Edo",
+     "districts": [
+      "Akoko-Edo",
+      "Egor",
+      "Esan Central",
+      "Esan North-East",
+      "Esan South-East",
+      "Esan West",
+      "Etsako Central",
+      "Etsako East",
+      "Etsako West",
+      "Iguegben",
+      "Ikpoba-Okha",
+      "Oredo",
+      "Orhionmwon",
+      "Ovia North-East",
+      "Ovia South-West",
+      "Owan East",
+      "Owan West",
+      "Uhunmwonde"
+     ]
+    },
+    {
+     "name": "Ekiti",
+     "districts": [
+      "Ado-Ekiti",
+      "Efon",
+      "Ekiti East",
+      "Ekiti South-West",
+      "Ekiti West",
+      "Emure",
+      "Gbonyin",
+      "Ido-Osi",
+      "Ijero",
+      "Ikere",
+      "Ikole",
+      "Ilejemeje",
+      "Irepodun/Ifelodun",
+      "Ise/Orun",
+      "Moba",
+      "Oye"
+     ]
+    },
+    {
+     "name": "Enugu",
+     "districts": [
+      "Aninri",
+      "Awgu",
+      "Enugu East",
+      "Enugu North",
+      "Enugu South",
+      "Ezeagu",
+      "Igbo-Etiti",
+      "Igbo-Eze North",
+      "Igbo-Eze-South",
+      "Isi-Uzo",
+      "Nkanu East",
+      "Nkanu West",
+      "Nsukka",
+      "Oji-River",
+      "Udenu",
+      "Udi",
+      "Uzo-Uwani"
+     ]
+    },
+    {
+     "name": "Gombe",
+     "districts": [
+      "Akko",
+      "Balanga",
+      "Billiri",
+      "Dukku",
+      "Funakaye",
+      "Gombe",
+      "Kaltungo",
+      "Kwami",
+      "Nafada",
+      "Shomgom",
+      "Yamaltu/Deba"
+     ]
+    },
+    {
+     "name": "Imo",
+     "districts": [
+      "Aboh-Mbaise",
+      "Ahiazu-Mbaise",
+      "Ehime-Mbano",
+      "Ezinihitte",
+      "Ideato North",
+      "Ideato South",
+      "Ihitte/Uboma",
+      "Ikeduru",
+      "Isiala Mbano",
+      "Isu",
+      "Mbatoli",
+      "Ngor-Okpala",
+      "Njaba",
+      "Nkwerre",
+      "Nwangele",
+      "Obowo",
+      "Oguta",
+      "Ohaji/Egbema",
+      "Okigwe",
+      "Onuimo",
+      "Orlu",
+      "Orsu",
+      "Oru East",
+      "Oru West",
+      "Owerri Municipal",
+      "Owerri North",
+      "Owerri West"
+     ]
+    },
+    {
+     "name": "Jigawa",
+     "districts": [
+      "Auyo",
+      "Babura",
+      "Biriniwa",
+      "Birnin Kudu",
+      "Buji",
+      "Dutse",
+      "Gagarawa",
+      "Garki",
+      "Gumel",
+      "Guri",
+      "Gwaram",
+      "Gwiwa",
+      "Hadejia",
+      "Jahun",
+      "Kafin Hausa",
+      "Kaugama",
+      "Kazaure",
+      "Kiri Kasama",
+      "Kiyawa",
+      "Maigatari",
+      "Malam Madori",
+      "Miga",
+      "Ringim",
+      "Roni",
+      "Sule Tankarkar",
+      "Taura",
+      "Yankwashi"
+     ]
+    },
+    {
+     "name": "Kaduna",
+     "districts": [
+      "Birnin Gwari",
+      "Chikun",
+      "Giwa",
+      "Igabi",
+      "Ikara",
+      "Jaba",
+      "Jema'A",
+      "Kachia",
+      "Kaduna North",
+      "Kaduna South",
+      "Kagarko",
+      "Kajuru",
+      "Kaura",
+      "Kauru",
+      "Kubau",
+      "Kudan",
+      "Lere",
+      "Makarfi",
+      "Sabon Gari",
+      "Sanga",
+      "Soba",
+      "Zangon Kataf",
+      "Zaria"
+     ]
+    },
+    {
+     "name": "Kano",
+     "districts": [
+      "Ajingi",
+      "Albasu",
+      "Bagwai",
+      "Bebeji",
+      "Bichi",
+      "Bunkure",
+      "Dala",
+      "Dambatta",
+      "Dawakin Kudu",
+      "Dawakin Tofa",
+      "Doguwa",
+      "Fagge",
+      "Gabasawa",
+      "Garko",
+      "Garun Malam",
+      "Gaya",
+      "Gezawa",
+      "Gwale",
+      "Gwarzo",
+      "Kabo",
+      "Kano Municipal",
+      "Karaye",
+      "Kibiya",
+      "Kiru",
+      "Kumbotso",
+      "Kunchi",
+      "Kura",
+      "Madobi",
+      "Makoda",
+      "Minjibir",
+      "Nassarawa",
+      "Rano",
+      "Rimin Gado",
+      "Rogo",
+      "Shanono",
+      "Sumaila",
+      "Takai",
+      "Tarauni",
+      "Tofa",
+      "Tsanyawa",
+      "Tudun Wada",
+      "Ungogo",
+      "Warawa",
+      "Wudil"
+     ]
+    },
+    {
+     "name": "Katsina",
+     "districts": [
+      "Bakori",
+      "Batagarawa",
+      "Batsari",
+      "Baure",
+      "Bindawa",
+      "Charanchi",
+      "Dan Musa",
+      "Dandume",
+      "Danja",
+      "Daura",
+      "Dutsi",
+      "Dutsin Ma",
+      "Faskari",
+      "Funtua",
+      "Ingawa",
+      "Jibia",
+      "Kafur",
+      "Kaita",
+      "Kankara",
+      "Kankia",
+      "Katsina",
+      "Kurfi",
+      "Kusada",
+      "Mai'Adua",
+      "Malumfashi",
+      "Mani",
+      "Mashi",
+      "Matazu",
+      "Musawa",
+      "Rimi",
+      "Sabuwa",
+      "Safana",
+      "Sandamu",
+      "Zango"
+     ]
+    },
+    {
+     "name": "Kebbi",
+     "districts": [
+      "Aleiro",
+      "Arewa Dandi",
+      "Argungu",
+      "Augie",
+      "Bagudu",
+      "Birnin Kebbi",
+      "Bunza",
+      "Dandi",
+      "Fakai",
+      "Gwandu",
+      "Jega",
+      "Kalgo",
+      "Koko-Besse",
+      "Maiyama",
+      "Ngaski",
+      "Sakaba",
+      "Shanga",
+      "Suru",
+      "Wasagu-Danko",
+      "Yauri",
+      "Zuru"
+     ]
+    },
+    {
+     "name": "Kogi",
+     "districts": [
+      "Adavi",
+      "Ajaokuta",
+      "Ankpa",
+      "Bassa",
+      "Dekina",
+      "Ibaji",
+      "Idah",
+      "Igalamela-Odolu",
+      "Ijumu",
+      "Kabba/Bunu",
+      "Kogi",
+      "Lokoja",
+      "Mopa-Muro",
+      "Ofu",
+      "Ogori/Magongo",
+      "Okehi",
+      "Okene",
+      "Olamaboro",
+      "Omala",
+      "Yagba East",
+      "Yagba West"
+     ]
+    },
+    {
+     "name": "Kwara",
+     "districts": [
+      "Asa",
+      "Baruten",
+      "Edu",
+      "Ekiti",
+      "Ifelodun",
+      "Ilorin East",
+      "Ilorin South",
+      "Ilorin West",
+      "Irepodun",
+      "Isin",
+      "Kaiama",
+      "Moro",
+      "Offa",
+      "Oke Ero",
+      "Oyun",
+      "Pategi"
+     ]
+    },
+    {
+     "name": "Lagos",
+     "districts": [
+      "Agege",
+      "Ajeromi/Ifelodun",
+      "Alimosho",
+      "Amuwo Odofin",
+      "Apapa",
+      "Badagry",
+      "Epe",
+      "Eti Osa",
+      "Ibeju Lekki",
+      "Ifako/Ijaye",
+      "Ikeja",
+      "Ikorodu",
+      "Kosofe",
+      "Lagos Island",
+      "Lagos Mainland",
+      "Mushin",
+      "Ojo",
+      "Oshodi/Isolo",
+      "Shomolu",
+      "Surulere"
+     ]
+    },
+    {
+     "name": "Nasarawa",
+     "districts": [
+      "Akwanga",
+      "Awe",
+      "Doma",
+      "Karu",
+      "Keana",
+      "Keffi",
+      "Kokona",
+      "Lafia",
+      "Nasarawa",
+      "Nasarawa Egon",
+      "Obi",
+      "Toto",
+      "Wamba"
+     ]
+    },
+    {
+     "name": "Niger",
+     "districts": [
+      "Agaie",
+      "Agwara",
+      "Bida",
+      "Borgu",
+      "Bosso",
+      "Chanchaga",
+      "Edati",
+      "Gbako",
+      "Gurara",
+      "Katcha",
+      "Kontagora",
+      "Lapai",
+      "Lavun",
+      "Magama",
+      "Mariga",
+      "Mashegu",
+      "Mokwa",
+      "Munya",
+      "Paikoro",
+      "Rafi",
+      "Rijau",
+      "Shiroro",
+      "Suleja",
+      "Tafa",
+      "Wushishi"
+     ]
+    },
+    {
+     "name": "Ogun",
+     "districts": [
+      "Abeokuta North",
+      "Abeokuta South",
+      "Ado Odo/Ota",
+      "Ewekoro",
+      "Ifo",
+      "Ijebu East",
+      "Ijebu North",
+      "Ijebu North East",
+      "Ijebu Ode",
+      "Ikenne",
+      "Imeko Afon",
+      "Ipokia",
+      "Obafemi Owode",
+      "Odeda",
+      "Odogbolu",
+      "Ogun Waterside",
+      "Remo North",
+      "Shagamu",
+      "Yewa North",
+      "Yewa South"
+     ]
+    },
+    {
+     "name": "Ondo",
+     "districts": [
+      "Akoko North East",
+      "Akoko North West",
+      "Akoko South East",
+      "Akoko South West",
+      "Akure North",
+      "Akure South",
+      "Ese Odo",
+      "Idanre",
+      "Ifedore",
+      "Ilaje",
+      "Ile Oluji/Okeigbo",
+      "Irele",
+      "Odigbo",
+      "Okitipupa",
+      "Ondo East",
+      "Ondo West",
+      "Ose",
+      "Owo"
+     ]
+    },
+    {
+     "name": "Osun",
+     "districts": [
+      "Atakunmosa East",
+      "Atakunmosa West",
+      "Ayedade",
+      "Ayedire",
+      "Boluwaduro",
+      "Boripe",
+      "Ede North",
+      "Ede South",
+      "Egbedore",
+      "Ejigbo",
+      "Ife Central",
+      "Ife East",
+      "Ife North",
+      "Ife South",
+      "Ifedayo",
+      "Ifelodun",
+      "Ila",
+      "Ilesha East",
+      "Ilesha West",
+      "Irepodun",
+      "Irewole",
+      "Isokan",
+      "Iwo",
+      "Obokun",
+      "Odo Otin",
+      "Ola Oluwa",
+      "Olorunda",
+      "Oriade",
+      "Orolu",
+      "Osogbo"
+     ]
+    },
+    {
+     "name": "Oyo",
+     "districts": [
+      "Afijio",
+      "Akinyele",
+      "Atiba",
+      "Atisbo",
+      "Egbeda",
+      "Ibadan North",
+      "Ibadan North East",
+      "Ibadan North West",
+      "Ibadan South East",
+      "Ibadan South West",
+      "Ibarapa Central",
+      "Ibarapa East",
+      "Ibarapa North",
+      "Ido",
+      "Irepo",
+      "Iseyin",
+      "Itesiwaju",
+      "Iwajowa",
+      "Kajola",
+      "Lagelu",
+      "Ogbomosho North",
+      "Ogbomosho South",
+      "Ogo Oluwa",
+      "Olorunsogo",
+      "Oluyole",
+      "Ona Ara",
+      "Orelope",
+      "Ori Ire",
+      "Oyo East",
+      "Oyo West",
+      "Saki East",
+      "Saki West",
+      "Surulere"
+     ]
+    },
+    {
+     "name": "Plateau",
+     "districts": [
+      "Barkin Ladi",
+      "Bassa",
+      "Bokkos",
+      "Jos East",
+      "Jos North",
+      "Jos South",
+      "Kanam",
+      "Kanke",
+      "Langtang North",
+      "Langtang South",
+      "Mangu",
+      "Mikang",
+      "Pankshin",
+      "Qua'An Pan",
+      "Riyom",
+      "Shendam",
+      "Wase"
+     ]
+    },
+    {
+     "name": "Rivers",
+     "districts": [
+      "Abua/Odual",
+      "Ahoada East",
+      "Ahoada West",
+      "Akuku Toru",
+      "Andoni",
+      "Asari-Toru",
+      "Bonny",
+      "Degema",
+      "Eleme",
+      "Emuoha",
+      "Etche",
+      "Gokana",
+      "Ikwerre",
+      "Khana",
+      "Obio/Akpor",
+      "Ogba/Egbema/Ndoni",
+      "Ogu Bolo",
+      "Okrika",
+      "Omumma",
+      "Opobo/Nkoro",
+      "Oyigbo",
+      "Port-Harcourt",
+      "Tai"
+     ]
+    },
+    {
+     "name": "Sokoto",
+     "districts": [
+      "Binji",
+      "Bodinga",
+      "Dange Shuni",
+      "Gada",
+      "Goronyo",
+      "Gudu",
+      "Gwadabawa",
+      "Illela",
+      "Isa",
+      "Kebbe",
+      "Kware",
+      "Rabah",
+      "Sabon Birni",
+      "Shagari",
+      "Silame",
+      "Sokoto North",
+      "Sokoto South",
+      "Tambuwal",
+      "Tangaza",
+      "Tureta",
+      "Wamakko",
+      "Wurno",
+      "Yabo"
+     ]
+    },
+    {
+     "name": "Taraba",
+     "districts": [
+      "Ardo-Kola",
+      "Bali",
+      "Donga",
+      "Gashaka",
+      "Gassol",
+      "Ibi",
+      "Jalingo",
+      "Karim Lamido",
+      "Kurmi",
+      "Lau",
+      "Sardauna",
+      "Takum",
+      "Ussa",
+      "Wukari",
+      "Yorro",
+      "Zing"
+     ]
+    },
+    {
+     "name": "Yobe",
+     "districts": [
+      "Bade",
+      "Bursari",
+      "Damaturu",
+      "Fika",
+      "Fune",
+      "Geidam",
+      "Gujba",
+      "Gulani",
+      "Jakusko",
+      "Karasuwa",
+      "Machina",
+      "Nangere",
+      "Nguru",
+      "Potiskum",
+      "Tarmuwa",
+      "Yunusari",
+      "Yusufari"
+     ]
+    },
+    {
+     "name": "Zamfara",
+     "districts": [
+      "Anka",
+      "Bakura",
+      "Birnin Magaji-Kiyaw",
+      "Bukkuyum",
+      "Bungudu",
+      "Gummi",
+      "Gusau",
+      "Kaura Namoda",
+      "Maradun",
+      "Maru",
+      "Shinkafi",
+      "Talata Mafara",
+      "Tsafe",
+      "Zurmi"
+     ]
+    }
+   ]
+  },
+  "NP": {
+   "source": "geoBoundaries gbOpen NPL ADM1/ADM2",
+   "licence": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Bagmati",
+     "districts": [
+      "Bhaktapur",
+      "Chitawan",
+      "Dhading",
+      "Dolakha",
+      "Kabherepalanchok",
+      "Kathmandu",
+      "Lalitpur",
+      "Makawanpur",
+      "Nuwakot",
+      "Ramechhap",
+      "Rasuwa",
+      "Sindhuli",
+      "Sindhupalchok"
+     ]
+    },
+    {
+     "name": "Gandaki",
+     "districts": [
+      "Baglung",
+      "Gorkha",
+      "Kaski",
+      "Lamjung",
+      "Manang",
+      "Mustang",
+      "Myagdi",
+      "Nawalparasi",
+      "Parbat",
+      "Synagja",
+      "Tanahu"
+     ]
+    },
+    {
+     "name": "Karnali",
+     "districts": [
+      "Dolpa",
+      "Humla",
+      "Jajarkot",
+      "Jumla",
+      "Kalikot",
+      "Mugu",
+      "Rukum_W",
+      "Salyan",
+      "Surkhet"
+     ]
+    },
+    {
+     "name": "Lumbini",
+     "districts": [
+      "Arghakhanchi",
+      "Banke",
+      "Bardiya",
+      "Dang",
+      "Gulmi",
+      "Kapilbastu",
+      "Nawalapur",
+      "Palpa",
+      "Pyuthan",
+      "Rolpa",
+      "Rukum_E"
+     ]
+    },
+    {
+     "name": "Province 1",
+     "districts": [
+      "Bhojpur",
+      "Dhankuta",
+      "Ilam",
+      "Jhapa",
+      "Khotang",
+      "Morang",
+      "Okhaldhunga",
+      "Panchthar",
+      "Sankhuwasabha",
+      "Solukhumbu",
+      "Sunsari",
+      "Taplejung",
+      "Terhathum",
+      "Udayapur"
+     ]
+    },
+    {
+     "name": "Province 2",
+     "districts": [
+      "Bara",
+      "Dhanusha",
+      "Mahottari",
+      "Rautahat",
+      "Saptari",
+      "Sarlahi"
+     ]
+    },
+    {
+     "name": "Sudurpaschim",
+     "districts": [
+      "Achham",
+      "Baijura",
+      "Baitadi",
+      "Bajhang",
+      "Dadeidhura",
+      "Darchula",
+      "Doti",
+      "Kailali",
+      "Kanchanpur"
+     ]
+    }
+   ]
+  },
+  "PE": {
+   "source": "geoBoundaries gbOpen PER ADM1/ADM2",
+   "licence": "Public Domain",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Amazonas",
+     "districts": [
+      "Bagua",
+      "Bongara",
+      "Chachapoyas",
+      "Condorcanqui",
+      "Luya",
+      "Rodriguez de Mendoza",
+      "Utcubamba"
+     ]
+    },
+    {
+     "name": "Ancash",
+     "districts": [
+      "Aija",
+      "Antonio Raymondi",
+      "Asuncion",
+      "Bolognesi",
+      "Carhuaz",
+      "Carlos Fermin Fitzcarrald",
+      "Casma",
+      "Corongo",
+      "Huaraz",
+      "Huari",
+      "Huarmey",
+      "Huaylas",
+      "Mariscal Luzuriaga",
+      "Ocros",
+      "Pallasca",
+      "Pomabamba",
+      "Recuay",
+      "Santa",
+      "Sihuas",
+      "Yungay"
+     ]
+    },
+    {
+     "name": "Apurímac",
+     "districts": [
+      "Abancay",
+      "Andahuaylas",
+      "Antabamba",
+      "Aymaraes",
+      "Chincheros",
+      "Cotabambas",
+      "Grau"
+     ]
+    },
+    {
+     "name": "Arequipa",
+     "districts": [
+      "Arequipa",
+      "Camana",
+      "Caraveli",
+      "Castilla",
+      "Caylloma",
+      "Condesuyos",
+      "Islay",
+      "La Union"
+     ]
+    },
+    {
+     "name": "Ayacucho",
+     "districts": [
+      "Cangallo",
+      "Huamanga",
+      "Huanca Sancos",
+      "Huanta",
+      "La Mar",
+      "Lucanas",
+      "Parinacochas",
+      "Paucar del Sara Sara",
+      "Sucre",
+      "Victor Fajardo",
+      "Vilcas Huaman"
+     ]
+    },
+    {
+     "name": "Cajamarca",
+     "districts": [
+      "Cajabamba",
+      "Cajamarca",
+      "Celendin",
+      "Chota",
+      "Contumaza",
+      "Cutervo",
+      "Hualgayoc",
+      "Jaen",
+      "San Ignacio",
+      "San Marcos",
+      "San Miguel",
+      "San Pablo",
+      "Santa Cruz"
+     ]
+    },
+    {
+     "name": "Cusco",
+     "districts": [
+      "Acomayo",
+      "Anta",
+      "Calca",
+      "Canas",
+      "Canchis",
+      "Chumbivilcas",
+      "Cusco",
+      "Espinar",
+      "La Convencion",
+      "Paruro",
+      "Paucartambo",
+      "Quispicanchi",
+      "Urubamba"
+     ]
+    },
+    {
+     "name": "El Callao",
+     "districts": [
+      "Callao"
+     ]
+    },
+    {
+     "name": "Huancavelica",
+     "districts": [
+      "Acobamba",
+      "Angaraes",
+      "Castrovirreyna",
+      "Churcampa",
+      "Huancavelica",
+      "Huancayo",
+      "Huaytara",
+      "Tayacaja"
+     ]
+    },
+    {
+     "name": "Huánuco",
+     "districts": [
+      "Ambo",
+      "Dos de Mayo",
+      "Huacaybamba",
+      "Huamalies",
+      "Huanuco",
+      "Lauricocha",
+      "Leoncio Prado",
+      "MaraÃ±on",
+      "Pachitea",
+      "Puerto Inca",
+      "Yarowilca"
+     ]
+    },
+    {
+     "name": "Ica",
+     "districts": [
+      "Chincha",
+      "Ica",
+      "Nasca",
+      "Palpa",
+      "Pisco"
+     ]
+    },
+    {
+     "name": "Junín",
+     "districts": [
+      "Chanchamayo",
+      "Chupaca",
+      "Concepcion",
+      "Jauja",
+      "Junin",
+      "Satipo",
+      "Tarma",
+      "Yauli"
+     ]
+    },
+    {
+     "name": "La Libertad",
+     "districts": [
+      "Ascope",
+      "Bolivar",
+      "Chepen",
+      "Gran Chimu",
+      "Julcan",
+      "Otuzco",
+      "Pacasmayo",
+      "Pataz",
+      "Sanchez Carrion",
+      "Santiago de Chuco",
+      "Trujillo",
+      "Viru"
+     ]
+    },
+    {
+     "name": "Lambayeque",
+     "districts": [
+      "Chiclayo",
+      "FerreÃ±afe",
+      "Lambayeque"
+     ]
+    },
+    {
+     "name": "Lima",
+     "districts": [
+      "Barranca",
+      "Cajatambo",
+      "Canta",
+      "CaÃ±ete",
+      "Huaral",
+      "Huarochiri",
+      "Huaura",
+      "Oyon",
+      "Yauyos"
+     ]
+    },
+    {
+     "name": "Loreto",
+     "districts": [
+      "Alto Amazonas",
+      "Datem del MaraÃ±on",
+      "Loreto",
+      "Mariscal Ramon Castilla",
+      "Maynas",
+      "Putumayo",
+      "Requena",
+      "Ucayali"
+     ]
+    },
+    {
+     "name": "Madre de Dios",
+     "districts": [
+      "Manu",
+      "Tahuamanu",
+      "Tambopata"
+     ]
+    },
+    {
+     "name": "Moquegua",
+     "districts": [
+      "General Sanchez Cerro",
+      "Ilo",
+      "Mariscal Nieto"
+     ]
+    },
+    {
+     "name": "Municipalidad Metropolitana de Lima",
+     "districts": [
+      "Lima"
+     ]
+    },
+    {
+     "name": "Pasco",
+     "districts": [
+      "Daniel Alcides Carrion",
+      "Oxapampa",
+      "Pasco"
+     ]
+    },
+    {
+     "name": "Piura",
+     "districts": [
+      "Ayabaca",
+      "Huancabamba",
+      "Morropon",
+      "Paita",
+      "Piura",
+      "Sechura",
+      "Sullana",
+      "Talara"
+     ]
+    },
+    {
+     "name": "Puno",
+     "districts": [
+      "Azangaro",
+      "Carabaya",
+      "Chucuito",
+      "El Collao",
+      "Huancane",
+      "Lampa",
+      "Melgar",
+      "Moho",
+      "Puno",
+      "San Antonio de Putina",
+      "San Roman",
+      "Sandia",
+      "Yunguyo"
+     ]
+    },
+    {
+     "name": "San Martín",
+     "districts": [
+      "Bellavista",
+      "El Dorado",
+      "Huallaga",
+      "Lamas",
+      "Mariscal Caceres",
+      "Moyobamba",
+      "Picota",
+      "Rioja",
+      "San Martin",
+      "Tocache"
+     ]
+    },
+    {
+     "name": "Tacna",
+     "districts": [
+      "Candarave",
+      "Jorge Basadre",
+      "Tacna",
+      "Tarata"
+     ]
+    },
+    {
+     "name": "Tumbes",
+     "districts": [
+      "Contralmirante Villar",
+      "Tumbes",
+      "Zarumilla"
+     ]
+    },
+    {
+     "name": "Ucayali",
+     "districts": [
+      "Atalaya",
+      "Coronel Portillo",
+      "Padre Abad",
+      "Purus"
+     ]
+    }
+   ]
+  },
+  "PH": {
+   "source": "geoBoundaries gbOpen PHL ADM1/ADM2",
+   "licence": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "ARMM",
+     "districts": [
+      "Basilan",
+      "Lanao del Sur",
+      "Maguindanao",
+      "Sulu",
+      "Tawi-Tawi"
+     ]
+    },
+    {
+     "name": "Bicol Region",
+     "districts": [
+      "Albay",
+      "Camarines Norte",
+      "Camarines Sur",
+      "Catanduanes",
+      "Masbate",
+      "Sorsogon"
+     ]
+    },
+    {
+     "name": "CAR",
+     "districts": [
+      "Abra",
+      "Apayao",
+      "Benguet",
+      "Ifugao",
+      "Kalinga",
+      "Mountain Province"
+     ]
+    },
+    {
+     "name": "Cagayan Valley",
+     "districts": [
+      "Batanes",
+      "Cagayan",
+      "Isabela",
+      "Nueva Vizcaya",
+      "Quirino"
+     ]
+    },
+    {
+     "name": "Calabarzon",
+     "districts": [
+      "Batangas",
+      "Cavite",
+      "Laguna",
+      "Quezon",
+      "Rizal"
+     ]
+    },
+    {
+     "name": "Caraga",
+     "districts": [
+      "Agusan del Norte",
+      "Agusan del Sur",
+      "Dinagat Islands",
+      "Surigao del Norte",
+      "Surigao del Sur"
+     ]
+    },
+    {
+     "name": "Central Luzon",
+     "districts": [
+      "Aurora",
+      "Bataan",
+      "Bulacan",
+      "Nueva Ecija",
+      "Pampanga",
+      "Tarlac",
+      "Zambales"
+     ]
+    },
+    {
+     "name": "Central Visayas",
+     "districts": [
+      "Bohol",
+      "Cebu",
+      "Negros Oriental",
+      "Siquijor"
+     ]
+    },
+    {
+     "name": "Davao Region",
+     "districts": [
+      "Compostela Valley",
+      "Davao Occidental",
+      "Davao Oriental",
+      "Davao del Norte",
+      "Davao del Sur"
+     ]
+    },
+    {
+     "name": "Eastern Visayas",
+     "districts": [
+      "Biliran",
+      "Eastern Samar",
+      "Leyte",
+      "Northern Samar",
+      "Samar",
+      "Southern Leyte"
+     ]
+    },
+    {
+     "name": "Ilocos Region",
+     "districts": [
+      "Ilocos Norte",
+      "Ilocos Sur",
+      "La Union",
+      "Pangasinan"
+     ]
+    },
+    {
+     "name": "Mimaropa",
+     "districts": [
+      "Marinduque",
+      "Occidental Mindoro",
+      "Oriental Mindoro",
+      "Palawan",
+      "Romblon"
+     ]
+    },
+    {
+     "name": "NCR",
+     "districts": [
+      "NCR, City of Manila, First District",
+      "NCR, Fourth District",
+      "NCR, Second District",
+      "NCR, Third District"
+     ]
+    },
+    {
+     "name": "Northern Mindanao",
+     "districts": [
+      "Bukidnon",
+      "Camiguin",
+      "Lanao del Norte",
+      "Misamis Occidental",
+      "Misamis Oriental"
+     ]
+    },
+    {
+     "name": "Soccsksargen",
+     "districts": [
+      "Cotabato",
+      "Cotabato City",
+      "Sarangani",
+      "South Cotabato",
+      "Sultan Kudarat"
+     ]
+    },
+    {
+     "name": "Western Visayas",
+     "districts": [
+      "Aklan",
+      "Antique",
+      "Capiz",
+      "Guimaras",
+      "Iloilo",
+      "Negros Occidental"
+     ]
+    },
+    {
+     "name": "Zamboanga Peninsula",
+     "districts": [
+      "City of Isabela",
+      "Zamboanga Sibugay",
+      "Zamboanga del Norte",
+      "Zamboanga del Sur"
+     ]
+    }
+   ]
+  },
+  "RW": {
+   "source": "geoBoundaries gbOpen RWA ADM1/ADM2",
+   "licence": "Creative Commons Attribution 4.0 (CC BY 4.0)",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "City of Kigali",
+     "districts": [
+      "Gasabo",
+      "Kicukiro",
+      "Nyarugenge"
+     ]
+    },
+    {
+     "name": "Eastern Province",
+     "districts": [
+      "Bugesera",
+      "Gatsibo",
+      "Kayonza",
+      "Kirehe",
+      "Ngoma",
+      "Nyagatare",
+      "Rwamagana"
+     ]
+    },
+    {
+     "name": "Northern Province",
+     "districts": [
+      "Burera",
+      "Gakenke",
+      "Gicumbi",
+      "Musanze",
+      "Rulindo"
+     ]
+    },
+    {
+     "name": "Southern Province",
+     "districts": [
+      "Gisagara",
+      "Huye",
+      "Kamonyi",
+      "Muhanga",
+      "Nyamagabe",
+      "Nyanza",
+      "Nyaruguru",
+      "Ruhango"
+     ]
+    },
+    {
+     "name": "Western Province",
+     "districts": [
+      "Karongi",
+      "Ngororero",
+      "Nyabihu",
+      "Nyamasheke",
+      "Rubavu",
+      "Rusizi",
+      "Rutsiro"
+     ]
+    }
+   ]
+  },
+  "SL": {
+   "source": "geoBoundaries gbOpen SLE ADM1/ADM2",
+   "licence": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Eastern",
+     "districts": [
+      "Kailahun",
+      "Kenema",
+      "Kono"
+     ]
+    },
+    {
+     "name": "Northern",
+     "districts": [
+      "Bombali",
+      "Kambia",
+      "Koinadugu",
+      "Port Loko",
+      "Tonkolili"
+     ]
+    },
+    {
+     "name": "Southern",
+     "districts": [
+      "Bo",
+      "Bonthe",
+      "Moyamba",
+      "Pujehun"
+     ]
+    },
+    {
+     "name": "Western Area",
+     "districts": [
+      "Western Area Rural",
+      "Western Area Urban"
+     ]
+    }
+   ]
+  },
+  "SN": {
+   "source": "geoBoundaries gbOpen SEN ADM1/ADM2",
+   "licence": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Dakar",
+     "districts": [
+      "Dakar",
+      "Guediawaye",
+      "Pikine",
+      "Rufisque"
+     ]
+    },
+    {
+     "name": "Diourbel",
+     "districts": [
+      "Bambey",
+      "Diourbel",
+      "Mbacke"
+     ]
+    },
+    {
+     "name": "Fatick",
+     "districts": [
+      "Fatick",
+      "Foundiougne",
+      "Gossas"
+     ]
+    },
+    {
+     "name": "Kaffrine",
+     "districts": [
+      "Birkelane",
+      "Kaffrine",
+      "Koungheul",
+      "Malem Hodar"
+     ]
+    },
+    {
+     "name": "Kaolack",
+     "districts": [
+      "Guinguineo",
+      "Kaolack",
+      "Nioro Du Rip"
+     ]
+    },
+    {
+     "name": "Kedougou",
+     "districts": [
+      "Kedougou",
+      "Salemata",
+      "Saraya"
+     ]
+    },
+    {
+     "name": "Kolda",
+     "districts": [
+      "Kolda",
+      "Medina Yoroufoula",
+      "Velingara"
+     ]
+    },
+    {
+     "name": "Louga",
+     "districts": [
+      "Kebemer",
+      "Linguere",
+      "Louga"
+     ]
+    },
+    {
+     "name": "Matam",
+     "districts": [
+      "Kanel",
+      "Matam",
+      "Ranerou"
+     ]
+    },
+    {
+     "name": "Saint Louis",
+     "districts": [
+      "Dagana",
+      "Podor",
+      "Saint Louis"
+     ]
+    },
+    {
+     "name": "Sedhiou",
+     "districts": [
+      "Bounkiling",
+      "Goudomp",
+      "Sedhiou"
+     ]
+    },
+    {
+     "name": "Tambacounda",
+     "districts": [
+      "Bakel",
+      "Goudiry",
+      "Koumpentoum",
+      "Tambacounda"
+     ]
+    },
+    {
+     "name": "Thies",
+     "districts": [
+      "Mbour",
+      "Thies",
+      "Tivaoune"
+     ]
+    },
+    {
+     "name": "Ziguinchor",
+     "districts": [
+      "Bignona",
+      "Oussouye",
+      "Ziguinchor"
+     ]
+    }
+   ]
+  },
+  "UG": {
+   "source": "geoBoundaries gbOpen UGA ADM1/ADM2",
+   "licence": "Open Data Commons Open Database License 1.0",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Central Region",
+     "districts": [
+      "Bamunanika",
+      "Bbaale",
+      "Buikwe",
+      "Bujjumba",
+      "Bukomansimbi",
+      "Bukuto",
+      "Buruli",
+      "Busiro",
+      "Busujju",
+      "Butambala",
+      "Buvuma",
+      "Buwekula",
+      "Gomba",
+      "Kabula",
+      "Kakuuto",
+      "Kalungu",
+      "Kampala",
+      "Kassanda",
+      "Katikamu",
+      "Kiboga",
+      "Kooki",
+      "Kyadondo",
+      "Kyamuswa",
+      "Kyotera",
+      "Lwemiyaga",
+      "Mawogola",
+      "Mawokota",
+      "Mityana",
+      "Mukono",
+      "Nakaseke",
+      "Nakifuma",
+      "Ntenjeru"
+     ]
+    },
+    {
+     "name": "Eastern Region",
+     "districts": [
+      "Amuria",
+      "Bubulo",
+      "Budadiri",
+      "Budaka",
+      "Budiope",
+      "Bugabula",
+      "Bugweri",
+      "Bukedea",
+      "Bukooli",
+      "Bulambuli",
+      "Bulamogi",
+      "Bungokho",
+      "Bunya",
+      "Bunyole",
+      "Busiki",
+      "Butebo",
+      "Butembe",
+      "Buzaaya",
+      "Kaberamaido",
+      "Kagoma",
+      "Kalaki",
+      "Kasilo",
+      "Kibuku",
+      "Kigulu",
+      "Kongasis",
+      "Kumi",
+      "Kween",
+      "Luuka",
+      "Manjiya",
+      "Ngora",
+      "Pallisa",
+      "Samia-Bugwe",
+      "Serere",
+      "Soroti",
+      "Tingey",
+      "Tororo",
+      "Usuk",
+      "West Budama"
+     ]
+    },
+    {
+     "name": "Northern Region",
+     "districts": [
+      "Agago",
+      "Aringa",
+      "Aruu",
+      "Aswa",
+      "Ayivu",
+      "Bokora",
+      "Chekwii",
+      "Chua",
+      "Dodoth",
+      "Dokolo",
+      "East Moyo",
+      "Erute",
+      "Jie",
+      "Jonam",
+      "Kilak",
+      "Kioga",
+      "Koboko",
+      "Kole",
+      "Kwania",
+      "Labwor",
+      "Lamwo",
+      "Madi-Okollo",
+      "Maracha",
+      "Maruzi",
+      "Matheniko",
+      "Moroto",
+      "Nwoya",
+      "Obongi",
+      "Okoro",
+      "Omoro",
+      "Otuke",
+      "Oyam",
+      "Padyere",
+      "Pian",
+      "Pokot",
+      "Terego",
+      "Vurra",
+      "West Moyo"
+     ]
+    },
+    {
+     "name": "Western Region",
+     "districts": [
+      "Bufumbira",
+      "Bugahya",
+      "Bugangaizi",
+      "Bughendra",
+      "Buhaguzi",
+      "Buhweju",
+      "Bujenje",
+      "Bujumbura",
+      "Bukanga",
+      "Bukonjo",
+      "Buliisa",
+      "Bunyangabu",
+      "Bunyaruguru",
+      "Burahya",
+      "Buruuli",
+      "Busongora",
+      "Buyaga",
+      "Buyanja",
+      "Ibanda",
+      "Igara",
+      "Isingiro",
+      "Kajara",
+      "Kashari",
+      "Kazo",
+      "Kibale",
+      "Kibanda",
+      "Kinkiizi",
+      "Kitagwenda",
+      "Kyaka",
+      "Mwenge",
+      "Ndorwa",
+      "Ntoroko",
+      "Nyabushozi",
+      "Rubabo",
+      "Rubanda",
+      "Ruhaama",
+      "Ruhinda",
+      "Rukiga",
+      "Rushenyi",
+      "Rwampara",
+      "Sheema"
+     ]
+    }
+   ]
+  },
+  "ZA": {
+   "source": "geoBoundaries gbOpen ZAF ADM1/ADM2",
+   "licence": "Creative Commons Attribution 3.0 Intergovernmental Organisations (CC BY 3.0 IGO)",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Eastern Cape",
+     "districts": [
+      "Alfred Nzo",
+      "Amathole",
+      "Buffalo City",
+      "Cacadu",
+      "Chris Hani",
+      "Joe Gqabi",
+      "Nelson Mandela Bay",
+      "O.R.Tambo"
+     ]
+    },
+    {
+     "name": "Free State",
+     "districts": [
+      "Fezile Dabi",
+      "Lejweleputswa",
+      "Mangaung",
+      "Thabo Mofutsanyane",
+      "Xhariep"
+     ]
+    },
+    {
+     "name": "Gauteng",
+     "districts": [
+      "City of Johannesburg",
+      "City of Tshwane",
+      "Ekurhuleni",
+      "Sedibeng",
+      "West Rand"
+     ]
+    },
+    {
+     "name": "KwaZulu-Natal",
+     "districts": [
+      "Amajuba",
+      "Sisonke",
+      "Ugu",
+      "Umgungundlovu",
+      "Umkhanyakude",
+      "Umzinyathi",
+      "Uthukela",
+      "Uthungulu",
+      "Zululand",
+      "eThekwini",
+      "iLembe"
+     ]
+    },
+    {
+     "name": "Limpopo",
+     "districts": [
+      "Capricorn",
+      "Mopani",
+      "Sekhukhune",
+      "Vhembe",
+      "Waterberg"
+     ]
+    },
+    {
+     "name": "Mpumalanga",
+     "districts": [
+      "Ehlanzeni",
+      "Gert Sibande",
+      "Nkangala"
+     ]
+    },
+    {
+     "name": "North West",
+     "districts": [
+      "Bojanala",
+      "Dr Kenneth Kaunda",
+      "Dr Ruth Segomotsi Mompati",
+      "Ngaka Modiri Molema"
+     ]
+    },
+    {
+     "name": "Nothern Cape",
+     "districts": [
+      "Frances Baard",
+      "John Taolo Gaetsewe",
+      "Namakwa",
+      "Pixley ka Seme",
+      "Z F Mgcawu"
+     ]
+    },
+    {
+     "name": "Western Cape",
+     "districts": [
+      "Cape Winelands",
+      "Central Karoo",
+      "City of Cape Town",
+      "Eden",
+      "Overberg",
+      "West Coast"
+     ]
+    }
+   ]
+  },
+  "ZM": {
+   "source": "geoBoundaries gbOpen ZMB ADM1/ADM2",
+   "licence": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+   "source_year": "",
+   "regions": [
+    {
+     "name": "Central",
+     "districts": [
+      "Chibombo",
+      "Chisamba",
+      "Chitambo",
+      "Itezhi-Tezhi",
+      "Kabwe",
+      "Kapiri Mposhi",
+      "Luano",
+      "Mkushi",
+      "Mumbwa",
+      "Ngabwe",
+      "Serenje",
+      "Shibuyunji"
+     ]
+    },
+    {
+     "name": "Copperbelt",
+     "districts": [
+      "Chililabombwe",
+      "Chingola",
+      "Kalulushi",
+      "Kitwe",
+      "Luanshya",
+      "Lufwanyama",
+      "Masaiti",
+      "Mpongwe",
+      "Mufulira",
+      "Ndola"
+     ]
+    },
+    {
+     "name": "Eastern",
+     "districts": [
+      "Chadiza",
+      "Chasefu",
+      "Chipangali",
+      "Chipata",
+      "Kasenengwa",
+      "Katete",
+      "Lumezi",
+      "Lundazi",
+      "Lusangazi",
+      "Mambwe",
+      "Nyimba",
+      "Petauke",
+      "Sinda",
+      "Vubwi"
+     ]
+    },
+    {
+     "name": "Luapula",
+     "districts": [
+      "Chembe",
+      "Chiengi",
+      "Chifunabuli",
+      "Chipili",
+      "Kawambwa",
+      "Lunga",
+      "Mansa",
+      "Milengi",
+      "Mwansabombwe",
+      "Mwense",
+      "Nchelenge",
+      "Samfya"
+     ]
+    },
+    {
+     "name": "Lusaka",
+     "districts": [
+      "Chilanga",
+      "Chirundu",
+      "Chongwe",
+      "Kafue",
+      "Luangwa",
+      "Lusaka",
+      "Rufunsa"
+     ]
+    },
+    {
+     "name": "Muchinga",
+     "districts": [
+      "Chama",
+      "Chinsali",
+      "Isoka",
+      "Kanchibiya",
+      "Lavushimanda",
+      "Mafinga",
+      "Mpika",
+      "Nakonde",
+      "Shiwang'Andu"
+     ]
+    },
+    {
+     "name": "North-Western",
+     "districts": [
+      "Chavuma",
+      "Ikelenge",
+      "Kabompo",
+      "Kalumbila",
+      "Kasempa",
+      "Manyinga",
+      "Mufumbwe",
+      "Mushindano",
+      "Mwinilunga",
+      "Solwezi",
+      "Zambezi"
+     ]
+    },
+    {
+     "name": "Northern",
+     "districts": [
+      "Chilubi",
+      "Kaputa",
+      "Kasama",
+      "Lunte",
+      "Lupososhi",
+      "Luwingu",
+      "Mbala",
+      "Mporokoso",
+      "Mpulungu",
+      "Mungwi",
+      "Nsama",
+      "Senga Hill"
+     ]
+    },
+    {
+     "name": "Southern",
+     "districts": [
+      "Chikankanta",
+      "Choma",
+      "Gwembe",
+      "Kalomo",
+      "Kazungula",
+      "Livingstone",
+      "Mazabuka",
+      "Monze",
+      "Namwala",
+      "Pemba",
+      "Siavonga",
+      "Sinazongwe",
+      "Zimba"
+     ]
+    },
+    {
+     "name": "Western",
+     "districts": [
+      "Kalabo",
+      "Kaoma",
+      "Limulunga",
+      "Luampa",
+      "Lukulu",
+      "Mitete",
+      "Mongu",
+      "Mulobezi",
+      "Mwandi",
+      "Nalolo",
+      "Nkeyema",
+      "Senanga",
+      "Sesheke",
+      "Shangombo",
+      "Sikongo",
+      "Sioma"
+     ]
+    }
+   ]
+  }
+ }
+}

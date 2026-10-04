@@ -3,7 +3,7 @@
 // The intent model never decides urgency; only these rules do.
 import type { Bilingual, EncounterInput, FacilityLevel, Icd10Doc, Rule, RulesDoc, Urgency } from "../data/schemas";
 
-export type Lang = "en" | "sw";
+export type { Lang } from "./lang";
 
 export interface FiredRule {
   id: string;

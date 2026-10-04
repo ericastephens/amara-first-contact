@@ -27,13 +27,14 @@ export interface Referral {
   slotStatus: "none" | "provisional" | "confirmed" | "moved";
   status: "queued" | "sent";
   note: string;
-  reasons: { ruleId: string; en: string; sw: string; source: string }[];
+  /** Reason text per language code (en and sw always; more when rules.json has them). */
+  reasons: ({ ruleId: string; en: string; sw: string; source: string } & Record<string, string>)[];
   ruleOut: { code: string; title: string }[];
   decisions: FlagDecision[];
   syndromes: string[];
   ward: string;
   group: string;
-  lang: "sw" | "en";
+  lang: string;
   channel: "sms" | "voice";
   patientName: string;
   phone: string;
@@ -50,7 +51,7 @@ export interface SmsMessage {
   id: string;
   referralId: string;
   to: string;
-  lang: "sw" | "en";
+  lang: string;
   channel: "sms" | "voice";
   templateId: string;
   text: string;
