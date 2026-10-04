@@ -44,6 +44,35 @@ export function questionById(q: Questionnaires, id: string): Question | undefine
   return allQuestions(q).find((x) => x.id === id);
 }
 
+/**
+ * The question as asked to this group. Some ids appear in more than one module (q_selfharm,
+ * q_bp_ever_checked) with a different show_if; the module that applies to the group wins.
+ */
+export function questionForGroup(q: Questionnaires, id: string, group: Group): Question | undefined {
+  for (const m of questionsForGroup(q, group)) {
+    const found = m.questions.find((x) => x.id === id);
+    if (found) return found;
+  }
+  return q.optional.find((x) => x.id === id);
+}
+
+/**
+ * Unanswered questions worth listing: only those the intake would actually show this group
+ * (e.g. q_selfharm only after its low-mood parent was answered "yes"). "q_bp" is the BP reading.
+ */
+export function visibleUnanswered(
+  q: Questionnaires,
+  enc: Pick<Encounter, "group" | "answers">,
+  ids: string[],
+  roles: { has_bp_cuff: boolean },
+): string[] {
+  return ids.filter((id) => {
+    if (id === "q_bp") return roles.has_bp_cuff;
+    const question = questionForGroup(q, id, enc.group);
+    return question ? isVisible(question, enc, roles) : false;
+  });
+}
+
 /** Questions for this group in display order (common, group module(s), social/environment). */
 export function questionsForGroup(q: Questionnaires, group: Group): { moduleId: string; questions: Question[] }[] {
   return q.modules
@@ -150,6 +179,42 @@ export function encounterFromCase(
     enc.uncertainChips = [{ text: input.free_text ?? "…", best: "other", confidence: 0.2, status: "open" }];
   }
   if (input.bp) enc.bp = input.bp;
+  for (const k of Object.keys(enc.answers)) enc.answeredAt[k] = now;
+  return enc;
+}
+
+/**
+ * Demo mode: start a scripted patient at the free-text step with her own sentence typed in.
+ * The intent model reads the sentence in the intake (its chips still need the responder's confirmation),
+ * so here `detected` (the labels the model finds in the sentence) are left out. Every other symptom of
+ * the case is answered on the keypad question that maps to it (with its show_if parents), as a responder
+ * would; a symptom with no such question falls back to a confirmed chip so the demo stays repeatable.
+ */
+export function demoEncounterFromCase(
+  q: Questionnaires,
+  caseId: string,
+  input: EncounterInput,
+  now: string,
+  id: string,
+  name: string,
+  detected: string[],
+): Encounter {
+  const enc = encounterFromCase(caseId, { ...input, symptoms: [], uncertain: false }, now, id, name);
+  const questions = questionsForGroup(q, input.group).flatMap((m) => m.questions);
+  const answerYes = (question: Question) => {
+    for (const [parent, value] of Object.entries(question.show_if ?? {})) {
+      const pq = questions.find((x) => x.id === parent);
+      if (pq && value === "yes") answerYes(pq);
+      else enc.answers[parent] = value;
+    }
+    enc.answers[question.id] = "yes";
+  };
+  for (const s of input.symptoms) {
+    if (detected.includes(s)) continue;
+    const question = questions.find((x) => x.maps_to === s);
+    if (question) answerYes(question);
+    else enc.chips.push({ id: s, text: "", confidence: 1, status: "confirmed" });
+  }
   for (const k of Object.keys(enc.answers)) enc.answeredAt[k] = now;
   return enc;
 }

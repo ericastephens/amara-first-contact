@@ -1,9 +1,7 @@
 import { createContext, useContext, useState, type ReactNode } from "react";
-import en from "../i18n/en.json";
-import sw from "../i18n/sw.json";
+import { translate, type Lang } from "../i18n/translate";
 
-export type Lang = "sw" | "en";
-const STRINGS: Record<Lang, Record<string, string>> = { en, sw };
+export { translate, type Lang };
 
 interface I18n {
   lang: Lang;
@@ -21,12 +19,6 @@ function readLang(): Lang {
   } catch {
     return "sw";
   }
-}
-
-export function translate(lang: Lang, key: string, vars?: Record<string, string | number>): string {
-  let s = STRINGS[lang][key] ?? STRINGS.en[key] ?? key;
-  if (vars) for (const [k, v] of Object.entries(vars)) s = s.replaceAll(`{${k}}`, String(v));
-  return s;
 }
 
 export function I18nProvider({ children }: { children: ReactNode }) {

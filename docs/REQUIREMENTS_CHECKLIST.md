@@ -77,5 +77,5 @@ Fill the "Evidence" column with links to code, tests, screenshots or video times
 | 7 Store-and-forward sync | `src/sync/sync.ts`, `mockServer.ts`, `network.ts`, `clock.ts` | `tests/sync.test.ts` |
 | 8 Clinic dashboard, outbreak, escalation | `src/logic/outbreak.ts`, `src/ui/clinician/Clinician.tsx`, `src/ui/OutbreakPanel.tsx`, `src/ui/district/District.tsx` | `tests/outbreak.test.ts` |
 | 9 Speech/translation (optional) | Not built. Typed + keypad path covers the journey | — |
-| 10 Hardening, demo mode | Demo mode in `src/ui/App.tsx` | `tests/guardrails.test.ts` |
+| 10 Hardening, demo mode | Demo mode in `src/ui/App.tsx`: scripted patients start at the free-text step, intent chips shown, then the result (`demoEncounterFromCase` in `src/logic/encounter.ts`) | `tests/guardrails.test.ts`, `tests/walkthrough.test.ts` |
 | 11 Docs | `docs/MODEL_CARD.md`, `DATA_CARD.md`, `RESPONSIBLE_AI.md`, `VIDEO_SCRIPT.md` | — |
