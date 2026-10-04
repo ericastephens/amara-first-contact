@@ -1,0 +1,46 @@
+name: Refresh real clinics (OpenStreetMap)
+
+# Fetches named health facilities for the demo area (Hai and Moshi Rural, Kilimanjaro) and commits
+# data/facilities_osm_kilimanjaro.json to the branch that ran it, so the real list is reviewable in the repo
+# and baked into every build even when the map servers are busy.
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore: [main]
+    paths:
+      - scripts/fetch_facilities_osm.py
+      - .github/workflows/refresh-facilities.yml
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Fetch facilities
+        run: python scripts/fetch_facilities_osm.py --bbox=-3.45,37.10,-3.10,37.60 --out data/facilities_osm_kilimanjaro.json
+      - name: Summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          d = json.load(open("data/facilities_osm_kilimanjaro.json", encoding="utf-8"))
+          fs = d["facilities"]
+          print(f"### {len(fs)} named facilities from OpenStreetMap\n")
+          print("| Name | Level | Lat | Lon |\n|---|---|---|---|")
+          for f in fs[:40]:
+              print(f"| {f['name']} | {f['level']} | {f['lat']} | {f['lon']} |")
+          PY
+          python -c "import json;print('::notice::OSM facilities:',len(json.load(open('data/facilities_osm_kilimanjaro.json'))['facilities']))"
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/facilities_osm_kilimanjaro.json
+          git diff --cached --quiet && echo "no change" && exit 0
+          git commit -m "Real clinics for Kilimanjaro demo area from OpenStreetMap (ODbL)"
+          git push

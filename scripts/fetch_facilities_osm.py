@@ -3,19 +3,28 @@
 Default area: coffee-growing slopes of Kilimanjaro (Hai / Moshi Rural), Tanzania, as a real-world stand-in
 for the brief's fictional Ondera highlands. Change --bbox for another area.
 
-Usage: python scripts/fetch_facilities_osm.py [--bbox south,west,north,east]
+Usage: python scripts/fetch_facilities_osm.py [--bbox=south,west,north,east]
+       (use the = form: a bbox starting with "-" is otherwise read as an option)
 Output: data/facilities_osm_kilimanjaro.json (same shape as data/facilities_sample.json)
 Licence: OpenStreetMap data is ODbL; credit "© OpenStreetMap contributors" in the app and docs.
 Does not cover: many drug shops and dispensaries are missing or untagged; no hours, staff, stock or slots.
 """
 import argparse
 import json
+import re
+import sys
+import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OVERPASS = "https://overpass-api.de/api/interpreter"
+# Main Overpass server first, then public mirrors (the main one is often busy).
+OVERPASS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://overpass.private.coffee/api/interpreter",
+]
 
 LEVEL = {"hospital": "hospital", "clinic": "health_centre", "doctors": "dispensary", "pharmacy": "drug_shop"}
 
@@ -33,10 +42,20 @@ def main() -> None:
     );
     out center tags;
     """
-    req = urllib.request.Request(OVERPASS, data=urllib.parse.urlencode({"data": q}).encode(),
-                                 headers={"User-Agent": "amara-first-contact-hackathon/0.1"})
-    with urllib.request.urlopen(req, timeout=90) as r:
-        elements = json.load(r)["elements"]
+    elements = None
+    for attempt, url in enumerate(OVERPASS * 2):
+        try:
+            req = urllib.request.Request(url, data=urllib.parse.urlencode({"data": q}).encode(),
+                                         headers={"User-Agent": "amara-first-contact-hackathon/0.1"})
+            with urllib.request.urlopen(req, timeout=90) as r:
+                elements = json.load(r)["elements"]
+            print(f"fetched {len(elements)} elements from {url}")
+            break
+        except Exception as e:  # busy server, timeout, bad gateway: try the next one
+            print(f"attempt {attempt + 1} via {url} failed: {e}", file=sys.stderr)
+            time.sleep(5)
+    if elements is None:
+        raise SystemExit("all Overpass servers failed")
 
     facilities = []
     for e in elements:
@@ -49,6 +68,10 @@ def main() -> None:
         name = tags.get("name") or tags.get("name:sw") or tags.get("name:en")
         if not name:
             continue  # an unnamed point cannot be referred to
+        if re.search(r"traditional|herbal|mganga|tiba asili", name, re.I) or re.fullmatch(
+                r"(hospital|hospitali|clinic|kliniki|dispensary|zahanati|health cent(er|re)|kituo cha afya|duka la dawa|pharmacy)",
+                name.strip(), re.I):
+            continue  # traditional healers and bare generic names are not referral targets
         level = LEVEL.get(kind, "health_centre")
         # Tanzanian naming conventions help: Zahanati = dispensary, Kituo cha Afya = health centre
         lname = name.lower()
@@ -71,6 +94,8 @@ def main() -> None:
     for f in facilities:
         counts[f["level"]] = counts.get(f["level"], 0) + 1
     print(f"wrote {path.relative_to(ROOT)}: {len(facilities)} facilities {counts}")
+    if not facilities:
+        raise SystemExit("no named facilities found in the area")
 
 
 if __name__ == "__main__":

@@ -33,11 +33,17 @@ export interface Registry {
 
 const KEY = "amara.facilities.v1";
 export const OSM_ATTRIBUTION = "© OpenStreetMap contributors (ODbL)";
-const OVERPASS = "https://overpass-api.de/api/interpreter";
+// Main Overpass server first, then public mirrors (the main one is often busy).
+const OVERPASS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
+  "https://overpass.private.coffee/api/interpreter",
+];
 const NOMINATIM = "https://nominatim.openstreetmap.org/search";
 
-// Facilities baked in at build time, if CI produced any.
-const BUILT = Object.values(
+// Facilities baked in at build time, if CI produced any. Unit tests always use the fixed sample clinics,
+// so their results do not depend on what OpenStreetMap held on the day of the build.
+const BUILT = import.meta.env.MODE === "test" ? undefined : Object.values(
   import.meta.glob<{ default: { facilities: Facility[]; bbox?: string } }>("../../data/facilities_osm_*.json", { eager: true }),
 )[0]?.default;
 
@@ -56,12 +62,21 @@ function sampleRegistry(): Registry {
 
 function builtRegistry(): Registry | null {
   if (!BUILT?.facilities?.length) return null;
-  const fs = BUILT.facilities.filter((f) => f.level !== "drug_shop");
-  const lat = fs.reduce((a, f) => a + f.lat, 0) / fs.length;
-  const lon = fs.reduce((a, f) => a + f.lon, 0) / fs.length;
+  const all = BUILT.facilities.filter((f) => f.level !== "drug_shop" && referableName(f.name));
+  // Measure from the responder's own position when setup has one, else from the middle of the area.
+  const here = getSetup()?.location;
+  const center: Place = here
+    ? { ...here }
+    : {
+        lat: all.reduce((a, f) => a + f.lat, 0) / all.length,
+        lon: all.reduce((a, f) => a + f.lon, 0) / all.length,
+        method: "place",
+        label: "Kilimanjaro (OpenStreetMap)",
+      };
+  const fs = [...all].sort((a, b) => haversineKm(center, a) - haversineKm(center, b));
   return {
     source: "osm_build",
-    center: { lat, lon, method: "place", label: "Kilimanjaro (OpenStreetMap)" },
+    center,
     radiusKm: 30,
     facilities: fs,
     slots: simulatedSlots(fs, slotsDoc.demo_today),
@@ -137,6 +152,14 @@ export function levelFromOsm(tags: Record<string, string>): FacilityLevel {
   return kind === "clinic" ? "health_centre" : "dispensary";
 }
 
+/** Names that cannot be a referral target: traditional healers, or a bare generic word with no place name. */
+const NOT_REFERABLE = /traditional|herbal|mganga|tiba asili/i;
+const GENERIC_ONLY = /^(hospital|hospitali|clinic|kliniki|dispensary|zahanati|health cent(er|re)|kituo cha afya|duka la dawa|pharmacy)$/i;
+export function referableName(name: string): boolean {
+  const n = name.trim();
+  return n.length > 2 && !NOT_REFERABLE.test(n) && !GENERIC_ONLY.test(n);
+}
+
 export function facilitiesFromOsm(elements: OsmElement[]): Facility[] {
   const out: Facility[] = [];
   const seen = new Set<string>();
@@ -145,7 +168,7 @@ export function facilitiesFromOsm(elements: OsmElement[]): Facility[] {
     const lat = e.lat ?? e.center?.lat;
     const lon = e.lon ?? e.center?.lon;
     const name = tags.name ?? tags["name:sw"] ?? tags["name:en"];
-    if (lat === undefined || lon === undefined || !name) continue; // unnamed points cannot be referred to
+    if (lat === undefined || lon === undefined || !name || !referableName(name)) continue; // unnamed or generic points cannot be referred to
     const level = levelFromOsm(tags);
     if (level === "drug_shop") continue; // referrals go to clinics, not to other drug shops
     const key = `${name.toLowerCase()}|${lat.toFixed(3)}|${lon.toFixed(3)}`;
@@ -218,13 +241,23 @@ export async function loadNearby(center: Place, today: string, radiusKm = 25): P
   const r = Math.round(radiusKm * 1000);
   const around = `(around:${r},${center.lat},${center.lon})`;
   const query = `[out:json][timeout:40];(nwr["amenity"~"^(hospital|clinic|doctors)$"]${around};nwr["healthcare"~"^(hospital|clinic|centre)$"]${around};);out center tags;`;
-  const res = await fetch(OVERPASS, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `data=${encodeURIComponent(query)}`,
-  });
-  if (!res.ok) throw new Error(`overpass_${res.status}`);
-  const json = (await res.json()) as { elements: OsmElement[] };
+  let json: { elements: OsmElement[] } | null = null;
+  let lastError: unknown = null;
+  for (const url of OVERPASS) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `data=${encodeURIComponent(query)}`,
+      });
+      if (!res.ok) throw new Error(`overpass_${res.status}`);
+      json = (await res.json()) as { elements: OsmElement[] };
+      break;
+    } catch (e) {
+      lastError = e; // busy or unreachable: try the next server
+    }
+  }
+  if (!json) throw lastError instanceof Error ? lastError : new Error("overpass_failed");
   const facilities = facilitiesFromOsm(json.elements).sort((a, b) => haversineKm(center, a) - haversineKm(center, b));
   if (facilities.length === 0) throw new Error("no_facilities_found");
   const reg: Registry = {

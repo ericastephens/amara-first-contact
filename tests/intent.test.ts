@@ -48,3 +48,14 @@ describe("intent model", () => {
     expect(r.label === "uncertain" || r.label === "other").toBe(true);
   });
 });
+
+describe("explain: what the small AI heard", () => {
+  it("gives one reading per chunk in order, with Not sure for vague words", async () => {
+    const { explain } = await import("../src/ai/intent");
+    const m = JSON.parse(readFileSync(new URL("../public/models/intent_model.json", import.meta.url), "utf8"));
+    const r = explain(m, "Kichwa kinaniuma sana, naona giza giza, miguu imevimba, na nimechoka");
+    expect(r.map((x) => x.label)).toEqual(["headache", "blurred_vision", "swelling_face_hands", "uncertain"]);
+    expect(r[3].confidence).toBeLessThan(m.threshold);
+    expect(r[0].text).toBe("Kichwa kinaniuma sana");
+  });
+});

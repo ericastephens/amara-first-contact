@@ -37,7 +37,7 @@ const DEMO_NAMES: Record<string, string> = { demo_1: "Noor", demo_2: "Amina", de
 // What each demo patient says in her own words. The intent model reads this live in the demo:
 // it is the key AI moment, so demo mode starts at the free-text step instead of the result.
 const DEMO_TEXT: Record<string, string> = {
-  demo_2: "Kichwa kinaniuma sana, na naona giza giza",
+  demo_2: "Kichwa kinaniuma sana, naona giza giza, miguu imevimba, na nimechoka",
   demo_3: "Mtoto ana homa na vipele mwili mzima",
 };
 

@@ -1,6 +1,6 @@
 // Public landing page: shown before setup and before the PIN. No patient data here.
 import { demoSetup, saveSetup } from "../setup/setup";
-import { geocode, loadNearby } from "../facilities/registry";
+import { loadNearby } from "../facilities/registry";
 import { demoNowIso, demoToday } from "../sync/clock";
 import { useI18n } from "./i18n";
 import { UI_NATIVE, uiLanguages } from "../languages/packs";
@@ -23,13 +23,9 @@ export function Landing({ onStart, onDemoReady }: { onStart: () => void; onDemoR
     const s = demoSetup(demoNowIso());
     saveSetup(s);
     setLang("sw");
-    // Real clinics around Hai, Kilimanjaro, in the background; sample clinics are used until this succeeds.
-    void geocode("Hai, Kilimanjaro, Tanzania", "TZ")
-      .then((place) => {
-        saveSetup({ ...s, location: place });
-        return loadNearby(place, demoToday());
-      })
-      .catch(() => undefined);
+    // Live clinics around the demo position, in the background; the clinics baked in at build time
+    // (or the sample clinics) are used until this succeeds.
+    if (s.location) void loadNearby(s.location, demoToday()).catch(() => undefined);
     onDemoReady();
   };
   return (

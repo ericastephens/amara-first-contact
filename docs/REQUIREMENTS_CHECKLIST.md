@@ -38,7 +38,7 @@ Fill the "Evidence" column with links to code, tests, screenshots or video times
 | Deliverable | Status |
 | --- | --- |
 | Prototype: working tool with code or link | [x] code in this repo; Pages link after merge to `main` |
-| Video 2–5 min (without it: not shortlisted) | [ ] |
+| Video 2–5 min (without it: not shortlisted) | [x] captioned walkthrough recorded (`scripts/record_demo.py`); voice-over to add |
 | — Problem statement in the format "Because of this tool, [user] will [action] by [when] that they would otherwise [not do / do late / do worse]; we know because [evidence]" | [ ] |
 | — AI capabilities, why a simpler tool would not do, guardrails | [ ] |
 | — Tool demo, user journey end to end (+ tech stack) | [ ] |

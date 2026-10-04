@@ -1,7 +1,7 @@
 // Free-text complaint box + the small intent model. Detected items become chips the responder
 // confirms or removes; low-confidence chunks become grey "Not sure" chips. Only confirmed chips count.
-import { useEffect, useRef, useState } from "react";
-import { detect, type IntentModel } from "../../ai/intent";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { detect, explain, type IntentModel } from "../../ai/intent";
 import { loadIntentModel } from "../../ai/loadModel";
 import { labelFor } from "../../data";
 import { tr } from "../../logic/lang";
@@ -26,6 +26,9 @@ export function Complaint({
   const [model, setModel] = useState<IntentModel | null>(null);
   const [state, setState] = useState<"loading" | "ready" | "failed">("loading");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // The text the model last read: drives the "What the small AI heard" panel.
+  const [readText, setReadText] = useState("");
+  const readings = useMemo(() => (model && readText.trim() ? explain(model, readText) : []), [model, readText]);
   // Refs so the debounced detection always sees the latest model and chips (typing can start before the model loads).
   const modelRef = useRef<IntentModel | null>(null);
   const latest = useRef({ value, chips, uncertain });
@@ -48,6 +51,7 @@ export function Complaint({
   useEffect(() => {
     const { value: text, chips: c, uncertain: u } = latest.current;
     if (model && text.trim() && c.length === 0 && u.length === 0) run(text);
+    else if (model && text.trim()) setReadText(text); // coming back to this step: show the panel again
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [model]);
 
@@ -56,6 +60,7 @@ export function Complaint({
     if (!m) return;
     const { chips } = latest.current;
     const r = detect(m, text);
+    setReadText(text);
     // keep the responder's earlier decisions for labels that are still detected
     const next: Chip[] = r.symptoms.map((s) => {
       const prev = chips.find((c) => c.id === s.id);
@@ -147,6 +152,41 @@ export function Complaint({
             </p>
           )}
         </div>
+      )}
+      {model && readings.length > 0 && (
+        <details className="ai-heard" open>
+          <summary>{t("intake.ai.title")}</summary>
+          <ol>
+            {readings.map((r, i) => {
+              const pct = Math.round(r.confidence * 100);
+              const kind = r.label === "uncertain" ? "unsure" : r.label === "other" ? "other" : "sym";
+              return (
+                <li key={i} className={kind}>
+                  <span className="heard-words">“{r.text}”</span>
+                  <span className="heard-arrow" aria-hidden="true">→</span>
+                  <span className="heard-label">
+                    {kind === "sym" ? label_(r.label) : kind === "other" ? t("intake.ai.other") : t("intake.ai.notsure")}
+                  </span>
+                  <span
+                    className="meter"
+                    role="meter"
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                    aria-valuenow={pct}
+                    aria-label={t("intake.ai.sure")}
+                    style={{ ["--th" as string]: `${Math.round(model.threshold * 100)}%` }}
+                  >
+                    <span style={{ width: `${pct}%` }} />
+                  </span>
+                  <span className="heard-pct">{pct}%</span>
+                </li>
+              );
+            })}
+          </ol>
+          <p className="small muted">
+            {t("intake.ai.foot", { n: model.labels.length - 1, th: Math.round(model.threshold * 100) })}
+          </p>
+        </details>
       )}
       {state === "ready" && value.trim().length > 3 && chips.length === 0 && uncertain.length === 0 && (
         <p className="small muted">{t("intake.nochips")}</p>

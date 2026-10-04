@@ -1,0 +1,1440 @@
+{
+ "synthetic": false,
+ "source": "OpenStreetMap via Overpass API",
+ "licence": "ODbL, © OpenStreetMap contributors",
+ "bbox": "-3.45,37.10,-3.10,37.60",
+ "level_order": [
+  "drug_shop",
+  "dispensary",
+  "health_centre",
+  "hospital"
+ ],
+ "does_not_cover": "Missing or untagged drug shops and dispensaries; no opening hours, staff, stock or referral slots.",
+ "facilities": [
+  {
+   "id": "osm-node-366568860",
+   "name": "Kibosho Hospital",
+   "name_en": "Kibosho Hospital",
+   "level": "hospital",
+   "ward": "",
+   "lat": -3.234769,
+   "lon": 37.319241,
+   "osm_tags": {
+    "amenity": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-3330391544",
+   "name": "Kisiki Dispensary",
+   "name_en": "Kisiki Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.225873,
+   "lon": 37.220879,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-3610660078",
+   "name": "Mahoma Dispensary",
+   "name_en": "Mahoma Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.317527,
+   "lon": 37.396724,
+   "osm_tags": {
+    "amenity": "clinic",
+    "healthcare": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-3653301995",
+   "name": "Masama Mula Medica Store",
+   "name_en": "Masama Mula Medica Store",
+   "level": "drug_shop",
+   "ward": "",
+   "lat": -3.242866,
+   "lon": 37.189656,
+   "osm_tags": {
+    "amenity": "pharmacy"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-5803991053",
+   "name": "Kilimanjaro Pharmacy",
+   "name_en": "Kilimanjaro Pharmacy",
+   "level": "drug_shop",
+   "ward": "",
+   "lat": -3.352432,
+   "lon": 37.339658,
+   "osm_tags": {
+    "amenity": "pharmacy"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-6138783916",
+   "name": "Machame Hospital",
+   "name_en": "Machame Hospital",
+   "level": "hospital",
+   "ward": "",
+   "lat": -3.206001,
+   "lon": 37.223309,
+   "osm_tags": {
+    "amenity": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7447878407",
+   "name": "Mweka Omi Dispensary",
+   "name_en": "Mweka Omi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.225836,
+   "lon": 37.333316,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7448079521",
+   "name": "CAWM Dispensary",
+   "name_en": "CAWM Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.242968,
+   "lon": 37.326924,
+   "osm_tags": {
+    "amenity": "doctors",
+    "healthcare": "doctor",
+    "operator": "College of African Wildlife Management, Mweka",
+    "operator:type": "government"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7473405497",
+   "name": "Mrawi Dispensary",
+   "name_en": "Mrawi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.242543,
+   "lon": 37.344226,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7473467102",
+   "name": "Njari Dispensary",
+   "name_en": "Njari Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.250863,
+   "lon": 37.368631,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7476800416",
+   "name": "Kirima Dispensary",
+   "name_en": "Kirima Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.290408,
+   "lon": 37.304528,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7482639014",
+   "name": "Mawela Dispensary",
+   "name_en": "Mawela Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.293083,
+   "lon": 37.344656,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7504373283",
+   "name": "Fumvuhu Dispensary",
+   "name_en": "Fumvuhu Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.292055,
+   "lon": 37.425971,
+   "osm_tags": {
+    "amenity": "clinic",
+    "healthcare": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7513893768",
+   "name": "Sango Dispensary",
+   "name_en": "Sango Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.340993,
+   "lon": 37.420662,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7513893769",
+   "name": "Mowo Dispensary",
+   "name_en": "Mowo Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.303153,
+   "lon": 37.429582,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7513893770",
+   "name": "Shia Dispensary",
+   "name_en": "Shia Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.323932,
+   "lon": 37.413625,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7522367907",
+   "name": "Kirua Iwa Dispensary",
+   "name_en": "Kirua Iwa Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.319279,
+   "lon": 37.468077,
+   "osm_tags": {
+    "amenity": "hospital",
+    "operator": "Iwa Mission"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7525526575",
+   "name": "Kibo Dispensary",
+   "name_en": "Kibo Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.242994,
+   "lon": 37.519349,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7528587500",
+   "name": "Makomu Dispensary",
+   "name_en": "Makomu Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.279459,
+   "lon": 37.497963,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7528661099",
+   "name": "Uomboni Dispensary",
+   "name_en": "Uomboni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.256469,
+   "lon": 37.488093,
+   "osm_tags": {
+    "amenity": "clinic",
+    "healthcare": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7553172911",
+   "name": "Mwika Health Centre",
+   "name_en": "Mwika Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.286353,
+   "lon": 37.56278,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7558116513",
+   "name": "Kilema Hospital",
+   "name_en": "Kilema Hospital",
+   "level": "hospital",
+   "ward": "",
+   "lat": -3.305354,
+   "lon": 37.496652,
+   "osm_tags": {
+    "amenity": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7559813012",
+   "name": "Kinyamvuo Dispensary",
+   "name_en": "Kinyamvuo Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.264902,
+   "lon": 37.559364,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7563900238",
+   "name": "Lole Dispensary",
+   "name_en": "Lole Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.262748,
+   "lon": 37.573286,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7566060623",
+   "name": "Mkolowoni Dispensary",
+   "name_en": "Mkolowoni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.308989,
+   "lon": 37.548944,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7567091585",
+   "name": "Uuwo Dispensary",
+   "name_en": "Uuwo Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.271128,
+   "lon": 37.58952,
+   "osm_tags": {
+    "amenity": "clinic",
+    "healthcare": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-7579409435",
+   "name": "Uparo Dispensary",
+   "name_en": "Uparo Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.359993,
+   "lon": 37.461673,
+   "osm_tags": {
+    "amenity": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-8434864417",
+   "name": "Edcon Health Laboratory Malaria Testing",
+   "name_en": "Edcon Health Laboratory Malaria Testing",
+   "level": "drug_shop",
+   "ward": "",
+   "lat": -3.35331,
+   "lon": 37.337629,
+   "osm_tags": {
+    "amenity": "pharmacy"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-9329906733",
+   "name": "Kiboriloni dispensary",
+   "name_en": "Kiboriloni dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.335625,
+   "lon": 37.372486,
+   "osm_tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "operator": "Government",
+    "operator:type": "local_authority"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-9329913734",
+   "name": "Kilemapunda dispensary",
+   "name_en": "Kilemapunda dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.327412,
+   "lon": 37.387071,
+   "osm_tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital",
+    "operator": "Government",
+    "operator:type": "local_authority"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-node-10594772515",
+   "name": "Kambi la Nyuki Dispensary",
+   "name_en": "Kambi la Nyuki Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.372063,
+   "lon": 37.17136,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-243683532",
+   "name": "Kiitemboni Hospital",
+   "name_en": "Kiitemboni Hospital",
+   "level": "hospital",
+   "ward": "",
+   "lat": -3.281814,
+   "lon": 37.518925,
+   "osm_tags": {
+    "amenity": "hospital",
+    "operator": "private"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-248416323",
+   "name": "First Health Hospital",
+   "name_en": "First Health Hospital",
+   "level": "hospital",
+   "ward": "",
+   "lat": -3.348923,
+   "lon": 37.341928,
+   "osm_tags": {
+    "amenity": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-369852970",
+   "name": "Kaloleni Dispensary",
+   "name_en": "Kaloleni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.371676,
+   "lon": 37.344401,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-370164095",
+   "name": "Masama Lutheran Dispensary",
+   "name_en": "Masama Lutheran Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.237076,
+   "lon": 37.186201,
+   "osm_tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-374924191",
+   "name": "Pasua Hospital",
+   "name_en": "Pasua Hospital",
+   "level": "hospital",
+   "ward": "",
+   "lat": -3.370591,
+   "lon": 37.338874,
+   "osm_tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409035704",
+   "name": "Levishi Dispensary",
+   "name_en": "Levishi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.161965,
+   "lon": 37.101299,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409035816",
+   "name": "Kishisha Dispensary",
+   "name_en": "Kishisha Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.164036,
+   "lon": 37.121319,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409036508",
+   "name": "Lukani Dispensary",
+   "name_en": "Lukani Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.190332,
+   "lon": 37.149575,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409036582",
+   "name": "Kisiki Health Centre",
+   "name_en": "Kisiki Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.191414,
+   "lon": 37.24658,
+   "osm_tags": {
+    "amenity": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409036691",
+   "name": "Emmausi Cogi Dispensary",
+   "name_en": "Emmausi Cogi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.193898,
+   "lon": 37.207056,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409036840",
+   "name": "Nkweshoo Dispensary",
+   "name_en": "Nkweshoo Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.196491,
+   "lon": 37.251539,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409037271",
+   "name": "Ngarenairobi Health Centre",
+   "name_en": "Ngarenairobi Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.198018,
+   "lon": 37.170886,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409038163",
+   "name": "Losaa Dispensary",
+   "name_en": "Losaa Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.205793,
+   "lon": 37.154282,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409038398",
+   "name": "Kashasahi Dispensary",
+   "name_en": "Kashasahi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.209488,
+   "lon": 37.122459,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409038473",
+   "name": "Okaoni Dispensary",
+   "name_en": "Okaoni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.214323,
+   "lon": 37.293641,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409038477",
+   "name": "Mkombole Dispensary",
+   "name_en": "Mkombole Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.214585,
+   "lon": 37.299666,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409039070",
+   "name": "Kisereni Dispensary",
+   "name_en": "Kisereni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.22603,
+   "lon": 37.235815,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409039421",
+   "name": "Lemira Dispensary",
+   "name_en": "Lemira Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.235089,
+   "lon": 37.166029,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409039497",
+   "name": "Lyamungo Dispensary",
+   "name_en": "Lyamungo Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.235232,
+   "lon": 37.256906,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409039638",
+   "name": "Kibosho Hospital",
+   "name_en": "Kibosho Hospital",
+   "level": "hospital",
+   "ward": "",
+   "lat": -3.235228,
+   "lon": 37.319456,
+   "osm_tags": {
+    "amenity": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409040177",
+   "name": "Kibosho Barazani Dispensary",
+   "name_en": "Kibosho Barazani Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.236816,
+   "lon": 37.30814,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409040584",
+   "name": "Nkwansira Health Centre",
+   "name_en": "Nkwansira Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.240551,
+   "lon": 37.152037,
+   "osm_tags": {
+    "amenity": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409802790",
+   "name": "Manushi Dispensary",
+   "name_en": "Manushi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.265944,
+   "lon": 37.263131,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409803278",
+   "name": "Narumu Rc Dispensary",
+   "name_en": "Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.268197,
+   "lon": 37.246916,
+   "osm_tags": {
+    "amenity": "clinic",
+    "operator:type": "government"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409803329",
+   "name": "Kokirie Dispensary",
+   "name_en": "Kokirie Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.270602,
+   "lon": 37.538197,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409803603",
+   "name": "Narumu Dispensary",
+   "name_en": "Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.273321,
+   "lon": 37.24629,
+   "osm_tags": {
+    "amenity": "clinic",
+    "operator": "Government",
+    "operator:type": "government"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409804528",
+   "name": "Maua Dispensary",
+   "name_en": "Maua Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.277751,
+   "lon": 37.47073,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409804534",
+   "name": "Mbosho Rc Dispensary",
+   "name_en": "Mbosho Rc Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.278805,
+   "lon": 37.149387,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409806667",
+   "name": "Lambo Dispensary",
+   "name_en": "Lambo Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.282648,
+   "lon": 37.223821,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409808975",
+   "name": "Mbokomu Dispensary",
+   "name_en": "Mbokomu Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.300472,
+   "lon": 37.383387,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-409810123",
+   "name": "Mungushi Dispensary",
+   "name_en": "Mungushi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.304,
+   "lon": 37.132782,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-417009444",
+   "name": "Rundugai Dispensary",
+   "name_en": "Rundugai Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.414363,
+   "lon": 37.192329,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-417009959",
+   "name": "Kishimbwe Dispensary",
+   "name_en": "Kishimbwe Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.220332,
+   "lon": 37.20045,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-417010505",
+   "name": "Sabasaba Dispensary (approximate)",
+   "name_en": "Sabasaba Dispensary (approximate)",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.359659,
+   "lon": 37.32008,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419303072",
+   "name": "Sanya Station Dispensary",
+   "name_en": "Sanya Station Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.389336,
+   "lon": 37.116483,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419303073",
+   "name": "Shant Town Dispensary",
+   "name_en": "Shant Town Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.337392,
+   "lon": 37.321353,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419306255",
+   "name": "Shiri Matunda Dispensary",
+   "name_en": "Shiri Matunda Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.363266,
+   "lon": 37.313142,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419306257",
+   "name": "Shirimgungani Dispensary",
+   "name_en": "Shirimgungani Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.380801,
+   "lon": 37.294091,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419306260",
+   "name": "Siima Health Centre",
+   "name_en": "Siima Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.355206,
+   "lon": 37.335175,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419308741",
+   "name": "St. Joseph Hospital",
+   "name_en": "St. Joseph Hospital",
+   "level": "hospital",
+   "ward": "",
+   "lat": -3.354922,
+   "lon": 37.317655,
+   "osm_tags": {
+    "amenity": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419317083",
+   "name": "Tindigani Dispensary",
+   "name_en": "Tindigani Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.432937,
+   "lon": 37.142055,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419318877",
+   "name": "Uchira Dispensary",
+   "name_en": "Uchira Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.395462,
+   "lon": 37.469007,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419330811",
+   "name": "Umbwe Health Centre",
+   "name_en": "Umbwe Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.228983,
+   "lon": 37.275257,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419330812",
+   "name": "Moshi Upendo Health Centre",
+   "name_en": "Moshi Upendo Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.345156,
+   "lon": 37.387023,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-419332208",
+   "name": "Uroki Dispensary",
+   "name_en": "Uroki Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.225732,
+   "lon": 37.220679,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-674696130",
+   "name": "Mailisita Medical Centre Dispensary",
+   "name_en": "Mailisita Medical Centre Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.32031,
+   "lon": 37.275417,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-674938549",
+   "name": "Mbatakero Dispensary",
+   "name_en": "Mbatakero Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.352737,
+   "lon": 37.217292,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-675237912",
+   "name": "Ushiri Dispensary",
+   "name_en": "Ushiri Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.177382,
+   "lon": 37.590222,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-675240878",
+   "name": "Longoi Dispensary",
+   "name_en": "Longoi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.406653,
+   "lon": 37.253626,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-675242108",
+   "name": "Doni Dispensary",
+   "name_en": "Doni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.221993,
+   "lon": 37.127027,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-678273298",
+   "name": "Miwaleni Dispensary",
+   "name_en": "Miwaleni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.431644,
+   "lon": 37.441343,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-678273825",
+   "name": "Makaa Pumwani Dispensary",
+   "name_en": "Makaa Pumwani Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.377903,
+   "lon": 37.426417,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-678274103",
+   "name": "Uchira Luth Dispensary",
+   "name_en": "Uchira Luth Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.38574,
+   "lon": 37.465228,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-678274370",
+   "name": "Uchira Gvt. Dispensary",
+   "name_en": "Uchira Gvt. Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.396348,
+   "lon": 37.480509,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-678274910",
+   "name": "Ngajoni Dispensary",
+   "name_en": "Ngajoni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.362089,
+   "lon": 37.503319,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-680305344",
+   "name": "Msandaka Dispensary",
+   "name_en": "Msandaka Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.369049,
+   "lon": 37.375951,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-680988160",
+   "name": "Bakwata Njia Panda Dispensary",
+   "name_en": "Bakwata Njia Panda Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.409047,
+   "lon": 37.518536,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-680988375",
+   "name": "Kilema Kisao Dispensary",
+   "name_en": "Kilema Kisao Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.396995,
+   "lon": 37.535641,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-680989284",
+   "name": "Himo Health Centre",
+   "name_en": "Himo Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.384357,
+   "lon": 37.548037,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-680989285",
+   "name": "Faraja Health Centre",
+   "name_en": "Faraja Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.390021,
+   "lon": 37.550703,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-680989370",
+   "name": "Meresini Dispensary",
+   "name_en": "Meresini Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.368544,
+   "lon": 37.546225,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-681489770",
+   "name": "Mokala Dispensary",
+   "name_en": "Mokala Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.200848,
+   "lon": 37.594571,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-681490155",
+   "name": "Mboni Dispensary",
+   "name_en": "Mboni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.266487,
+   "lon": 37.545952,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-681491297",
+   "name": "Kidia Health Centre",
+   "name_en": "Kidia Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.303422,
+   "lon": 37.413697,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-681491815",
+   "name": "Shimbwe Health Centre",
+   "name_en": "Shimbwe Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.265328,
+   "lon": 37.37221,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-681492417",
+   "name": "Mango Dispensary",
+   "name_en": "Mango Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.244512,
+   "lon": 37.293074,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-681492564",
+   "name": "Kindi Dispensary",
+   "name_en": "Kindi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.273699,
+   "lon": 37.278425,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-687675544",
+   "name": "Umbwe Rc Dispensary",
+   "name_en": "Umbwe Rc Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.227759,
+   "lon": 37.276173,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-687678246",
+   "name": "Matumaini Cogi Dispensary",
+   "name_en": "Matumaini Cogi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.352806,
+   "lon": 37.134094,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-687680599",
+   "name": "Bondeni Dispensary",
+   "name_en": "Bondeni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.360089,
+   "lon": 37.340024,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-687681031",
+   "name": "Moshi Health Centre",
+   "name_en": "Moshi Health Centre",
+   "level": "health_centre",
+   "ward": "",
+   "lat": -3.354185,
+   "lon": 37.330682,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-687681642",
+   "name": "Mji Mpya Dispensary",
+   "name_en": "Mji Mpya Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.357641,
+   "lon": 37.358905,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-687681815",
+   "name": "Njoro Dispensary",
+   "name_en": "Njoro Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.358361,
+   "lon": 37.349317,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-687683198",
+   "name": "Jaffery Charitable Medical Services Dispensary",
+   "name_en": "Jaffery Charitable Medical Services Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.354629,
+   "lon": 37.343179,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-way-768967613",
+   "name": "Manushi Dispensary",
+   "name_en": "Manushi Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.265959,
+   "lon": 37.262978,
+   "osm_tags": {
+    "amenity": "clinic"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-relation-9572979",
+   "name": "Kilimanjaro Christian Medical Centre",
+   "name_en": "Kilimanjaro Christian Medical Centre",
+   "level": "hospital",
+   "ward": "",
+   "lat": -3.319223,
+   "lon": 37.327331,
+   "osm_tags": {
+    "amenity": "hospital"
+   },
+   "synthetic": false
+  },
+  {
+   "id": "osm-relation-9699486",
+   "name": "Kiboriloni Dispensary",
+   "name_en": "Kiboriloni Dispensary",
+   "level": "dispensary",
+   "ward": "",
+   "lat": -3.335605,
+   "lon": 37.372513,
+   "osm_tags": {
+    "amenity": "hospital",
+    "healthcare": "hospital"
+   },
+   "synthetic": false
+  }
+ ]
+}
