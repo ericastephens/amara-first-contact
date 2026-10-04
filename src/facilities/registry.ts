@@ -62,12 +62,21 @@ function sampleRegistry(): Registry {
 
 function builtRegistry(): Registry | null {
   if (!BUILT?.facilities?.length) return null;
-  const fs = BUILT.facilities.filter((f) => f.level !== "drug_shop" && referableName(f.name));
-  const lat = fs.reduce((a, f) => a + f.lat, 0) / fs.length;
-  const lon = fs.reduce((a, f) => a + f.lon, 0) / fs.length;
+  const all = BUILT.facilities.filter((f) => f.level !== "drug_shop" && referableName(f.name));
+  // Measure from the responder's own position when setup has one, else from the middle of the area.
+  const here = getSetup()?.location;
+  const center: Place = here
+    ? { ...here }
+    : {
+        lat: all.reduce((a, f) => a + f.lat, 0) / all.length,
+        lon: all.reduce((a, f) => a + f.lon, 0) / all.length,
+        method: "place",
+        label: "Kilimanjaro (OpenStreetMap)",
+      };
+  const fs = [...all].sort((a, b) => haversineKm(center, a) - haversineKm(center, b));
   return {
     source: "osm_build",
-    center: { lat, lon, method: "place", label: "Kilimanjaro (OpenStreetMap)" },
+    center,
     radiusKm: 30,
     facilities: fs,
     slots: simulatedSlots(fs, slotsDoc.demo_today),

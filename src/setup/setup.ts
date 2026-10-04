@@ -177,6 +177,8 @@ export function demoSetup(now: string): Setup {
     workId: "ADDO-KLM-0421",
     staffLang: "sw",
     patientLangs: [pick("sw"), pick("en"), pick("chagga")],
+    // A drug shop on the coffee slopes near Machame, Hai (approximate position, for the demo only).
+    location: { lat: -3.215, lon: 37.235, method: "place", label: "Machame, Hai (demo position)" },
     savedAt: now,
   };
 }
