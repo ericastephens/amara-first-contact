@@ -26,7 +26,7 @@ export function Result({
   onCreate: (result: RulesResult, decisions: FlagDecision[]) => void;
   onDone: () => void;
 }) {
-  const { t, lang } = useI18n();
+  const { t, lang, pick } = useI18n();
   const input = useMemo(() => toEncounterInput(questionnaires, enc), [enc]);
   const base = useMemo(() => evaluate(rulesDoc, icd10, input), [input]);
   const [decisions, setDecisions] = useState<FlagDecision[]>([]);
@@ -140,7 +140,7 @@ export function Result({
               <ul>
                 {unanswered.map((id) => {
                   const q = questionFor(questionnaires, id, enc.group);
-                  return <li key={id}>{id === "q_bp" ? t("intake.bp") : q ? q[lang] : id}</li>;
+                  return <li key={id}>{id === "q_bp" ? t("intake.bp") : q ? pick(q) : id}</li>;
                 })}
               </ul>
               <button type="button" className="link" onClick={onBack}>

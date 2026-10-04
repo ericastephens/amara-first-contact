@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { detect, type IntentModel } from "../../ai/intent";
 import { loadIntentModel } from "../../ai/loadModel";
 import { labelFor } from "../../data";
+import { tr } from "../../logic/lang";
 import type { Chip, UncertainChip } from "../../logic/encounter";
 import { useI18n } from "../i18n";
 import { Speaker } from "../common";
@@ -77,7 +78,7 @@ export function Complaint({
 
   const label_ = (id: string) => {
     const l = labelFor(id);
-    return l ? l[lang] : id;
+    return l ? tr(l, lang) : id;
   };
 
   return (
@@ -140,7 +141,7 @@ export function Complaint({
               </span>
             ))}
           {uncertain.some((u) => u.status === "open") && <p className="small muted">{t("intake.notsure.hint")}</p>}
-          {lang === "sw" && chips.some((c) => c.status !== "removed") && (
+          {lang !== "en" && chips.some((c) => c.status !== "removed") && (
             <p className="small muted">
               {t("intake.translation")}: {chips.filter((c) => c.status !== "removed").map((c) => labelFor(c.id)?.en).join("; ")}
             </p>

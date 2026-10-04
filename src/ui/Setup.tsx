@@ -6,6 +6,11 @@ import {
   countryByIso,
   countryLanguages,
   defaultPatientLangs,
+  districtIsSelectOnly,
+  districtOptions,
+  regionOptions,
+  staffLanguages,
+  validPlace,
   validSetup,
   validWorkId,
   type Setup as SetupData,
@@ -15,6 +20,7 @@ import { demoNowIso } from "../sync/clock";
 import { NearbyClinics } from "./NearbyClinics";
 import { Card } from "./common";
 import { useI18n, type Lang } from "./i18n";
+import { tr } from "../logic/lang";
 
 const STEPS = 5;
 const ALWAYS_ROLES = ["clinician", "district"];
@@ -63,8 +69,8 @@ export function Setup({
       staffLang: l.code,
       patientLangs: x.patientLangs?.some((p) => p.code === l.code) ? x.patientLangs : [l, ...(x.patientLangs ?? [])],
     }));
-    // The app interface exists in Swahili and English; other staff languages show English until translated.
-    setLang((l.code === "sw" || l.code === "en" ? l.code : "en") as Lang);
+    // Any language with a UI pack (src/i18n/<code>.json) is used; others show English until translated.
+    setLang(l.code as Lang);
   };
 
   const togglePatient = (l: Language) =>
@@ -83,9 +89,9 @@ export function Setup({
   };
 
   const stepValid = (): boolean => {
-    if (step === 0) return Boolean(country) && (country!.regions.length === 0 || country!.regions.includes(s.region ?? ""));
+    if (step === 0) return Boolean(country) && validPlace(country!, s.region, s.district);
     if (step === 1) return Boolean(s.role) && validWorkId(s.workId);
-    if (step === 2) return Boolean(country?.staff.some((l) => l.code === s.staffLang));
+    if (step === 2) return Boolean(country && staffLanguages(country).some((l) => l.code === s.staffLang));
     if (step === 3) return (s.patientLangs?.length ?? 0) > 0;
     return validSetup({ ...s, savedAt: "" });
   };
@@ -96,10 +102,16 @@ export function Setup({
   };
 
   const regionLabel = country ? country.region_label[lang] ?? country.region_label.en : t("setup.region");
-  const districtLabel = country?.district_label?.[lang] ?? country?.district_label?.en ?? t("setup.district");
+  const districtLabel =
+    country?.district_label?.[lang] ??
+    country?.district_label?.en ??
+    (country && districtIsSelectOnly(country) ? t("setup.district.select") : t("setup.district"));
   const roles = locales.roles.filter((r) => country && [...country.first_contacts, ...ALWAYS_ROLES].includes(r.id));
   const extraLangs = (s.patientLangs ?? []).filter((p) => !country || !countryLanguages(country).some((l) => l.code === p.code));
-  const staff = country?.staff.find((l) => l.code === s.staffLang);
+  const staff = country ? staffLanguages(country).find((l) => l.code === s.staffLang) : undefined;
+  const regions = country ? regionOptions(country) : [];
+  const districtSelect = country ? districtIsSelectOnly(country) : false;
+  const districts = country ? districtOptions(country, s.region) : [];
 
   return (
     <div className="screen setup">
@@ -140,11 +152,15 @@ export function Setup({
             <>
               <label className="field">
                 {regionLabel}
-                {country.regions.length > 0 ? (
-                  <select value={s.region ?? ""} onChange={(e) => setS({ ...s, region: e.target.value })}>
+                {regions.length > 0 ? (
+                  <select
+                    value={s.region ?? ""}
+                    // a new region clears the district, which must then be chosen from that region's list
+                    onChange={(e) => setS({ ...s, region: e.target.value, district: districtSelect ? "" : s.district })}
+                  >
                     <option value="">{t("setup.choose")}</option>
-                    {country.regions.map((r) => (
-                      <option key={r}>{r}</option>
+                    {regions.map((r) => (
+                      <option key={r.name}>{r.name}</option>
                     ))}
                   </select>
                 ) : (
@@ -153,8 +169,18 @@ export function Setup({
               </label>
               <label className="field">
                 {districtLabel}
-                <input value={s.district ?? ""} onChange={(e) => setS({ ...s, district: e.target.value })} autoComplete="off" />
+                {districtSelect ? (
+                  <select value={s.district ?? ""} disabled={!s.region} onChange={(e) => setS({ ...s, district: e.target.value })}>
+                    <option value="">{s.region ? t("setup.choose") : t("setup.region.first")}</option>
+                    {districts.map((d) => (
+                      <option key={d}>{d}</option>
+                    ))}
+                  </select>
+                ) : (
+                  <input value={s.district ?? ""} onChange={(e) => setS({ ...s, district: e.target.value })} autoComplete="off" />
+                )}
               </label>
+              {districtSelect && <p className="muted small">{t("setup.areas.source")}</p>}
               <div className="row">
                 <button type="button" className="btn secondary" onClick={() => void useGps()} disabled={gps === "busy"}>
                   📍 {gps === "busy" ? t("setup.gps.busy") : t("setup.gps")}
@@ -216,7 +242,7 @@ export function Setup({
           <h1>{t("setup.staff")}</h1>
           <p className="muted">{t("setup.staff.help")}</p>
           <div className="lang-list" role="radiogroup">
-            {country.staff.map((l) => (
+            {staffLanguages(country).map((l) => (
               <LangRow key={l.code} l={l} checked={s.staffLang === l.code} radio onClick={() => chooseStaff(l)} />
             ))}
           </div>
@@ -277,7 +303,7 @@ export function Setup({
             <dt>{t("setup.place")}</dt>
             <dd>{[s.district, s.region, country.name].filter(Boolean).join(", ")}</dd>
             <dt>{t("setup.role.short")}</dt>
-            <dd>{pick(locales.roles.find((r) => r.id === s.role) ?? { en: "", sw: "" })}</dd>
+            <dd>{pick(locales.roles.find((r) => r.id === s.role) ?? { en: "" })}</dd>
             <dt>{t("setup.workid.short")}</dt>
             <dd>
               {s.workId}
@@ -332,7 +358,7 @@ export function Setup({
 
 export function SupportBadge({ level }: { level: Support }) {
   const { lang } = useI18n();
-  return <span className={`badge support-${level}`}>{locales.support_levels[level][lang]}</span>;
+  return <span className={`badge support-${level}`}>{tr(locales.support_levels[level], lang)}</span>;
 }
 
 function LangRow({ l, checked, radio, onClick }: { l: Language; checked: boolean; radio?: boolean; onClick: () => void }) {

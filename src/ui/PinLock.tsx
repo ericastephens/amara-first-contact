@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { useI18n } from "./i18n";
+import { nextUiLanguage } from "../setup/setup";
+import { UI_NATIVE } from "../languages/packs";
 
 // Demo PIN. A real deployment would derive a key from the PIN and encrypt the IndexedDB contents.
 const DEMO_PIN = "1234";
@@ -37,8 +39,8 @@ export function PinLock({ onUnlock }: { onUnlock: () => void }) {
             {d}
           </button>
         ))}
-        <button type="button" onClick={() => setLang(lang === "sw" ? "en" : "sw")} className="small">
-          {t("lang.toggle")}
+        <button type="button" onClick={() => setLang(nextUiLanguage(lang))} className="small">
+          {UI_NATIVE[nextUiLanguage(lang)] ?? t("lang.toggle")}
         </button>
         <button type="button" onClick={() => press("0")}>
           0

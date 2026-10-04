@@ -37,6 +37,7 @@ before building; access terms change.
 | [MAP travel time to healthcare 2020](https://malariaatlas.org/project-resources/accessibility-to-healthcare/) (walking-only, motorised) | Yes | Open access (check) | 1 km rasters | Better travel-time estimate than straight line | Modelled; dry-season roads; 1 km cells |
 | [OpenCelliD](https://opencellid.org/) | Yes | CC-BY-SA-4.0 | — | Show weak-signal areas to justify offline design | Crowdsourced; rural gaps |
 | [DHIS2](https://dhis2.org/) | Yes | — | — | Shape referral and outbreak records like DHIS2/eIDSR fields | We do not connect to a live instance |
+| [geoBoundaries](https://www.geoboundaries.org) gbOpen ADM1/ADM2 (`data/admin_areas.json`, built by `scripts/build_admin_areas.py`) | No | Per country, recorded in the file (CC BY 4.0, CC BY 3.0 IGO, CC BY-SA 2.0, ODbL, public domain …) | 19 countries, ~3,700 districts | Select-only region and district lists in setup (outside Tanzania) | Boundary vintages differ by country (e.g. recent district splits may be missing); names are as published, not localized; Tanzania not included (curated list used) |
 | `data/facilities_sample.json`, `slots_sample.json`, `outbreak_counts_synthetic.csv` | No (ours) | CC-BY-4.0 (ours) | small | Repeatable demo | **Synthetic**; Ondera is fictional (from the brief) |
 
 ## C. Clinical sources behind `data/rules.json`

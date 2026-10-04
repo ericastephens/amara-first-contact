@@ -1,4 +1,6 @@
 import { useI18n } from "./i18n";
+import { nextUiLanguage } from "../setup/setup";
+import { UI_NATIVE } from "../languages/packs";
 import { useNetwork, useSyncStatus } from "./hooks";
 import { setSimulatedNetwork } from "../sync/network";
 
@@ -28,8 +30,8 @@ export function TopBar({ onHome, onLock }: { onHome: () => void; onLock: () => v
         {pill}
       </span>
       <div className="topbar-actions">
-        <button type="button" className="chip-btn" onClick={() => setLang(lang === "sw" ? "en" : "sw")}>
-          {lang === "sw" ? "SW" : "EN"}
+        <button type="button" className="chip-btn" onClick={() => setLang(nextUiLanguage(lang))} title={UI_NATIVE[lang] ?? lang}>
+          {lang.toUpperCase()}
         </button>
         <button
           type="button"

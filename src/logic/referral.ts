@@ -131,11 +131,13 @@ export function generateCode(used: Set<string>, random: () => number = Math.rand
   }
 }
 
-const SPOKEN: Record<"en" | "sw", Record<string, string>> = {
+const SPOKEN: Record<string, Record<string, string>> = {
   en: { "2": "two", "3": "three", "4": "four", "5": "five", "6": "six", "7": "seven", "8": "eight", "9": "nine" },
   sw: { "2": "mbili", "3": "tatu", "4": "nne", "5": "tano", "6": "sita", "7": "saba", "8": "nane", "9": "tisa" },
 };
 
-export function codeSpoken(code: string, lang: "en" | "sw"): string {
-  return [...code].map((ch) => SPOKEN[lang][ch] ?? ch).join(", ");
+/** Code read digit by digit; `digits` comes from a language pack (data/sms/<code>.json), else English. */
+export function codeSpoken(code: string, lang: string, digits?: Record<string, string>): string {
+  const words = digits ?? SPOKEN[lang] ?? SPOKEN.en;
+  return [...code].map((ch) => words[ch] ?? ch).join(", ");
 }

@@ -22,9 +22,14 @@ describe("setup", () => {
   it("needs a listed region when the country lists regions", () => {
     expect(validSetup({ ...demoSetup(""), region: "Atlantis" })).toBe(false);
   });
-  it("accepts a free-text region when the country lists none", () => {
+  it("outside Tanzania, region and district must both be chosen from the lists", () => {
     const ke = countryByIso("KE")!;
-    expect(validSetup({ country: "KE", region: "Kiambu", district: "", role: "chw", workId: "CHW-0042", staffLang: "en", patientLangs: defaultPatientLangs(ke), savedAt: "" })).toBe(true);
+    const base = { country: "KE", role: "chw", workId: "CHW-0042", staffLang: "en", patientLangs: defaultPatientLangs(ke), savedAt: "" };
+    expect(validSetup({ ...base, region: "Kiambu", district: "Ruiru" })).toBe(true);
+    expect(validSetup({ ...base, region: "Kiambu", district: "" })).toBe(false); // district required
+    expect(validSetup({ ...base, region: "Kiambu", district: "Somewhere typed" })).toBe(false); // not in list
+    expect(validSetup({ ...base, region: "Kiambu", district: "Westlands" })).toBe(false); // district of another region
+    expect(validSetup({ ...base, region: "Atlantis", district: "Ruiru" })).toBe(false);
   });
   it("rejects a staff language from another country or a keypad-only one", () => {
     expect(validSetup({ ...demoSetup(""), staffLang: "am" })).toBe(false);
