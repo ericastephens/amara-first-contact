@@ -8,7 +8,8 @@ import { buildNote } from "../../logic/note";
 import { suitableFacilities } from "../../logic/referral";
 import { allFlagsDecided, applyDecisions, evaluate, summarise, type FlagDecision, type RulesResult } from "../../logic/rules";
 import { clinicianView, motherView, responderView, urgencyLabel } from "../../logic/views";
-import { patientLanguage, responderLabel } from "../../setup/setup";
+import { getSetup, patientLanguage, responderLabel } from "../../setup/setup";
+import { nationalIdSpec } from "../../logic/identity";
 import { db } from "../../storage/db";
 import { Card, SourceLink, UrgencyPill } from "../common";
 import { useI18n } from "../i18n";
@@ -202,6 +203,7 @@ function ClinicianPreview({ enc, result, decisions }: { enc: Encounter; result: 
     urgencyLabel: urgencyLabel(rulesDoc, result.urgency, "en"),
     responder: responderLabel(responderSite().name),
     languageName: (c) => patientLanguage(c)?.native,
+    idName: nationalIdSpec(getSetup()?.country).name,
   });
   return (
     <>

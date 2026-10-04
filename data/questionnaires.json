@@ -10,6 +10,14 @@
   ],
   "modules": [
     {
+      "id": "about_patient", "applies_to": ["pregnant", "postpartum", "stillbirth", "child", "adult_other"],
+      "note": "Asked on the first screen with her phone or national ID. In Tanzania the age can be read from the NIDA number when she does not know it.",
+      "questions": [
+        {"id": "q_age_years", "type": "number", "unit": "years", "applies_to": ["pregnant", "postpartum", "stillbirth", "adult_other"], "en": "Her age in years?", "sw": "Umri wake (miaka)?"},
+        {"id": "q_weight_kg", "type": "number", "unit": "kg", "en": "Weight in kg (if there is a scale)?", "sw": "Uzito kwa kilo (kama kuna mzani)?"}
+      ]
+    },
+    {
       "id": "common", "applies_to": ["pregnant", "postpartum", "stillbirth", "child", "adult_other"],
       "questions": [
         {"id": "q_complaint", "type": "free_text", "en": "In your own words, what is the problem?", "sw": "Kwa maneno yako, tatizo ni nini?", "ai": "intent_model"},
@@ -83,6 +91,14 @@
       ]
     },
     {
+      "id": "reproductive_health", "applies_to": ["postpartum", "stillbirth", "adult_other"], "source": "TZ_STG_2021",
+      "note": "Ask privately. Recorded for the clinic (medicines and follow-up); it does not change urgency.",
+      "questions": [
+        {"id": "q_could_be_pregnant", "type": "yes_no", "applies_to": ["adult_other"], "sensitive": true, "en": "Could she be pregnant now?", "sw": "Je, anaweza kuwa mjamzito sasa?"},
+        {"id": "q_family_planning", "type": "choice", "sensitive": true, "options": ["fp_none", "fp_condoms", "fp_pills", "fp_injection", "fp_implant_iud", "fp_other", "fp_prefer_not"], "en": "Is she using family planning (condoms, pills, injection, implant)?", "sw": "Je, anatumia uzazi wa mpango (kondomu, vidonge, sindano, kipandikizi)?"}
+      ]
+    },
+    {
       "id": "social_environment", "applies_to": ["pregnant", "postpartum", "stillbirth", "child", "adult_other"],
       "note": "Social determinants and exposures. Ask about the household, not only the patient.",
       "questions": [
@@ -90,6 +106,7 @@
         {"id": "q_animals", "type": "yes_no", "maps_to": "exposure_animals", "en": "Animals at home (cows, goats, sheep), helping with animal births, or drinking unboiled milk?", "sw": "Mifugo nyumbani (ng'ombe, mbuzi, kondoo), kusaidia wanyama kuzaa, au kunywa maziwa bila kuchemsha?"},
         {"id": "q_animals_sick", "type": "yes_no", "show_if": {"q_animals": "yes"}, "en": "Any animals sick or losing pregnancies recently?", "sw": "Wanyama wowote wagonjwa au waliotupa mimba hivi karibuni?"},
         {"id": "q_rats_water", "type": "yes_no", "maps_to": "exposure_water_rats", "en": "Rats at home, walking in flood or stream water, or muddy fields?", "sw": "Panya nyumbani, kutembea kwenye maji ya mafuriko au mto, au mashamba ya matope?"},
+        {"id": "q_bednet", "type": "yes_no", "en": "Did she (or the child) sleep under a mosquito net last night?", "sw": "Je, alilala (yeye au mtoto) ndani ya chandarua jana usiku?"},
         {"id": "q_water_source", "type": "choice", "options": ["tap", "well", "river_stream", "rain", "other"], "en": "Main drinking water source?", "sw": "Chanzo kikuu cha maji ya kunywa?"},
         {"id": "q_travel_time", "type": "choice", "options": ["under_30_min", "30_60_min", "1_2_hours", "over_2_hours"], "en": "How long to reach the nearest clinic?", "sw": "Inachukua muda gani kufika kliniki iliyo karibu?"},
         {"id": "q_transport", "type": "choice", "options": ["walk", "boda_boda", "bus", "other"], "en": "How would you travel there?", "sw": "Utasafiri vipi kufika huko?"},

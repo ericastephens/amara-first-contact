@@ -2,6 +2,7 @@
 // Everything is written to the outbox; sync sends it when the network is available.
 import { activeFacilities, activeSlots, responderSite } from "../facilities/registry";
 import { countryByIso, getSetup, patientLanguage, responderLabel } from "../setup/setup";
+import { nationalIdSpec } from "../logic/identity";
 import { firstAvailable, type Lang } from "../logic/lang";
 import { intentLabels, questionnaires, rulesDoc, smsDoc } from "../data";
 import type { Encounter } from "../logic/encounter";
@@ -87,6 +88,7 @@ export async function createReferral(
     referral: { clinic: fac.name_en ?? fac.name, date: plan.slot?.date, time: plan.slot?.time, code, provisional: true },
     responder,
     languageName: (c) => patientLanguage(c)?.native,
+    idName: nationalIdSpec(getSetup()?.country).name,
   });
 
   const syndromes = [...new Set(result.fired.flatMap((f) => (f.syndrome ? [f.syndrome] : [])))];
@@ -117,12 +119,14 @@ export async function createReferral(
     channel,
     patientName: enc.patientName,
     phone: enc.phone,
+    ...(enc.nationalId?.trim() ? { nationalId: enc.nationalId.trim() } : {}),
     attempts: 0,
     nextAttemptAt: 0,
   };
 
   const messages: SmsMessage[] = [];
-  if (enc.answers.q_consent === "yes") {
+  // No phone: nothing to send; she takes the paper slip and the clinic finds her by her national ID.
+  if (enc.answers.q_consent === "yes" && !enc.noPhone && enc.phone.trim()) {
     const input = {
       name: enc.patientName,
       clinic: lang === "sw" ? fac.name : fac.name_en ?? fac.name,

@@ -11,9 +11,9 @@ import { createReferral, planReferral } from "../src/services/referrals";
 
 const NOW = "2026-10-05T09:00:00.000Z";
 
-async function makeReferral(caseId: string) {
+async function makeReferral(caseId: string, patch: Partial<ReturnType<typeof encounterFromCase>> = {}) {
   const c = testCases.cases.find((x) => x.id === caseId)!;
-  const enc = encounterFromCase(c.id, c.encounter, NOW, `enc-${caseId}`, "Noor");
+  const enc = { ...encounterFromCase(c.id, c.encounter, NOW, `enc-${caseId}`, "Noor"), ...patch };
   const result = evaluate(rulesDoc, icd10, c.encounter);
   const plan = (await planReferral(result, "2026-10-05"))!;
   const decisions = result.fired.map((f) => ({ ruleId: f.id, decision: "confirm" as const }));
@@ -24,6 +24,20 @@ beforeEach(async () => {
   setSimulatedNetwork(true);
   await resetLocalDb();
   await resetServer();
+});
+
+describe("no phone: national ID instead", () => {
+  it("sends no SMS or call, and passes the ID to the clinic, not to the district counts", async () => {
+    const nida = "19850315-12345-00001-23";
+    const { referral, messages } = await makeReferral("child_diarrhoea", { phone: "", noPhone: true, nationalId: nida });
+    expect(messages).toHaveLength(0);
+    expect(referral.nationalId).toBe(nida);
+    expect(referral.note).toContain("no phone (paper slip given)");
+    expect(referral.note).not.toContain(nida); // the note shows only the last digits
+    await flush(NOW);
+    expect(await listGatewaySms()).toHaveLength(0);
+    expect(JSON.stringify(await listCaseCounts())).not.toContain("19850315");
+  });
 });
 
 describe("store-and-forward sync", () => {

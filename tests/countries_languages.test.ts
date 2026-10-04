@@ -3,7 +3,7 @@ import { adminAreas, locales, smsDoc } from "../src/data";
 import { mergeSmsPacks } from "../src/data";
 import { effectiveSupport, hasSms, hasUi, uiCoverage, uiLanguages } from "../src/languages/packs";
 import { firstAvailable, tr } from "../src/logic/lang";
-import { formatTime, renderSms, renderVoice, SMS_MAX } from "../src/logic/sms";
+import { formatTime, hasTemplate, normaliseForCheck, renderSms, renderVoice, SMS_MAX } from "../src/logic/sms";
 import {
   clearSetup,
   countryByIso,
@@ -77,11 +77,12 @@ describe("language fallbacks", () => {
     expect(firstAvailable(["tw"], () => false)).toBe("en");
   });
 
-  it("English and Swahili are full UI languages; the empty Twi scaffold is not used yet", () => {
+  it("English, Swahili and (draft) French are full UI languages; the empty Twi scaffold is not used yet", () => {
     expect(uiCoverage("en")).toBe(1);
     expect(uiCoverage("sw")).toBe(1);
+    expect(uiCoverage("fr")).toBe(1);
     expect(hasUi("tw")).toBe(false);
-    expect(uiLanguages()).toEqual(["sw", "en"]);
+    expect(uiLanguages()).toEqual(["fr", "sw", "en"]);
   });
 });
 
@@ -109,6 +110,58 @@ describe("Ghana / Twi", () => {
     const enc = newEncounter("pregnant", "2026-10-05T09:00:00Z", "e2");
     enc.answers.q_language = "chagga";
     expect(messageLang(enc)).toBe("sw");
+  });
+});
+
+describe("French pack (draft, pending native-speaker and clinical review)", () => {
+  const sn = countryByIso("SN")!;
+  // realistic long values: 40-character clinic, 12-character first name, latest weekday name
+  const long = { name: "Marie-Claire", clinic: "Centre de Santé de Référence de Kolda Sud", date: "2026-10-07", time: "14:30", code: "K47" };
+  // symptom, diagnosis and test words that must never reach the mother's phone
+  const bannedFr = [
+    "fievre", "saignement", "sang", "convulsion", "paludisme", "rougeole", "enceinte", "grossesse", "diarrhee",
+    "toux", "douleur", "tension", "diagnostic", "test", "symptome", "maladie", "infection", "eclampsie", "anemie",
+  ];
+
+  it("French is offered and marked ready wherever it is a staff language", () => {
+    for (const c of locales.countries) {
+      const fr = c.staff.find((l) => l.code === "fr");
+      if (fr) expect(effectiveSupport(fr), c.name).toBe("full");
+    }
+    expect(hasSms("fr")).toBe(true);
+    expect(staffLanguages(sn).map((l) => l.code)).toContain("fr");
+  });
+
+  it("a Wolof-speaking patient in Senegal gets French messages, with French day names and 24 h time", () => {
+    saveSetup({ country: "SN", region: regionOptions(sn)[0].name, district: regionOptions(sn)[0].districts[0], role: "chw", workId: "ASC-SN-01", staffLang: "fr", patientLangs: defaultPatientLangs(sn), savedAt: "" });
+    const enc = newEncounter("pregnant", "2026-10-05T09:00:00Z", "e3");
+    enc.answers.q_language = "wo";
+    expect(messageLang(enc)).toBe("fr");
+    expect(renderSms(smsDoc, "referral", "fr", long)).toContain("le mercredi à 14:30");
+  });
+
+  it("every French SMS, filled with long values, is <= 160 characters without shortening the name", () => {
+    for (const id of Object.keys(smsDoc.templates)) {
+      if (id === "outbreak_alert_public") continue;
+      expect(hasTemplate(smsDoc, id, "fr"), id).toBe(true);
+      const text = renderSms(smsDoc, id, "fr", long);
+      expect(text.length, `${id}.fr: ${text}`).toBeLessThanOrEqual(SMS_MAX);
+      if (smsDoc.templates[id].fr.includes("{name}")) expect(text, id).toContain(long.name);
+      // GSM-7 characters only (no ê, ç, â, curly quotes...), otherwise phones switch to 70-character UCS-2 parts
+      expect(smsDoc.templates[id].fr, id).toMatch(/^[A-Za-z0-9 .,:;?!'"()=+\-/{}_àéèùìòÉÇÄÖÑÜäöñü]*$/);
+    }
+  });
+
+  it("French SMS and voice texts never contain a symptom, diagnosis or test", () => {
+    const texts = [
+      ...Object.keys(smsDoc.templates).filter((id) => id !== "outbreak_alert_public").map((id) => renderSms(smsDoc, id, "fr", long)),
+      ...Object.keys(smsDoc.voice_scripts).map((id) => renderVoice(smsDoc, id, "fr", { ...long, responder: "Pharmacie Ndiaye" })),
+    ];
+    for (const text of texts) {
+      const norm = normaliseForCheck(text);
+      for (const w of bannedFr) expect(norm.includes(` ${w}`), `"${text}" contains "${w}"`).toBe(false);
+    }
+    expect(renderVoice(smsDoc, "referral", "fr", { ...long, responder: "R" })).toContain("quatre, sept");
   });
 });
 
