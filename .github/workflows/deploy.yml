@@ -31,11 +31,18 @@ jobs:
       - run: npm ci
       - run: npm test
       # Real clinics for the demo area (Hai and Moshi Rural, Kilimanjaro) from OpenStreetMap, baked into the
-      # build so the deployed app has real facilities even offline. If the map service is down, the build
-      # still succeeds and the app falls back to fetching on the device or to the sample clinics.
+      # build so the deployed app has real facilities even offline. The committed copy in data/ (from the
+      # "Refresh real clinics" workflow) is used if the map servers are busy; it is only overwritten on success.
       - name: Fetch real facilities (OpenStreetMap)
         continue-on-error: true
         run: python scripts/fetch_facilities_osm.py --bbox "-3.45,37.10,-3.10,37.60" --out data/facilities_osm_kilimanjaro.json
+      - name: Report which clinics are baked in
+        run: |
+          if [ -f data/facilities_osm_kilimanjaro.json ]; then
+            python -c "import json;print('::notice::Real OSM clinics baked into build:',len(json.load(open('data/facilities_osm_kilimanjaro.json'))['facilities']))"
+          else
+            echo "::warning::No real clinics baked in; the app will fetch on the device or use sample clinics"
+          fi
       - run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/

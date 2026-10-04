@@ -33,3 +33,28 @@ describe("OpenStreetMap facilities", () => {
     expect(r?.slot).toMatchObject({ date: "2026-10-05", time: "08:30" });
   });
 });
+
+describe("loadNearby falls back to a mirror", () => {
+  it("uses the next Overpass server when the first is busy", async () => {
+    const { loadNearby } = await import("../src/facilities/registry");
+    const calls: string[] = [];
+    const orig = globalThis.fetch;
+    globalThis.fetch = (async (url: string) => {
+      calls.push(url);
+      if (calls.length === 1) return new Response("busy", { status: 504 });
+      return new Response(
+        JSON.stringify({ elements: [{ type: "node", id: 1, lat: -3.3, lon: 37.3, tags: { amenity: "clinic", name: "Zahanati ya Mfano" } }] }),
+        { status: 200 },
+      );
+    }) as typeof fetch;
+    try {
+      const reg = await loadNearby({ lat: -3.3, lon: 37.3, method: "place", label: "Hai" }, "2026-10-06");
+      expect(calls).toHaveLength(2);
+      expect(calls[1]).toContain("kumi.systems");
+      expect(reg.facilities[0].name).toBe("Zahanati ya Mfano");
+      expect(reg.facilities[0].level).toBe("dispensary");
+    } finally {
+      globalThis.fetch = orig;
+    }
+  });
+});

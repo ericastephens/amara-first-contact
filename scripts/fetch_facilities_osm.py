@@ -10,12 +10,19 @@ Does not cover: many drug shops and dispensaries are missing or untagged; no hou
 """
 import argparse
 import json
+import sys
+import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-OVERPASS = "https://overpass-api.de/api/interpreter"
+# Main Overpass server first, then public mirrors (the main one is often busy).
+OVERPASS = [
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://overpass.private.coffee/api/interpreter",
+]
 
 LEVEL = {"hospital": "hospital", "clinic": "health_centre", "doctors": "dispensary", "pharmacy": "drug_shop"}
 
@@ -33,10 +40,20 @@ def main() -> None:
     );
     out center tags;
     """
-    req = urllib.request.Request(OVERPASS, data=urllib.parse.urlencode({"data": q}).encode(),
-                                 headers={"User-Agent": "amara-first-contact-hackathon/0.1"})
-    with urllib.request.urlopen(req, timeout=90) as r:
-        elements = json.load(r)["elements"]
+    elements = None
+    for attempt, url in enumerate(OVERPASS * 2):
+        try:
+            req = urllib.request.Request(url, data=urllib.parse.urlencode({"data": q}).encode(),
+                                         headers={"User-Agent": "amara-first-contact-hackathon/0.1"})
+            with urllib.request.urlopen(req, timeout=90) as r:
+                elements = json.load(r)["elements"]
+            print(f"fetched {len(elements)} elements from {url}")
+            break
+        except Exception as e:  # busy server, timeout, bad gateway: try the next one
+            print(f"attempt {attempt + 1} via {url} failed: {e}", file=sys.stderr)
+            time.sleep(5)
+    if elements is None:
+        raise SystemExit("all Overpass servers failed")
 
     facilities = []
     for e in elements:
@@ -71,6 +88,8 @@ def main() -> None:
     for f in facilities:
         counts[f["level"]] = counts.get(f["level"], 0) + 1
     print(f"wrote {path.relative_to(ROOT)}: {len(facilities)} facilities {counts}")
+    if not facilities:
+        raise SystemExit("no named facilities found in the area")
 
 
 if __name__ == "__main__":

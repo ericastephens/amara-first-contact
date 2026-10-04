@@ -33,7 +33,12 @@ export interface Registry {
 
 const KEY = "amara.facilities.v1";
 export const OSM_ATTRIBUTION = "© OpenStreetMap contributors (ODbL)";
-const OVERPASS = "https://overpass-api.de/api/interpreter";
+// Main Overpass server first, then public mirrors (the main one is often busy).
+const OVERPASS = [
+  "https://overpass-api.de/api/interpreter",
+  "https://overpass.kumi.systems/api/interpreter",
+  "https://overpass.private.coffee/api/interpreter",
+];
 const NOMINATIM = "https://nominatim.openstreetmap.org/search";
 
 // Facilities baked in at build time, if CI produced any.
@@ -218,13 +223,23 @@ export async function loadNearby(center: Place, today: string, radiusKm = 25): P
   const r = Math.round(radiusKm * 1000);
   const around = `(around:${r},${center.lat},${center.lon})`;
   const query = `[out:json][timeout:40];(nwr["amenity"~"^(hospital|clinic|doctors)$"]${around};nwr["healthcare"~"^(hospital|clinic|centre)$"]${around};);out center tags;`;
-  const res = await fetch(OVERPASS, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `data=${encodeURIComponent(query)}`,
-  });
-  if (!res.ok) throw new Error(`overpass_${res.status}`);
-  const json = (await res.json()) as { elements: OsmElement[] };
+  let json: { elements: OsmElement[] } | null = null;
+  let lastError: unknown = null;
+  for (const url of OVERPASS) {
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: `data=${encodeURIComponent(query)}`,
+      });
+      if (!res.ok) throw new Error(`overpass_${res.status}`);
+      json = (await res.json()) as { elements: OsmElement[] };
+      break;
+    } catch (e) {
+      lastError = e; // busy or unreachable: try the next server
+    }
+  }
+  if (!json) throw lastError instanceof Error ? lastError : new Error("overpass_failed");
   const facilities = facilitiesFromOsm(json.elements).sort((a, b) => haversineKm(center, a) - haversineKm(center, b));
   if (facilities.length === 0) throw new Error("no_facilities_found");
   const reg: Registry = {

@@ -106,6 +106,24 @@ export function splitChunks(rawText: string): string[] {
     .filter((s) => s.length > 2);
 }
 
+export interface ChunkReading {
+  /** Her words for this part of the sentence. */
+  text: string;
+  /** Final label: a symptom id, "other" (not a symptom) or "uncertain". */
+  label: string;
+  /** Best guess even when uncertain. */
+  topLabel: string;
+  confidence: number;
+}
+
+/** One reading per chunk, in the order she said them: what the model heard and how sure it is. */
+export function explain(model: IntentModel, rawText: string): ChunkReading[] {
+  return splitChunks(rawText).map((text) => {
+    const r = predict(model, text);
+    return { text, label: r.label, topLabel: r.topLabel, confidence: r.confidence };
+  });
+}
+
 export function detect(model: IntentModel, rawText: string): Detection {
   const found = new Map<string, { text: string; confidence: number }>();
   const uncertain: UncertainChunk[] = [];
