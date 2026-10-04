@@ -3,7 +3,8 @@
 //
 // Tanzania: the NIDA national identification number (NIN) is 20 digits, usually written
 // YYYYMMDD-XXXXX-XXXXX-XX, where the first 8 digits are the date of birth. That lets the app suggest an age
-// when she does not know it. Pending confirmation with NIDA documentation before a pilot.
+// when she does not know it. Layout confirmed by the Amara Health team (Tanzania), 3 Oct 2026; no official NIDA
+// specification cited yet.
 
 export interface NationalIdSpec {
   /** Short name shown in the form ("NIDA", "National ID"). */
