@@ -282,5 +282,7 @@
   "setup.region.first": "Chagua mkoa kwanza",
   "setup.areas.source": "Orodha rasmi ya wilaya (geoBoundaries, data huria). Chagua kutoka kwenye orodha ili majina yalingane na kumbukumbu za kliniki na ufuatiliaji.",
   "lang.pending": "Bado haijatafsiriwa: inaonyesha Kiingereza",
-  "setup.district.select": "Wilaya"
+  "setup.district.select": "Wilaya",
+  "start.welcome": "Ukurasa wa mwanzo",
+  "landing.continue": "Endelea · Namba ya kazi {id}"
 }

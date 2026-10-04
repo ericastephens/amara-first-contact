@@ -1,9 +1,9 @@
 // Public landing page: shown before setup and before the PIN. No patient data here.
-import { demoSetup, saveSetup } from "../setup/setup";
+import { demoSetup, getSetup, saveSetup } from "../setup/setup";
+import { UI_NATIVE, uiCoverage, uiLanguages } from "../languages/packs";
 import { loadNearby } from "../facilities/registry";
 import { demoNowIso, demoToday } from "../sync/clock";
 import { useI18n } from "./i18n";
-import { UI_NATIVE, uiLanguages } from "../languages/packs";
 
 const ICONS = [
   // works offline
@@ -17,8 +17,21 @@ const ICONS = [
 const SMS_SW = "Habari Noor. Nenda Zahanati ya Ondera Jumanne saa 3 asubuhi. Namba yako: K47.";
 const SMS_EN = "Hello Noor. Go to Ondera Dispensary on Tuesday at 9 am. Your number: K47.";
 
-export function Landing({ onStart, onDemoReady }: { onStart: () => void; onDemoReady: () => void }) {
+/** Languages offered on the welcome page: any interface pack that is (almost) fully translated. */
+const LANDING_LANGS = uiLanguages().filter((c) => c === "en" || uiCoverage(c) >= 0.9);
+
+export function Landing({
+  onStart,
+  onDemoReady,
+  onContinue,
+}: {
+  onStart: () => void;
+  onDemoReady: () => void;
+  /** Set when this phone is already set up: go back to the app (PIN first). */
+  onContinue?: () => void;
+}) {
   const { t, lang, setLang } = useI18n();
+  const saved = getSetup();
   const quickDemo = () => {
     const s = demoSetup(demoNowIso());
     saveSetup(s);
@@ -40,7 +53,7 @@ export function Landing({ onStart, onDemoReady }: { onStart: () => void; onDemoR
           <span>{t("app.full")}</span>
         </div>
         <div className="seg" role="group" aria-label={t("landing.lang")}>
-          {uiLanguages().map((l) => (
+          {LANDING_LANGS.map((l) => (
             <button type="button" key={l} aria-pressed={lang === l} onClick={() => setLang(l)}>
               {UI_NATIVE[l] ?? l}
             </button>
@@ -69,7 +82,12 @@ export function Landing({ onStart, onDemoReady }: { onStart: () => void; onDemoR
             ))}
           </ul>
           <div className="cta">
-            <button type="button" className="btn primary" onClick={onStart}>
+            {onContinue && saved && (
+              <button type="button" className="btn primary" onClick={onContinue}>
+                {t("landing.continue", { id: saved.workId })}
+              </button>
+            )}
+            <button type="button" className={onContinue ? "btn secondary" : "btn primary"} onClick={onStart}>
               {t("landing.start")}
             </button>
             <button type="button" className="btn secondary" onClick={quickDemo}>

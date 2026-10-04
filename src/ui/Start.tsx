@@ -12,6 +12,7 @@ export function Start({
   onDemo,
   onReset,
   onSetup,
+  onWelcome,
   hasCuff,
   setHasCuff,
 }: {
@@ -19,6 +20,7 @@ export function Start({
   onDemo: () => void;
   onReset: () => void;
   onSetup: () => void;
+  onWelcome: () => void;
   hasCuff: boolean;
   setHasCuff: (v: boolean) => void;
 }) {
@@ -58,9 +60,14 @@ export function Start({
       <button type="button" className="btn secondary wide" onClick={onDemo}>
         ▶ {t("start.demo")}
       </button>
-      <button type="button" className="link" onClick={() => setShowSettings(!showSettings)}>
-        ⚙ {t("start.settings")}
-      </button>
+      <div className="row between">
+        <button type="button" className="link" onClick={() => setShowSettings(!showSettings)}>
+          ⚙ {t("start.settings")}
+        </button>
+        <button type="button" className="link" onClick={onWelcome}>
+          ← {t("start.welcome")}
+        </button>
+      </div>
       {showSettings && (
         <Card>
           <label className="row">
