@@ -3,6 +3,7 @@
 import type { IntentLabelsDoc, Questionnaires } from "../data/schemas";
 import en from "../i18n/en.json";
 import { questionFor, symptomIds, visibleUnanswered, type Encounter } from "./encounter";
+import { maskId } from "./identity";
 import { formatLocal } from "./time";
 import type { FlagDecision, RulesResult } from "./rules";
 
@@ -12,6 +13,8 @@ export interface NoteContext {
   urgencyLabel: string;
   referral?: { clinic: string; date?: string; time?: string; code: string; provisional: boolean };
   responder: string;
+  /** Name of the national ID in this country ("NIDA" in Tanzania). */
+  idName?: string;
   /** Display name for a language code saved in setup (e.g. "chagga" -> "Kichaga"). */
   languageName?: (code: string) => string | undefined;
 }
@@ -40,6 +43,11 @@ export function buildNote(enc: Encounter, result: RulesResult, decisions: FlagDe
   const lines: string[] = [];
   lines.push(`AMARA REFERRAL NOTE  ·  ${formatLocal(enc.createdAt)}`);
   lines.push(`Patient: ${enc.patientName || "(name not given)"}  ·  ${GROUP_EN[enc.group]}`);
+  const contact = enc.noPhone ? "no phone (paper slip given)" : enc.phone || "(no phone given)";
+  lines.push(`Contact: ${contact}${enc.nationalId?.trim() ? `  ·  ${ctx.idName ?? "National ID"} ${maskId(enc.nationalId)}` : ""}`);
+  if (enc.answers.q_age_years)
+    lines.push(`Age: ${enc.answers.q_age_years} years${enc.answers.q_age_source === "national_id" ? ` (from the ${ctx.idName ?? "national ID"} number; confirm)` : ""}`);
+  if (enc.answers.q_weight_kg) lines.push(`Weight: ${enc.answers.q_weight_kg} kg`);
   if (enc.answers.q_gest_weeks) lines.push(`Gestation: ${enc.answers.q_gest_weeks} weeks`);
   if (enc.answers.q_days_pp) lines.push(`Days since birth: ${enc.answers.q_days_pp}`);
   if (enc.answers.q_child_age_months) lines.push(`Child age: ${enc.answers.q_child_age_months} months`);
@@ -51,7 +59,7 @@ export function buildNote(enc: Encounter, result: RulesResult, decisions: FlagDe
     lines.push(`  In her words: "${enc.answers.q_complaint}"`);
     const confirmed = enc.chips.filter((c) => c.status === "confirmed").map((c) => label(c.id));
     lines.push(
-      `  Understood as (intent model, confirmed by responder): ${confirmed.length ? confirmed.join("; ") : "none"}`,
+      `  Understood as (intent model, confirmed by the first responder): ${confirmed.length ? confirmed.join("; ") : "none"}`,
     );
     const open = enc.uncertainChips.filter((c) => c.status === "open");
     if (open.length) lines.push(`  Not sure (ask her again): ${open.map((c) => `"${c.text}"`).join("; ")}`);

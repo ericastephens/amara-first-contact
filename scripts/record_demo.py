@@ -179,7 +179,7 @@ def main():
         pg.mouse.wheel(0, 1400); wait(2200)
         nocap()
         pg.mouse.wheel(0, -6000); wait(500)
-        tap(pg.get_by_role("tab", name="Responder", exact=True).first, 600)
+        tap(pg.get_by_role("tab", name="First responder", exact=True).first, 600)
 
         # ------------------------------------------------------------------ 7. referral
         tap(btn("Create referral", exact=True), 1400)

@@ -38,6 +38,8 @@ export interface Referral {
   channel: "sms" | "voice";
   patientName: string;
   phone: string;
+  /** National ID (NIDA in Tanzania) when given, so the clinic can match her record. Never in SMS or district counts. */
+  nationalId?: string;
   /** Work ID of the professional who made the referral (from setup). */
   responderWorkId?: string;
   /** True when the clinic is a real facility from OpenStreetMap, false/absent for sample clinics. */

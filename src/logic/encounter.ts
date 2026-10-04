@@ -21,7 +21,12 @@ export interface Encounter {
   updatedAt: string;
   group: Group;
   patientName: string;
+  /** Her phone number for SMS or calls. Required unless noPhone is set. */
   phone: string;
+  /** She has no phone: the national ID (NIDA in Tanzania) is required instead. */
+  noPhone?: boolean;
+  /** National ID number (NIDA in Tanzania). Stays on the device and goes only to the referral clinic. */
+  nationalId?: string;
   /** Raw answers by question id: "yes" | "no" | "dont_know" | option id | number as string | free text. */
   answers: Record<string, string>;
   /** When each question was answered (ISO timestamps). */

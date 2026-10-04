@@ -1,7 +1,8 @@
 // Responder intake, built from data/questionnaires.json.
 // Step 1 who · Step 2 common block · Step 3 group module · Step 4 social & environment (+ optional BP).
 import { activeFacilities } from "../../facilities/registry";
-import { getSetup } from "../../setup/setup";
+import { countryByIso, getSetup } from "../../setup/setup";
+import { ageFromId, identityComplete, nationalIdSpec, normalizePhone, validNationalId } from "../../logic/identity";
 import { useEffect, useMemo, useState } from "react";
 import { facilitiesDoc, questionnaires } from "../../data";
 import type { Group, Question } from "../../data/schemas";
@@ -45,8 +46,9 @@ export function Intake({
   const modules = useMemo(() => (enc ? questionsForGroup(questionnaires, enc.group) : []), [enc]);
   const common = modules.find((m) => m.moduleId === "common")?.questions ?? [];
   const social = modules.find((m) => m.moduleId === "social_environment")?.questions ?? [];
+  const about = modules.find((m) => m.moduleId === "about_patient")?.questions ?? [];
   const groupQs = modules
-    .filter((m) => m.moduleId !== "common" && m.moduleId !== "social_environment")
+    .filter((m) => !["about_patient", "common", "social_environment"].includes(m.moduleId))
     .flatMap((m) => m.questions);
   const moduleNote = questionnaires.modules.find((m) => m.id === "stillbirth_support" && enc?.group === "stillbirth")?.note;
 
@@ -64,6 +66,52 @@ export function Intake({
       }
       return { ...e, answers, answeredAt, updatedAt: new Date().toISOString() };
     });
+
+  // Phone or national ID: every patient must be reachable or findable by the clinic.
+  const setup = getSetup();
+  const iso = setup?.country;
+  const dial = countryByIso(iso ?? "")?.dial;
+  const idSpec = nationalIdSpec(iso);
+  const today = new Date(demoNowIso());
+  const idOk = enc ? identityComplete(enc, iso, dial, today) : false;
+  const phoneBad = Boolean(enc && !enc.noPhone && enc.phone.trim().length >= 6 && !normalizePhone(enc.phone, dial));
+  const idBad = Boolean(enc?.nationalId?.trim() && !validNationalId(enc.nationalId, iso, today));
+
+  const setNoPhone = (noPhone: boolean) =>
+    setEnc((e) => {
+      if (!e) return e;
+      const answers = { ...e.answers };
+      if (noPhone) answers.q_phone = "no_phone";
+      else if (answers.q_phone === "no_phone") delete answers.q_phone;
+      return { ...e, noPhone, answers };
+    });
+
+  // Typing the ID fills in her age when she has not given it (Tanzania: NIDA starts with the date of birth).
+  const setNationalId = (raw: string) =>
+    setEnc((e) => {
+      if (!e) return e;
+      const answers = { ...e.answers };
+      const age = e.group === "child" ? null : ageFromId(raw, iso, today);
+      if (age !== null && (!answers.q_age_years || answers.q_age_source === "national_id")) {
+        answers.q_age_years = String(age);
+        answers.q_age_source = "national_id";
+      } else if (age === null && answers.q_age_source === "national_id") {
+        delete answers.q_age_years;
+        delete answers.q_age_source;
+      }
+      return { ...e, nationalId: raw, answers };
+    });
+
+  const answerAbout = (q: Question, v: string | undefined) => {
+    answer(q, v);
+    // an age she gives herself replaces the one read from the ID
+    if (q.id === "q_age_years")
+      setEnc((e) => {
+        if (!e || e.answers.q_age_source !== "national_id") return e;
+        const { q_age_source: _, ...answers } = e.answers;
+        return { ...e, answers };
+      });
+  };
 
   const start = (group: Group) => {
     const now = demoNowIso();
@@ -125,16 +173,43 @@ export function Intake({
                 {t("intake.name")}
                 <input value={enc.patientName} onChange={(e) => setEnc({ ...enc, patientName: e.target.value })} autoComplete="off" />
               </label>
-              <label className="field">
-                {t("intake.phone")}
-                <input
-                  type="tel"
-                  inputMode="tel"
-                  value={enc.phone}
-                  onChange={(e) => setEnc({ ...enc, phone: e.target.value })}
-                  autoComplete="off"
-                />
+              {!enc.noPhone && (
+                <label className="field">
+                  {t("intake.phone")}
+                  <input
+                    type="tel"
+                    inputMode="tel"
+                    value={enc.phone}
+                    onChange={(e) => setEnc({ ...enc, phone: e.target.value })}
+                    autoComplete="off"
+                    aria-invalid={phoneBad}
+                    required
+                  />
+                  {phoneBad && <span className="error small">{t("intake.phone.invalid")}</span>}
+                </label>
+              )}
+              <label className="row check">
+                <input type="checkbox" checked={Boolean(enc.noPhone)} onChange={(e) => setNoPhone(e.target.checked)} />{" "}
+                {t("intake.nophone")}
               </label>
+              <label className="field">
+                {t(enc.noPhone ? "intake.id.required" : "intake.id.optional", { id: idSpec.name })}
+                <input
+                  inputMode={idSpec.digits ? "numeric" : "text"}
+                  value={enc.nationalId ?? ""}
+                  onChange={(e) => setNationalId(e.target.value)}
+                  placeholder={idSpec.example}
+                  autoComplete="off"
+                  aria-invalid={idBad}
+                  required={Boolean(enc.noPhone)}
+                />
+                {idBad && (
+                  <span className="error small">
+                    {idSpec.digits ? t("intake.id.invalid", { id: idSpec.name, n: idSpec.digits }) : t("intake.id.invalid.generic")}
+                  </span>
+                )}
+              </label>
+              {enc.noPhone && <p className="note-box small">{t("intake.nophone.note", { id: idSpec.name })}</p>}
               <label className="field">
                 {t("intake.ward")}
                 <select value={enc.wardOfResidence} onChange={(e) => setEnc({ ...enc, wardOfResidence: e.target.value })}>
@@ -143,6 +218,24 @@ export function Intake({
                   ))}
                 </select>
               </label>
+              {about.length > 0 && (
+                <>
+                  <h3>{t(enc.group === "child" ? "intake.about.child" : "intake.about")}</h3>
+                  {about
+                    .filter((q) => isVisible(q, enc, roles))
+                    .map((q) => (
+                      <div key={q.id}>
+                        <QuestionField question={q} value={enc.answers[q.id]} onChange={(v) => answerAbout(q, v)} />
+                        {q.id === "q_age_years" && enc.answers.q_age_source === "national_id" && (
+                          <p className="muted small">
+                            {t("intake.age.fromid", { id: idSpec.name, age: enc.answers.q_age_years ?? "" })}
+                          </p>
+                        )}
+                      </div>
+                    ))}
+                </>
+              )}
+              {!idOk && <p className="warn">{t("intake.identity.needed", { id: idSpec.name })}</p>}
             </>
           )}
         </Card>
@@ -220,11 +313,16 @@ export function Intake({
           {t("back")}
         </button>
         {step < total - 1 ? (
-          <button type="button" className="btn primary" disabled={!enc} onClick={() => setStep(step + 1)}>
+          <button
+            type="button"
+            className="btn primary"
+            disabled={!enc || (step === 0 && !idOk)}
+            onClick={() => setStep(step + 1)}
+          >
             {t("next")}
           </button>
         ) : (
-          <button type="button" className="btn primary" disabled={!enc} onClick={() => enc && onFinish(enc)}>
+          <button type="button" className="btn primary" disabled={!enc || !idOk} onClick={() => enc && onFinish(enc)}>
             {t("intake.finish")}
           </button>
         )}
