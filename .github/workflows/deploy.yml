@@ -35,7 +35,7 @@ jobs:
       # "Refresh real clinics" workflow) is used if the map servers are busy; it is only overwritten on success.
       - name: Fetch real facilities (OpenStreetMap)
         continue-on-error: true
-        run: python scripts/fetch_facilities_osm.py --bbox "-3.45,37.10,-3.10,37.60" --out data/facilities_osm_kilimanjaro.json
+        run: python scripts/fetch_facilities_osm.py --bbox=-3.45,37.10,-3.10,37.60 --out data/facilities_osm_kilimanjaro.json
       - name: Report which clinics are baked in
         run: |
           if [ -f data/facilities_osm_kilimanjaro.json ]; then

@@ -3,7 +3,8 @@
 Default area: coffee-growing slopes of Kilimanjaro (Hai / Moshi Rural), Tanzania, as a real-world stand-in
 for the brief's fictional Ondera highlands. Change --bbox for another area.
 
-Usage: python scripts/fetch_facilities_osm.py [--bbox south,west,north,east]
+Usage: python scripts/fetch_facilities_osm.py [--bbox=south,west,north,east]
+       (use the = form: a bbox starting with "-" is otherwise read as an option)
 Output: data/facilities_osm_kilimanjaro.json (same shape as data/facilities_sample.json)
 Licence: OpenStreetMap data is ODbL; credit "© OpenStreetMap contributors" in the app and docs.
 Does not cover: many drug shops and dispensaries are missing or untagged; no hours, staff, stock or slots.

@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Fetch facilities
-        run: python scripts/fetch_facilities_osm.py --bbox "-3.45,37.10,-3.10,37.60" --out data/facilities_osm_kilimanjaro.json
+        run: python scripts/fetch_facilities_osm.py --bbox=-3.45,37.10,-3.10,37.60 --out data/facilities_osm_kilimanjaro.json
       - name: Summary
         run: |
           python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
