@@ -11,6 +11,7 @@ Does not cover: many drug shops and dispensaries are missing or untagged; no hou
 """
 import argparse
 import json
+import re
 import sys
 import time
 import urllib.parse
@@ -67,6 +68,10 @@ def main() -> None:
         name = tags.get("name") or tags.get("name:sw") or tags.get("name:en")
         if not name:
             continue  # an unnamed point cannot be referred to
+        if re.search(r"traditional|herbal|mganga|tiba asili", name, re.I) or re.fullmatch(
+                r"(hospital|hospitali|clinic|kliniki|dispensary|zahanati|health cent(er|re)|kituo cha afya|duka la dawa|pharmacy)",
+                name.strip(), re.I):
+            continue  # traditional healers and bare generic names are not referral targets
         level = LEVEL.get(kind, "health_centre")
         # Tanzanian naming conventions help: Zahanati = dispensary, Kituo cha Afya = health centre
         lname = name.lower()

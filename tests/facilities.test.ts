@@ -58,3 +58,14 @@ describe("loadNearby falls back to a mirror", () => {
     }
   });
 });
+
+describe("referableName", () => {
+  it("drops traditional healers and bare generic names", async () => {
+    const { referableName } = await import("../src/facilities/registry");
+    expect(referableName("Nsong'wa Traditional clinic")).toBe(false);
+    expect(referableName("Hospital")).toBe(false);
+    expect(referableName("Duka la Dawa")).toBe(false);
+    expect(referableName("Machame Hospital")).toBe(true);
+    expect(referableName("Kisiki Dispensary")).toBe(true);
+  });
+});
