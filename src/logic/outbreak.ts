@@ -102,7 +102,7 @@ export interface EscalationDraft {
   id: string;
   status: "draft" | "approved_queued" | "sent";
   createdAt: string;
-  approvedBy?: { role: "clinician" | "district"; at: string };
+  approvedBy?: { role: "clinician" | "district"; at: string; workId: string };
   sentAt?: string;
   // eIDSR-like fields
   syndrome: string;
@@ -179,12 +179,14 @@ export function approveEscalation(
   draft: EscalationDraft,
   role: string,
   now: string,
+  workId: string,
 ): EscalationDraft {
   if (role !== "clinician" && role !== "district") {
     throw new Error("Only a clinician or district surveillance officer can approve an escalation");
   }
+  if (!workId?.trim()) throw new Error("Approving an escalation needs the approver's work ID");
   if (draft.status !== "draft") return draft;
-  return { ...draft, status: "approved_queued", approvedBy: { role, at: now } };
+  return { ...draft, status: "approved_queued", approvedBy: { role, at: now, workId: workId.trim() } };
 }
 
 export function canSend(draft: EscalationDraft): boolean {

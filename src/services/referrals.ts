@@ -1,6 +1,8 @@
 // Creates the referral on the device: facility, provisional slot, code, note, SMS/voice, case counts.
 // Everything is written to the outbox; sync sends it when the network is available.
-import { facilitiesDoc, intentLabels, questionnaires, rulesDoc, slotsDoc, smsDoc } from "../data";
+import { activeFacilities, activeSlots, responderSite } from "../facilities/registry";
+import { getSetup, patientLanguage, responderLabel } from "../setup/setup";
+import { intentLabels, questionnaires, rulesDoc, smsDoc } from "../data";
 import type { Encounter } from "../logic/encounter";
 import { buildNote } from "../logic/note";
 import { isoWeekOf, latestWeek } from "../logic/outbreak";
@@ -25,19 +27,23 @@ export async function usedCodes(): Promise<Set<string>> {
   return new Set(await getMeta<string[]>("usedCodes", []));
 }
 
-export async function planReferral(result: RulesResult, today: string): Promise<ReferralPlan | null> {
+export async function planReferral(result: RulesResult, today: string, nowTime?: string): Promise<ReferralPlan | null> {
   if (!result.facilityLevel || result.urgency === "home_care_followup") return null;
-  const from = facilitiesDoc.responder_sites[0];
-  const r = chooseReferral(result.urgency, result.facilityLevel, facilitiesDoc.facilities, from, slotsDoc.slots, today, await reservedSlots());
+  const from = responderSite();
+  const r = chooseReferral(result.urgency, result.facilityLevel, activeFacilities(), from, activeSlots(), today, await reservedSlots(), nowTime);
   if (!r) return null;
   return { choice: r.choice, slot: r.slot ? { date: r.slot.date, time: r.slot.time } : null };
 }
 
+/** Message text language: English or Swahili. Other patient languages fall back to Swahili text
+ *  and are delivered as a voice call (recorded community audio, see messageChannel). */
 export function messageLang(enc: Encounter): "sw" | "en" {
   return enc.answers.q_language === "en" ? "en" : "sw";
 }
 
 export function messageChannel(enc: Encounter): "sms" | "voice" {
+  const l = patientLanguage(enc.answers.q_language);
+  if (l && l.support === "keypad_audio") return "voice";
   return enc.answers.q_reader === "prefers_voice" || enc.answers.q_phone === "no_phone" ? "voice" : "sms";
 }
 
@@ -66,19 +72,22 @@ export async function createReferral(
   const fac = plan.choice.facility;
   const lang = messageLang(enc);
   const channel = messageChannel(enc);
-  const responder = facilitiesDoc.responder_sites[0].name;
+  const responder = responderLabel(responderSite().name);
   const note = buildNote(enc, result, decisions, {
     questionnaires,
     labels: intentLabels,
     urgencyLabel: urgencyLabel(rulesDoc, result.urgency, "en"),
     referral: { clinic: fac.name_en ?? fac.name, date: plan.slot?.date, time: plan.slot?.time, code, provisional: true },
     responder,
+    languageName: (c) => patientLanguage(c)?.native,
   });
 
   const syndromes = [...new Set(result.fired.flatMap((f) => (f.syndrome ? [f.syndrome] : [])))];
   const referral: Referral = {
     id: uid("ref"),
     code,
+    responderWorkId: getSetup()?.workId,
+    facilityReal: fac.synthetic === false,
     encounterId: enc.id,
     createdAt: nowIso,
     urgency: result.urgency,

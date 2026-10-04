@@ -58,9 +58,10 @@ export const slotKey = (s: Pick<Slot, "facility_id" | "date" | "time">) => `${s.
 /**
  * Pick a slot for the urgency:
  *  - go_now: no slot ("Go now", paper referral) — urgent never waits for a slot.
- *  - refer_today / ask_clinic: earliest free slot today.
+ *  - refer_today / ask_clinic: earliest free slot today that is still ahead of `nowTime`;
+ *    if today's slots have passed (e.g. an evening visit), the first slot tomorrow morning.
  *  - refer_routine: earliest free slot in the next 3 days (today + 1 .. today + 3).
- * `reserved` holds slot keys already used on this device.
+ * `reserved` holds slot keys already used on this device. `nowTime` is "HH:mm" local.
  */
 export function pickSlot(
   urgency: Urgency,
@@ -69,13 +70,20 @@ export function pickSlot(
   today: string,
   reserved: Set<string> = new Set(),
   after?: Slot,
+  nowTime?: string,
+  allowNextDay = true,
 ): Slot | null {
   if (urgency === "go_now" || urgency === "home_care_followup") return null;
   const dates =
-    urgency === "refer_routine" ? [addDays(today, 1), addDays(today, 2), addDays(today, 3)] : [today];
+    urgency === "refer_routine"
+      ? [addDays(today, 1), addDays(today, 2), addDays(today, 3)]
+      : allowNextDay
+        ? [today, addDays(today, 1)]
+        : [today];
   const free = slots
     .filter((s) => s.facility_id === facilityId && s.status === "free" && dates.includes(s.date))
     .filter((s) => !reserved.has(slotKey(s)))
+    .filter((s) => !nowTime || s.date !== today || s.time > nowTime)
     .filter((s) => !after || `${s.date} ${s.time}` > `${after.date} ${after.time}`)
     .sort((a, b) => `${a.date} ${a.time}`.localeCompare(`${b.date} ${b.time}`));
   return free[0] ?? null;
@@ -90,13 +98,18 @@ export function chooseReferral(
   slots: Slot[],
   today: string,
   reserved: Set<string>,
+  nowTime?: string,
 ): { choice: FacilityChoice; slot: Slot | null } | null {
   const options = suitableFacilities(facilities, level, from);
   if (options.length === 0) return null;
   if (urgency === "go_now") return { choice: options[0], slot: null };
-  for (const choice of options) {
-    const slot = pickSlot(urgency, choice.facility.id, slots, today, reserved);
-    if (slot) return { choice, slot };
+  // Same-day urgencies: a suitable clinic with a slot still open today beats the nearest clinic tomorrow.
+  const passes = urgency === "refer_routine" ? [true] : [false, true];
+  for (const allowNextDay of passes) {
+    for (const choice of options) {
+      const slot = pickSlot(urgency, choice.facility.id, slots, today, reserved, undefined, nowTime, allowNextDay);
+      if (slot) return { choice, slot };
+    }
   }
   // No free slot anywhere: still refer to the nearest; the clinic confirms a time on sync.
   return { choice: options[0], slot: null };

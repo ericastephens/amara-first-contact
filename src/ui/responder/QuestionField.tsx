@@ -1,4 +1,6 @@
 import type { Question } from "../../data/schemas";
+import { getSetup, patientLanguage } from "../../setup/setup";
+import { SupportBadge } from "../Setup";
 import { optionLabel, useI18n } from "../i18n";
 import { Speaker } from "../common";
 
@@ -15,6 +17,10 @@ export function QuestionField({
 }) {
   const { t, pick } = useI18n();
   const label = pick(question);
+  // The patient's language: offer the languages chosen in setup instead of a fixed list.
+  const setupLangs = question.id === "q_language" ? getSetup()?.patientLangs : undefined;
+  const options = setupLangs?.length ? setupLangs.map((l) => l.code) : question.options ?? [];
+  const optLabel = (o: string) => (setupLangs ? patientLanguage(o)?.native ?? o : optionLabel(t, question.id, o));
   return (
     <div className={`question q-${question.type}`} id={question.id}>
       <div className="q-label">
@@ -40,7 +46,7 @@ export function QuestionField({
       )}
       {question.type === "choice" && (
         <div className="keypad wrap">
-          {question.options!.map((o, i) => (
+          {options.map((o, i) => (
             <button
               type="button"
               key={o}
@@ -49,7 +55,8 @@ export function QuestionField({
               aria-pressed={value === o}
             >
               <span className="key-num">{i + 1}</span>
-              {optionLabel(t, question.id, o)}
+              {optLabel(o)}
+              {setupLangs && <SupportBadge level={patientLanguage(o)?.support ?? "keypad_audio"} />}
             </button>
           ))}
         </div>

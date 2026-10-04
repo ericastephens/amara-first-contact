@@ -1,12 +1,12 @@
 // Referral created on the device: clinic, provisional slot, code, the mother's SMS in a phone mock-up
 // (or a voice script), and a paper slip for no-signal cases.
+import { responderSite } from "../../facilities/registry";
 import { useState } from "react";
-import { rulesDoc, smsDoc, SYNTHETIC_FILES } from "../../data";
+import { rulesDoc, smsDoc } from "../../data";
 import { renderVoice } from "../../logic/sms";
 import { weekdayIndex } from "../../logic/referral";
 import { motherView, urgencyLabel } from "../../logic/views";
 import { db, type Referral, type SmsMessage } from "../../storage/db";
-import { facilitiesDoc } from "../../data";
 import { Card, SampleBadge, UrgencyPill, speak } from "../common";
 import { useLive } from "../hooks";
 import { useI18n } from "../i18n";
@@ -50,7 +50,7 @@ export function ReferralView({ referralId, onDone }: { referralId: string; onDon
           date: ref.slot.date,
           time: ref.slot.time,
           code: ref.code,
-          responder: facilitiesDoc.responder_sites[0].name,
+          responder: responderSite().name,
         })
       : null;
 
@@ -73,13 +73,13 @@ export function ReferralView({ referralId, onDone }: { referralId: string; onDon
         <dl className="facts">
           <dt>{t("ref.facility")}</dt>
           <dd>
-            {clinic} {SYNTHETIC_FILES.facilities && <SampleBadge />}
+            {clinic} {ref.facilityReal ? <span className="badge ok">OpenStreetMap</span> : <SampleBadge />}
             <br />
             <span className="muted small">{t("ref.distance", { km: ref.km.toFixed(1), min: ref.walkMinutes })}</span>
           </dd>
           <dt>{t("ref.slot")}</dt>
           <dd>
-            {slotLabel} {ref.slot && SYNTHETIC_FILES.slots && <SampleBadge />}
+            {slotLabel} {ref.slot && <SampleBadge />}
           </dd>
           <dt>{t("ref.code")}</dt>
           <dd className="code-big">{ref.code}</dd>

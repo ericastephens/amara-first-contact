@@ -1,12 +1,14 @@
 // Result: urgency + reasons with sources. The responder confirms or overrides every flag (an override
 // needs a reason) before a referral is created. "Go now" shows immediately, before anything else.
+import { activeFacilities, responderSite } from "../../facilities/registry";
 import { useEffect, useMemo, useState } from "react";
-import { facilitiesDoc, icd10, intentLabels, questionnaires, rulesDoc } from "../../data";
-import { isVisible, questionById, toEncounterInput, type Encounter } from "../../logic/encounter";
+import { icd10, intentLabels, questionnaires, rulesDoc } from "../../data";
+import { questionFor, toEncounterInput, visibleUnanswered, type Encounter } from "../../logic/encounter";
 import { buildNote } from "../../logic/note";
 import { suitableFacilities } from "../../logic/referral";
 import { allFlagsDecided, applyDecisions, evaluate, summarise, type FlagDecision, type RulesResult } from "../../logic/rules";
 import { clinicianView, motherView, responderView, urgencyLabel } from "../../logic/views";
+import { patientLanguage, responderLabel } from "../../setup/setup";
 import { db } from "../../storage/db";
 import { Card, SourceLink, UrgencyPill } from "../common";
 import { useI18n } from "../i18n";
@@ -47,13 +49,9 @@ export function Result({
   const ready = allFlagsDecided(base, decisions);
   const rv = responderView(rulesDoc, base, lang);
   // Only list questions the intake would actually show (e.g. the self-harm question only after low mood = yes).
-  const unanswered = base.unanswered.filter((id) => {
-    if (id === "q_bp") return true;
-    const q = questionById(questionnaires, id);
-    return q ? isVisible(q, enc, { has_bp_cuff: true }) : false;
-  });
+  const unanswered = visibleUnanswered(questionnaires, enc, base.unanswered);
   const goNow = base.urgency === "go_now";
-  const hospital = goNow ? suitableFacilities(facilitiesDoc.facilities, base.facilityLevel ?? "hospital", facilitiesDoc.responder_sites[0])[0] : null;
+  const hospital = goNow ? suitableFacilities(activeFacilities(), base.facilityLevel ?? "hospital", responderSite())[0] : null;
 
   return (
     <div className="screen">
@@ -141,7 +139,7 @@ export function Result({
               <h3>{t("result.unanswered")}</h3>
               <ul>
                 {unanswered.map((id) => {
-                  const q = questionById(questionnaires, id);
+                  const q = questionFor(questionnaires, id, enc.group);
                   return <li key={id}>{id === "q_bp" ? t("intake.bp") : q ? q[lang] : id}</li>;
                 })}
               </ul>
@@ -190,7 +188,7 @@ function MotherPreview({ result }: { result: RulesResult }) {
     <Card className="mother">
       <h2>{t("ref.mother.title")}</h2>
       <p className="big">{mv.urgencyLabel}</p>
-      <p className="muted small">{t("ref.mother.go")} · {t("ref.mother.when")} · {t("ref.mother.code")} →</p>
+      <p className="muted small">{t("result.mother.pending")}</p>
     </Card>
   );
 }
@@ -202,7 +200,8 @@ function ClinicianPreview({ enc, result, decisions }: { enc: Encounter; result: 
     questionnaires,
     labels: intentLabels,
     urgencyLabel: urgencyLabel(rulesDoc, result.urgency, "en"),
-    responder: facilitiesDoc.responder_sites[0].name,
+    responder: responderLabel(responderSite().name),
+    languageName: (c) => patientLanguage(c)?.native,
   });
   return (
     <>

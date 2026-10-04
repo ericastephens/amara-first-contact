@@ -58,6 +58,24 @@ describe("slots", () => {
   });
 });
 
+describe("slots after the current time", () => {
+  it("never books a slot that has already passed today", () => {
+    const slot = pickSlot("refer_today", "F1", slotsDoc.slots, today, new Set(), undefined, "18:45");
+    expect(slot?.date).toBe("2026-10-06");
+  });
+
+  it("prefers any clinic with a slot still open today over the nearest clinic tomorrow", () => {
+    const r = chooseReferral("refer_today", "dispensary", facilitiesDoc.facilities, from, slotsDoc.slots, today, new Set(), "09:45");
+    expect(r?.slot?.date).toBe(today);
+    expect(r && r.slot && r.slot.time > "09:45").toBe(true);
+  });
+
+  it("in the evening books the first slot tomorrow morning", () => {
+    const r = chooseReferral("refer_today", "health_centre", facilitiesDoc.facilities, from, slotsDoc.slots, today, new Set(), "18:45");
+    expect(r?.slot?.date).toBe("2026-10-06");
+  });
+});
+
 describe("referral code", () => {
   it("is 1 letter + 2 digits from an unambiguous alphabet", () => {
     const used = new Set<string>();

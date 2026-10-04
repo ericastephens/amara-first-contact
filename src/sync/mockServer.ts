@@ -1,5 +1,6 @@
 // In-browser stand-in for the clinic and district servers (separate IndexedDB database).
 // There is no real backend in the demo. Every call fails while the network is off, like a real request would.
+import { activeSlots } from "../facilities/registry";
 import { openDB, type DBSchema, type IDBPDatabase } from "idb";
 import { facilitiesDoc, slotsDoc } from "../data";
 import { pickSlot, slotKey } from "../logic/referral";
@@ -114,7 +115,7 @@ export async function receiveReferral(ref: Referral, now: string): Promise<Recei
   if (slot) {
     const taken = new Set((await s.getAll("taken_slots")).map((t) => t.key));
     if (taken.has(slotKey({ facility_id: ref.facilityId, ...slot }))) {
-      const next = pickSlot(ref.urgency, ref.facilityId, slotsDoc.slots, slot.date, taken, { facility_id: ref.facilityId, status: "free", ...slot });
+      const next = pickSlot(ref.urgency, ref.facilityId, activeSlots(), slot.date, taken, { facility_id: ref.facilityId, status: "free", ...slot });
       slot = next ? { date: next.date, time: next.time } : null;
       slotStatus = "moved";
     }

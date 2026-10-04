@@ -94,3 +94,14 @@ Noor receives **SMS or voice** only.
 - `scripts/` — data checks, model training, the reference intent implementation, OSM facility fetch.
   - `python scripts/check_data.py` is the **reference rules engine**: the TypeScript engine must give the same results on `data/test_cases.json`.
   - `node scripts/intent_reference.mjs` is the **reference intent model** in JS: port it to `src/ai/intent.ts` unchanged in behaviour.
+
+## Setup, work ID and real clinics (added)
+
+- `src/ui/Landing.tsx` → `src/ui/Setup.tsx` run before the PIN. Setup (`src/setup/setup.ts`, saved on the device) holds
+  country, region, district, role, **work ID (required)**, staff language, patient languages and the responder's location.
+- The work ID is printed on every referral note ("Seen by … · Work ID …"), stored on the referral, and required to approve
+  an outbreak escalation.
+- Clinics come from `src/facilities/registry.ts`: real OpenStreetMap facilities fetched around the responder's GPS position
+  (or the typed place, geocoded) and saved for offline use; else real facilities baked in by CI
+  (`data/facilities_osm_*.json`); else the sample clinics, marked Sample data. Slots for real clinics are simulated and labelled.
+- Never send patient data to the map services: only the responder's position or typed place goes out.

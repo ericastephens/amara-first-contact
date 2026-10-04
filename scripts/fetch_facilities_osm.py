@@ -46,7 +46,9 @@ def main() -> None:
         lon = e.get("lon") or e.get("center", {}).get("lon")
         if lat is None or kind is None:
             continue
-        name = tags.get("name") or tags.get("name:sw") or tags.get("name:en") or f"Unnamed {kind}"
+        name = tags.get("name") or tags.get("name:sw") or tags.get("name:en")
+        if not name:
+            continue  # an unnamed point cannot be referred to
         level = LEVEL.get(kind, "health_centre")
         # Tanzanian naming conventions help: Zahanati = dispensary, Kituo cha Afya = health centre
         lname = name.lower()
@@ -54,7 +56,8 @@ def main() -> None:
             level = "dispensary"
         elif "kituo cha afya" in lname or "health cent" in lname:
             level = "health_centre"
-        facilities.append({"id": f"osm-{e['type']}-{e['id']}", "name": name, "level": level,
+        facilities.append({"id": f"osm-{e['type']}-{e['id']}", "name": name, "name_en": tags.get("name:en") or name, "level": level,
+                           "ward": tags.get("addr:suburb") or tags.get("addr:village") or tags.get("addr:city") or "",
                            "lat": round(lat, 6), "lon": round(lon, 6), "osm_tags": {k: tags[k] for k in ("amenity", "healthcare", "operator", "operator:type") if k in tags},
                            "synthetic": False})
 

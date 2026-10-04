@@ -37,6 +37,10 @@ export interface Referral {
   channel: "sms" | "voice";
   patientName: string;
   phone: string;
+  /** Work ID of the professional who made the referral (from setup). */
+  responderWorkId?: string;
+  /** True when the clinic is a real facility from OpenStreetMap, false/absent for sample clinics. */
+  facilityReal?: boolean;
   attempts: number;
   nextAttemptAt: number;
   sentAt?: string;

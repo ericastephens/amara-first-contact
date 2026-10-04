@@ -30,6 +30,12 @@ jobs:
       - run: python scripts/check_data.py
       - run: npm ci
       - run: npm test
+      # Real clinics for the demo area (Hai and Moshi Rural, Kilimanjaro) from OpenStreetMap, baked into the
+      # build so the deployed app has real facilities even offline. If the map service is down, the build
+      # still succeeds and the app falls back to fetching on the device or to the sample clinics.
+      - name: Fetch real facilities (OpenStreetMap)
+        continue-on-error: true
+        run: python scripts/fetch_facilities_osm.py --bbox "-3.45,37.10,-3.10,37.60" --out data/facilities_osm_kilimanjaro.json
       - run: npm run build
         env:
           BASE_PATH: /${{ github.event.repository.name }}/
