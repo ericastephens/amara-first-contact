@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { icd10, rulesDoc, testCases } from "../data";
-import { encounterFromCase, type Encounter } from "../logic/encounter";
+import { detect } from "../ai/intent";
+import { loadIntentModel } from "../ai/loadModel";
+import { icd10, questionnaires, rulesDoc, testCases } from "../data";
+import { demoEncounterFromCase, type Encounter } from "../logic/encounter";
 import { evaluate, type FlagDecision, type RulesResult } from "../logic/rules";
+import { localTime } from "../logic/time";
 import { urgencyLabel } from "../logic/views";
 import { createReferral, planReferral } from "../services/referrals";
 import { db, resetLocalDb, uid } from "../storage/db";
-import { demoNowIso, demoToday, setClockOffset } from "../sync/clock";
+import { demoNow, demoNowIso, demoToday, setClockOffset } from "../sync/clock";
 import { resetServer, seedServer } from "../sync/mockServer";
 import { notify, startSyncLoop } from "../sync/sync";
 import { Clinician } from "./clinician/Clinician";
@@ -22,7 +25,7 @@ import { TopBar } from "./TopBar";
 type Screen =
   | { name: "start" }
   | { name: "demo" }
-  | { name: "intake" }
+  | { name: "intake"; enc?: Encounter; step?: number }
   | { name: "result"; enc: Encounter }
   | { name: "referral"; referralId: string }
   | { name: "clinician" }
@@ -65,7 +68,7 @@ export function App() {
 
   const create = async (enc: Encounter, result: RulesResult, decisions: FlagDecision[]) => {
     try {
-      const plan = await planReferral(result, demoToday());
+      const plan = await planReferral(result, demoToday(), localTime(demoNow()));
       if (!plan) throw new Error("No suitable facility found");
       const { referral } = await createReferral(enc, result, decisions, plan, demoNowIso());
       setScreen({ name: "referral", referralId: referral.id });
@@ -74,11 +77,19 @@ export function App() {
     }
   };
 
+  // Demo mode starts at the free-text step with her sentence typed in: the intent model reads it on screen.
   const startDemo = async (caseId: string) => {
     const c = testCases.cases.find((x) => x.id === caseId)!;
-    const enc = encounterFromCase(c.id, c.encounter, demoNowIso(), uid("enc"), DEMO_NAMES[caseId] ?? "Mama");
+    let detected: string[] = [];
+    try {
+      const model = await loadIntentModel();
+      detected = detect(model, c.encounter.free_text ?? "").symptoms.map((s) => s.id);
+    } catch {
+      // model unavailable: every symptom is answered on the keypad questions instead
+    }
+    const enc = demoEncounterFromCase(questionnaires, c.id, c.encounter, demoNowIso(), uid("enc"), DEMO_NAMES[caseId] ?? "Mama", detected);
     await (await db()).put("encounters", enc);
-    setScreen({ name: "result", enc });
+    setScreen({ name: "intake", enc, step: 1 });
   };
 
   const reset = async () => {
@@ -128,12 +139,19 @@ export function App() {
           </div>
         )}
         {screen.name === "intake" && (
-          <Intake hasCuff={hasCuff} onCancel={() => setScreen({ name: "start" })} onFinish={(enc) => setScreen({ name: "result", enc })} />
+          <Intake
+            hasCuff={hasCuff}
+            initial={screen.enc}
+            initialStep={screen.step}
+            onCancel={() => setScreen(screen.enc?.demoCaseId ? { name: "demo" } : { name: "start" })}
+            onFinish={(enc) => setScreen({ name: "result", enc })}
+          />
         )}
         {screen.name === "result" && (
           <Result
             enc={screen.enc}
-            onBack={() => setScreen(screen.enc.demoCaseId ? { name: "demo" } : { name: "intake" })}
+            hasCuff={hasCuff}
+            onBack={() => setScreen({ name: "intake", enc: screen.enc, step: screen.enc.demoCaseId ? 1 : 3 })}
             onCreate={(result, decisions) => void create(screen.enc, result, decisions)}
             onDone={() => setScreen({ name: "start" })}
           />

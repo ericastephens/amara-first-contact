@@ -25,10 +25,20 @@ export async function usedCodes(): Promise<Set<string>> {
   return new Set(await getMeta<string[]>("usedCodes", []));
 }
 
-export async function planReferral(result: RulesResult, today: string): Promise<ReferralPlan | null> {
+/** `nowTime` ("HH:MM", local demo clock): slots earlier today are skipped. */
+export async function planReferral(result: RulesResult, today: string, nowTime?: string): Promise<ReferralPlan | null> {
   if (!result.facilityLevel || result.urgency === "home_care_followup") return null;
   const from = facilitiesDoc.responder_sites[0];
-  const r = chooseReferral(result.urgency, result.facilityLevel, facilitiesDoc.facilities, from, slotsDoc.slots, today, await reservedSlots());
+  const r = chooseReferral(
+    result.urgency,
+    result.facilityLevel,
+    facilitiesDoc.facilities,
+    from,
+    slotsDoc.slots,
+    today,
+    await reservedSlots(),
+    nowTime,
+  );
   if (!r) return null;
   return { choice: r.choice, slot: r.slot ? { date: r.slot.date, time: r.slot.time } : null };
 }

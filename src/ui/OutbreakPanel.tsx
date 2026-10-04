@@ -3,6 +3,7 @@
 import { facilitiesDoc, rulesDoc } from "../data";
 import { approveEscalation, clinicsToNotify, type EscalationDraft } from "../logic/outbreak";
 import { db } from "../storage/db";
+import { localDateTime } from "../logic/time";
 import { demoNowIso } from "../sync/clock";
 import { notify } from "../sync/sync";
 import { Card, SampleBadge, SourceLink } from "./common";
@@ -111,7 +112,7 @@ export function SiteSyncList({ state }: { state: OutbreakState }) {
               <tr key={s.siteId}>
                 <td>{s.siteName}</td>
                 <td>{s.ward}</td>
-                <td className={staleClass(s.lastSynced)}>{s.lastSynced.slice(0, 16).replace("T", " ")}</td>
+                <td className={staleClass(s.lastSynced)}>{localDateTime(s.lastSynced)}</td>
               </tr>
             ))}
         </tbody>

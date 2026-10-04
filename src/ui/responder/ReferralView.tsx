@@ -4,6 +4,7 @@ import { useState } from "react";
 import { rulesDoc, smsDoc, SYNTHETIC_FILES } from "../../data";
 import { renderVoice } from "../../logic/sms";
 import { weekdayIndex } from "../../logic/referral";
+import { localDate } from "../../logic/time";
 import { motherView, urgencyLabel } from "../../logic/views";
 import { db, type Referral, type SmsMessage } from "../../storage/db";
 import { facilitiesDoc } from "../../data";
@@ -150,7 +151,7 @@ function PaperSlip({ referral, clinic, day, onClose }: { referral: Referral; cli
         <div className="slip-when">
           {referral.urgency === "go_now" ? t("ref.mother.now") : referral.slot ? `${day} ${referral.slot.date} · ${referral.slot.time}` : "—"}
         </div>
-        <div className="slip-foot">{referral.createdAt.slice(0, 10)}</div>
+        <div className="slip-foot">{localDate(referral.createdAt)}</div>
       </div>
       <div className="nav no-print">
         <button type="button" className="btn secondary" onClick={onClose}>

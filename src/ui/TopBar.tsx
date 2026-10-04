@@ -1,12 +1,13 @@
 import { useI18n } from "./i18n";
 import { useNetwork, useSyncStatus } from "./hooks";
 import { setSimulatedNetwork } from "../sync/network";
+import { localTime } from "../logic/time";
 
 export function TopBar({ onHome, onLock }: { onHome: () => void; onLock: () => void }) {
   const { t, lang, setLang } = useI18n();
   const net = useNetwork();
   const sync = useSyncStatus();
-  const time = sync.lastSynced ? new Date(sync.lastSynced).toTimeString().slice(0, 5) : null;
+  const time = sync.lastSynced ? localTime(sync.lastSynced) : null;
   let pill: string;
   let pillClass: string;
   if (!sync.online) {

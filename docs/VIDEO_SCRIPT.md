@@ -16,10 +16,13 @@ Setup: phone (or Chrome DevTools at 360 px). Settings → Reset demo data. Langu
    - Result: "Refer today", three reasons with sources → confirm each (show Override needs a reason).
    - Tabs: Mother (no diagnosis) vs Clinician (rule-outs, Draft codes, note).
    - Create referral: Mlima Health Centre, provisional slot, code, Swahili SMS (≤160), paper slip. Pill: "Offline · 3 queued".
-   - Tap 📶 → "Synced". Clinician: referral arrived; slot moved by clinic (SMS "slot moved"). Open note; confirm a code.
+   - Tap 📶 → "Synced". Clinician: referral arrived; slot confirmed (or moved, with a "slot moved" SMS, if another responder took it first). Open note; confirm a code.
    - +48 h → "Not arrived · reminder queued" (evening voice/SMS).
    - Outbreak watch: fever with rash, Ondera, week 40 → guidance card to clinics within 25 km → escalation Draft → Approve.
-   - District: anonymous counts + chart. Demo mode → Amina (32 weeks, headache + blurred vision) → red GO NOW banner.
+   - District: anonymous counts + chart. Demo mode → Amina (32 weeks): she starts at the free-text step with
+     *Kichwa kinaniuma sana, na macho yanaona ukungu* typed in → chips (headache, blurred vision) → confirm → Continue → red GO NOW banner.
+   - Repeatable take: Demo mode starts each scripted patient (Noor, Amina, Zawadi) at the free-text step with her sentence
+     pre-filled, so the intent chips are always shown on camera before the result.
 4. **Noor's day (3:30–3:50).** On her way down from the slope, at the drug shop; evening voice call when the phone is with her.
 5. **Tech stack (3:50–4:10).** Vite + React PWA, IndexedDB, 660 KB intent model in TypeScript, rules engine, mock sync, 70 tests.
 6. **Our take (4:10–4:45).** What localizing AI means to us (Amara's story). Less-supported languages: keypad + recorded

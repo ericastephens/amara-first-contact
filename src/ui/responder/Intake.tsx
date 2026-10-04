@@ -15,16 +15,21 @@ const WARDS = [...new Set(facilitiesDoc.facilities.map((f) => f.ward))];
 
 export function Intake({
   hasCuff,
+  initial,
+  initialStep = 0,
   onFinish,
   onCancel,
 }: {
   hasCuff: boolean;
+  /** An encounter to continue (Demo mode, or coming back from the result). */
+  initial?: Encounter;
+  initialStep?: number;
   onFinish: (enc: Encounter) => void;
   onCancel: () => void;
 }) {
   const { t, pick } = useI18n();
-  const [step, setStep] = useState(0);
-  const [enc, setEnc] = useState<Encounter | null>(null);
+  const [step, setStep] = useState(initialStep);
+  const [enc, setEnc] = useState<Encounter | null>(initial ?? null);
   const roles = { has_bp_cuff: hasCuff };
 
   // Save every change to IndexedDB so nothing is lost on reload or a dead battery.
@@ -50,9 +55,9 @@ export function Intake({
         delete answeredAt[q.id];
       } else {
         answers[q.id] = v;
-        answeredAt[q.id] = new Date().toISOString();
+        answeredAt[q.id] = demoNowIso();
       }
-      return { ...e, answers, answeredAt, updatedAt: new Date().toISOString() };
+      return { ...e, answers, answeredAt, updatedAt: demoNowIso() };
     });
 
   const start = (group: Group) => {
@@ -141,6 +146,7 @@ export function Intake({
       {step === 1 && enc && (
         <Card>
           <h2>{t("intake.common")}</h2>
+          {enc.demoCaseId && <p className="note-box">{t("demo.hint")}</p>}
           {complaintQ && (
             <Complaint
               label={pick(complaintQ)}
@@ -158,6 +164,11 @@ export function Intake({
                 )
               }
             />
+          )}
+          {enc.demoCaseId && (
+            <button type="button" className="btn primary wide" onClick={() => onFinish(enc)}>
+              {t("demo.continue")} →
+            </button>
           )}
           {renderQs(common)}
         </Card>

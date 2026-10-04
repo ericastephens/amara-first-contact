@@ -5,6 +5,7 @@ import { rulesDoc, smsDoc } from "../../data";
 import { renderSms, renderVoice } from "../../logic/sms";
 import { DRAFT_LABEL, urgencyLabel } from "../../logic/views";
 import { uid, type SmsMessage } from "../../storage/db";
+import { localDateTime } from "../../logic/time";
 import { clockOffsetHours, demoNow, demoNowIso, setClockOffset } from "../../sync/clock";
 import { listClinicReferrals, markNotArrived, updateClinicReferral, type ClinicReferral } from "../../sync/mockServer";
 import { facilitiesDoc } from "../../data";
@@ -58,7 +59,7 @@ export function Clinician() {
       <h1>{t("clin.title")}</h1>
       <Card className="clock">
         <span>
-          {t("clin.clock")}: <strong>{now.toISOString().slice(0, 16).replace("T", " ")}</strong>
+          {t("clin.clock")}: <strong>{localDateTime(now)}</strong>
           {clockOffsetHours() ? ` (+${clockOffsetHours()} h)` : ""}
         </span>
         <div className="row">

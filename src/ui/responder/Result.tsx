@@ -2,7 +2,7 @@
 // needs a reason) before a referral is created. "Go now" shows immediately, before anything else.
 import { useEffect, useMemo, useState } from "react";
 import { facilitiesDoc, icd10, intentLabels, questionnaires, rulesDoc } from "../../data";
-import { isVisible, questionById, toEncounterInput, type Encounter } from "../../logic/encounter";
+import { questionForGroup, toEncounterInput, visibleUnanswered, type Encounter } from "../../logic/encounter";
 import { buildNote } from "../../logic/note";
 import { suitableFacilities } from "../../logic/referral";
 import { allFlagsDecided, applyDecisions, evaluate, summarise, type FlagDecision, type RulesResult } from "../../logic/rules";
@@ -15,11 +15,13 @@ type ViewTab = "responder" | "mother" | "clinician";
 
 export function Result({
   enc,
+  hasCuff,
   onBack,
   onCreate,
   onDone,
 }: {
   enc: Encounter;
+  hasCuff: boolean;
   onBack: () => void;
   onCreate: (result: RulesResult, decisions: FlagDecision[]) => void;
   onDone: () => void;
@@ -47,11 +49,7 @@ export function Result({
   const ready = allFlagsDecided(base, decisions);
   const rv = responderView(rulesDoc, base, lang);
   // Only list questions the intake would actually show (e.g. the self-harm question only after low mood = yes).
-  const unanswered = base.unanswered.filter((id) => {
-    if (id === "q_bp") return true;
-    const q = questionById(questionnaires, id);
-    return q ? isVisible(q, enc, { has_bp_cuff: true }) : false;
-  });
+  const unanswered = visibleUnanswered(questionnaires, enc, base.unanswered, { has_bp_cuff: hasCuff });
   const goNow = base.urgency === "go_now";
   const hospital = goNow ? suitableFacilities(facilitiesDoc.facilities, base.facilityLevel ?? "hospital", facilitiesDoc.responder_sites[0])[0] : null;
 
@@ -141,7 +139,7 @@ export function Result({
               <h3>{t("result.unanswered")}</h3>
               <ul>
                 {unanswered.map((id) => {
-                  const q = questionById(questionnaires, id);
+                  const q = questionForGroup(questionnaires, id, enc.group);
                   return <li key={id}>{id === "q_bp" ? t("intake.bp") : q ? q[lang] : id}</li>;
                 })}
               </ul>
@@ -155,7 +153,7 @@ export function Result({
 
       {tab === "mother" && <MotherPreview result={result} />}
 
-      {tab === "clinician" && <ClinicianPreview enc={enc} result={result} decisions={decisions} />}
+      {tab === "clinician" && <ClinicianPreview enc={enc} result={result} decisions={decisions} hasCuff={hasCuff} />}
 
       <p className="muted small">{t("result.nodiag")}</p>
       {base.fired.length > 0 && !ready && <p className="warn">{t("result.decide")}</p>}
@@ -190,12 +188,22 @@ function MotherPreview({ result }: { result: RulesResult }) {
     <Card className="mother">
       <h2>{t("ref.mother.title")}</h2>
       <p className="big">{mv.urgencyLabel}</p>
-      <p className="muted small">{t("ref.mother.go")} · {t("ref.mother.when")} · {t("ref.mother.code")} →</p>
+      {result.urgency !== "home_care_followup" && <p className="muted">{t("ref.mother.pending")}</p>}
     </Card>
   );
 }
 
-function ClinicianPreview({ enc, result, decisions }: { enc: Encounter; result: RulesResult; decisions: FlagDecision[] }) {
+function ClinicianPreview({
+  enc,
+  result,
+  decisions,
+  hasCuff,
+}: {
+  enc: Encounter;
+  result: RulesResult;
+  decisions: FlagDecision[];
+  hasCuff: boolean;
+}) {
   const { t, lang } = useI18n();
   const cv = clinicianView(rulesDoc, result, lang);
   const note = buildNote(enc, result, decisions, {
@@ -203,6 +211,8 @@ function ClinicianPreview({ enc, result, decisions }: { enc: Encounter; result: 
     labels: intentLabels,
     urgencyLabel: urgencyLabel(rulesDoc, result.urgency, "en"),
     responder: facilitiesDoc.responder_sites[0].name,
+    lang: "en",
+    hasBpCuff: hasCuff,
   });
   return (
     <>
