@@ -1,5 +1,8 @@
 // Outbreak watch: flag, knowledge-sharing card for nearby clinics (quoted guidance + source),
 // and the escalation draft that a Clinician or District user must approve.
+import { useState } from "react";
+import { formatLocal } from "../logic/time";
+import { getSetup, validWorkId } from "../setup/setup";
 import { facilitiesDoc, rulesDoc } from "../data";
 import { approveEscalation, clinicsToNotify, type EscalationDraft } from "../logic/outbreak";
 import { db } from "../storage/db";
@@ -12,9 +15,12 @@ import type { OutbreakState } from "./outbreakData";
 export function OutbreakPanel({ state, role, onChange }: { state: OutbreakState; role: "clinician" | "district"; onChange: () => void }) {
   const { t, lang, pick } = useI18n();
   const cfg = rulesDoc.outbreak;
+  // The approver confirms their own work ID (pre-filled from this device's setup).
+  const [workId, setWorkId] = useState(getSetup()?.workId ?? "");
 
   const approve = async (e: EscalationDraft) => {
-    const approved = approveEscalation(e, role, demoNowIso());
+    if (!validWorkId(workId)) return;
+    const approved = approveEscalation(e, role, demoNowIso(), workId);
     await (await db()).put("escalations", approved);
     await notify();
     onChange();
@@ -73,16 +79,22 @@ export function OutbreakPanel({ state, role, onChange }: { state: OutbreakState;
                   <dd>{esc.reportingFacility}</dd>
                 </dl>
                 {esc.status === "draft" ? (
-                  <div className="row between">
-                    <span className="badge draft">{t("clin.draft")}</span>
-                    <button type="button" className="btn primary" onClick={() => void approve(esc)}>
-                      {t("clin.approve")}
-                    </button>
-                  </div>
+                  <>
+                    <label className="field">
+                      {t("clin.approver.workid")} *
+                      <input value={workId} onChange={(e) => setWorkId(e.target.value)} autoComplete="off" />
+                    </label>
+                    <div className="row between">
+                      <span className="badge draft">{t("clin.draft")}</span>
+                      <button type="button" className="btn primary" disabled={!validWorkId(workId)} onClick={() => void approve(esc)}>
+                        {t("clin.approve")}
+                      </button>
+                    </div>
+                  </>
                 ) : (
                   <p className="ok">
                     ✓ {esc.status === "sent" ? t("clin.sentDistrict") : t("clin.approved")}
-                    {esc.approvedBy && ` · ${esc.approvedBy.role}`}
+                    {esc.approvedBy && ` · ${esc.approvedBy.role} · ${t("setup.workid.short")} ${esc.approvedBy.workId}`}
                   </p>
                 )}
               </div>
@@ -111,7 +123,7 @@ export function SiteSyncList({ state }: { state: OutbreakState }) {
               <tr key={s.siteId}>
                 <td>{s.siteName}</td>
                 <td>{s.ward}</td>
-                <td className={staleClass(s.lastSynced)}>{s.lastSynced.slice(0, 16).replace("T", " ")}</td>
+                <td className={staleClass(s.lastSynced)}>{formatLocal(s.lastSynced)}</td>
               </tr>
             ))}
         </tbody>

@@ -9,11 +9,13 @@ import facilitiesJson from "../../data/facilities_sample.json";
 import slotsJson from "../../data/slots_sample.json";
 import labelsJson from "../../data/intent_labels.json";
 import testCasesJson from "../../data/test_cases.json";
+import localesJson from "../../data/locales.json";
 import outbreakCsv from "../../data/outbreak_counts_synthetic.csv?raw";
 import {
   FacilitiesDoc,
   Icd10Doc,
   IntentLabelsDoc,
+  LocalesDoc,
   Questionnaires,
   RulesDoc,
   SlotsDoc,
@@ -40,6 +42,7 @@ export const slotsDoc = validate("slots_sample.json", SlotsDoc, slotsJson);
 export const intentLabels = validate("intent_labels.json", IntentLabelsDoc, labelsJson);
 export const testCases = validate("test_cases.json", TestCasesDoc, testCasesJson);
 export const outbreakRows = parseOutbreakCsv(outbreakCsv);
+export const locales = validate("locales.json", LocalesDoc, localesJson);
 
 /** Files that are entirely sample data: anything shown from these gets a "Sample data" badge. */
 export const SYNTHETIC_FILES = {

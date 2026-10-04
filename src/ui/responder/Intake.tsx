@@ -1,5 +1,7 @@
 // Responder intake, built from data/questionnaires.json.
 // Step 1 who · Step 2 common block · Step 3 group module · Step 4 social & environment (+ optional BP).
+import { activeFacilities } from "../../facilities/registry";
+import { getSetup } from "../../setup/setup";
 import { useEffect, useMemo, useState } from "react";
 import { facilitiesDoc, questionnaires } from "../../data";
 import type { Group, Question } from "../../data/schemas";
@@ -11,20 +13,28 @@ import { useI18n } from "../i18n";
 import { Complaint } from "./Complaint";
 import { QuestionField } from "./QuestionField";
 
-const WARDS = [...new Set(facilitiesDoc.facilities.map((f) => f.ward))];
+// Wards for the outbreak counts: the responder's own district first, then wards known from the clinics.
+function wards(): string[] {
+  const s = getSetup();
+  return [...new Set([s?.district, ...activeFacilities().map((f) => f.ward), ...facilitiesDoc.facilities.map((f) => f.ward)].filter((w): w is string => Boolean(w)))];
+}
 
 export function Intake({
   hasCuff,
+  initial,
+  initialStep,
   onFinish,
   onCancel,
 }: {
   hasCuff: boolean;
+  initial?: Encounter;
+  initialStep?: number;
   onFinish: (enc: Encounter) => void;
   onCancel: () => void;
 }) {
   const { t, pick } = useI18n();
-  const [step, setStep] = useState(0);
-  const [enc, setEnc] = useState<Encounter | null>(null);
+  const [step, setStep] = useState(initialStep ?? 0);
+  const [enc, setEnc] = useState<Encounter | null>(initial ?? null);
   const roles = { has_bp_cuff: hasCuff };
 
   // Save every change to IndexedDB so nothing is lost on reload or a dead battery.
@@ -128,7 +138,7 @@ export function Intake({
               <label className="field">
                 {t("intake.ward")}
                 <select value={enc.wardOfResidence} onChange={(e) => setEnc({ ...enc, wardOfResidence: e.target.value })}>
-                  {WARDS.map((w) => (
+                  {wards().map((w) => (
                     <option key={w}>{w}</option>
                   ))}
                 </select>

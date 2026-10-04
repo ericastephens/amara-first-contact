@@ -236,3 +236,35 @@ export function parseOutbreakCsv(text: string): OutbreakRow[] {
     });
   });
 }
+
+// ---- locales.json (landing page and country setup)
+export const Support = z.enum(["full", "ui_pending", "keypad_audio"]);
+export type Support = z.infer<typeof Support>;
+
+export const Language = z.object({ code: z.string(), name: z.string(), native: z.string(), support: Support });
+export type Language = z.infer<typeof Language>;
+
+export const Country = z.object({
+  iso: z.string().length(2),
+  name: z.string(),
+  dial: z.string(),
+  staff: z.array(Language).min(1),
+  staff_default: z.string(),
+  patient_local: z.array(Language),
+  regions: z.array(z.string()),
+  region_label: z.record(z.string(), z.string()),
+  district_label: z.record(z.string(), z.string()).optional(),
+  guideline_pack: z.object({ status: z.enum(["ready", "who_default"]), name: z.string(), note: z.string() }),
+  coding: z.string(),
+  surveillance: z.string(),
+  first_contacts: z.array(z.string()),
+});
+export type Country = z.infer<typeof Country>;
+
+export const LocalesDoc = z.object({
+  description: z.string(),
+  support_levels: z.record(Support, Bilingual),
+  roles: z.array(z.object({ id: z.string(), en: z.string(), sw: z.string() })),
+  countries: z.array(Country).min(1),
+});
+export type LocalesDoc = z.infer<typeof LocalesDoc>;

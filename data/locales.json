@@ -1,0 +1,1253 @@
+{
+ "description": "Country settings chosen on the landing page. Staff language = the national or official language the app is shown in. Patient languages = what the mother can be asked and messaged in. Support levels: full = UI text, intent model and SMS templates ready; ui_pending = UI and templates need translation (falls back to the first 'full' staff language); keypad_audio = no text or speech AI, the patient answers by keypad and hears pre-recorded audio prompts recorded by community members.",
+ "review": "Language lists are starting points, not complete. Confirm with in-country partners. Only Tanzania has a localized guideline pack.",
+ "support_levels": {
+  "full": {
+   "en": "Ready: text, AI and messages",
+   "sw": "Tayari: maandishi, AI na ujumbe"
+  },
+  "ui_pending": {
+   "en": "Translation pending: shows English or Swahili for now",
+   "sw": "Tafsiri inasubiriwa: kwa sasa Kiingereza au Kiswahili"
+  },
+  "keypad_audio": {
+   "en": "Keypad and recorded audio only",
+   "sw": "Vitufe na sauti iliyorekodiwa tu"
+  }
+ },
+ "roles": [
+  {
+   "id": "drug_shop",
+   "en": "Drug shop dispenser",
+   "sw": "Mtoa dawa (duka la dawa)"
+  },
+  {
+   "id": "chw",
+   "en": "Community health worker",
+   "sw": "Mhudumu wa afya ngazi ya jamii"
+  },
+  {
+   "id": "asha",
+   "en": "ASHA (community health activist)",
+   "sw": "ASHA"
+  },
+  {
+   "id": "anm",
+   "en": "Auxiliary nurse-midwife",
+   "sw": "Mkunga msaidizi"
+  },
+  {
+   "id": "dispensary_nurse",
+   "en": "Nurse or midwife at a dispensary",
+   "sw": "Muuguzi au mkunga wa zahanati"
+  },
+  {
+   "id": "pharmacy",
+   "en": "Pharmacy",
+   "sw": "Famasia"
+  },
+  {
+   "id": "clinician",
+   "en": "Clinician at the referral clinic",
+   "sw": "Tabibu wa kliniki ya rufaa"
+  },
+  {
+   "id": "district",
+   "en": "District surveillance officer",
+   "sw": "Afisa ufuatiliaji wa wilaya"
+  }
+ ],
+ "countries": [
+  {
+   "iso": "TZ",
+   "name": "Tanzania",
+   "dial": "+255",
+   "staff": [
+    {
+     "code": "sw",
+     "name": "Swahili",
+     "native": "Kiswahili",
+     "support": "full"
+    },
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    }
+   ],
+   "staff_default": "sw",
+   "patient_local": [
+    {
+     "code": "suk",
+     "name": "Sukuma",
+     "native": "Kisukuma",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "chagga",
+     "name": "Chagga",
+     "native": "Kichaga",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "mas",
+     "name": "Maa (Maasai)",
+     "native": "Maa",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "hay",
+     "name": "Haya",
+     "native": "Kihaya",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "nym",
+     "name": "Nyamwezi",
+     "native": "Kinyamwezi",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "gog",
+     "name": "Gogo",
+     "native": "Kigogo",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "kde",
+     "name": "Makonde",
+     "native": "Chimakonde",
+     "support": "keypad_audio"
+    }
+   ],
+   "regions": [
+    "Arusha",
+    "Dar es Salaam",
+    "Dodoma",
+    "Geita",
+    "Iringa",
+    "Kagera",
+    "Katavi",
+    "Kigoma",
+    "Kilimanjaro",
+    "Lindi",
+    "Manyara",
+    "Mara",
+    "Mbeya",
+    "Morogoro",
+    "Mtwara",
+    "Mwanza",
+    "Njombe",
+    "Pwani",
+    "Rukwa",
+    "Ruvuma",
+    "Shinyanga",
+    "Simiyu",
+    "Singida",
+    "Songwe",
+    "Tabora",
+    "Tanga",
+    "Kaskazini Pemba",
+    "Kusini Pemba",
+    "Kaskazini Unguja",
+    "Kusini Unguja",
+    "Mjini Magharibi"
+   ],
+   "region_label": {
+    "en": "Region",
+    "sw": "Mkoa"
+   },
+   "district_label": {
+    "en": "District",
+    "sw": "Wilaya"
+   },
+   "guideline_pack": {
+    "status": "ready",
+    "name": "Tanzania Standard Treatment Guidelines and NEMLIT, 6th ed., 2021 + WHO ANC/PNC/IMCI",
+    "note": "Pending clinician review"
+   },
+   "coding": "ICD-10 (DHIS2)",
+   "surveillance": "eIDSR on DHIS2",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ]
+  },
+  {
+   "iso": "KE",
+   "name": "Kenya",
+   "dial": "+254",
+   "staff": [
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    },
+    {
+     "code": "sw",
+     "name": "Swahili",
+     "native": "Kiswahili",
+     "support": "full"
+    }
+   ],
+   "staff_default": "en",
+   "patient_local": [
+    {
+     "code": "kik",
+     "name": "Kikuyu",
+     "native": "Gĩkũyũ",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "luo",
+     "name": "Luo",
+     "native": "Dholuo",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "luy",
+     "name": "Luhya",
+     "native": "Luluhya",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "kam",
+     "name": "Kamba",
+     "native": "Kikamba",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "kln",
+     "name": "Kalenjin",
+     "native": "Kalenjin",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "so",
+     "name": "Somali",
+     "native": "Soomaali",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "mas",
+     "name": "Maa (Maasai)",
+     "native": "Maa",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "County",
+    "sw": "Kaunti"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "UG",
+   "name": "Uganda",
+   "dial": "+256",
+   "staff": [
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    },
+    {
+     "code": "sw",
+     "name": "Swahili",
+     "native": "Kiswahili",
+     "support": "full"
+    }
+   ],
+   "staff_default": "en",
+   "patient_local": [
+    {
+     "code": "lg",
+     "name": "Luganda",
+     "native": "Luganda",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "nyn",
+     "name": "Runyankole",
+     "native": "Runyankore",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "xog",
+     "name": "Lusoga",
+     "native": "Lusoga",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ach",
+     "name": "Acholi",
+     "native": "Acoli",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "teo",
+     "name": "Ateso",
+     "native": "Ateso",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "District"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "RW",
+   "name": "Rwanda",
+   "dial": "+250",
+   "staff": [
+    {
+     "code": "rw",
+     "name": "Kinyarwanda",
+     "native": "Ikinyarwanda",
+     "support": "ui_pending"
+    },
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    },
+    {
+     "code": "fr",
+     "name": "French",
+     "native": "Français",
+     "support": "ui_pending"
+    },
+    {
+     "code": "sw",
+     "name": "Swahili",
+     "native": "Kiswahili",
+     "support": "full"
+    }
+   ],
+   "staff_default": "rw",
+   "patient_local": [],
+   "region_label": {
+    "en": "District"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "ET",
+   "name": "Ethiopia",
+   "dial": "+251",
+   "staff": [
+    {
+     "code": "am",
+     "name": "Amharic",
+     "native": "አማርኛ",
+     "support": "ui_pending"
+    },
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    }
+   ],
+   "staff_default": "am",
+   "patient_local": [
+    {
+     "code": "om",
+     "name": "Afaan Oromo",
+     "native": "Afaan Oromoo",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ti",
+     "name": "Tigrinya",
+     "native": "ትግርኛ",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "so",
+     "name": "Somali",
+     "native": "Soomaali",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "aa",
+     "name": "Afar",
+     "native": "Qafar af",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Region"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "NG",
+   "name": "Nigeria",
+   "dial": "+234",
+   "staff": [
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    }
+   ],
+   "staff_default": "en",
+   "patient_local": [
+    {
+     "code": "ha",
+     "name": "Hausa",
+     "native": "Hausa",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "yo",
+     "name": "Yoruba",
+     "native": "Yorùbá",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ig",
+     "name": "Igbo",
+     "native": "Igbo",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "pcm",
+     "name": "Nigerian Pidgin",
+     "native": "Naijá",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "State"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "GH",
+   "name": "Ghana",
+   "dial": "+233",
+   "staff": [
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    }
+   ],
+   "staff_default": "en",
+   "patient_local": [
+    {
+     "code": "tw",
+     "name": "Twi (Akan)",
+     "native": "Twi",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ee",
+     "name": "Ewe",
+     "native": "Eʋegbe",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "gaa",
+     "name": "Ga",
+     "native": "Ga",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "dag",
+     "name": "Dagbani",
+     "native": "Dagbanli",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Region"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "MW",
+   "name": "Malawi",
+   "dial": "+265",
+   "staff": [
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    },
+    {
+     "code": "ny",
+     "name": "Chichewa",
+     "native": "Chicheŵa",
+     "support": "ui_pending"
+    }
+   ],
+   "staff_default": "en",
+   "patient_local": [
+    {
+     "code": "tum",
+     "name": "Tumbuka",
+     "native": "Chitumbuka",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "yao",
+     "name": "Yao",
+     "native": "Chiyao",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "District"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "ZM",
+   "name": "Zambia",
+   "dial": "+260",
+   "staff": [
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    }
+   ],
+   "staff_default": "en",
+   "patient_local": [
+    {
+     "code": "bem",
+     "name": "Bemba",
+     "native": "Ichibemba",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ny",
+     "name": "Nyanja",
+     "native": "Chinyanja",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "toi",
+     "name": "Tonga",
+     "native": "Chitonga",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "loz",
+     "name": "Lozi",
+     "native": "Silozi",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Province"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "MZ",
+   "name": "Mozambique",
+   "dial": "+258",
+   "staff": [
+    {
+     "code": "pt",
+     "name": "Portuguese",
+     "native": "Português",
+     "support": "ui_pending"
+    }
+   ],
+   "staff_default": "pt",
+   "patient_local": [
+    {
+     "code": "vmw",
+     "name": "Emakhuwa",
+     "native": "Emakhuwa",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ts",
+     "name": "Xichangana",
+     "native": "Xichangana",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "seh",
+     "name": "Cisena",
+     "native": "Cisena",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Province",
+    "pt": "Província"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "ZA",
+   "name": "South Africa",
+   "dial": "+27",
+   "staff": [
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    },
+    {
+     "code": "zu",
+     "name": "isiZulu",
+     "native": "isiZulu",
+     "support": "ui_pending"
+    },
+    {
+     "code": "xh",
+     "name": "isiXhosa",
+     "native": "isiXhosa",
+     "support": "ui_pending"
+    },
+    {
+     "code": "af",
+     "name": "Afrikaans",
+     "native": "Afrikaans",
+     "support": "ui_pending"
+    }
+   ],
+   "staff_default": "en",
+   "patient_local": [
+    {
+     "code": "nso",
+     "name": "Sepedi",
+     "native": "Sepedi",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "tn",
+     "name": "Setswana",
+     "native": "Setswana",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "st",
+     "name": "Sesotho",
+     "native": "Sesotho",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ts",
+     "name": "Xitsonga",
+     "native": "Xitsonga",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Province"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "CD",
+   "name": "DR Congo",
+   "dial": "+243",
+   "staff": [
+    {
+     "code": "fr",
+     "name": "French",
+     "native": "Français",
+     "support": "ui_pending"
+    },
+    {
+     "code": "sw",
+     "name": "Swahili",
+     "native": "Kiswahili",
+     "support": "full"
+    }
+   ],
+   "staff_default": "fr",
+   "patient_local": [
+    {
+     "code": "ln",
+     "name": "Lingala",
+     "native": "Lingála",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "kg",
+     "name": "Kikongo",
+     "native": "Kikongo",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "lua",
+     "name": "Tshiluba",
+     "native": "Tshiluba",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Province",
+    "fr": "Province"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "SL",
+   "name": "Sierra Leone",
+   "dial": "+232",
+   "staff": [
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    }
+   ],
+   "staff_default": "en",
+   "patient_local": [
+    {
+     "code": "kri",
+     "name": "Krio",
+     "native": "Krio",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "men",
+     "name": "Mende",
+     "native": "Mɛnde",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "tem",
+     "name": "Temne",
+     "native": "Themne",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "District"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "SN",
+   "name": "Senegal",
+   "dial": "+221",
+   "staff": [
+    {
+     "code": "fr",
+     "name": "French",
+     "native": "Français",
+     "support": "ui_pending"
+    }
+   ],
+   "staff_default": "fr",
+   "patient_local": [
+    {
+     "code": "wo",
+     "name": "Wolof",
+     "native": "Wolof",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ff",
+     "name": "Pulaar",
+     "native": "Pulaar",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "srr",
+     "name": "Serer",
+     "native": "Seereer",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Region",
+    "fr": "Région"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "IN",
+   "name": "India",
+   "dial": "+91",
+   "staff": [
+    {
+     "code": "hi",
+     "name": "Hindi",
+     "native": "हिन्दी",
+     "support": "ui_pending"
+    },
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    }
+   ],
+   "staff_default": "hi",
+   "patient_local": [
+    {
+     "code": "bn",
+     "name": "Bengali",
+     "native": "বাংলা",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "mr",
+     "name": "Marathi",
+     "native": "मराठी",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "te",
+     "name": "Telugu",
+     "native": "తెలుగు",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ta",
+     "name": "Tamil",
+     "native": "தமிழ்",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "bho",
+     "name": "Bhojpuri",
+     "native": "भोजपुरी",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "State"
+   },
+   "first_contacts": [
+    "asha",
+    "anm",
+    "pharmacy"
+   ],
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "regions": []
+  },
+  {
+   "iso": "BD",
+   "name": "Bangladesh",
+   "dial": "+880",
+   "staff": [
+    {
+     "code": "bn",
+     "name": "Bengali",
+     "native": "বাংলা",
+     "support": "ui_pending"
+    },
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    }
+   ],
+   "staff_default": "bn",
+   "patient_local": [],
+   "region_label": {
+    "en": "Division"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "NP",
+   "name": "Nepal",
+   "dial": "+977",
+   "staff": [
+    {
+     "code": "ne",
+     "name": "Nepali",
+     "native": "नेपाली",
+     "support": "ui_pending"
+    },
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    }
+   ],
+   "staff_default": "ne",
+   "patient_local": [
+    {
+     "code": "mai",
+     "name": "Maithili",
+     "native": "मैथिली",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "bho",
+     "name": "Bhojpuri",
+     "native": "भोजपुरी",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Province"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "PH",
+   "name": "Philippines",
+   "dial": "+63",
+   "staff": [
+    {
+     "code": "fil",
+     "name": "Filipino",
+     "native": "Filipino",
+     "support": "ui_pending"
+    },
+    {
+     "code": "en",
+     "name": "English",
+     "native": "English",
+     "support": "full"
+    }
+   ],
+   "staff_default": "fil",
+   "patient_local": [
+    {
+     "code": "ceb",
+     "name": "Cebuano",
+     "native": "Sinugbuanong Binisayâ",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ilo",
+     "name": "Ilocano",
+     "native": "Ilokano",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "hil",
+     "name": "Hiligaynon",
+     "native": "Hiligaynon",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Province"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "GT",
+   "name": "Guatemala",
+   "dial": "+502",
+   "staff": [
+    {
+     "code": "es",
+     "name": "Spanish",
+     "native": "Español",
+     "support": "ui_pending"
+    }
+   ],
+   "staff_default": "es",
+   "patient_local": [
+    {
+     "code": "quc",
+     "name": "K'iche'",
+     "native": "K'iche'",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "kek",
+     "name": "Q'eqchi'",
+     "native": "Q'eqchi'",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "cak",
+     "name": "Kaqchikel",
+     "native": "Kaqchikel",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "mam",
+     "name": "Mam",
+     "native": "Mam",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Department",
+    "es": "Departamento"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  },
+  {
+   "iso": "PE",
+   "name": "Peru",
+   "dial": "+51",
+   "staff": [
+    {
+     "code": "es",
+     "name": "Spanish",
+     "native": "Español",
+     "support": "ui_pending"
+    }
+   ],
+   "staff_default": "es",
+   "patient_local": [
+    {
+     "code": "qu",
+     "name": "Quechua",
+     "native": "Runa Simi",
+     "support": "keypad_audio"
+    },
+    {
+     "code": "ay",
+     "name": "Aymara",
+     "native": "Aymar aru",
+     "support": "keypad_audio"
+    }
+   ],
+   "region_label": {
+    "en": "Region",
+    "es": "Región"
+   },
+   "guideline_pack": {
+    "status": "who_default",
+    "name": "WHO defaults (ANC 2016, PNC 2022, IMCI 2014)",
+    "note": "Not yet localized to national guidelines. Clinician review required before use."
+   },
+   "coding": "ICD-10 (verify national version)",
+   "surveillance": "National notifiable disease system (to configure)",
+   "first_contacts": [
+    "drug_shop",
+    "chw",
+    "dispensary_nurse"
+   ],
+   "regions": []
+  }
+ ]
+}

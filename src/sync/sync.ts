@@ -1,7 +1,8 @@
 // Store-and-forward: referrals, SMS, anonymous case counts and approved escalations wait in the
 // on-device outbox while offline and are flushed to the (mock) server when the network is back.
 // Failed items retry with exponential backoff; nothing is lost on reload because the outbox is IndexedDB.
-import { facilitiesDoc, smsDoc } from "../data";
+import { findFacility, responderSite } from "../facilities/registry";
+import { smsDoc } from "../data";
 import { renderSms } from "../logic/sms";
 import { canSend } from "../logic/outbreak";
 import { db, getMeta, setMeta, uid, type SmsMessage } from "../storage/db";
@@ -85,7 +86,7 @@ export async function flush(nowIso: string, nowMs: number = Date.now()): Promise
           attempts: ref.attempts + 1,
         });
         if (moved && res.slot) {
-          const fac = facilitiesDoc.facilities.find((f) => f.id === ref.facilityId);
+          const fac = findFacility(ref.facilityId);
           const msg: SmsMessage = {
             id: uid("sms"),
             referralId: ref.id,
@@ -156,7 +157,7 @@ export async function flush(nowIso: string, nowMs: number = Date.now()): Promise
     }
 
     if (!failed) {
-      const site = facilitiesDoc.responder_sites[0];
+      const site = responderSite();
       try {
         await recordSiteSync(site.id, site.name, site.ward, nowIso);
         await setMeta("lastSynced", nowIso);

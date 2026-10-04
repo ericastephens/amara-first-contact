@@ -1,5 +1,7 @@
 // Clinic dashboard: referrals received (after sync), the full note, draft ICD-10 codes the clinician
 // confirms or edits, arrival tracking with the demo clock, and outbreak watch.
+import { responderSite } from "../../facilities/registry";
+import { formatLocal } from "../../logic/time";
 import { useState } from "react";
 import { rulesDoc, smsDoc } from "../../data";
 import { renderSms, renderVoice } from "../../logic/sms";
@@ -7,7 +9,6 @@ import { DRAFT_LABEL, urgencyLabel } from "../../logic/views";
 import { uid, type SmsMessage } from "../../storage/db";
 import { clockOffsetHours, demoNow, demoNowIso, setClockOffset } from "../../sync/clock";
 import { listClinicReferrals, markNotArrived, updateClinicReferral, type ClinicReferral } from "../../sync/mockServer";
-import { facilitiesDoc } from "../../data";
 import { Card, UrgencyPill } from "../common";
 import { useDemoClock, useLive } from "../hooks";
 import { useI18n } from "../i18n";
@@ -18,7 +19,7 @@ function reminderFor(r: ClinicReferral): SmsMessage {
   const input = { name: r.patientName, clinic: r.lang === "sw" ? r.facilityName : r.facilityNameEn, code: r.code };
   const text =
     r.channel === "voice"
-      ? renderVoice(smsDoc, "did_you_go", r.lang, { ...input, responder: facilitiesDoc.responder_sites[0].name })
+      ? renderVoice(smsDoc, "did_you_go", r.lang, { ...input, responder: responderSite().name })
       : renderSms(smsDoc, "did_you_go", r.lang, input);
   const evening = new Date(demoNow());
   evening.setHours(18, 0, 0, 0);
@@ -58,7 +59,7 @@ export function Clinician() {
       <h1>{t("clin.title")}</h1>
       <Card className="clock">
         <span>
-          {t("clin.clock")}: <strong>{now.toISOString().slice(0, 16).replace("T", " ")}</strong>
+          {t("clin.clock")}: <strong>{formatLocal(now)}</strong>
           {clockOffsetHours() ? ` (+${clockOffsetHours()} h)` : ""}
         </span>
         <div className="row">

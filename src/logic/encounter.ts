@@ -44,6 +44,29 @@ export function questionById(q: Questionnaires, id: string): Question | undefine
   return allQuestions(q).find((x) => x.id === id);
 }
 
+/**
+ * The question as the intake showed it for this group. Some ids appear in more than one module with
+ * different wording or show_if parents (q_bp_ever_checked, q_selfharm), so prefer the group's own modules.
+ */
+export function questionFor(q: Questionnaires, id: string, group: Group): Question | undefined {
+  const own = questionsForGroup(q, group).flatMap((m) => m.questions).find((x) => x.id === id);
+  return own ?? questionById(q, id);
+}
+
+/** Unanswered questions worth listing: only those the intake would actually show for this encounter. */
+export function visibleUnanswered(
+  q: Questionnaires,
+  enc: Pick<Encounter, "answers" | "group">,
+  unanswered: string[],
+  roles: { has_bp_cuff: boolean } = { has_bp_cuff: true },
+): string[] {
+  return unanswered.filter((id) => {
+    if (id === "q_bp") return roles.has_bp_cuff;
+    const question = questionFor(q, id, enc.group);
+    return question ? isVisible(question, enc, roles) : false;
+  });
+}
+
 /** Questions for this group in display order (common, group module(s), social/environment). */
 export function questionsForGroup(q: Questionnaires, group: Group): { moduleId: string; questions: Question[] }[] {
   return q.modules
@@ -126,6 +149,28 @@ export function newEncounter(group: Group, now: string, id: string): Encounter {
     uncertainChips: [],
     wardOfResidence: "Ondera",
   };
+}
+
+/**
+ * Yes-answers that record these symptoms through the questionnaire for this group, including the
+ * show_if parents needed to reach each question (e.g. fever_not_cleared needs q_fever and q_malaria_meds = yes).
+ */
+export function answersForSymptoms(q: Questionnaires, group: Group, symptoms: string[]): Record<string, string> {
+  const qs = questionsForGroup(q, group).flatMap((m) => m.questions);
+  const out: Record<string, string> = {};
+  const add = (question: Question) => {
+    out[question.id] = "yes";
+    for (const [parent, value] of Object.entries(question.show_if ?? {})) {
+      out[parent] = value;
+      const p = qs.find((x) => x.id === parent);
+      if (p) add(p);
+    }
+  };
+  for (const s of symptoms) {
+    const question = qs.find((x) => x.maps_to === s);
+    if (question) add(question);
+  }
+  return out;
 }
 
 /** Build an encounter from a golden test case (Demo mode). */

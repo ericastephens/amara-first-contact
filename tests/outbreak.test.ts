@@ -51,12 +51,12 @@ describe("escalation needs human approval", () => {
   });
 
   it("a responder cannot approve", () => {
-    expect(() => approveEscalation(draft, "responder", "2026-10-05T10:05:00Z")).toThrow();
+    expect(() => approveEscalation(draft, "responder", "2026-10-05T10:05:00Z", "CO-123")).toThrow();
   });
 
   it("a clinician or district officer can approve, then it is queued to send", () => {
     for (const role of ["clinician", "district"]) {
-      const approved = approveEscalation(draft, role, "2026-10-05T10:05:00Z");
+      const approved = approveEscalation(draft, role, "2026-10-05T10:05:00Z", "CO-123");
       expect(approved.status).toBe("approved_queued");
       expect(canSend(approved)).toBe(true);
     }
