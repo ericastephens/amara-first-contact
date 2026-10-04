@@ -54,7 +54,10 @@ export function App() {
   const [locked, setLocked] = useState(true);
   const [setup, setSetup] = useState<SetupData | null>(getSetup);
   // Landing and setup come before the PIN: they hold no patient data.
-  const [gate, setGate] = useState<"landing" | "setup" | "app">(() => (getSetup() ? "app" : "landing"));
+  // "?welcome" in the link always opens the welcome page (handy for showing the app to others).
+  const [gate, setGate] = useState<"landing" | "setup" | "app">(() =>
+    getSetup() && !new URLSearchParams(location.search).has("welcome") ? "app" : "landing",
+  );
   useEffect(() => onSetupChange(() => setSetup(getSetup())), []);
   const [screen, setScreen] = useState<Screen>({ name: "start" });
   const [hasCuff, setHasCuffState] = useState(readCuff);
@@ -120,6 +123,14 @@ export function App() {
           setGate("app");
           setLocked(true);
         }}
+        onContinue={
+          setup
+            ? () => {
+                setGate("app");
+                setLocked(true);
+              }
+            : undefined
+        }
       />
     );
   if (gate === "setup")
@@ -155,6 +166,7 @@ export function App() {
             onDemo={() => setScreen({ name: "demo" })}
             onReset={() => void reset()}
             onSetup={() => setGate("setup")}
+            onWelcome={() => setGate("landing")}
             hasCuff={hasCuff}
             setHasCuff={setHasCuff}
           />

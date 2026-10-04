@@ -282,5 +282,7 @@
   "setup.region.first": "Choose the region first",
   "setup.areas.source": "Official district list (geoBoundaries, open data). Choose from the list so names match clinic and surveillance records.",
   "lang.pending": "Not yet translated: showing English",
-  "setup.district.select": "District"
+  "setup.district.select": "District",
+  "start.welcome": "Welcome page",
+  "landing.continue": "Continue · Work ID {id}"
 }
