@@ -65,45 +65,6 @@
    "synthetic": false
   },
   {
-   "id": "osm-node-4238936094",
-   "name": "Nsong'wa Traditional clinic",
-   "name_en": "Nsong'wa Traditional clinic",
-   "level": "health_centre",
-   "ward": "",
-   "lat": -3.340638,
-   "lon": 37.300383,
-   "osm_tags": {
-    "amenity": "clinic"
-   },
-   "synthetic": false
-  },
-  {
-   "id": "osm-node-4253831708",
-   "name": "Hospital",
-   "name_en": "Hospital",
-   "level": "hospital",
-   "ward": "",
-   "lat": -3.354549,
-   "lon": 37.343151,
-   "osm_tags": {
-    "amenity": "hospital"
-   },
-   "synthetic": false
-  },
-  {
-   "id": "osm-node-4769409133",
-   "name": "Duka la Dawa",
-   "name_en": "Duka la Dawa",
-   "level": "drug_shop",
-   "ward": "",
-   "lat": -3.347178,
-   "lon": 37.342078,
-   "osm_tags": {
-    "amenity": "pharmacy"
-   },
-   "synthetic": false
-  },
-  {
    "id": "osm-node-5803991053",
    "name": "Kilimanjaro Pharmacy",
    "name_en": "Kilimanjaro Pharmacy",
