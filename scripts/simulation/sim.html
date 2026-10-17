@@ -142,7 +142,7 @@ function duka(){
   return `<rect width="1280" height="720" fill="#EFE4CF"/>
   <rect x="0" y="0" width="1280" height="90" fill="#0F4A3E"/>
   <text x="640" y="58" text-anchor="middle" font-size="34" font-weight="800" fill="#F3EEE3" letter-spacing="3">DUKA LA DAWA MUHIMU</text>
-  <text x="640" y="82" text-anchor="middle" font-size="14" fill="#BFD8D5" letter-spacing="2">ACCREDITED DRUG DISPENSING OUTLET · ONDERA</text>
+  <text x="640" y="82" text-anchor="middle" font-size="14" fill="#BFD8D5" letter-spacing="2">ACCREDITED DRUG DISPENSING OUTLET · MACHAME</text>
   ${[150,240,330].map(yy=>`<rect x="760" y="${yy}" width="460" height="10" fill="#8A5A3B"/>`).join('')}
   ${[...Array(18)].map((_,i)=>{const yy=[150,240,330][i%3];const xx=780+Math.floor(i/3)*72;const c=['#E8A33D','#5B8DB8','#B3261E','#F3EEE3','#7FA36A','#7B2D4B'][i%6];return `<rect x="${xx}" y="${yy-48}" width="44" height="48" rx="4" fill="${c}"/><rect x="${xx+6}" y="${yy-34}" width="32" height="8" fill="#fff" opacity=".7"/>`}).join('')}
   <rect x="80" y="130" width="300" height="200" rx="6" fill="#CFE3E0" stroke="#8A5A3B" stroke-width="10"/><path d="M230 130 L230 330 M80 230 L380 230" stroke="#8A5A3B" stroke-width="6"/>
@@ -179,7 +179,7 @@ function scene(a,b,build,anim){S.push({a,b,build,anim})}
 scene(0,5.5,()=>`<rect width="1280" height="720" fill="#0F2E28"/>
  <text x="640" y="250" text-anchor="middle" font-size="22" fill="#E8A33D" font-weight="600" letter-spacing="4">AMARA FIRST CONTACT · A SIMULATION</text>
  <text x="640" y="330" text-anchor="middle" font-size="64" class="serif" fill="#F3EEE3" font-weight="600">Three mothers, one drug shop</text>
- <text x="640" y="390" text-anchor="middle" font-size="26" fill="#BFD8D5">Ondera, near Hai, Kilimanjaro · Tanzania</text>
+ <text x="640" y="390" text-anchor="middle" font-size="26" fill="#BFD8D5">Machame, Hai District · Kilimanjaro, Tanzania</text>
  <g id="t_dots">${[0,1,2].map(i=>`<circle cx="${600+i*40}" cy="450" r="9" fill="${['#7B2D4B','#1F5C7A','#2F6B3F'][i]}"/>`).join('')}</g>`,
  (t,q)=>{});
 
@@ -270,7 +270,7 @@ scene(93,101,()=>`<rect width="1280" height="720" fill="#EDE7DA"/>
  <text x="90" y="368" font-size="52" class="serif" font-weight="600" fill="#0F4A3E">not the long queue.</text>
  <text x="90" y="430" font-size="24" fill="#34413C">A reminder comes by SMS the day before.</text>`
  +featurePhone(930,320,1,'fp2'),
- (t)=>{ document.getElementById('fp2_scr').innerHTML = smsScreen(['Habari Zawadi.','Baraka ana chanjo','Jumatano saa 3','asubuhi, Ondera','Dispensary.','Namba: K41.']); });
+ (t)=>{ document.getElementById('fp2_scr').innerHTML = smsScreen(['Habari Zawadi.','Baraka ana chanjo','Jumatano saa 3','asubuhi, Kisereni','Dispensary.','Namba: K41.']); });
 
 // 13 end
 scene(101,108,()=>`<rect width="1280" height="720" fill="#0F2E28"/>
@@ -278,14 +278,14 @@ scene(101,108,()=>`<rect width="1280" height="720" fill="#0F2E28"/>
  <text x="640" y="310" text-anchor="middle" font-size="56" class="serif" fill="#F3EEE3" font-weight="600">The first door she knocks on</text>
  <text x="640" y="378" text-anchor="middle" font-size="56" class="serif" fill="#F3EEE3" font-weight="600">gets her to the right care.</text>
  <text x="640" y="450" text-anchor="middle" font-size="22" fill="#BFD8D5">ericastephens.github.io/amara-first-contact</text>
- <text x="640" y="540" text-anchor="middle" font-size="15" fill="#BFD8D5">Simulation. Noor, Amina, Zawadi and Ondera are fictional. Phone screens are from the working prototype.</text>
- <text x="640" y="564" text-anchor="middle" font-size="15" fill="#BFD8D5">Clinic slots are sample data. Immunization routing and transport links are pilot designs. Swahili is a draft for review.</text>
+ <text x="640" y="540" text-anchor="middle" font-size="15" fill="#BFD8D5">Simulation. Noor, Amina and Zawadi are fictional; Machame, Machame Hospital and Kisereni Dispensary are real places in Hai District.</text>
+ <text x="640" y="564" text-anchor="middle" font-size="15" fill="#BFD8D5">Phone screens are from the working prototype. Clinic slots are sample data. Immunization routing and transport are pilot designs.</text>
  <text x="640" y="588" text-anchor="middle" font-size="15" fill="#BFD8D5">Amara Health · Erica Stephens and Juanita Ndyamukama · Johns Hopkins Bloomberg School of Public Health</text>`,
  ()=>{});
 
 const CAP=[
  [0,5.5,'',''],
- [5.5,13.5,'Noor farms coffee and maize near Hai. She has had a fever for four days.','Noor ana homa kwa siku nne.'],
+ [5.5,13.5,'Noor farms coffee and maize in Machame, Hai District. She has had a fever for four days.','Noor ana homa kwa siku nne.'],
  [13.5,20.5,"The malaria tablets didn't help. She walks to the drug shop.","Dawa za malaria hazikusaidia."],
  [20.5,30,'She tells Rehema, the dispenser, in her own words.','Anamweleza Rehema kwa maneno yake mwenyewe.'],
  [30,43.5,'No internet needed: the small AI and the rules run on the phone.','Hakuna intaneti inayohitajika.'],
