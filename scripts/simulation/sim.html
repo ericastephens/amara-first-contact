@@ -178,7 +178,7 @@ function scene(a,b,build,anim){S.push({a,b,build,anim})}
 // 0 title
 scene(0,5.5,()=>`<rect width="1280" height="720" fill="#0F2E28"/>
  <text x="640" y="250" text-anchor="middle" font-size="22" fill="#E8A33D" font-weight="600" letter-spacing="4">AMARA FIRST CONTACT · A SIMULATION</text>
- <text x="640" y="330" text-anchor="middle" font-size="64" class="serif" fill="#F3EEE3" font-weight="600">Three mothers, one drug shop</text>
+ <text x="640" y="330" text-anchor="middle" font-size="64" class="serif" fill="#F3EEE3" font-weight="600">Three mothers, one small AI</text>
  <text x="640" y="390" text-anchor="middle" font-size="26" fill="#BFD8D5">Machame, Hai District · Kilimanjaro, Tanzania</text>
  <g id="t_dots">${[0,1,2].map(i=>`<circle cx="${600+i*40}" cy="450" r="9" fill="${['#7B2D4B','#1F5C7A','#2F6B3F'][i]}"/>`).join('')}</g>`,
  (t,q)=>{});
@@ -283,6 +283,15 @@ scene(101,108,()=>`<rect width="1280" height="720" fill="#0F2E28"/>
  <text x="640" y="588" text-anchor="middle" font-size="15" fill="#BFD8D5">Amara Health · Erica Stephens and Juanita Ndyamukama · Johns Hopkins Bloomberg School of Public Health</text>`,
  ()=>{});
 
+
+// 14 meet Rehema (old-time slot 108-114, shown second)
+scene(108,114,()=>duka()+`<g transform="translate(640,560)">${dispenser({id:'rehemaI'})}</g>
+ <g id="tag" transform="translate(760,260)"><rect width="330" height="118" rx="14" fill="#FFFDF8" stroke="#0F4A3E" stroke-width="2.5"/>
+ <text x="22" y="44" font-size="30" class="serif" font-weight="600" fill="#0F4A3E">Rehema</text>
+ <text x="22" y="74" font-size="17" fill="#34413C">Dispenser · drug shop, Machame</text>
+ <text x="22" y="100" font-size="15" fill="#9A5B00" font-weight="600">Amara First Contact on her phone</text></g>`,
+ (t)=>{ document.getElementById('tag').setAttribute('opacity',p(t,109,109.7)); });
+
 const CAP=[
  [0,5.5,'',''],
  [5.5,13.5,'Noor farms coffee and maize in Machame, Hai District. She has had a fever for four days.','Noor ana homa kwa siku nne.'],
@@ -297,9 +306,10 @@ const CAP=[
  [79,85,'Urgent care never waits for technology.','Huduma ya dharura haisubiri teknolojia.'],
  [85,93,'Zawadi brings baby Baraka for his vaccines.','Zawadi amemleta Baraka kupata chanjo.'],
  [93,101,'Routine visits skip the clinician queue.','Ziara za kawaida zinaenda moja kwa moja kwa muuguzi.'],
- [101,108,'','']];
-const CHIP=[[0,5.5,''],[5.5,64,'1 · Noor · fever'],[64,85,'2 · Amina · pregnant'],[85,101,'3 · Zawadi and baby Baraka'],[101,108,'']];
-const SIG=t=>{ if(t>=50 && t<64) return [4,'Signal back · synced']; if(t>=20.5 && t<50) return [0,'No signal · works offline']; if(t>=64&&t<101) return [0,'No signal · works offline']; return null;};
+ [101,108,'',''],
+ [108,114,'Meet Rehema. She runs the drug shop, and her phone runs Amara First Contact, offline.','Huyu ni Rehema, mtoa dawa dukani.']];
+const CHIP=[[0,5.5,''],[5.5,64,'Scenario 1 · Noor · fever'],[64,85,'Scenario 2 · Amina · pregnant'],[85,101,'Scenario 3 · Zawadi and baby Baraka'],[101,108,''],[108,114,'Meet Rehema']];
+const SIG=t=>{ if(t>=50 && t<64) return [4,'Signal back · synced']; if(t>=20.5 && t<50) return [0,'No signal · works offline']; if(t>=64&&t<101) return [0,'No signal · works offline']; if(t>=108) return [0,'No signal · works offline']; return null;};
 
 const stage=document.getElementById('stage');
 let curScene=-1;
@@ -309,7 +319,7 @@ function renderOld(t){
   S[idx].anim(t);
   // fade at scene edges
   const s=S[idx]; const f=Math.max(1-p(t,s.a,s.a+.35), p(t,s.b-.35,s.b));
-  document.getElementById('fade').setAttribute('opacity',(idx===0? p(t,s.b-.35,s.b): (idx===S.length-1? 1-p(t,s.a,s.a+.35): f)).toFixed(3));
+  document.getElementById('fade').setAttribute('opacity',(idx===0? p(t,s.b-.35,s.b): f).toFixed(3));
   const c=CAP.find(c=>t>=c[0]&&t<c[1])||['','',''];
   document.getElementById('capEn').textContent=c[2]; document.getElementById('capSw').textContent=c[3];
   document.getElementById('cap').setAttribute('opacity', c[2]?1:0);
@@ -322,10 +332,9 @@ function renderOld(t){
     [...document.getElementById('bars').children].forEach((r,j)=>r.setAttribute('fill', j<sg[0]?'#7FD1AE':'#4A5A55'));
     document.getElementById('sigTx').textContent=sg[1]; }
 }
-const OLD=[0,5.5,13.5,20.5,30,43.5,48.5,57,64,73,79,85,93,101,108];
-const NEW=[0,3.5,9,13.5,20,30,34,40.5,46,52.5,57.5,62,68,74.5,82];
-function remap(t){ for(let i=0;i<NEW.length-1;i++){ if(t<NEW[i+1]) return OLD[i]+(t-NEW[i])*(OLD[i+1]-OLD[i])/(NEW[i+1]-NEW[i]); } return OLD[OLD.length-1]-0.001; }
-window.render=t=>renderOld(remap(t)); window.DURATION=82;
+const SEG=[[0.0,6.36,0,5.5],[6.36,12.73,108,114],[12.73,19.27,5.5,13.5],[19.27,23.09,13.5,20.5],[23.09,33.82,20.5,30],[33.82,45.0,30,43.5],[45.0,47.82,43.5,48.5],[47.82,54.45,48.5,57],[54.45,57.82,57,64],[57.82,67.91,64,73],[67.91,73.91,73,79],[73.91,76.45,79,85],[76.45,80.55,85,93],[80.55,84.64,93,101],[84.64,89.7,101,108]];
+function remap(t){ for(const [a,b,c,d] of SEG){ if(t<b) return c+(t-a)*(d-c)/(b-a); } return 107.999; }
+window.render=t=>renderOld(remap(t)); window.DURATION=89.7;
 window.render(0);
 </script>
 </body></html>
