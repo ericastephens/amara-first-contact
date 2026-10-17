@@ -303,7 +303,7 @@ const SIG=t=>{ if(t>=50 && t<64) return [4,'Signal back · synced']; if(t>=20.5 
 
 const stage=document.getElementById('stage');
 let curScene=-1;
-function render(t){
+function renderOld(t){
   const i=S.findIndex(s=>t>=s.a && t<s.b); const idx=i<0?S.length-1:i;
   if(idx!==curScene){ stage.innerHTML=S[idx].build(); curScene=idx; }
   S[idx].anim(t);
@@ -322,7 +322,10 @@ function render(t){
     [...document.getElementById('bars').children].forEach((r,j)=>r.setAttribute('fill', j<sg[0]?'#7FD1AE':'#4A5A55'));
     document.getElementById('sigTx').textContent=sg[1]; }
 }
-window.render=render; window.DURATION=108;
-render(0);
+const OLD=[0,5.5,13.5,20.5,30,43.5,48.5,57,64,73,79,85,93,101,108];
+const NEW=[0,3.5,9,13.5,20,30,34,40.5,46,52.5,57.5,62,68,74.5,82];
+function remap(t){ for(let i=0;i<NEW.length-1;i++){ if(t<NEW[i+1]) return OLD[i]+(t-NEW[i])*(OLD[i+1]-OLD[i])/(NEW[i+1]-NEW[i]); } return OLD[OLD.length-1]-0.001; }
+window.render=t=>renderOld(remap(t)); window.DURATION=82;
+window.render(0);
 </script>
 </body></html>
