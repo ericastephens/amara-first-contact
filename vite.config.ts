@@ -29,6 +29,8 @@ export default defineConfig({
         globPatterns: ["**/*.{js,css,html,svg,json,mp3,webmanifest}"],
         maximumFileSizeToCacheInBytes: 3 * 1024 * 1024,
         navigateFallback: "index.html",
+        // The project website at /story/ is a separate static page; never answer it with the app shell.
+        navigateFallbackDenylist: [/\/story\//],
       },
     }),
   ],

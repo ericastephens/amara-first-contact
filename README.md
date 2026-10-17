@@ -1,5 +1,14 @@
 # Amara First Contact
 
+**[Project website](https://ericastephens.github.io/amara-first-contact/story/)** · **[Live demo](https://ericastephens.github.io/amara-first-contact/?welcome)** (choose "Use the Tanzania demo setup", PIN 1234)
+
+<p>
+<img src="site/img/ai_words.webp" width="180" alt="Her words in Swahili">
+<img src="site/img/ai_heard.webp" width="180" alt="What the small AI heard">
+<img src="site/img/clinician_view.webp" width="180" alt="Clinician view with draft ICD-10 codes">
+<img src="site/img/sms.webp" width="180" alt="Referral and SMS">
+</p>
+
 Offline-first referral and triage companion for mothers and their children in rural Tanzania.
 Entry to the World Bank × Hack-Nation **Small AI for Development Hackathon, Challenge 04 (Health)**, 3–4 October 2026.
 
@@ -33,8 +42,18 @@ npm run build        # production PWA in dist/ (works offline after first load)
 Deploy: pushing to `main` runs `.github/workflows/deploy.yml` (data checks, tests, build) and publishes to GitHub Pages.
 In the repo settings set **Pages → Source: GitHub Actions** once.
 
-Demo: Settings → Reset demo data, then **Demo mode** for the three scripted patients, or Responder for a full intake.
+Demo: Settings → Reset demo data, then **Demo mode** for the three scripted patients, or First responder for a full intake.
 The ✈️/📶 button in the top bar simulates the network for the video; real flight mode works too.
+
+## Project website
+
+`site/index.html` is the public story page (problem, how it works, small AI, safety, team, videos). The deploy
+workflow copies it to `/story/` next to the app with `scripts/build_site.sh`; it is a plain static page and is not part
+of the offline app.
+
+## Team
+
+Amara Health: Erica Stephens and Juanita Ndyamukama, Johns Hopkins Bloomberg School of Public Health.
 
 ## Quick checks
 
