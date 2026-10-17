@@ -226,6 +226,10 @@ ol.flow li::before{content:counter(f);font:500 13px/1.9 var(--mono);color:var(--
 @media (max-width:760px){.pilot{grid-template-columns:minmax(0,1fr)}}
 
 /* videos */
+.feature{margin:0 0 32px;display:flex;flex-direction:column;gap:14px}
+.feature video{width:100%;aspect-ratio:16/9;background:#000;border-radius:16px}
+.feature h3{font-size:22px}
+.feature p{font-size:15.5px;color:var(--night-soft);max-width:75ch}
 .vids{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
 .vids figure{margin:0;display:flex;flex-direction:column;gap:12px}
 .vids video{width:100%;aspect-ratio:16/9;background:#000;border-radius:14px}
@@ -275,7 +279,7 @@ footer ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
       <p class="lede">Amara First Contact is an offline triage and referral app for mothers and their children. A drug shop dispenser, community health worker or nurse runs it on a low-cost Android phone. A small AI reads the mother's own Swahili words, sourced rules decide how urgent it is, and she leaves with a clinic, a time and a code by SMS.</p>
       <div class="ctas">
         <a class="btn solid" href="https://ericastephens.github.io/amara-first-contact/?welcome" target="_blank" rel="noopener">Try the live demo</a>
-        <a class="btn ghost" href="#watch">Watch the 1-minute demo</a>
+        <a class="btn ghost" href="#watch">Watch the simulation</a>
       </div>
       <div class="meta"><span>Works with no internet</span><span>AI model under 1 MB</span><span>Pilot: Hai, Kilimanjaro, Tanzania</span></div>
     </div>
@@ -561,6 +565,7 @@ footer ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
       <p class="chap"><b>13</b><span class="eyebrow">Videos</span></p>
       <h2>See it, and meet us</h2>
     </div>
+    <figure class="feature"><video controls preload="none" playsinline poster="media/simulation-poster.webp" src="media/simulation.mp4" aria-label="Simulation: three mothers at one drug shop"></video><figcaption><h3>Simulation · three mothers, one drug shop · 1:48</h3><p>Noor has a fever and is referred for today. Amina is 28 weeks pregnant with danger signs and is told to go now. Zawadi brings baby Baraka for his vaccines. The phone screens are from the working app; the people and places are fictional, and immunization routing and transport links are pilot designs.</p></figcaption></figure>
     <div class="vids">
       <figure><video controls preload="none" playsinline poster="media/demo-poster.webp" src="media/demo.mp4" aria-label="One-minute product demo"></video><figcaption><h3>Product demo · 1 minute</h3><p>Noor's journey in flight mode, from her words to the clinic dashboard.</p></figcaption></figure>
       <figure><video controls preload="none" playsinline poster="media/team-poster.webp" src="media/team.mp4" aria-label="Meet the team"></video><figcaption><h3>Meet the team · 1 minute</h3><p>Erica Stephens and Juanita Ndyamukama introduce Amara Health.</p></figcaption></figure>

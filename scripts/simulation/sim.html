@@ -1,0 +1,328 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:PS;src:url(file:///tmp/claude-0/fonts/node_modules/@fontsource-variable/public-sans/files/public-sans-latin-wght-normal.woff2) format('woff2');font-weight:100 900}
+@font-face{font-family:SS;src:url(file:///tmp/claude-0/fonts/node_modules/@fontsource-variable/source-serif-4/files/source-serif-4-latin-wght-normal.woff2) format('woff2');font-weight:200 900}
+html,body{margin:0;background:#0F2E28}
+svg{display:block}
+text{font-family:PS,sans-serif}
+.serif{font-family:SS,serif}
+.mono{font-family:'DejaVu Sans Mono',monospace}
+</style></head><body>
+<svg id="s" width="1280" height="720" viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFE3E0"/><stop offset="1" stop-color="#F6E7C8"/></linearGradient>
+  <linearGradient id="skyEve" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9C9A0"/><stop offset="1" stop-color="#F6E7C8"/></linearGradient>
+  <pattern id="kit1" width="24" height="24" patternUnits="userSpaceOnUse"><rect width="24" height="24" fill="#7B2D4B"/><circle cx="12" cy="12" r="5" fill="#E8A33D"/><circle cx="0" cy="0" r="3" fill="#F3EEE3"/><circle cx="24" cy="24" r="3" fill="#F3EEE3"/></pattern>
+  <pattern id="kit2" width="22" height="22" patternUnits="userSpaceOnUse"><rect width="22" height="22" fill="#1F5C7A"/><path d="M0 11 L11 0 L22 11 L11 22Z" fill="#F2C14E"/><circle cx="11" cy="11" r="3" fill="#1F5C7A"/></pattern>
+  <pattern id="kit3" width="26" height="26" patternUnits="userSpaceOnUse"><rect width="26" height="26" fill="#2F6B3F"/><rect x="0" y="10" width="26" height="6" fill="#E8A33D"/><circle cx="13" cy="4" r="3" fill="#F3EEE3"/></pattern>
+  <clipPath id="phoneClip"><rect x="0" y="0" width="290" height="628" rx="30"/></clipPath>
+  <clipPath id="tabClip"><rect x="0" y="0" width="150" height="325" rx="12"/></clipPath>
+</defs>
+<g id="stage"></g>
+<!-- overlays -->
+<g id="chip" font-size="15">
+  <rect x="24" y="22" rx="16" height="34" width="10" fill="#0F2E28" opacity=".85" id="chipBg"/>
+  <text x="42" y="45" fill="#F3EEE3" font-weight="600" id="chipTx"></text>
+</g>
+<g id="sig" transform="translate(1040,22)">
+  <rect width="216" height="34" rx="17" fill="#0F2E28" opacity=".85"/>
+  <g id="bars" transform="translate(18,9)">
+    <rect x="0" y="12" width="4" height="5" rx="1"/><rect x="7" y="8" width="4" height="9" rx="1"/><rect x="14" y="4" width="4" height="13" rx="1"/><rect x="21" y="0" width="4" height="17" rx="1"/>
+  </g>
+  <text x="54" y="23" font-size="14" fill="#F3EEE3" font-weight="600" id="sigTx"></text>
+</g>
+<g id="cap">
+  <rect x="0" y="606" width="1280" height="114" fill="#0F2E28" opacity=".92"/>
+  <text id="capEn" x="640" y="652" text-anchor="middle" font-size="27" fill="#F3EEE3" font-weight="500"></text>
+  <text id="capSw" x="640" y="691" text-anchor="middle" font-size="21" fill="#E8A33D" font-style="italic" class="serif"></text>
+</g>
+<rect id="fade" width="1280" height="720" fill="#0F2E28" opacity="0"/>
+</svg>
+<script>
+const IMG = '../../site/img/';
+const SK = ['#8A5A3B','#6B4430','#9C6A48','#7A4E36'];
+const cl=(v,a,b)=>Math.max(a,Math.min(b,v));
+const p=(t,a,b)=>cl((t-a)/(b-a),0,1);
+const ez=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;
+
+// ---------- characters (origin = feet centre, ~300 units tall) ----------
+function face(skin, y){
+  return `<ellipse cx="0" cy="${y}" rx="22" ry="26" fill="${skin}"/>
+  <circle cx="-8" cy="${y-3}" r="2.8" fill="#24160F"/><circle cx="8" cy="${y-3}" r="2.8" fill="#24160F"/>
+  <path d="M-12 ${y-11} q4 -3 8 0 M4 ${y-11} q4 -3 8 0" stroke="#24160F" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <path d="M-7 ${y+11} q7 5 14 0" stroke="#4A2A1E" stroke-width="2.2" fill="none" stroke-linecap="round"/>`;
+}
+function woman(o){
+  const {id,skin=SK[0],dress='url(#kit1)',hijab='#0F4A3E',pregnant=false,baby=false,armR='',hijabTrim='#E8A33D'}=o;
+  let s=`<g id="${id}">`;
+  s+=`<ellipse cx="0" cy="0" rx="58" ry="9" fill="#000" opacity=".14"/>`;
+  s+=`<ellipse cx="-18" cy="-5" rx="15" ry="6" fill="#3A2A22"/><ellipse cx="18" cy="-5" rx="15" ry="6" fill="#3A2A22"/>`;
+  s+=`<path d="M-34 -192 C-42 -120 -56 -60 -60 -10 L60 -10 C56 -60 42 -120 34 -192Z" fill="${dress}"/>`;
+  s+=`<path d="M-60 -10 L60 -10 L58 -26 L-58 -26Z" fill="#000" opacity=".18"/>`;
+  if(pregnant) s+=`<ellipse cx="32" cy="-104" rx="42" ry="44" fill="${dress}" stroke="#000" stroke-opacity=".22" stroke-width="3"/><path d="M8 -138 C 50 -140 66 -90 40 -68" stroke="#000" stroke-opacity=".18" stroke-width="3" fill="none"/>`;
+  s+=`<path d="M-36 -186 Q-52 -140 -46 -100" stroke="${dress}" stroke-width="20" stroke-linecap="round" fill="none"/><circle cx="-46" cy="-96" r="10" fill="${skin}"/>`;
+  const babySvg = baby? `<g><ellipse cx="40" cy="-126" rx="42" ry="26" fill="url(#kit3)"/><circle cx="70" cy="-150" r="16" fill="${SK[2]}"/><path d="M55 -158 a16 16 0 0 1 30 0Z" fill="#E8A33D"/><circle cx="75" cy="-151" r="1.8" fill="#24160F"/><path d="M70 -143 q4 2 7 0" stroke="#4A2A1E" stroke-width="1.6" fill="none"/></g>`:'';
+  s+=`<g id="${id}_armR" transform="${armR}"><path d="M36 -186 Q54 -140 48 -100" stroke="${dress}" stroke-width="20" stroke-linecap="round" fill="none"/><circle cx="48" cy="-96" r="10" fill="${skin}"/><g id="${id}_hold" opacity="0"></g></g>`+babySvg;
+  // hijab
+  s+=`<path d="M-56 -200 C-66 -176 66 -176 56 -200 C50 -214 -50 -214 -56 -200Z" fill="${hijab}"/>`;
+  s+=`<path d="M-44 -206 C-52 -250 -40 -292 0 -294 C40 -292 52 -250 44 -206Z" fill="${hijab}"/>`;
+  s+=`<path d="M-40 -212 C-44 -250 -34 -284 0 -286" stroke="${hijabTrim}" stroke-width="3" fill="none" opacity=".8"/>`;
+  s+=face(skin,-240);
+  s+=`<path d="M-24 -262 C-20 -276 20 -276 24 -262" stroke="${hijab}" stroke-width="6" fill="none"/>`;
+  s+=`</g>`;return s;
+}
+function dispenser(o){
+  const {id,skin=SK[1]}=o;
+  return `<g id="${id}">
+  <ellipse cx="0" cy="0" rx="58" ry="9" fill="#000" opacity=".14"/>
+  <rect x="-30" y="-90" width="24" height="86" fill="#2B3A4A"/><rect x="6" y="-90" width="24" height="86" fill="#2B3A4A"/>
+  <ellipse cx="-18" cy="-4" rx="16" ry="6" fill="#222"/><ellipse cx="18" cy="-4" rx="16" ry="6" fill="#222"/>
+  <path d="M-40 -196 C-48 -150 -50 -100 -48 -70 L48 -70 C50 -100 48 -150 40 -196Z" fill="#FAFAF7" stroke="#D9D6CC" stroke-width="2"/>
+  <path d="M-12 -196 L0 -150 L12 -196" stroke="#D9D6CC" stroke-width="3" fill="#2F6B3F"/>
+  <rect x="16" y="-160" width="20" height="8" rx="2" fill="#0F4A3E"/>
+  <path d="M-40 -190 Q-56 -140 -50 -104" stroke="#FAFAF7" stroke-width="20" stroke-linecap="round" fill="none"/><circle cx="-50" cy="-98" r="10" fill="${skin}"/>
+  <g id="${id}_armR"><path d="M40 -190 Q60 -150 40 -122" stroke="#FAFAF7" stroke-width="20" stroke-linecap="round" fill="none"/><circle cx="34" cy="-118" r="10" fill="${skin}"/>
+  <rect x="26" y="-146" width="22" height="38" rx="4" fill="#1B2420"/><rect x="29" y="-142" width="16" height="28" rx="2" fill="#7FD1AE"/></g>
+  <rect x="-8" y="-214" width="16" height="20" fill="${skin}"/>
+  <circle cx="0" cy="-246" r="34" fill="#1E1410"/><circle cx="0" cy="-286" r="16" fill="#1E1410"/>
+  ${face(skin,-240)}
+  </g>`;
+}
+function clinician(o){
+  const {id,skin=SK[3]}=o;
+  return `<g id="${id}">
+  <ellipse cx="0" cy="0" rx="58" ry="9" fill="#000" opacity=".14"/>
+  <rect x="-30" y="-100" width="26" height="96" fill="#34413C"/><rect x="4" y="-100" width="26" height="96" fill="#34413C"/>
+  <ellipse cx="-18" cy="-4" rx="16" ry="6" fill="#222"/><ellipse cx="18" cy="-4" rx="16" ry="6" fill="#222"/>
+  <path d="M-42 -200 C-50 -150 -52 -100 -50 -64 L50 -64 C52 -100 50 -150 42 -200Z" fill="#FAFAF7" stroke="#D9D6CC" stroke-width="2"/>
+  <path d="M-12 -200 L0 -160 L12 -200" fill="#5B8DB8"/>
+  <path d="M-16 -196 C-26 -150 10 -140 14 -170" stroke="#2B3A4A" stroke-width="4" fill="none"/><circle cx="14" cy="-172" r="6" fill="#9AA3A6"/>
+  <path d="M-42 -194 Q-60 -150 -52 -110" stroke="#FAFAF7" stroke-width="20" stroke-linecap="round" fill="none"/><circle cx="-52" cy="-104" r="10" fill="${skin}"/>
+  <path d="M42 -194 Q64 -160 44 -128" stroke="#FAFAF7" stroke-width="20" stroke-linecap="round" fill="none"/><circle cx="38" cy="-124" r="10" fill="${skin}"/>
+  <g transform="translate(30,-200) rotate(8)"><rect width="78" height="110" rx="8" fill="#1B2420"/><rect x="5" y="6" width="68" height="98" rx="4" fill="#F6F3EC"/>
+   <rect x="10" y="12" width="40" height="7" rx="2" fill="#0F4A3E"/><rect x="10" y="26" width="58" height="22" rx="3" fill="#FBF0DC"/><text x="14" y="42" font-size="11" font-weight="700" fill="#9A5B00">Z96</text>
+   <rect x="10" y="54" width="58" height="5" rx="2" fill="#C9C3B5"/><rect x="10" y="64" width="48" height="5" rx="2" fill="#C9C3B5"/><rect x="10" y="74" width="54" height="5" rx="2" fill="#C9C3B5"/><rect x="10" y="84" width="40" height="5" rx="2" fill="#C9C3B5"/></g>
+  <rect x="-8" y="-218" width="16" height="20" fill="${skin}"/>
+  <path d="M-30 -250 C-30 -284 30 -284 30 -250 C24 -262 -24 -262 -30 -250Z" fill="#1E1410"/>
+  ${face(skin,-240)}
+  </g>`;
+}
+function featurePhone(x,y,s,id){
+  return `<g id="${id}" transform="translate(${x},${y}) scale(${s})">
+   <rect x="-110" y="-215" width="220" height="430" rx="34" fill="#2B2F33"/><rect x="-104" y="-209" width="208" height="418" rx="30" fill="none" stroke="#454B50" stroke-width="2"/>
+   <rect x="-88" y="-180" width="176" height="186" rx="8" fill="#CFE6D8"/>
+   <g id="${id}_scr"></g>
+   <g fill="#3B4045">${[0,1,2].map(r=>[0,1,2].map(c=>`<rect x="${-72+c*52}" y="${48+r*46}" width="40" height="32" rx="10"/>`).join('')).join('')}</g>
+   <g fill="#C9CED2" font-size="16" text-anchor="middle" font-weight="700">${[1,2,3,4,5,6,7,8,9].map((n,i)=>`<text x="${-52+(i%3)*52}" y="${70+Math.floor(i/3)*46}">${n}</text>`).join('')}</g>
+   <rect x="-34" y="20" width="68" height="18" rx="9" fill="#4F7F45"/>
+  </g>`;
+}
+function smsScreen(lines,from='AMARA'){
+  let s=`<text x="-78" y="-158" font-size="13" font-weight="700" fill="#1F3A2E">✉ ${from}</text><line x1="-80" y1="-150" x2="80" y2="-150" stroke="#1F3A2E" stroke-opacity=".3"/>`;
+  lines.forEach((l,i)=>{s+=`<text x="-78" y="${-130+i*19}" font-size="14.5" class="mono" fill="#13261E">${l}</text>`});
+  return s;
+}
+
+// ---------- backgrounds ----------
+function hills(dx=0){
+  return `<rect width="1280" height="720" fill="url(#sky)"/>
+  <g transform="translate(${dx*0.15},0)">
+   <path d="M260 340 L520 196 Q560 176 600 186 L640 181 Q684 176 724 198 L1000 340Z" fill="#8A9B97"/>
+   <path d="M505 206 L520 196 Q560 176 600 186 L640 181 Q684 176 724 198 L740 208 L706 214 L684 204 L654 218 L624 205 L594 220 L562 206 L532 218Z" fill="#F7F8F5"/>
+  </g>
+  <g transform="translate(${dx*0.35},0)"><path d="M-400 380 C-100 300 200 330 450 350 C700 370 900 300 1200 320 C1500 340 1700 360 1900 340 L1900 720 L-400 720Z" fill="#7FA36A"/></g>
+  <g transform="translate(${dx*0.6},0)"><path d="M-400 430 C-100 390 300 420 600 410 C900 400 1100 380 1500 410 C1700 425 1900 410 2100 420 L2100 720 L-400 720Z" fill="#5E8B4E"/></g>`;
+}
+function coffee(x,y,s=1){return `<g transform="translate(${x},${y}) scale(${s})"><circle cx="0" cy="-30" r="30" fill="#2F5A2E"/><circle cx="-24" cy="-14" r="22" fill="#3A6B37"/><circle cx="22" cy="-12" r="24" fill="#2F5A2E"/>${[[-10,-34],[8,-22],[-26,-12],[20,-8],[2,-46]].map(([a,b])=>`<circle cx="${a}" cy="${b}" r="3.6" fill="#B3261E"/>`).join('')}</g>`}
+function maize(x,y,s=1){return `<g transform="translate(${x},${y}) scale(${s})" stroke="#6E8F3A" stroke-width="5" fill="none" stroke-linecap="round"><path d="M0 0 L0 -120"/><path d="M0 -40 Q-30 -60 -44 -50"/><path d="M0 -70 Q30 -90 44 -80"/><path d="M0 -95 Q-24 -115 -36 -108"/><path d="M0 -120 l-6 -16 M0 -120 l6 -16" stroke="#D7B45A"/></g>`}
+function house(x,y){return `<g transform="translate(${x},${y})"><rect x="0" y="-120" width="180" height="120" fill="#C9A27A"/><path d="M-16 -116 L90 -184 L196 -116Z" fill="#9AA3A6"/><path d="M-16 -116 L90 -184 L196 -116" stroke="#7D868A" stroke-width="4" fill="none"/><rect x="72" y="-70" width="40" height="70" fill="#6B4430"/><rect x="18" y="-92" width="34" height="28" fill="#4A5A5A"/><rect x="130" y="-92" width="34" height="28" fill="#4A5A5A"/></g>`}
+function road(dx=0){return `<g transform="translate(${dx*0.6},0)"><path d="M-600 560 C-200 520 300 540 700 525 C1100 510 1500 530 2400 520 L2400 600 L-600 610Z" fill="#C8A27A"/></g>`}
+function duka(){
+  return `<rect width="1280" height="720" fill="#EFE4CF"/>
+  <rect x="0" y="0" width="1280" height="90" fill="#0F4A3E"/>
+  <text x="640" y="58" text-anchor="middle" font-size="34" font-weight="800" fill="#F3EEE3" letter-spacing="3">DUKA LA DAWA MUHIMU</text>
+  <text x="640" y="82" text-anchor="middle" font-size="14" fill="#BFD8D5" letter-spacing="2">ACCREDITED DRUG DISPENSING OUTLET · ONDERA</text>
+  ${[150,240,330].map(yy=>`<rect x="760" y="${yy}" width="460" height="10" fill="#8A5A3B"/>`).join('')}
+  ${[...Array(18)].map((_,i)=>{const yy=[150,240,330][i%3];const xx=780+Math.floor(i/3)*72;const c=['#E8A33D','#5B8DB8','#B3261E','#F3EEE3','#7FA36A','#7B2D4B'][i%6];return `<rect x="${xx}" y="${yy-48}" width="44" height="48" rx="4" fill="${c}"/><rect x="${xx+6}" y="${yy-34}" width="32" height="8" fill="#fff" opacity=".7"/>`}).join('')}
+  <rect x="80" y="130" width="300" height="200" rx="6" fill="#CFE3E0" stroke="#8A5A3B" stroke-width="10"/><path d="M230 130 L230 330 M80 230 L380 230" stroke="#8A5A3B" stroke-width="6"/>
+  <path d="M90 300 C150 250 200 280 370 240 L370 320 L90 320Z" fill="#7FA36A" opacity=".8"/>
+  <rect x="640" y="390" width="640" height="220" fill="#8A5A3B"/><rect x="640" y="380" width="640" height="20" fill="#6B4430"/>
+  <rect x="0" y="560" width="1280" height="60" fill="#D8C7A8"/>`;
+}
+function hospital(){
+  return `<rect width="1280" height="720" fill="url(#sky)"/>
+  <path d="M-100 470 C300 430 900 450 1400 440 L1400 720 L-100 720Z" fill="#7FA36A"/>
+  <rect x="360" y="170" width="760" height="330" fill="#F6F3EC"/><rect x="360" y="170" width="760" height="40" fill="#5B8DB8"/>
+  <text x="740" y="198" text-anchor="middle" font-size="24" font-weight="800" fill="#fff" letter-spacing="3">MACHAME HOSPITAL</text>
+  ${[0,1,2,3,4,5].map(i=>`<rect x="${400+i*118}" y="240" width="70" height="60" fill="#8FB7C9"/>`).join('')}
+  ${[0,1,2,4,5].map(i=>`<rect x="${400+i*118}" y="340" width="70" height="60" fill="#8FB7C9"/>`).join('')}
+  <rect x="690" y="360" width="100" height="140" fill="#0F4A3E"/><path d="M730 330 h20 v-14 h14 v14 h20 v14 h-20 v14 h-14 v-14 h-20Z" fill="#B3261E" transform="translate(-20,-20)"/>
+  <circle cx="200" cy="360" r="80" fill="#4F7F45"/><rect x="192" y="400" width="16" height="100" fill="#6B4430"/>
+  <rect x="0" y="500" width="1280" height="120" fill="#C8A27A"/>`;
+}
+function bubble(x,y,w,lines,id,tail='left'){
+  const h=24+lines.length*30;
+  const tx = tail==='left'? `M${x+30} ${y+h} l-8 26 l30 -26Z` : `M${x+w-40} ${y+h} l14 26 l6 -26Z`;
+  return `<g id="${id}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="18" fill="#FFFDF8" stroke="#0F4A3E" stroke-width="2.5"/><path d="${tx}" fill="#FFFDF8" stroke="#0F4A3E" stroke-width="2.5"/><rect x="${x+2}" y="${y+h-4}" width="${w-4}" height="6" fill="#FFFDF8"/>
+  ${lines.map((l,i)=>`<text x="${x+20}" y="${y+38+i*30}" font-size="${l.s||22}" class="${l.c||'serif'}" font-style="${l.i?'italic':'normal'}" fill="${l.f||'#0F2E28'}">${l.t}</text>`).join('')}</g>`;
+}
+function phoneBig(id,x,y){
+  return `<g id="${id}" transform="translate(${x},${y}) scale(.84)"><rect x="-12" y="-12" width="314" height="652" rx="42" fill="#1B2420"/><g clip-path="url(#phoneClip)"><rect width="290" height="628" fill="#fff"/><image id="${id}_img" width="290" height="628" preserveAspectRatio="xMidYMin slice" href=""/></g></g>`;
+}
+
+// ---------- scenes ----------
+const S=[];
+function scene(a,b,build,anim){S.push({a,b,build,anim})}
+
+// 0 title
+scene(0,5.5,()=>`<rect width="1280" height="720" fill="#0F2E28"/>
+ <text x="640" y="250" text-anchor="middle" font-size="22" fill="#E8A33D" font-weight="600" letter-spacing="4">AMARA FIRST CONTACT · A SIMULATION</text>
+ <text x="640" y="330" text-anchor="middle" font-size="64" class="serif" fill="#F3EEE3" font-weight="600">Three mothers, one drug shop</text>
+ <text x="640" y="390" text-anchor="middle" font-size="26" fill="#BFD8D5">Ondera, near Hai, Kilimanjaro · Tanzania</text>
+ <g id="t_dots">${[0,1,2].map(i=>`<circle cx="${600+i*40}" cy="450" r="9" fill="${['#7B2D4B','#1F5C7A','#2F6B3F'][i]}"/>`).join('')}</g>`,
+ (t,q)=>{});
+
+// 1 farm
+scene(5.5,13.5,()=>hills(0)+house(140,470)+coffee(420,470,1.1)+coffee(520,480,.9)+coffee(1080,470,1.2)+coffee(1180,490,1)+maize(900,470,1)+maize(950,476,.9)+maize(1000,472,1.05)+road(0)
+ +`<g id="n1" transform="translate(700,560)">${woman({id:'noorA',skin:SK[0],dress:'url(#kit1)',hijab:'#0F4A3E'})}</g>
+ <g id="heat" opacity="0">${[0,1,2].map(i=>`<path d="M${676+i*22} 250 q8 -12 0 -24 q-8 -12 0 -24" stroke="#B3261E" stroke-width="4" fill="none" stroke-linecap="round"/>`).join('')}</g>`,
+ (t)=>{ const k=p(t,7,8.5); document.getElementById('noorA_armR').setAttribute('transform',`rotate(${-160*ez(k)} 36 -186)`);
+   document.getElementById('heat').setAttribute('opacity', (k>0? .5+.5*Math.sin(t*6):0).toFixed(2)); });
+
+// 2 walk
+scene(13.5,20.5,()=>`<g id="wbg"></g><g id="n2">${woman({id:'noorB',skin:SK[0],dress:'url(#kit1)',hijab:'#0F4A3E'})}</g>`,
+ (t)=>{ const k=p(t,13.5,20.5); const dx=-k*900;
+   document.getElementById('wbg').innerHTML=hills(dx)+`<g transform="translate(${dx*0.6},0)">${coffee(200,470)+coffee(700,480,.9)+maize(1000,470)+maize(1300,470,.9)+coffee(1600,475)+maize(1800,470)}</g>`+road(dx)
+     +`<g transform="translate(${dx*0.6+1900},0)"><rect x="0" y="390" width="220" height="160" fill="#F3EEE3"/><rect x="0" y="370" width="220" height="34" fill="#0F4A3E"/><text x="110" y="394" text-anchor="middle" font-size="16" font-weight="800" fill="#F3EEE3">DUKA LA DAWA</text><rect x="80" y="460" width="60" height="90" fill="#6B4430"/></g>`;
+   const bob=Math.abs(Math.sin(t*7))*-8; document.getElementById('n2').setAttribute('transform',`translate(560,${560+bob}) scale(.95)`); });
+
+// 3 Noor speaks at duka
+scene(20.5,30,()=>duka()+`<g transform="translate(980,520)">${dispenser({id:'rehema'})}</g><g transform="translate(330,600)">${woman({id:'noorC',skin:SK[0],dress:'url(#kit1)',hijab:'#0F4A3E'})}</g>`
+ +bubble(110,120,660,[{t:'“Nimemeza mseto lakini homa bado ipo.'},{t:'Kuna panya wengi nyumbani.”'},{t:'I took malaria tablets but the fever is still there. There are many rats at home.',s:14,c:'',f:'#5E6B66'}],'b1'),
+ (t)=>{ document.getElementById('b1').setAttribute('opacity',p(t,21.5,22.3)); });
+
+// 4 phone close-up: AI
+const shots=[[30,'ai_words'],[34.5,'ai_heard'],[39,'result_confirmed']];
+scene(30,43.5,()=>`<rect width="1280" height="720" fill="#0F2E28"/>
+ <text x="90" y="170" font-size="20" fill="#E8A33D" font-weight="700" letter-spacing="3">ON REHEMA'S PHONE · OFFLINE</text>
+ <g id="ph_tx"></g>`+phoneBig('ph1',880,58),
+ (t)=>{ let cur=shots.filter(s=>t>=s[0]).pop(); document.getElementById('ph1_img').setAttribute('href',IMG+cur[1]+'.webp');
+   const scroll = cur[1]==='ai_heard'? -0 : 0; document.getElementById('ph1_img').setAttribute('y',scroll);
+   const lines={ai_words:['Her own words,','typed in Swahili'],ai_heard:['The small AI reads them,','and says Not sure','when it is unsure'],result_confirmed:['Written rules decide:','Refer today.','Rehema confirms each flag']}[cur[1]];
+   const k=p(t,cur[0],cur[0]+.6);
+   document.getElementById('ph_tx').innerHTML=lines.map((l,i)=>`<text x="90" y="${260+i*64}" font-size="50" class="serif" font-weight="600" fill="#F3EEE3" opacity="${k}">${l}</text>`).join(''); });
+
+// 5 slip
+scene(43.5,48.5,()=>duka()+`<g transform="translate(980,520)">${dispenser({id:'rehema2'})}</g><g transform="translate(330,600)">${woman({id:'noorD',skin:SK[0],dress:'url(#kit1)',hijab:'#0F4A3E'})}</g>
+ <g id="slip"><rect x="0" y="0" width="300" height="170" rx="6" fill="#FFFDF8" stroke="#C9C3B5" stroke-width="2"/>
+ <text x="20" y="34" font-size="14" font-weight="700" fill="#9A5B00" letter-spacing="2">REFERRAL · REFER TODAY</text>
+ <text x="20" y="68" font-size="22" class="serif" font-weight="600" fill="#0F2E28">Machame Hospital</text>
+ <text x="20" y="98" font-size="17" fill="#34413C">Jumanne 08:00 · Tuesday 8 am</text>
+ <text x="20" y="146" font-size="40" class="mono" font-weight="700" fill="#0F4A3E">Z96</text>
+ <text x="110" y="146" font-size="13" fill="#5E6B66">Seen by Rehema</text></g>`,
+ (t)=>{ const k=ez(p(t,44,46)); document.getElementById('slip').setAttribute('transform',`translate(${820-k*420},${250+Math.sin(k*3.14)*-40}) rotate(${-6+k*4})`); });
+
+// 6 SMS
+scene(48.5,57,()=>hills(-200)+coffee(160,480)+maize(260,470)+house(940,470)+road(-200)
+ +`<g transform="translate(420,580) scale(.95)">${woman({id:'noorE',skin:SK[0],dress:'url(#kit1)',hijab:'#0F4A3E',armR:'rotate(-60 36 -186)'})}</g>`
+ +featurePhone(820,300,.95,'fp1')
+ +`<g id="env" opacity="0"><rect x="-26" y="-18" width="52" height="36" rx="5" fill="#E8A33D"/><path d="M-26 -18 L0 4 L26 -18" stroke="#0F2E28" stroke-width="3" fill="none"/></g>`,
+ (t)=>{ const k=ez(p(t,50,52.2)); const e=document.getElementById('env');
+   e.setAttribute('opacity', k>0&&k<1?1:0);
+   const x=1180+(820-1180)*k, y=60+(200-60)*k - Math.sin(k*3.14)*80; e.setAttribute('transform',`translate(${x},${y}) rotate(${-20+k*20})`);
+   document.getElementById('fp1_scr').innerHTML = t>52.2 ? smsScreen(['Habari Noor.','Nenda Machame','Hospital Jumanne','saa 2 asubuhi.','Namba yako: Z96.','Onyesha namba hii','ukifika.']) : `<text x="0" y="-80" text-anchor="middle" font-size="16" fill="#1F3A2E">${t>50?'…':'Hakuna ujumbe'}</text>`; });
+
+// 7 hospital
+scene(57,64,()=>hospital()+`<g transform="translate(960,580)">${clinician({id:'doc'})}</g><g id="n7">${woman({id:'noorF',skin:SK[0],dress:'url(#kit1)',hijab:'#0F4A3E',armR:'rotate(-70 36 -186)'})}</g>`
+ +bubble(560,120,330,[{t:'Z96',c:'mono',s:30},{t:'Her note is already here.',s:17,c:'',f:'#34413C'}],'b7','right'),
+ (t)=>{ const k=ez(p(t,57,59.5)); document.getElementById('n7').setAttribute('transform',`translate(${150+k*480},${590+Math.abs(Math.sin(t*7))*-6*(1-p(t,59,59.6))}) scale(.95)`);
+   document.getElementById('b7').setAttribute('opacity',p(t,60,60.6)); });
+
+// 8 Amina at duka
+scene(64,73,()=>duka()+`<g transform="translate(980,520)">${dispenser({id:'rehema3'})}</g><g transform="translate(330,600)">${woman({id:'amina',skin:SK[2],dress:'url(#kit2)',hijab:'#7B2D4B',pregnant:true,hijabTrim:'#F2C14E',armR:'rotate(-160 36 -186)'})}</g>`
+ +bubble(110,110,640,[{t:'“Kichwa kinaniuma sana, naona giza giza,'},{t:'miguu imevimba.”'},{t:'A very bad headache, my vision is going dark, my feet are swollen.',s:15,c:'',f:'#5E6B66'}],'b8'),
+ (t)=>{ document.getElementById('b8').setAttribute('opacity',p(t,65,65.7)); });
+
+// 9 Go now phone
+scene(73,79,()=>`<rect width="1280" height="720" fill="#3A1714"/>
+ <text x="90" y="170" font-size="20" fill="#FFB4A9" font-weight="700" letter-spacing="3">DANGER SIGNS · 28 WEEKS PREGNANT</text>
+ <text x="90" y="270" font-size="72" class="serif" font-weight="700" fill="#FFFDF8">Go now.</text>
+ <text x="90" y="340" font-size="34" class="serif" fill="#F3EEE3">A paper referral at once.</text>
+ <text x="90" y="390" font-size="34" class="serif" fill="#F3EEE3">No slot, no signal needed.</text>`+phoneBig('ph2',880,58),
+ (t)=>{ document.getElementById('ph2_img').setAttribute('href',IMG+'go_now.webp'); });
+
+// 10 transport
+scene(79,85,()=>hills(-500)+coffee(1100,480)+maize(160,470)+road(-500)+`<g id="car"><rect x="-120" y="-70" width="240" height="60" rx="14" fill="#F2C14E"/><path d="M-80 -70 L-50 -118 L60 -118 L90 -70Z" fill="#F2C14E"/><path d="M-66 -74 L-44 -110 L4 -110 L4 -74Z M12 -74 L12 -110 L54 -110 L78 -74Z" fill="#8FB7C9"/><circle cx="-70" cy="-8" r="22" fill="#222"/><circle cx="70" cy="-8" r="22" fill="#222"/><circle cx="-70" cy="-8" r="9" fill="#9AA3A6"/><circle cx="70" cy="-8" r="9" fill="#9AA3A6"/><circle cx="-26" cy="-96" r="12" fill="#7B2D4B"/><text x="0" y="-32" text-anchor="middle" font-size="16" font-weight="800" fill="#0F2E28">m-mama</text></g>
+ <g transform="translate(640,150)"><rect x="-260" y="-30" width="520" height="56" rx="28" fill="#0F2E28" opacity=".88"/><text x="0" y="6" text-anchor="middle" font-size="20" fill="#F2C14E" font-weight="700">Pilot design · link to m-mama emergency transport</text></g>`,
+ (t)=>{ const k=p(t,79,85); document.getElementById('car').setAttribute('transform',`translate(${-150+k*1500},${565+Math.sin(t*20)*1.5})`); });
+
+// 11 Zawadi at duka
+scene(85,93,()=>duka()+`<g transform="translate(980,520)">${dispenser({id:'rehema4'})}</g><g transform="translate(330,600)">${woman({id:'zawadi',skin:SK[3],dress:'url(#kit3)',hijab:'#1F5C7A',baby:true,hijabTrim:'#F3EEE3'})}</g>`
+ +bubble(120,130,520,[{t:'“Baraka anahitaji chanjo zake.”'},{t:'Baraka needs his vaccines.',s:15,c:'',f:'#5E6B66'}],'b11'),
+ (t)=>{ document.getElementById('b11').setAttribute('opacity',p(t,86,86.7)); });
+
+// 12 routing + reminder
+scene(93,101,()=>`<rect width="1280" height="720" fill="#EDE7DA"/>
+ <text x="90" y="150" font-size="20" fill="#9A5B00" font-weight="700" letter-spacing="3">ROUTINE VISIT · PILOT DESIGN</text>
+ <text x="90" y="240" font-size="52" class="serif" font-weight="600" fill="#0F4A3E">Straight to the</text>
+ <text x="90" y="304" font-size="52" class="serif" font-weight="600" fill="#0F4A3E">nurse's room,</text>
+ <text x="90" y="368" font-size="52" class="serif" font-weight="600" fill="#0F4A3E">not the long queue.</text>
+ <text x="90" y="430" font-size="24" fill="#34413C">A reminder comes by SMS the day before.</text>`
+ +featurePhone(930,320,1,'fp2'),
+ (t)=>{ document.getElementById('fp2_scr').innerHTML = smsScreen(['Habari Zawadi.','Baraka ana chanjo','Jumatano saa 3','asubuhi, Ondera','Dispensary.','Namba: K41.']); });
+
+// 13 end
+scene(101,108,()=>`<rect width="1280" height="720" fill="#0F2E28"/>
+ <text x="640" y="230" text-anchor="middle" font-size="22" fill="#E8A33D" font-weight="700" letter-spacing="4">AMARA FIRST CONTACT</text>
+ <text x="640" y="310" text-anchor="middle" font-size="56" class="serif" fill="#F3EEE3" font-weight="600">The first door she knocks on</text>
+ <text x="640" y="378" text-anchor="middle" font-size="56" class="serif" fill="#F3EEE3" font-weight="600">gets her to the right care.</text>
+ <text x="640" y="450" text-anchor="middle" font-size="22" fill="#BFD8D5">ericastephens.github.io/amara-first-contact</text>
+ <text x="640" y="540" text-anchor="middle" font-size="15" fill="#BFD8D5">Simulation. Noor, Amina, Zawadi and Ondera are fictional. Phone screens are from the working prototype.</text>
+ <text x="640" y="564" text-anchor="middle" font-size="15" fill="#BFD8D5">Clinic slots are sample data. Immunization routing and transport links are pilot designs. Swahili is a draft for review.</text>
+ <text x="640" y="588" text-anchor="middle" font-size="15" fill="#BFD8D5">Amara Health · Erica Stephens and Juanita Ndyamukama · Johns Hopkins Bloomberg School of Public Health</text>`,
+ ()=>{});
+
+const CAP=[
+ [0,5.5,'',''],
+ [5.5,13.5,'Noor farms coffee and maize near Hai. She has had a fever for four days.','Noor ana homa kwa siku nne.'],
+ [13.5,20.5,"The malaria tablets didn't help. She walks to the drug shop.","Dawa za malaria hazikusaidia."],
+ [20.5,30,'She tells Rehema, the dispenser, in her own words.','Anamweleza Rehema kwa maneno yake mwenyewe.'],
+ [30,43.5,'No internet needed: the small AI and the rules run on the phone.','Hakuna intaneti inayohitajika.'],
+ [43.5,48.5,'Noor leaves with a paper slip, a clinic and a booked time.','Noor anaondoka na karatasi ya rufaa.'],
+ [48.5,57,'When the signal returns, Noor gets an SMS: clinic, time, code. No diagnosis.','Ujumbe mfupi: kliniki, saa na namba yake.'],
+ [57,64,'At Machame Hospital, her note has arrived before her.','Hospitalini, taarifa yake imefika kabla yake.'],
+ [64,73,'Amina is 28 weeks pregnant.','Amina ana mimba ya wiki 28.'],
+ [73,79,'Danger signs mean Go now, whatever the network.','Dalili za hatari: nenda sasa hivi.'],
+ [79,85,'Urgent care never waits for technology.','Huduma ya dharura haisubiri teknolojia.'],
+ [85,93,'Zawadi brings baby Baraka for his vaccines.','Zawadi amemleta Baraka kupata chanjo.'],
+ [93,101,'Routine visits skip the clinician queue.','Ziara za kawaida zinaenda moja kwa moja kwa muuguzi.'],
+ [101,108,'','']];
+const CHIP=[[0,5.5,''],[5.5,64,'1 · Noor · fever'],[64,85,'2 · Amina · pregnant'],[85,101,'3 · Zawadi and baby Baraka'],[101,108,'']];
+const SIG=t=>{ if(t>=50 && t<64) return [4,'Signal back · synced']; if(t>=20.5 && t<50) return [0,'No signal · works offline']; if(t>=64&&t<101) return [0,'No signal · works offline']; return null;};
+
+const stage=document.getElementById('stage');
+let curScene=-1;
+function render(t){
+  const i=S.findIndex(s=>t>=s.a && t<s.b); const idx=i<0?S.length-1:i;
+  if(idx!==curScene){ stage.innerHTML=S[idx].build(); curScene=idx; }
+  S[idx].anim(t);
+  // fade at scene edges
+  const s=S[idx]; const f=Math.max(1-p(t,s.a,s.a+.35), p(t,s.b-.35,s.b));
+  document.getElementById('fade').setAttribute('opacity',(idx===0? p(t,s.b-.35,s.b): (idx===S.length-1? 1-p(t,s.a,s.a+.35): f)).toFixed(3));
+  const c=CAP.find(c=>t>=c[0]&&t<c[1])||['','',''];
+  document.getElementById('capEn').textContent=c[2]; document.getElementById('capSw').textContent=c[3];
+  document.getElementById('cap').setAttribute('opacity', c[2]?1:0);
+  const ch=CHIP.find(c=>t>=c[0]&&t<c[1])||[0,0,''];
+  document.getElementById('chipTx').textContent=ch[2];
+  document.getElementById('chip').setAttribute('opacity',ch[2]?1:0);
+  if(ch[2]){ const w=document.getElementById('chipTx').getComputedTextLength(); document.getElementById('chipBg').setAttribute('width',w+36); }
+  const sg=SIG(t); const g=document.getElementById('sig');
+  if(!sg){g.setAttribute('opacity',0);} else { g.setAttribute('opacity',1);
+    [...document.getElementById('bars').children].forEach((r,j)=>r.setAttribute('fill', j<sg[0]?'#7FD1AE':'#4A5A55'));
+    document.getElementById('sigTx').textContent=sg[1]; }
+}
+window.render=render; window.DURATION=108;
+render(0);
+</script>
+</body></html>
