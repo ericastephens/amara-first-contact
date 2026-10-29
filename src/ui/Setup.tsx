@@ -144,6 +144,8 @@ export function Setup({
                 <span>
                   {c.dial} · {c.staff.map((l) => l.native).join(", ")}
                 </span>
+                {/* local languages patients speak (keypad + audio until translated), e.g. Twi in Ghana */}
+                {c.patient_local.length > 0 && <span className="option-local">+ {c.patient_local.map((l) => l.native).join(", ")}</span>}
               </button>
             ))}
             {countries.length === 0 && <p className="muted">{t("setup.nocountry")}</p>}
