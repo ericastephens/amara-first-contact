@@ -138,6 +138,50 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;backgroun
 @media (max-width:760px){.team{grid-template-columns:minmax(0,1fr)}.team img{aspect-ratio:1/1}}
 
 .contact{background:var(--peach);border-radius:24px;padding:clamp(24px,4vw,44px);display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+
+/* ---------- motion ---------- */
+.tabs{position:relative}
+.tab{position:relative;z-index:1;transition:color .25s}
+.tab[aria-selected="true"]{background:transparent}
+.ind{position:absolute;z-index:0;top:0;left:0;height:100%;border-radius:999px;background:var(--green);transition:transform .45s cubic-bezier(.2,.8,.2,1),width .45s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.tabs .ind{height:38px}
+header.top{transition:box-shadow .3s}
+header.top.scrolled{box-shadow:0 10px 30px -18px var(--shadow)}
+.btn{transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px -12px var(--shadow)}
+.btn:active{transform:translateY(0)}
+.card,.person,.read{transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover,.person:hover{transform:translateY(-4px);box-shadow:0 18px 36px -24px var(--shadow);border-color:color-mix(in srgb,var(--green) 30%,var(--line))}
+.steps .phone{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.steps figure:hover .phone{transform:translateY(-6px) rotate(-1deg)}
+.chips span{transition:background .2s,transform .2s}
+.chips span:hover{background:var(--ok-bg);transform:translateY(-2px)}
+
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:0;transform:translateY(16px) scale(.92)}70%{opacity:1;transform:translateY(-3px) scale(1.02)}100%{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes fill{from{width:0}}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes drawY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes shimmer{to{background-position:200% 0}}
+
+.panel.in .head,.panel.in .hero>div:first-child,.panel.in .three>*,.panel.in .steps>*,.panel.in .film,.panel.in .aiband,.panel.in .chips span,.panel.in .road li,.panel.in .person,.panel.in .team>img,.panel.in .contact,.panel.in .next{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.panel.in .three>*:nth-child(2),.panel.in .steps>*:nth-child(2),.panel.in .road li:nth-child(2),.panel.in .person:nth-of-type(2){animation-delay:.1s}
+.panel.in .three>*:nth-child(3),.panel.in .steps>*:nth-child(3),.panel.in .road li:nth-child(3){animation-delay:.2s}
+.panel.in .road li:nth-child(4){animation-delay:.3s}
+.panel.in .chips span:nth-child(n){animation-delay:calc(.05s * var(--i,0) + .2s)}
+.panel.in .film,.panel.in .aiband{animation-delay:.15s}
+.panel.in .next{animation-delay:.3s}
+.panel.in .stage .phone{animation:rise .8s .1s cubic-bezier(.2,.8,.2,1) both, float 6s 1.2s ease-in-out infinite}
+.panel.in .sms{animation:pop .7s .7s cubic-bezier(.2,.8,.2,1) both}
+.panel.in .meter i{animation:fill 1.2s .4s cubic-bezier(.2,.8,.2,1) both}
+.panel.in .road li::before{transform-origin:left;animation:draw .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:inherit}
+.hero h1 em{background:linear-gradient(90deg,var(--amber),var(--gold),var(--amber));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
+@media (max-width:760px){.panel.in .road li::before{transform-origin:top;animation-name:drawY}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 em{color:var(--amber);background:none}
+}
 footer{padding-block:24px 32px;border-top:1px solid var(--line);font-size:13px;color:var(--soft)}
 footer .wrap{display:flex;flex-direction:column;gap:6px}
 </style>
@@ -150,6 +194,7 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
       Amara First Contact <small>by Amara Health</small>
     </a>
     <nav class="tabs" role="tablist" aria-label="Sections">
+      <span class="ind" aria-hidden="true"></span>
       <button class="tab" role="tab" id="t-home" aria-controls="home" aria-selected="true">Home</button>
       <button class="tab" role="tab" id="t-problem" aria-controls="problem" aria-selected="false">Problem</button>
       <button class="tab" role="tab" id="t-solution" aria-controls="solution" aria-selected="false">Solution</button>
@@ -199,9 +244,9 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
   <div class="wrap">
     <div class="head"><p class="eyebrow">Problem</p><h2>Too few clinicians. Mothers start at the drug shop.</h2></div>
     <div class="three">
-      <div class="card"><span class="n">4.4<small> / 10,000</small></span><p>Health workers per 10,000 people in Tanzania. WHO recommends 44.5.</p></div>
-      <div class="card"><span class="n">31%</span><p>Of people go to a drug shop first when ill, more than to a clinic.</p></div>
-      <div class="card"><span class="n">60.7%</span><p>Of severe fevers were diagnosed as malaria. Only 1.6% were.</p></div>
+      <div class="card"><span class="n"><span data-count="4.4" data-dec="1">4.4</span><small> / 10,000</small></span><p>Health workers per 10,000 people in Tanzania. WHO recommends 44.5.</p></div>
+      <div class="card"><span class="n"><span data-count="31">31</span>%</span><p>Of people go to a drug shop first when ill, more than to a clinic.</p></div>
+      <div class="card"><span class="n"><span data-count="60.7" data-dec="1">60.7</span>%</span><p>Of severe fevers were diagnosed as malaria. Only 1.6% were.</p></div>
     </div>
     <p class="src">Sources: WHO Global Health Observatory 2024; Embrey et al., PLOS ONE 2016; Crump et al., PLOS NTDs, northern Tanzania.</p>
     <div class="next"><button class="btn solid" data-go="solution">The solution →</button></div>
@@ -231,7 +276,7 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
       <div class="card"><span class="k">District &amp; regional health officers</span><h3>Outbreaks seen early</h3><p>Anonymous weekly counts by ward. Rising clusters alert nearby clinics and the surveillance officer, who approves each escalation.</p></div>
     </div>
     <div class="chips" aria-label="Key features">
-      <span>Works with no internet</span><span>Go now for danger signs</span><span>Phone or NIDA registration</span><span>Swahili, English, French</span><span>105 real clinics</span><span>A person confirms every flag</span>
+      <span style="--i:0">Works with no internet</span><span style="--i:1">Go now for danger signs</span><span style="--i:2">Phone or NIDA registration</span><span style="--i:3">Swahili, English, French</span><span style="--i:4">105 real clinics</span><span style="--i:5">A person confirms every flag</span>
     </div>
     <div class="next"><button class="btn solid" data-go="business">The business →</button></div>
   </div>
@@ -310,7 +355,28 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
     if(sel&&bar){ bar.scrollLeft=sel.offsetLeft-bar.clientWidth/2+sel.offsetWidth/2; }
     document.querySelectorAll('video').forEach(function(v){ if(!v.closest('#'+id)) v.pause(); });
     if(push){ try{ history.replaceState(null,'','#'+id); }catch(e){} window.scrollTo(0,0); }
+    moveInd(); animate(document.getElementById(id));
   }
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function moveInd(){
+    var ind=document.querySelector('.ind'), sel=document.querySelector('.tab[aria-selected="true"]');
+    if(!ind||!sel) return;
+    ind.style.width=sel.offsetWidth+'px';
+    ind.style.transform='translate('+sel.offsetLeft+'px,'+(sel.offsetTop+(sel.offsetHeight-38)/2)+'px)';
+  }
+  function animate(panel){
+    if(!panel) return;
+    panel.classList.remove('in'); void panel.offsetWidth; panel.classList.add('in');
+    if(reduce) return;
+    panel.querySelectorAll('[data-count]').forEach(function(el){
+      var to=parseFloat(el.getAttribute('data-count')), dec=parseInt(el.getAttribute('data-dec')||'0',10), t0=null, dur=1100;
+      function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/dur), e=1-Math.pow(1-k,3);
+        el.textContent=(to*e).toFixed(dec); if(k<1) requestAnimationFrame(step); else el.textContent=to.toFixed(dec); }
+      requestAnimationFrame(step);
+    });
+  }
+  window.addEventListener('resize',moveInd);
+  window.addEventListener('scroll',function(){ var h=document.querySelector('header.top'); if(h) h.classList.toggle('scrolled',window.scrollY>8); },{passive:true});
   tabs.forEach(function(t,i){
     t.addEventListener('click',function(){ show(t.getAttribute('aria-controls'),true); });
     t.addEventListener('keydown',function(e){ var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!d) return; var n=tabs[(i+d+tabs.length)%tabs.length]; n.focus(); show(n.getAttribute('aria-controls'),true); });
@@ -323,6 +389,7 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
   try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
   var h=(location.hash||'#home').slice(1); if(h==='watch') h='home';
   show(h,false);
-  window.scrollTo(0,0); window.addEventListener('load',function(){ setTimeout(function(){ window.scrollTo(0,0); },50); });
+  window.scrollTo(0,0); window.addEventListener('load',function(){ setTimeout(function(){ window.scrollTo(0,0); moveInd(); },50); });
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(moveInd);
 })();
 </script>
