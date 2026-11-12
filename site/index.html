@@ -235,6 +235,30 @@ ol.flow li::before{content:counter(f);font:500 13px/1.9 var(--mono);color:var(--
 .contact{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
 .contact .btns{display:flex;flex-wrap:wrap;gap:12px}
 
+.glance{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.glance div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.glance .k{font:600 11.5px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.glance p{font-size:14.5px;line-height:1.45}
+@media (max-width:900px){.glance{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:440px){.glance{grid-template-columns:minmax(0,1fr)}}
+.calc{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;font-size:16px}
+.calc b{font:600 26px/1 var(--serif);color:var(--green);font-variant-numeric:tabular-nums}
+.calc span.op{font:500 20px var(--mono);color:var(--soft)}
+.road{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.road li{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 16px 16px;display:flex;flex-direction:column;gap:6px}
+.road li::before{content:"";position:absolute;top:-1px;left:16px;right:16px;height:4px;border-radius:0 0 4px 4px;background:var(--line)}
+.road li.done::before{background:var(--green)} .road li.next::before{background:var(--gold)}
+.road .when{font:500 12.5px var(--mono);color:var(--amber)}
+.road h3{font-size:18px}
+.road p{font-size:14.5px;color:var(--soft)}
+.road .st{align-self:flex-start;font:700 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--mint);color:var(--soft)}
+.road li.done .st{background:var(--ok-bg);color:var(--ok)} .road li.next .st{background:var(--today-bg);color:var(--today)}
+@media (max-width:900px){.road{grid-template-columns:minmax(0,1fr)}}
+.ask-band{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center}
+.ask-band ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:16px}
+@media (max-width:760px){.ask-band{grid-template-columns:minmax(0,1fr)}}
+.logo small{font:500 12px var(--sans);color:var(--soft);margin-left:2px}
+@media (max-width:420px){.logo small{display:none}}
 footer{padding-block:28px 36px;border-top:1px solid var(--line);font-size:13.5px;color:var(--soft)}
 footer .wrap{display:flex;flex-direction:column;gap:10px}
 </style>
@@ -245,7 +269,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
     <div class="bar">
       <a class="logo" href="#home" data-go="home">
         <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 7v18M9 13c3 0 7 1.5 7 5M23 13c-3 0-7 1.5-7 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        Amara First Contact
+        Amara First Contact <small>by Amara Health</small>
       </a>
       <a class="btn solid" href="https://ericastephens.github.io/amara-first-contact/?welcome" target="_blank" rel="noopener">Try the app</a>
     </div>
@@ -255,7 +279,8 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
       <button class="tab" role="tab" id="t-how" aria-controls="how" aria-selected="false">How it works</button>
       <button class="tab" role="tab" id="t-ai" aria-controls="ai" aria-selected="false">Small AI</button>
       <button class="tab" role="tab" id="t-safety" aria-controls="safety" aria-selected="false">Safety</button>
-      <button class="tab" role="tab" id="t-pilot" aria-controls="pilot" aria-selected="false">Evidence &amp; pilot</button>
+      <button class="tab" role="tab" id="t-business" aria-controls="business" aria-selected="false">Business</button>
+      <button class="tab" role="tab" id="t-pilot" aria-controls="pilot" aria-selected="false">Traction &amp; roadmap</button>
       <button class="tab" role="tab" id="t-team" aria-controls="team" aria-selected="false">Team</button>
       <button class="tab partner" role="tab" id="t-partner" aria-controls="partner" aria-selected="false">Partner with us</button>
     </nav>
@@ -269,7 +294,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
   <div class="wrap">
     <div class="hero">
       <div>
-        <p class="eyebrow">Small AI for Development 2026 · World Bank × Hack-Nation · Health</p>
+        <p class="eyebrow">Amara Health · Africa programme · Hai, Kilimanjaro, Tanzania</p>
         <h1>The first door she knocks on gets her to the <em>right care.</em></h1>
         <p class="lede">Amara First Contact is an offline triage and referral app for mothers and their children. A drug shop dispenser, community health worker or nurse runs it on a low-cost Android phone. A small AI reads the mother's own Swahili words, sourced rules decide how urgent it is, and she leaves with a clinic, a time and a code by SMS.</p>
         <div class="ctas">
@@ -288,6 +313,14 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
       </div>
     </div>
 
+    <div class="glance" aria-label="At a glance">
+      <div><span class="k">Problem</span><p>About 4.4 health workers per 10,000 people in Tanzania. Mothers often go to a drug shop first, with no way to judge urgency.</p></div>
+      <div><span class="k">Solution</span><p>Offline triage and referral at the drug shop: small AI in Swahili, sourced rules, SMS to her basic phone.</p></div>
+      <div><span class="k">Who pays</span><p>Health programmes, districts and later insurers, per completed referral or per district. Free for mothers.</p></div>
+      <div><span class="k">Stage</span><p>Working MVP, live demo, 128 automated tests. Built at the World Bank × Hack-Nation hackathon, Oct 2026.</p></div>
+      <div><span class="k">Next</span><p>A 6-month pilot with drug shops in Hai District, Kilimanjaro, in 2027.</p></div>
+    </div>
+
     <div class="band mint">
       <div class="film">
         <video controls preload="none" playsinline poster="media/simulation-poster.webp" src="media/simulation.mp4" aria-label="Simulation: three mothers, one small AI"></video>
@@ -304,7 +337,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
         </div>
       </div>
     </div>
-    <div class="pager"><span></span><button class="btn solid" data-go="problem">Next: The problem →</button></div>
+    <div class="pager"><button class="btn" data-go="business">For investors: the business →</button><button class="btn solid" data-go="problem">Next: The problem →</button></div>
   </div>
 </section>
 
@@ -477,14 +510,90 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
       <div class="prob"><h3>AI doesn't speak her language</h3><p>For Kichaga, Maa and others: keypad answers and voices recorded by the community. The interface works in Swahili and English, with a French draft.</p></div>
       <div class="prob"><h3>The clinic is full</h3><p>A booked slot and a note that arrives first. Danger signs skip the queue with Go now.</p></div>
     </div>
-    <div class="pager"><button class="btn" data-go="ai">← Small AI</button><button class="btn solid" data-go="pilot">Next: Evidence &amp; pilot →</button></div>
+    <div class="pager"><button class="btn" data-go="ai">← Small AI</button><button class="btn solid" data-go="business">Next: Business →</button></div>
+  </div>
+</section>
+
+<!-- BUSINESS -->
+<section class="panel" id="business" role="tabpanel" aria-labelledby="t-business" hidden>
+  <div class="wrap">
+    <div class="head"><p class="eyebrow">Business model</p><h2>Free for mothers, paid for by the programmes that need referrals to work</h2>
+      <p class="lede">Mothers and drug shops in rural Tanzania cannot pay for software. The organisations that gain when a mother reaches the right clinic early can: health programmes, districts and, later, insurers.</p></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Who pays</th><th>What they buy</th><th>How we charge</th><th>When</th></tr></thead>
+        <tbody>
+          <tr><td><b>NGOs and donor-funded health programmes</b></td><td>A referral system for the drug shops and CHWs in their programme</td><td>Setup and training fee, then a fee per site</td><td>Pilot, 2027</td></tr>
+          <tr><td><b>Results-based programmes</b></td><td>Completed referrals of mothers and children</td><td>A small fee per completed referral</td><td>After the pilot</td></tr>
+          <tr><td><b>District and regional health teams</b></td><td>Referrals with notes, and anonymous weekly counts for outbreaks</td><td>Yearly licence per district</td><td>2028 onward</td></tr>
+          <tr><td><b>Health insurers</b></td><td>Members who reach care early, avoiding costly emergencies</td><td>Fee per member</td><td>Later</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="src">Mothers never pay and the core app stays free for drug shops. Prices are hypotheses to test in the pilot.</p>
+
+    <div class="band peach head">
+      <p class="eyebrow">Illustrative unit economics · one district</p>
+      <div class="calc"><b>100</b><span>drug shops and CHWs</span><span class="op">×</span><b>20</b><span>completed referrals a month</span><span class="op">×</span><b>$1</b><span>per referral</span><span class="op">=</span><b>~$24,000</b><span>a year</span></div>
+      <p class="src">An example to show the model, not a forecast: the number of sites, referrals and the price will come from the Hai pilot. Costs per district are mainly SMS, training and support, as the app runs on phones people already own and needs no server for triage.</p>
+    </div>
+
+    <div class="head"><p class="eyebrow">Market</p><h3 style="font-size:clamp(24px,3vw,30px)">Start in one district, grow along the Swahili-speaking corridor</h3></div>
+    <div class="stats">
+      <div class="stat"><span class="n">~2.4M</span><p>Births a year in Tanzania, each a mother who may need referral in pregnancy or for her child.</p></div>
+      <div class="stat"><span class="n">9,000+</span><p>Accredited drug shops (ADDOs) across every mainland district: our first users.</p></div>
+      <div class="stat"><span class="n">31%</span><p>Of people go first to an ADDO when ill, more than to a public facility.</p></div>
+      <div class="stat"><span class="n">Hai → TZ</span><p>Start in Hai District, then Kilimanjaro region, all of Tanzania, and Swahili-speaking East Africa.</p></div>
+    </div>
+    <p class="src">Sources: UN World Population Prospects 2024 (2,385,984 births in 2024, via <a href="https://measuredworld.com/countries/tanzania/births/births-trends" target="_blank" rel="noopener">Measured World</a>); Embrey et al., PLOS ONE 2016 (ADDO figures).</p>
+
+    <div class="head"><p class="eyebrow">Landscape</p><h3 style="font-size:clamp(24px,3vw,30px)">We fill a gap the others leave, and plug into them</h3></div>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>Programme or tool</th><th>What it does</th><th>Where Amara First Contact fits</th></tr></thead>
+        <tbody>
+          <tr><td><b>Afya-Tek</b> (D-tree)</td><td>Digital referral linking drug shops, CHWs and facilities in Kibaha, Tanzania</td><td>Proved the model. We add offline AI that reads her own words and asks about exposures</td></tr>
+          <tr><td><b>m-mama</b></td><td>Emergency transport for mothers and newborns</td><td>Our Go now result can hand off to m-mama dispatch</td></tr>
+          <tr><td><b>Wazazi Nipendeni, MomConnect</b></td><td>SMS information for pregnant women and new mothers</td><td>We send one short action SMS: where, when and her code</td></tr>
+          <tr><td><b>DHIS2 and eIDSR</b></td><td>National health data and disease surveillance systems</td><td>Designed to feed them anonymous counts using ICD-10</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="band sky head">
+      <p class="eyebrow">Why us, why now</p>
+      <ul class="scen">
+        <li style="--c:var(--green)"><div><b>AI small enough for a cheap phone</b><p>Our model is 660 KB and runs with no internet, so it works where cloud AI cannot.</p></div></li>
+        <li style="--c:var(--gold)"><div><b>A front door that already exists</b><p>Thousands of accredited drug shops already see mothers first; we give them a safe way to refer.</p></div></li>
+        <li style="--c:var(--plum)"><div><b>A team that knows the place</b><p>A Tanzanian co-founder and public health training from Johns Hopkins.</p></div></li>
+      </ul>
+    </div>
+    <div class="pager"><button class="btn" data-go="safety">← Safety</button><button class="btn solid" data-go="pilot">Next: Traction &amp; roadmap →</button></div>
   </div>
 </section>
 
 <!-- PILOT -->
 <section class="panel" id="pilot" role="tabpanel" aria-labelledby="t-pilot" hidden>
   <div class="wrap">
-    <div class="head"><p class="eyebrow">Evidence we build on</p><h2>Built on programmes that worked</h2></div>
+    <div class="head"><p class="eyebrow">Traction &amp; roadmap</p><h2>A working product today, a pilot in Hai next</h2>
+      <p class="lede">We built the app at the World Bank × Hack-Nation Small AI for Development Hackathon (3–4 October 2026), then kept going: real clinics, three languages, a public demo and a pilot plan.</p></div>
+    <ol class="road">
+      <li class="done"><span class="when">Oct 2026</span><h3>MVP built</h3><p>Offline app, small AI, 26 sourced rules, 128 tests, 105 real clinics around Hai.</p><span class="st">Done</span></li>
+      <li class="done"><span class="when">Oct–Nov 2026</span><h3>Public demo</h3><p>Live app, website and simulation video; outreach to digital health organisations working in Tanzania.</p><span class="st">Done</span></li>
+      <li class="next"><span class="when">Q1 2027</span><h3>Validate</h3><p>Interviews with dispensers, CHWs and mothers in Hai; clinical and Swahili review; ethics approval.</p><span class="st">Next</span></li>
+      <li><span class="when">Q2–Q3 2027</span><h3>Pilot</h3><p>6 months with drug shops and their linked facilities in Hai District.</p><span class="st">Planned</span></li>
+      <li><span class="when">2028</span><h3>Scale</h3><p>First paid district contracts, then Kilimanjaro region and beyond.</p><span class="st">Planned</span></li>
+    </ol>
+    <div class="band mint ask-band">
+      <div class="head" style="gap:8px"><p class="eyebrow">Our ask</p><h3 style="font-size:clamp(24px,3vw,30px)">Funding and partners for the Hai pilot</h3>
+        <p class="soft">The pilot will show whether drug shop referrals with Amara First Contact reach the clinic, and what each completed referral costs.</p></div>
+      <ul>
+        <li>Pilot funding: phones, training, SMS, a facilitator in Hai</li>
+        <li>Clinical reviewers for the rules and danger signs</li>
+        <li>An implementing partner in Tanzania</li>
+        <li>Introductions to district health teams</li>
+      </ul>
+    </div>
+    <div class="head"><p class="eyebrow">Evidence we build on</p><h3 style="font-size:clamp(24px,3vw,30px)">Built on programmes that worked</h3></div>
     <div class="prior">
       <div><h3>Afya-Tek</h3><span class="where">Kibaha, Tanzania · 2020–23</span><p>Linked 110 drug shops, 240 health workers and 53 facilities; 89% of referrals completed.</p><p class="take">Digital referral from drug shops works</p></div>
       <div><h3>m-mama</h3><span class="where">Tanzania · national</span><p>Call centre and community taxis for emergencies. Shinyanga maternal deaths fell from 60 (2015) to 15 (2021).</p><p class="take">Transport is the life-saving step</p></div>
@@ -511,7 +620,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
         </ul></div>
       </div>
     </div>
-    <div class="pager"><button class="btn" data-go="safety">← Safety</button><button class="btn solid" data-go="team">Next: Team →</button></div>
+    <div class="pager"><button class="btn" data-go="business">← Business</button><button class="btn solid" data-go="team">Next: Team →</button></div>
   </div>
 </section>
 
@@ -535,7 +644,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
         <a class="btn" href="https://github.com/ericastephens/amara-first-contact" target="_blank" rel="noopener">Code on GitHub</a>
       </div>
     </div>
-    <div class="pager"><button class="btn" data-go="pilot">← Evidence &amp; pilot</button><button class="btn gold" data-go="partner">Partner with us →</button></div>
+    <div class="pager"><button class="btn" data-go="pilot">← Traction &amp; roadmap</button><button class="btn gold" data-go="partner">Partner with us →</button></div>
   </div>
 </section>
 
@@ -575,7 +684,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
 
 <script>
 (function(){
-  var ids=['home','problem','how','ai','safety','pilot','team','partner'];
+  var ids=['home','problem','how','ai','safety','business','pilot','team','partner'];
   var tabs=document.querySelectorAll('.tab');
   var current='home';
   function show(id,push){
@@ -599,6 +708,7 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
   main.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy; if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy)){ var n=ids.indexOf(current)+(dx<0?1:-1); if(n>=0&&n<ids.length) show(ids[n],true); } sx=null; },{passive:true});
   window.addEventListener('hashchange',function(){ show(location.hash.slice(1),false); window.scrollTo(0,0); });
   show((location.hash||'#home').slice(1),false);
-  window.scrollTo(0,0); window.addEventListener('load',function(){ window.scrollTo(0,0); });
+  try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+  window.scrollTo(0,0); window.addEventListener('load',function(){ window.scrollTo(0,0); setTimeout(function(){ window.scrollTo(0,0); },50); });
 })();
 </script>
