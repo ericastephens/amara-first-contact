@@ -102,6 +102,17 @@ header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;backgroun
 .steps h3::before{content:counter(s);font:500 14px var(--mono);color:var(--amber)}
 .steps p{font-size:15.5px;color:var(--soft)}
 @media (max-width:820px){.steps{grid-template-columns:minmax(0,1fr)}}
+.aiband{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;background:var(--sky);border-radius:24px;padding:clamp(22px,4vw,40px)}
+.reads{display:flex;flex-direction:column;gap:12px}
+.read{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.read q{font:italic 400 18px/1.4 var(--serif);color:var(--green-ink)}
+.read .row{display:flex;justify-content:space-between;gap:12px;font-size:15px;font-weight:600}
+.read .row span:last-child{font:500 14px var(--mono)}
+.meter{height:7px;border-radius:4px;background:var(--line);position:relative;overflow:hidden}
+.meter i{position:absolute;inset:0 auto 0 0;background:var(--green);border-radius:4px}
+.meter::after{content:"";position:absolute;left:40%;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.5}
+.read.unsure .row{color:#C2412B} .read.unsure .meter i{background:#C2412B}
+@media (max-width:820px){.aiband{grid-template-columns:minmax(0,1fr)}}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chips span{font:600 14.5px var(--sans);padding:9px 16px;border-radius:999px;background:var(--mint);color:var(--green-ink)}
 
@@ -205,8 +216,22 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
       <figure><div class="phone"><img src="img/result_confirmed.webp" alt="Flags with guideline sources, confirmed by the dispenser" width="780" height="1688" loading="lazy"></div><figcaption><h3>Rules set urgency</h3><p>Guideline-based rules decide. The dispenser confirms.</p></figcaption></figure>
       <figure><div class="phone"><img src="img/sms.webp" alt="Referral to Machame Hospital with time, code and SMS" width="780" height="1688" loading="lazy"></div><figcaption><h3>She gets an SMS</h3><p>Clinic, time and code. Her note reaches the clinic first.</p></figcaption></figure>
     </div>
+    <div class="aiband">
+      <div class="head"><p class="eyebrow">The small AI</p><h3 style="font-size:clamp(24px,3vw,32px)">Small enough for a basic phone. Honest when unsure.</h3>
+        <p class="soft">A 660 KB model reads her Swahili words with no internet. It picks from a fixed list of symptoms and exposures. Below 40% confidence it says “Not sure”. It never decides urgency.</p></div>
+      <div class="reads">
+        <div class="read"><q lang="sw">Nimemeza mseto lakini homa bado ipo</q><div class="row"><span>Fever not cleared by malaria pills</span><span>94%</span></div><div class="meter"><i style="width:94%"></i></div></div>
+        <div class="read unsure"><q lang="sw">Nimechoka</q><div class="row"><span>Not sure: ask again</span><span>13%</span></div><div class="meter"><i style="width:13%"></i></div></div>
+      </div>
+    </div>
+    <div class="head"><p class="eyebrow">Who it helps</p></div>
+    <div class="three">
+      <div class="card"><span class="k">Mothers</span><h3>The right clinic, first time</h3><p>Clinic, time and code by SMS. No diagnosis, no health details.</p></div>
+      <div class="card"><span class="k">Clinicians</span><h3>Up-to-date guidance</h3><p>Her note arrives first, with conditions to rule out and draft ICD-10 codes. Rules follow Tanzanian and WHO guidelines, cite their source, and update on every phone at the next sync.</p></div>
+      <div class="card"><span class="k">District &amp; regional health officers</span><h3>Outbreaks seen early</h3><p>Anonymous weekly counts by ward. Rising clusters alert nearby clinics and the surveillance officer, who approves each escalation.</p></div>
+    </div>
     <div class="chips" aria-label="Key features">
-      <span>Works with no internet</span><span>AI under 1 MB</span><span>No diagnosis to the mother</span><span>Go now for danger signs</span><span>105 real clinics</span><span>Outbreak alerts</span>
+      <span>Works with no internet</span><span>Go now for danger signs</span><span>Phone or NIDA registration</span><span>Swahili, English, French</span><span>105 real clinics</span><span>A person confirms every flag</span>
     </div>
     <div class="next"><button class="btn solid" data-go="business">The business →</button></div>
   </div>
