@@ -55,6 +55,6 @@ describe("work ID", () => {
     for (const bad of ["", "ab", "-123", "<script>", "x".repeat(31)]) expect(validWorkId(bad)).toBe(false);
   });
   it("is printed in the responder label used on notes", () => {
-    expect(responderLabel("Duka la Dawa Ondera", demoSetup(""))).toBe("Duka la Dawa Ondera · Rehema (sample) · Work ID ADDO-KLM-0421");
+    expect(responderLabel("Duka la Dawa Machame Kaskazini", demoSetup(""))).toBe("Duka la Dawa Machame Kaskazini · Rehema (sample) · Work ID ADDO-KLM-0421");
   });
 });

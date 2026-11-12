@@ -109,8 +109,8 @@ for c in cases:
 print(f"rules engine: {passed}/{len(cases)} golden cases pass")
 
 # ---- SMS length (worst case fill) ------------------------------------------
-fill = {"name": "Mwanaidi", "clinic": "Hospitali ya Wilaya ya Ondera", "day": "Jumatano", "time_sw": "saa 8 mchana",
-        "time_en": "2:00 pm", "code": "K47", "syndrome_sw": "homa na vipele", "syndrome_en": "fever with rash", "ward": "Ondera"}
+fill = {"name": "Mwanaidi", "clinic": "Hospitali ya Wilaya ya Hai", "day": "Jumatano", "time_sw": "saa 8 mchana",
+        "time_en": "2:00 pm", "code": "K47", "syndrome_sw": "homa na vipele", "syndrome_en": "fever with rash", "ward": "Machame Kaskazini"}
 for key, t in sms["templates"].items():
     for lang, text in t.items():
         out = text.format(**fill)
@@ -132,8 +132,8 @@ for ward in sorted({r["ward"] for r in rows}):
         if cur >= ob["min_count"] and cur > mean + ob["sd_multiplier"] * sd:
             flags.append((ward, syn, latest, cur))
 print(f"outbreak: flags in week {latest}: {flags}")
-if flags != [("Ondera", "fever_rash", 40, 7)]:
-    errors.append(f"expected exactly one outbreak flag (Ondera, fever_rash, week 40), got {flags}")
+if flags != [("Machame Kaskazini", "fever_rash", 40, 7)]:
+    errors.append(f"expected exactly one outbreak flag (Machame Kaskazini, fever_rash, week 40), got {flags}")
 
 if errors:
     print("\nERRORS:")

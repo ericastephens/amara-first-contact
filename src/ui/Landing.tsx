@@ -14,8 +14,8 @@ const ICONS = [
   <path key="c" d="M12 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM5 20c1-4 4-6 7-6s6 2 7 6M15.5 4.5l2 2 3-3" />,
 ];
 
-const SMS_SW = "Habari Noor. Nenda Zahanati ya Ondera Jumanne saa 3 asubuhi. Namba yako: K47.";
-const SMS_EN = "Hello Noor. Go to Ondera Dispensary on Tuesday at 9 am. Your number: K47.";
+const SMS_SW = "Habari Noor. Nenda Machame Hospital Jumanne saa 2 asubuhi. Namba yako: Z96.";
+const SMS_EN = "Hello Noor. Go to Machame Hospital on Tuesday at 8 am. Your number: Z96.";
 
 /** Languages offered on the welcome page: any interface pack that is (almost) fully translated. */
 const LANDING_LANGS = uiLanguages().filter((c) => c === "en" || uiCoverage(c) >= 0.9);

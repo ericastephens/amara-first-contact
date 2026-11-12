@@ -152,7 +152,7 @@ export function newEncounter(group: Group, now: string, id: string): Encounter {
     answeredAt: {},
     chips: [],
     uncertainChips: [],
-    wardOfResidence: "Ondera",
+    wardOfResidence: "Machame Kaskazini",
   };
 }
 

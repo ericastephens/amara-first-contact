@@ -14,21 +14,21 @@ import {
 const cfg = rulesDoc.outbreak;
 
 describe("outbreak detection (EARS-style)", () => {
-  it("flags fever_rash in Ondera in week 40 and nothing else", () => {
+  it("flags fever_rash in Machame Kaskazini in week 40 and nothing else", () => {
     const flags = detectOutbreaks(outbreakRows, cfg);
     expect(flags).toHaveLength(1);
-    expect(flags[0]).toMatchObject({ ward: "Ondera", syndrome: "fever_rash", isoWeek: 40, count: 7 });
+    expect(flags[0]).toMatchObject({ ward: "Machame Kaskazini", syndrome: "fever_rash", isoWeek: 40, count: 7 });
     expect(flags[0].threshold).toBeCloseTo(2.408, 3);
   });
 
   it("adds counts from synced encounters to the latest week", () => {
-    const merged = mergeCounts(outbreakRows, [{ ward: "Kati", syndrome: "fever_rash", count: 5 }]);
+    const merged = mergeCounts(outbreakRows, [{ ward: "Masama Kati", syndrome: "fever_rash", count: 5 }]);
     const flags = detectOutbreaks(merged, cfg);
-    expect(flags.map((f) => f.ward).sort()).toEqual(["Kati", "Ondera"]);
+    expect(flags.map((f) => f.ward).sort()).toEqual(["Machame Kaskazini", "Masama Kati"]);
   });
 
   it("sends the knowledge card to clinics within 25 km", () => {
-    const clinics = clinicsToNotify(facilitiesDoc.facilities, "Ondera", cfg.share_radius_km);
+    const clinics = clinicsToNotify(facilitiesDoc.facilities, "Machame Kaskazini", cfg.share_radius_km);
     expect(clinics.length).toBeGreaterThan(0);
     expect(clinics.every((c) => c.km <= 25)).toBe(true);
   });
@@ -42,7 +42,7 @@ describe("outbreak detection (EARS-style)", () => {
 
 describe("escalation needs human approval", () => {
   const flag = detectOutbreaks(outbreakRows, cfg)[0];
-  const draft = draftEscalation(flag, cfg, "Zahanati ya Ondera", "2026-10-05T10:00:00Z")!;
+  const draft = draftEscalation(flag, cfg, "Zahanati ya Machame Kaskazini", "2026-10-05T10:00:00Z")!;
 
   it("starts as a draft that cannot be sent", () => {
     expect(draft.status).toBe("draft");

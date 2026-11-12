@@ -6,7 +6,7 @@ import { evaluate } from "../src/logic/rules";
 
 const noorCase = testCases.cases.find((c) => c.id === "demo_1")!;
 const noor = encounterFromCase("demo_1", noorCase.encounter, "2026-10-05T14:00:00Z", "enc1", "Noor");
-const ctx = { questionnaires, labels: intentLabels, urgencyLabel: "Refer today", responder: "Duka la Dawa Ondera" };
+const ctx = { questionnaires, labels: intentLabels, urgencyLabel: "Refer today", responder: "Duka la Dawa Machame Kaskazini" };
 
 describe("referral note", () => {
   const result = evaluate(rulesDoc, icd10, noorCase.encounter);

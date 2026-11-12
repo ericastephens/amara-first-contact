@@ -1,7 +1,7 @@
 """Fetch real health facilities and pharmacies from OpenStreetMap (Overpass API) for a demo area.
 
 Default area: coffee-growing slopes of Kilimanjaro (Hai / Moshi Rural), Tanzania, as a real-world stand-in
-for the brief's fictional Ondera highlands. Change --bbox for another area.
+for Hai District, Kilimanjaro. Change --bbox for another area.
 
 Usage: python scripts/fetch_facilities_osm.py [--bbox=south,west,north,east]
        (use the = form: a bbox starting with "-" is otherwise read as an option)
