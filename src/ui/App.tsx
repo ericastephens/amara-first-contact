@@ -51,7 +51,8 @@ function readCuff(): boolean {
 
 export function App() {
   const { t, lang } = useI18n();
-  const [locked, setLocked] = useState(true);
+  // No PIN on entry (team decision for the demo). The lock button in the top bar still locks the app on demand.
+  const [locked, setLocked] = useState(false);
   const [setup, setSetup] = useState<SetupData | null>(getSetup);
   // Landing and setup come before the PIN: they hold no patient data.
   // "?welcome" in the link always opens the welcome page (handy for showing the app to others).
@@ -121,13 +122,11 @@ export function App() {
         onStart={() => setGate("setup")}
         onDemoReady={() => {
           setGate("app");
-          setLocked(true);
         }}
         onContinue={
           setup
             ? () => {
                 setGate("app");
-                setLocked(true);
               }
             : undefined
         }
