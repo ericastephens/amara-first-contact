@@ -204,7 +204,7 @@ describe("every message in every language stays within 160 characters", () => {
     for (const lang of langs) {
       for (const id of Object.keys(smsDoc.templates)) {
         if (!smsDoc.templates[id][lang]?.trim() || id === "outbreak_alert_public") continue;
-        const text = renderSms(smsDoc, id, lang, { name: "Mwanaidi", clinic: "Hospitali ya Wilaya ya Ondera", date: "2026-10-07", time: "14:00", code: "K47" });
+        const text = renderSms(smsDoc, id, lang, { name: "Mwanaidi", clinic: "Hospitali ya Wilaya ya Hai", date: "2026-10-07", time: "14:00", code: "K47" });
         expect(text.length, `${id}.${lang}`).toBeLessThanOrEqual(SMS_MAX);
       }
     }

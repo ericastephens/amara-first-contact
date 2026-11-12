@@ -64,7 +64,7 @@ describe("store-and-forward sync", () => {
     await makeReferral("demo_3");
     await flush(NOW);
     const counts = await listCaseCounts();
-    expect(counts).toEqual([expect.objectContaining({ ward: "Ondera", syndrome: "fever_rash", count: 1 })]);
+    expect(counts).toEqual([expect.objectContaining({ ward: "Machame Kaskazini", syndrome: "fever_rash", count: 1 })]);
     expect(JSON.stringify(counts)).not.toContain("Noor");
     expect(JSON.stringify(counts)).not.toContain("+255");
   });

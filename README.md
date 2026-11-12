@@ -1,6 +1,6 @@
 # Amara First Contact
 
-**[Project website](https://ericastephens.github.io/amara-first-contact/story/)** · **[Live demo](https://ericastephens.github.io/amara-first-contact/?welcome)** (choose "Use the Tanzania demo setup", PIN 1234)
+**[Project website](https://ericastephens.github.io/amara-first-contact/story/)** · **[Live demo](https://ericastephens.github.io/amara-first-contact/?welcome)** (choose "Use the Tanzania demo setup")
 
 <p>
 <img src="site/img/ai_words.webp" width="180" alt="Her words in Swahili">
@@ -34,7 +34,7 @@ Clinics share flags when cases rise, and escalation to the district surveillance
 
 ```bash
 npm install
-npm run dev          # http://localhost:5173 — PIN 1234
+npm run dev          # http://localhost:5173 (lock button PIN: 1234)
 npm test             # Vitest: rules golden cases, intent parity, SMS, outbreak, sync, guardrails
 npm run build        # production PWA in dist/ (works offline after first load)
 ```

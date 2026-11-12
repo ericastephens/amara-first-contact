@@ -105,8 +105,8 @@ describe("SMS", () => {
   });
 
   it("renders a referral SMS in Swahili within 160 characters", () => {
-    const text = renderSms(smsDoc, "referral", "sw", { name: "Noor", clinic: "Zahanati ya Ondera", date: today, time: "09:30", code: "K47" });
-    expect(text).toBe("Habari Noor. Nenda Zahanati ya Ondera Jumatatu saa 3 na nusu asubuhi. Namba yako: K47. Onyesha namba hii ukifika. Ukishindwa kwenda, jibu 2.");
+    const text = renderSms(smsDoc, "referral", "sw", { name: "Noor", clinic: "Zahanati ya Machame Kaskazini", date: today, time: "09:30", code: "K47" });
+    expect(text).toBe("Habari Noor. Nenda Zahanati ya Machame Kaskazini Jumatatu saa 3 na nusu asubuhi. Namba yako: K47. Onyesha namba hii ukifika. Ukishindwa kwenda, jibu 2.");
     expect(text.length).toBeLessThanOrEqual(SMS_MAX);
   });
 
@@ -129,7 +129,7 @@ describe("SMS", () => {
   });
 
   it("renders a voice script with the code spoken", () => {
-    const v = renderVoice(smsDoc, "referral", "sw", { name: "Noor", clinic: "Zahanati ya Ondera", date: today, time: "09:30", code: "K47", responder: "Duka la Dawa Ondera" });
+    const v = renderVoice(smsDoc, "referral", "sw", { name: "Noor", clinic: "Zahanati ya Machame Kaskazini", date: today, time: "09:30", code: "K47", responder: "Duka la Dawa Machame Kaskazini" });
     expect(v).toContain("K, nne, saba");
   });
 });

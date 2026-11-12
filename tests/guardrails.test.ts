@@ -39,7 +39,7 @@ describe("SMS and voice never contain a symptom or diagnosis", () => {
         assertClean(renderSms(smsDoc, t, lang, { name: "Noor", clinic: lang === "sw" ? f.name : f.name_en!, date: slotsDoc.demo_today, time: "14:00", code: "K47" }));
       }
       for (const v of ["referral", "did_you_go"]) {
-        assertClean(renderVoice(smsDoc, v, lang, { name: "Noor", clinic: f.name, date: slotsDoc.demo_today, time: "14:00", code: "K47", responder: "Duka la Dawa Ondera" }));
+        assertClean(renderVoice(smsDoc, v, lang, { name: "Noor", clinic: f.name, date: slotsDoc.demo_today, time: "14:00", code: "K47", responder: "Duka la Dawa Machame Kaskazini" }));
       }
     }
   });
@@ -93,7 +93,7 @@ describe("urgent never waits for tech", () => {
 describe("escalation cannot be sent without Approve", () => {
   it("a draft stays on the device when syncing", async () => {
     const flag = detectOutbreaks(outbreakRows, rulesDoc.outbreak)[0];
-    const draft = draftEscalation(flag, rulesDoc.outbreak, "Zahanati ya Ondera", "2026-10-05T09:00:00Z")!;
+    const draft = draftEscalation(flag, rulesDoc.outbreak, "Zahanati ya Machame Kaskazini", "2026-10-05T09:00:00Z")!;
     await (await db()).put("escalations", draft);
     await flush("2026-10-05T09:00:00Z");
     expect(await listServerEscalations()).toHaveLength(0);
@@ -102,7 +102,7 @@ describe("escalation cannot be sent without Approve", () => {
 
   it("an approved escalation is sent on sync", async () => {
     const flag = detectOutbreaks(outbreakRows, rulesDoc.outbreak)[0];
-    const draft = draftEscalation(flag, rulesDoc.outbreak, "Zahanati ya Ondera", "2026-10-05T09:00:00Z")!;
+    const draft = draftEscalation(flag, rulesDoc.outbreak, "Zahanati ya Machame Kaskazini", "2026-10-05T09:00:00Z")!;
     await (await db()).put("escalations", { ...draft, status: "approved_queued", approvedBy: { role: "district", at: "2026-10-05T09:01:00Z", workId: "DSO-KLM-07" } });
     await flush("2026-10-05T09:02:00Z");
     expect(await listServerEscalations()).toHaveLength(1);

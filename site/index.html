@@ -1,8 +1,8 @@
 <title>Amara First Contact</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Offline triage and referral for mothers and children in rural Tanzania. A small AI on the first responder's phone, sourced rules, and an SMS that gets her to the right clinic.">
+<meta name="description" content="An offline AI app that helps drug shops in rural Tanzania refer mothers and children to the right clinic.">
 <meta property="og:title" content="Amara First Contact">
-<meta property="og:description" content="The first door she knocks on gets her to the right care. Offline triage and referral for mothers and children, piloting in Hai, Kilimanjaro.">
+<meta property="og:description" content="Right care from the first door. Offline triage and referral for mothers and children, piloting in Hai, Kilimanjaro.">
 <meta property="og:image" content="https://ericastephens.github.io/amara-first-contact/story/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FFFAF3">
@@ -10,12 +10,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
-/* Layout: a tabbed story. One light, sunlit panel at a time; tabs on top for desktop, a swipeable chip bar on phones. Kitenge stripe is the one bold flourish. */
+/* Layout: six short tabs, one idea each. Big headline, three cards max, one-line captions. Kitenge stripe is the single flourish. */
 :root{
   --bg:#FFFAF3; --mint:#EEF7F2; --peach:#FFF1E4; --sky:#EEF5FA; --card:#FFFFFF; --line:#ECE2D3;
   --ink:#2E3A36; --soft:#5F6E68; --green:#17765A; --green-ink:#0F5743; --gold:#E9A23B; --amber:#9A5B00;
-  --plum:#7B2D4B; --blue:#1F5C7A;
-  --go:#C2412B; --go-bg:#FDEAE5; --today:#9A5B00; --today-bg:#FFF3DC; --ok:#17765A; --ok-bg:#E3F3EB;
+  --plum:#7B2D4B; --blue:#1F5C7A; --ok-bg:#E3F3EB; --today-bg:#FFF3DC;
   --phone:#1B2420; --shadow:rgba(46,58,54,.12);
   --serif:'Source Serif 4', Georgia, 'Times New Roman', serif;
   --sans:'Public Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -24,14 +23,12 @@
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#16211D; --mint:#1B2A24; --peach:#2A231B; --sky:#192630; --card:#1F2B27; --line:#33433D;
   --ink:#E4ECE8; --soft:#A7B6B0; --green:#7FD1AE; --green-ink:#9FE0C4; --gold:#F0B65A; --amber:#F0B65A;
-  --plum:#E39AB7; --blue:#8CC4E0;
-  --go:#FF8A75; --go-bg:#3A1C16; --today:#F0B65A; --today-bg:#33280F; --ok:#7FD1AE; --ok-bg:#183126;
+  --plum:#E39AB7; --blue:#8CC4E0; --ok-bg:#183126; --today-bg:#33280F;
   --phone:#050908; --shadow:rgba(0,0,0,.4); color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#16211D; --mint:#1B2A24; --peach:#2A231B; --sky:#192630; --card:#1F2B27; --line:#33433D;
   --ink:#E4ECE8; --soft:#A7B6B0; --green:#7FD1AE; --green-ink:#9FE0C4; --gold:#F0B65A; --amber:#F0B65A;
-  --plum:#E39AB7; --blue:#8CC4E0;
-  --go:#FF8A75; --go-bg:#3A1C16; --today:#F0B65A; --today-bg:#33280F; --ok:#7FD1AE; --ok-bg:#183126;
+  --plum:#E39AB7; --blue:#8CC4E0; --ok-bg:#183126; --today-bg:#33280F;
   --phone:#050908; --shadow:rgba(0,0,0,.4); color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -42,524 +39,296 @@ a{color:var(--green);text-underline-offset:3px}
 :focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
 h1,h2,h3{font-family:var(--serif);color:var(--green-ink);text-wrap:balance;margin:0;font-weight:600}
 p{margin:0}
-.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .eyebrow{font:600 13px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
-h2{font-size:clamp(30px,4.6vw,48px);line-height:1.1;letter-spacing:-.01em}
+h2{font-size:clamp(32px,5vw,52px);line-height:1.08;letter-spacing:-.01em}
 h3{font-size:21px;line-height:1.25}
-.lede{font-size:clamp(17px,2vw,20px);line-height:1.6;max-width:64ch;color:var(--ink)}
+.lede{font-size:clamp(17px,2vw,20px);line-height:1.55;max-width:52ch}
 .soft{color:var(--soft)}
-.src{font-size:13px;line-height:1.55;color:var(--soft);max-width:92ch}
-.head{display:flex;flex-direction:column;gap:12px}
-.sample{display:inline-block;font:600 11px/1 var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:4px 7px;border-radius:5px;background:var(--today-bg);color:var(--today);vertical-align:middle}
+.src{font-size:12.5px;line-height:1.5;color:var(--soft)}
+.head{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
 .kitenge{height:8px;background:repeating-linear-gradient(90deg,var(--plum) 0 22px,var(--gold) 22px 34px,var(--green) 34px 56px,var(--blue) 56px 68px)}
 
-/* header + tabs */
 header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.bar{display:flex;align-items:center;gap:16px;min-height:60px}
-.logo{display:flex;align-items:center;gap:10px;font:700 17px var(--sans);color:var(--green-ink);text-decoration:none;margin-right:auto;white-space:nowrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:10px 20px;border-radius:999px;font:600 16px var(--sans);text-decoration:none;border:1.5px solid var(--green);white-space:nowrap;cursor:pointer;background:transparent;color:var(--green)}
-.btn.solid{background:var(--green);color:var(--bg)}
-.btn.gold{background:var(--gold);border-color:var(--gold);color:#2E2410}
-.bar .btn{min-height:40px;padding:8px 16px;font-size:15px}
-.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-bottom:10px}
+.bar{display:flex;align-items:center;gap:16px;min-height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:700 17px var(--sans);color:var(--green-ink);text-decoration:none;white-space:nowrap;margin-right:auto}
+.logo small{font:500 12px var(--sans);color:var(--soft)}
+.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:none;border:0;background:transparent;font:600 15px var(--sans);color:var(--soft);padding:9px 14px;border-radius:999px;cursor:pointer;white-space:nowrap}
 .tab:hover{color:var(--green-ink);background:var(--mint)}
 .tab[aria-selected="true"]{background:var(--green);color:var(--bg)}
-.tab.partner{color:var(--amber)}
-.tab.partner[aria-selected="true"]{background:var(--gold);color:#2E2410}
-@media (max-width:640px){.bar .btn.solid{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:10px 22px;border-radius:999px;font:600 16px var(--sans);text-decoration:none;border:1.5px solid var(--green);white-space:nowrap;cursor:pointer;background:transparent;color:var(--green)}
+.btn.solid{background:var(--green);color:var(--bg)}
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#2E2410}
+@media (max-width:820px){.bar{flex-wrap:wrap;gap:0 12px}.tabs{order:3;width:100%;padding-bottom:10px}.logo small{display:none}}
 
-/* panels */
-.panel{padding-block:clamp(36px,6vw,72px) clamp(40px,6vw,80px)}
-.panel>.wrap{display:flex;flex-direction:column;gap:clamp(32px,5vw,52px)}
-.pager{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:24px}
-.pager .btn{min-height:44px}
-.band{border-radius:24px;padding:clamp(22px,4vw,40px)}
-.band.mint{background:var(--mint)} .band.peach{background:var(--peach)} .band.sky{background:var(--sky)}
+.panel{padding-block:clamp(40px,7vw,88px)}
+.panel>.wrap{display:flex;flex-direction:column;gap:clamp(32px,5vw,56px)}
+.next{display:flex;justify-content:flex-end}
 
-/* hero */
-.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(28px,5vw,64px);align-items:center}
-.hero h1{font-size:clamp(38px,6vw,66px);line-height:1.05;letter-spacing:-.02em;margin-block:16px 20px}
+/* home */
+.hero{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(28px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(44px,7vw,80px);line-height:1;letter-spacing:-.025em;margin-block:14px 20px}
 .hero h1 em{font-style:italic;color:var(--amber)}
 .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
-.meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:24px;font-size:14px;color:var(--soft)}
-.meta span{display:flex;gap:7px;align-items:center}
-.meta span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold)}
-.stage{position:relative;justify-self:center;width:min(100%,320px);padding-bottom:70px}
+.stage{position:relative;justify-self:center;width:min(100%,300px);padding-bottom:64px}
 .phone{background:var(--phone);padding:9px;border-radius:34px;box-shadow:0 30px 60px -30px var(--shadow)}
 .phone img{border-radius:26px;width:100%;height:auto;aspect-ratio:780/1688;object-fit:cover}
-.sms{position:absolute;left:-14%;bottom:0;width:min(290px,92%);background:var(--card);border:1px solid var(--line);border-radius:18px 18px 18px 4px;padding:14px 16px;box-shadow:0 18px 40px -20px var(--shadow)}
-.sms .from{font:500 11px var(--mono);color:var(--soft);display:flex;justify-content:space-between;margin-bottom:6px}
+.sms{position:absolute;left:-16%;bottom:0;width:min(270px,92%);background:var(--card);border:1px solid var(--line);border-radius:18px 18px 18px 4px;padding:14px 16px;box-shadow:0 18px 40px -20px var(--shadow)}
+.sms .from{font:500 11px var(--mono);color:var(--soft);margin-bottom:4px}
 .sms p{font-size:15px;line-height:1.45}
-.sms p b{font-family:var(--mono);font-weight:500;background:var(--today-bg);color:var(--today);padding:0 4px;border-radius:4px}
-.sms .tr{font-size:12.5px;color:var(--soft);margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+.sms b{font-family:var(--mono);font-weight:500;background:var(--today-bg);color:var(--amber);padding:0 4px;border-radius:4px}
 @media (max-width:820px){.hero{grid-template-columns:minmax(0,1fr)}.sms{left:-4%}}
-
-.film{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(20px,4vw,40px);align-items:center}
-.film video{width:100%;aspect-ratio:16/9;background:#0F2E28;border-radius:18px;box-shadow:0 24px 50px -28px var(--shadow)}
-.scen{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none}
-.scen li{display:grid;grid-template-columns:12px minmax(0,1fr);gap:14px;align-items:start}
-.scen li::before{content:"";width:12px;height:12px;border-radius:50%;margin-top:7px;background:var(--c)}
-.scen b{font-family:var(--serif);font-size:19px;color:var(--green-ink)}
-.scen p{font-size:15px;color:var(--soft)}
+.film{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(20px,4vw,40px);align-items:center;background:var(--mint);border-radius:24px;padding:clamp(18px,3vw,32px)}
+.film video{width:100%;aspect-ratio:16/9;background:#0F2E28;border-radius:16px}
 @media (max-width:820px){.film{grid-template-columns:minmax(0,1fr)}}
 
-/* stats */
-.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.stat .n{font:600 clamp(32px,4vw,42px)/1 var(--serif);color:var(--green);font-variant-numeric:tabular-nums}
-.stat .n small{font-size:.5em;color:var(--soft);font-weight:400}
-.stat p{font-size:15px;line-height:1.45}
-@media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:420px){.stats{grid-template-columns:minmax(0,1fr)}}
+/* cards */
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 24px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card .n{font:600 clamp(40px,5vw,56px)/1 var(--serif);color:var(--green);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.card .n small{font-size:.42em;color:var(--soft);font-weight:400;letter-spacing:0}
+.card p{font-size:16px;line-height:1.45}
+.card .k{font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+@media (max-width:820px){.three{grid-template-columns:minmax(0,1fr)}}
 
-.noor{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
-.noor blockquote{margin:0;font:400 clamp(20px,2.3vw,25px)/1.45 var(--serif);border-left:4px solid var(--gold);padding-left:22px}
-.noor ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
-.noor li{display:grid;grid-template-columns:110px minmax(0,1fr);gap:12px;font-size:16px;padding-bottom:10px;border-bottom:1px solid var(--line)}
-.noor li span{color:var(--soft);font-size:14px}
-@media (max-width:760px){.noor{grid-template-columns:minmax(0,1fr)}}
-
-.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:var(--card)}
-table{border-collapse:collapse;width:100%;min-width:600px;font-size:15.5px}
-th,td{text-align:left;padding:14px 18px;vertical-align:top;border-bottom:1px solid var(--line)}
-tr:last-child td{border-bottom:0}
-th{font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--soft);background:var(--mint)}
-td.big{font:600 21px/1.2 var(--serif);color:var(--green);white-space:nowrap;font-variant-numeric:tabular-nums}
-
-.aims{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.aim{border-top:3px solid var(--gold);padding-top:14px;display:flex;flex-direction:column;gap:6px}
-.aim .ans{font:500 12px var(--mono);color:var(--amber)}
-.aim p{font-size:15.5px;color:var(--soft)}
-@media (max-width:820px){.aims{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:480px){.aims{grid-template-columns:minmax(0,1fr)}}
-
-.journey{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,240px);gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 4px 20px}
-.step{scroll-snap-align:start;display:flex;flex-direction:column;gap:12px;margin:0}
-.step .phone{padding:7px;border-radius:28px;box-shadow:none}
-.step .phone img{border-radius:22px}
-.step figcaption{display:flex;flex-direction:column;gap:4px}
-.step .k{font:500 12px var(--mono);color:var(--amber)}
-.step h3{font-size:18px}
-.step p{font-size:14.5px;line-height:1.5;color:var(--soft)}
-
-.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.tier{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:10px}
-.pill{align-self:flex-start;font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px}
-.pill.go{background:var(--go-bg);color:var(--go)} .pill.today{background:var(--today-bg);color:var(--today)} .pill.ok{background:var(--ok-bg);color:var(--ok)}
-.tier p{font-size:15.5px}
-.who{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
-.who div{display:flex;flex-direction:column;gap:6px}
-.who p{font-size:15.5px}
-code.icd{font:500 13px var(--mono);background:var(--mint);padding:2px 6px;border-radius:5px}
-@media (max-width:820px){.tiers,.who{grid-template-columns:minmax(0,1fr)}}
-
-.ai{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,56px);align-items:start}
-.reads{display:flex;flex-direction:column;gap:14px}
-.read{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:10px}
-.read q{font:italic 400 19px/1.4 var(--serif);color:var(--green-ink)}
-.read .en{font-size:13.5px;color:var(--soft)}
+/* solution steps */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;counter-reset:s}
+.steps figure{margin:0;display:flex;flex-direction:column;gap:14px;counter-increment:s}
+.steps .phone{padding:7px;border-radius:28px;box-shadow:none;width:min(100%,230px);align-self:center}
+.steps .phone img{border-radius:22px}
+.steps h3{font-size:20px;display:flex;gap:10px;align-items:baseline}
+.steps h3::before{content:counter(s);font:500 14px var(--mono);color:var(--amber)}
+.steps p{font-size:15.5px;color:var(--soft)}
+@media (max-width:820px){.steps{grid-template-columns:minmax(0,1fr)}}
+.aiband{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;background:var(--sky);border-radius:24px;padding:clamp(22px,4vw,40px)}
+.reads{display:flex;flex-direction:column;gap:12px}
+.read{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.read q{font:italic 400 18px/1.4 var(--serif);color:var(--green-ink)}
 .read .row{display:flex;justify-content:space-between;gap:12px;font-size:15px;font-weight:600}
-.read .row span:last-child{font:500 14px var(--mono);font-variant-numeric:tabular-nums}
+.read .row span:last-child{font:500 14px var(--mono)}
 .meter{height:7px;border-radius:4px;background:var(--line);position:relative;overflow:hidden}
 .meter i{position:absolute;inset:0 auto 0 0;background:var(--green);border-radius:4px}
-.meter::after{content:"";position:absolute;left:40%;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.55}
-.read.unsure .row{color:var(--go)} .read.unsure .meter i{background:var(--go)}
-.specs{margin:0;border-top:1px solid var(--line)}
-.specs div{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;padding:13px 0;border-bottom:1px solid var(--line);font-size:15.5px}
-.specs dt{font:600 22px/1.2 var(--serif);color:var(--amber)}
-.specs dd{margin:0;color:var(--soft)}
-@media (max-width:860px){.ai{grid-template-columns:minmax(0,1fr)}}
+.meter::after{content:"";position:absolute;left:40%;top:-2px;bottom:-2px;width:2px;background:var(--ink);opacity:.5}
+.read.unsure .row{color:#C2412B} .read.unsure .meter i{background:#C2412B}
+@media (max-width:820px){.aiband{grid-template-columns:minmax(0,1fr)}}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips span{font:600 14.5px var(--sans);padding:9px 16px;border-radius:999px;background:var(--mint);color:var(--green-ink)}
 
-.exp{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}
-.exp div{display:grid;grid-template-columns:140px minmax(0,1fr);gap:16px;padding:15px 0;border-bottom:1px solid var(--line)}
-.exp b{font:600 18px/1.3 var(--serif);color:var(--green-ink)}
-.exp p{font-size:15.5px}
-.exp p span{display:block;color:var(--soft);font-size:14px;margin-top:2px}
-@media (max-width:820px){.exp{grid-template-columns:minmax(0,1fr)}.exp div{grid-template-columns:115px minmax(0,1fr)}}
+/* roadmap */
+.road{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
+.road li{display:flex;flex-direction:column;gap:4px;padding:28px 16px 0 0;position:relative}
+.road li::before{content:"";position:absolute;top:8px;left:0;right:0;height:3px;background:var(--line)}
+.road li::after{content:"";position:absolute;top:2px;left:0;width:15px;height:15px;border-radius:50%;background:var(--card);border:3px solid var(--line)}
+.road li.done::before,.road li.done::after{border-color:var(--green);background:var(--green)}
+.road li.now::after{border-color:var(--gold);background:var(--gold)}
+.road .when{font:500 13px var(--mono);color:var(--amber)}
+.road b{font-family:var(--serif);font-size:19px;color:var(--green-ink)}
+.road p{font-size:14.5px;color:var(--soft)}
+@media (max-width:760px){.road{grid-template-columns:minmax(0,1fr)}.road li{padding:0 0 18px 30px}.road li::before{top:0;bottom:0;left:6px;right:auto;width:3px;height:auto}.road li::after{top:4px}}
 
-.rules{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:r}
-.rule{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:6px;counter-increment:r}
-.rule h3{font-size:19px;display:flex;gap:10px;align-items:baseline}
-.rule h3::before{content:counter(r);font:500 13px var(--mono);color:var(--amber)}
-.rule p{font-size:15px;color:var(--soft)}
-@media (max-width:820px){.rules{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.rules{grid-template-columns:minmax(0,1fr)}}
-
-.split{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(24px,4vw,56px);align-items:center}
-.pair{display:flex;gap:16px}
-.pair .phone{width:190px;padding:7px;border-radius:28px;box-shadow:none}
-.pair .phone img{border-radius:22px}
-ol.flow{margin:0;padding:0;list-style:none;counter-reset:f}
-ol.flow li{counter-increment:f;display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:16px}
-ol.flow li::before{content:counter(f);font:500 13px/1.9 var(--mono);color:var(--amber)}
-@media (max-width:860px){.split{grid-template-columns:minmax(0,1fr)}.pair{justify-content:center}.pair .phone{width:min(46%,190px)}}
-
-.probs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.prob{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
-.prob p{font-size:15.5px}
-@media (max-width:760px){.probs{grid-template-columns:minmax(0,1fr)}}
-
-.prior{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
-.prior div{display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:3px solid var(--green)}
-.prior .where{font:500 12px var(--mono);color:var(--soft)}
-.prior p{font-size:15px}
-.prior .take{color:var(--amber);font-weight:600;font-size:14.5px}
-@media (max-width:900px){.prior{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:480px){.prior{grid-template-columns:minmax(0,1fr)}}
-
-.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,48px)}
-.two ul{margin:12px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:16px}
-@media (max-width:760px){.two{grid-template-columns:minmax(0,1fr)}}
-
-.team{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:center}
-.team figure{margin:0;display:flex;flex-direction:column;gap:10px}
-.team img{width:100%;height:auto;border-radius:22px;aspect-ratio:3/4;object-fit:cover;object-position:70% 100%}
-.team figcaption{font-size:13.5px;color:var(--soft)}
-.people{display:flex;flex-direction:column;gap:16px}
-.person{display:flex;flex-direction:column;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px}
-.person h3{font-size:23px}
-.person p{font-size:15.5px;color:var(--soft)}
-.li{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;margin-top:6px;font-weight:600;font-size:15px;text-decoration:none;color:var(--blue)}
-.li svg{flex:none}
+/* team */
+.team{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,56px);align-items:center}
+.team img{width:100%;height:auto;border-radius:22px;aspect-ratio:4/5;object-fit:cover;object-position:70% 100%}
+.people{display:flex;flex-direction:column;gap:14px}
+.person{display:flex;flex-direction:column;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.person p{font-size:15px;color:var(--soft)}
+.li{font-weight:600;font-size:15px;text-decoration:none;color:var(--blue);margin-top:4px}
 @media (max-width:760px){.team{grid-template-columns:minmax(0,1fr)}.team img{aspect-ratio:1/1}}
 
-.asks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
-.ask{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px}
-.ask .k{font:600 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
-.ask p{font-size:15.5px}
-.ask .give{font-size:14.5px;color:var(--soft);border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
-@media (max-width:860px){.asks{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:540px){.asks{grid-template-columns:minmax(0,1fr)}}
-.contact{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
-.contact .btns{display:flex;flex-wrap:wrap;gap:12px}
+.contact{background:var(--peach);border-radius:24px;padding:clamp(24px,4vw,44px);display:flex;flex-direction:column;gap:20px;align-items:flex-start}
 
-footer{padding-block:28px 36px;border-top:1px solid var(--line);font-size:13.5px;color:var(--soft)}
-footer .wrap{display:flex;flex-direction:column;gap:10px}
+/* ---------- motion ---------- */
+.tabs{position:relative}
+.tab{position:relative;z-index:1;transition:color .25s}
+.tab[aria-selected="true"]{background:transparent}
+.ind{position:absolute;z-index:0;top:0;left:0;height:100%;border-radius:999px;background:var(--green);transition:transform .45s cubic-bezier(.2,.8,.2,1),width .45s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.tabs .ind{height:38px}
+header.top{transition:box-shadow .3s}
+header.top.scrolled{box-shadow:0 10px 30px -18px var(--shadow)}
+.btn{transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px -12px var(--shadow)}
+.btn:active{transform:translateY(0)}
+.card,.person,.read{transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover,.person:hover{transform:translateY(-4px);box-shadow:0 18px 36px -24px var(--shadow);border-color:color-mix(in srgb,var(--green) 30%,var(--line))}
+.steps .phone{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.steps figure:hover .phone{transform:translateY(-6px) rotate(-1deg)}
+.chips span{transition:background .2s,transform .2s}
+.chips span:hover{background:var(--ok-bg);transform:translateY(-2px)}
+
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes pop{0%{opacity:0;transform:translateY(16px) scale(.92)}70%{opacity:1;transform:translateY(-3px) scale(1.02)}100%{opacity:1;transform:none}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@keyframes fill{from{width:0}}
+@keyframes draw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes drawY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@keyframes shimmer{to{background-position:200% 0}}
+
+.panel.in .head,.panel.in .hero>div:first-child,.panel.in .three>*,.panel.in .steps>*,.panel.in .film,.panel.in .aiband,.panel.in .chips span,.panel.in .road li,.panel.in .person,.panel.in .team>img,.panel.in .contact,.panel.in .next{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.panel.in .three>*:nth-child(2),.panel.in .steps>*:nth-child(2),.panel.in .road li:nth-child(2),.panel.in .person:nth-of-type(2){animation-delay:.1s}
+.panel.in .three>*:nth-child(3),.panel.in .steps>*:nth-child(3),.panel.in .road li:nth-child(3){animation-delay:.2s}
+.panel.in .road li:nth-child(4){animation-delay:.3s}
+.panel.in .chips span:nth-child(n){animation-delay:calc(.05s * var(--i,0) + .2s)}
+.panel.in .film,.panel.in .aiband{animation-delay:.15s}
+.panel.in .next{animation-delay:.3s}
+.panel.in .stage .phone{animation:rise .8s .1s cubic-bezier(.2,.8,.2,1) both, float 6s 1.2s ease-in-out infinite}
+.panel.in .sms{animation:pop .7s .7s cubic-bezier(.2,.8,.2,1) both}
+.panel.in .meter i{animation:fill 1.2s .4s cubic-bezier(.2,.8,.2,1) both}
+.panel.in .road li::before{transform-origin:left;animation:draw .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:inherit}
+.hero h1 em{background:linear-gradient(90deg,var(--amber),var(--gold),var(--amber));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 6s linear infinite}
+@media (max-width:760px){.panel.in .road li::before{transform-origin:top;animation-name:drawY}}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .hero h1 em{color:var(--amber);background:none}
+}
+footer{padding-block:24px 32px;border-top:1px solid var(--line);font-size:13px;color:var(--soft)}
+footer .wrap{display:flex;flex-direction:column;gap:6px}
 </style>
 
 <header class="top">
   <div class="kitenge" aria-hidden="true"></div>
-  <div class="wrap">
-    <div class="bar">
-      <a class="logo" href="#home" data-go="home">
-        <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 7v18M9 13c3 0 7 1.5 7 5M23 13c-3 0-7 1.5-7 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-        Amara First Contact
-      </a>
-      <a class="btn solid" href="https://ericastephens.github.io/amara-first-contact/?welcome" target="_blank" rel="noopener">Try the app</a>
-    </div>
+  <div class="wrap bar">
+    <a class="logo" href="#home" data-go="home">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 7v18M9 13c3 0 7 1.5 7 5M23 13c-3 0-7 1.5-7 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      Amara First Contact <small>by Amara Health</small>
+    </a>
     <nav class="tabs" role="tablist" aria-label="Sections">
+      <span class="ind" aria-hidden="true"></span>
       <button class="tab" role="tab" id="t-home" aria-controls="home" aria-selected="true">Home</button>
-      <button class="tab" role="tab" id="t-problem" aria-controls="problem" aria-selected="false">The problem</button>
-      <button class="tab" role="tab" id="t-how" aria-controls="how" aria-selected="false">How it works</button>
-      <button class="tab" role="tab" id="t-ai" aria-controls="ai" aria-selected="false">Small AI</button>
-      <button class="tab" role="tab" id="t-safety" aria-controls="safety" aria-selected="false">Safety</button>
-      <button class="tab" role="tab" id="t-pilot" aria-controls="pilot" aria-selected="false">Evidence &amp; pilot</button>
+      <button class="tab" role="tab" id="t-problem" aria-controls="problem" aria-selected="false">Problem</button>
+      <button class="tab" role="tab" id="t-solution" aria-controls="solution" aria-selected="false">Solution</button>
+      <button class="tab" role="tab" id="t-business" aria-controls="business" aria-selected="false">Business</button>
       <button class="tab" role="tab" id="t-team" aria-controls="team" aria-selected="false">Team</button>
-      <button class="tab partner" role="tab" id="t-partner" aria-controls="partner" aria-selected="false">Partner with us</button>
+      <button class="tab" role="tab" id="t-contact" aria-controls="contact" aria-selected="false">Contact</button>
     </nav>
   </div>
 </header>
 
 <main>
 
-<!-- HOME -->
 <section class="panel" id="home" role="tabpanel" aria-labelledby="t-home">
   <div class="wrap">
     <div class="hero">
       <div>
-        <p class="eyebrow">Small AI for Development 2026 · World Bank × Hack-Nation · Health</p>
-        <h1>The first door she knocks on gets her to the <em>right care.</em></h1>
-        <p class="lede">Amara First Contact is an offline triage and referral app for mothers and their children. A drug shop dispenser, community health worker or nurse runs it on a low-cost Android phone. A small AI reads the mother's own Swahili words, sourced rules decide how urgent it is, and she leaves with a clinic, a time and a code by SMS.</p>
+        <p class="eyebrow">Amara Health · Africa programme</p>
+        <h1>Right care from the <em>first door.</em></h1>
+        <p class="lede">An offline AI app that helps drug shops in rural Tanzania refer mothers and children to the right clinic.</p>
         <div class="ctas">
-          <a class="btn solid" href="https://ericastephens.github.io/amara-first-contact/?welcome" target="_blank" rel="noopener">Try the live demo</a>
-          <a class="btn" href="#how" data-go="how">See how it works</a>
+          <a class="btn solid" href="https://ericastephens.github.io/amara-first-contact/?welcome" target="_blank" rel="noopener">Try the demo</a>
+          <a class="btn" href="#watch" data-go="home" onclick="setTimeout(function(){document.getElementById('watch').scrollIntoView({behavior:'smooth'})},10)">Watch 1:30</a>
         </div>
-        <div class="meta"><span>Works with no internet</span><span>AI model under 1 MB</span><span>Pilot: Hai, Kilimanjaro</span></div>
       </div>
       <div class="stage">
-        <div class="phone"><img src="img/ai_heard.webp" alt="The app showing what the small AI heard: fever not cleared by malaria treatment 94%, rats or flood water 92%, and 'nimechoka' marked Not sure at 13%" width="780" height="1688"></div>
-        <div class="sms" role="figure" aria-label="The SMS Noor receives">
-          <div class="from"><span>AMARA</span><span>08:00 · 128/160</span></div>
-          <p lang="sw">Habari Noor. Nenda Machame Hospital Jumanne saa 2 asubuhi. Namba yako: <b>Z96</b>. Onyesha namba hii ukifika. Ukishindwa kwenda, jibu 2.</p>
-          <p class="tr">Hello Noor. Go to Machame Hospital on Tuesday at 8 am. Your code: Z96. Show it when you arrive. If you can't go, reply 2.</p>
+        <div class="phone"><img src="img/ai_heard.webp" alt="The small AI reading a mother's Swahili words, with a Not sure result for a vague phrase" width="780" height="1688"></div>
+        <div class="sms" role="figure" aria-label="The SMS the mother receives">
+          <div class="from">AMARA · SMS</div>
+          <p lang="sw">Nenda Machame Hospital Jumanne saa 2 asubuhi. Namba yako: <b>Z96</b>.</p>
+          <p class="src">Go to Machame Hospital, Tuesday 8 am. Your code: Z96.</p>
         </div>
       </div>
     </div>
-
-    <div class="band mint">
-      <div class="film">
-        <video controls preload="none" playsinline poster="media/simulation-poster.webp" src="media/simulation.mp4" aria-label="Simulation: three mothers, one small AI"></video>
-        <div class="head">
-          <p class="eyebrow">Watch · 1:30</p>
-          <h2 style="font-size:clamp(26px,3.2vw,34px)">Three mothers, one small AI</h2>
-          <p class="soft" style="font-size:15.5px">Rehema runs the drug shop in Machame, Hai District. Three mothers come to her:</p>
-          <ul class="scen">
-            <li style="--c:var(--plum)"><div><b>Noor</b><p>A fever malaria tablets didn't clear. Refer today, with an SMS.</p></div></li>
-            <li style="--c:var(--blue)"><div><b>Amina</b><p>28 weeks pregnant, with danger signs. Go now.</p></div></li>
-            <li style="--c:var(--green)"><div><b>Zawadi and baby Baraka</b><p>Vaccines. Straight to the nurse's room.</p></div></li>
-          </ul>
-          <p class="src">Simulation. The mothers are fictional; Machame, Machame Hospital and Kisereni Dispensary are real. Phone screens are from the working app. Immunization routing and transport links are pilot designs.</p>
-        </div>
+    <div class="film" id="watch">
+      <video controls preload="none" playsinline poster="media/simulation-poster.webp" src="media/simulation.mp4" aria-label="Simulation: three mothers, one small AI"></video>
+      <div class="head">
+        <p class="eyebrow">Watch</p>
+        <h3 style="font-size:28px">Three mothers, one drug shop</h3>
+        <p class="soft">A fever, a risky pregnancy and a baby's vaccines, each sent to the right care.</p>
       </div>
     </div>
-    <div class="pager"><span></span><button class="btn solid" data-go="problem">Next: The problem →</button></div>
+    <div class="next"><button class="btn solid" data-go="problem">The problem →</button></div>
   </div>
 </section>
 
-<!-- PROBLEM -->
 <section class="panel" id="problem" role="tabpanel" aria-labelledby="t-problem" hidden>
   <div class="wrap">
-    <div class="head"><p class="eyebrow">The problem</p><h2>When the nearest help is a drug shop</h2></div>
-    <div class="noor">
-      <blockquote>Care in remote areas is limited by too few clinicians and no tests on site. Patients travel far, health workers have little time per case, and low digital literacy makes both worse.<br><span class="soft" style="font:14px var(--sans)">Challenge 04 brief, Annex A (Health)</span></blockquote>
-      <div>
-        <p style="margin-bottom:14px">The brief gives the problem a face: <b>Noor</b>.</p>
-        <ul>
-          <li><span>Who</span>38, farms coffee, maize and beans on 2 hectares in the highlands</li>
-          <li><span>Her phone</span>Calls, SMS and mobile money. No Wi-Fi; 3G bundles now and then</li>
-          <li><span>Languages</span>Her local language at home, Swahili when she must</li>
-          <li><span>Her clinic</span>Overcrowded; doctors not always up to date; record-keeping leaves little time for her</li>
-        </ul>
-      </div>
+    <div class="head"><p class="eyebrow">Problem</p><h2>Too few clinicians. Mothers start at the drug shop.</h2></div>
+    <div class="three">
+      <div class="card"><span class="n"><span data-count="4.4" data-dec="1">4.4</span><small> / 10,000</small></span><p>Health workers per 10,000 people in Tanzania. WHO recommends 44.5.</p></div>
+      <div class="card"><span class="n"><span data-count="31">31</span>%</span><p>Of people go to a drug shop first when ill, more than to a clinic.</p></div>
+      <div class="card"><span class="n"><span data-count="60.7" data-dec="1">60.7</span>%</span><p>Of severe fevers were diagnosed as malaria. Only 1.6% were.</p></div>
     </div>
-    <div class="head">
-      <div class="stats">
-        <div class="stat"><span class="n">4.4 <small>/ 10,000</small></span><p>Doctors, nurses and midwives per 10,000 people in Tanzania. WHO's threshold is 44.5.</p></div>
-        <div class="stat"><span class="n">14%</span><p>Of health workers were absent from their facility on a survey visit.</p></div>
-        <div class="stat"><span class="n">60%</span><p>Diagnostic accuracy on standard cases, lower in rural facilities.</p></div>
-        <div class="stat"><span class="n">30%</span><p>Of maternal and newborn complications were managed correctly.</p></div>
-      </div>
-      <p class="src">Sources: World Bank Service Delivery Indicators, Tanzania 2014 (health brief, 2016): absence 14.3%, diagnostic accuracy 60.2%, complications 30.4%. WHO Global Health Observatory, 2024 (doctors 1.75 and nurses and midwives 2.60 per 10,000).</p>
-    </div>
-    <div class="head">
-      <h3 style="font-size:clamp(24px,3vw,30px)">When every fever looks like malaria</h3>
-      <p class="lede">Farming families live with animals, flood water and mosquitoes. What makes them ill depends on exposure and season, and a quick visit rarely asks.</p>
-      <div class="tbl">
-        <table>
-          <thead><tr><th>Number</th><th>What it means</th><th>Source</th></tr></thead>
-          <tbody>
-            <tr><td class="big">60.7% vs 1.6%</td><td>Severe fevers diagnosed as malaria, against those that were malaria</td><td>Crump et al., PLOS NTDs, northern Tanzania, 2007–08</td></tr>
-            <tr><td class="big">26.2%</td><td>Were bacterial zoonoses caught from animals; clinicians considered none of them</td><td>Same study</td></tr>
-            <tr><td class="big">90 days</td><td>Median delay before hospital for brucellosis; 44.8% missed at the first visit</td><td>BMC Public Health, rural Tanzania</td></tr>
-            <tr><td class="big">59%</td><td>Of people with high blood pressure did not know they had it</td><td>PLOS Medicine, rural districts</td></tr>
-            <tr><td class="big">~16%</td><td>Of maternal deaths come from high blood pressure in pregnancy</td><td>WHO pre-eclampsia fact sheet (global)</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="band peach head">
-      <p class="eyebrow">Why first responders</p>
-      <h3 style="font-size:clamp(24px,3vw,30px)">The drug shop is already the front door</h3>
-      <div class="stats">
-        <div class="stat"><span class="n">31%</span><p>Went first to an accredited drug shop (ADDO) when ill, against 30% to a public facility.</p></div>
-        <div class="stat"><span class="n">49%</span><p>Of medicines for a recent illness came from an ADDO.</p></div>
-        <div class="stat"><span class="n">9,000+</span><p>Accredited drug shops across every mainland district.</p></div>
-        <div class="stat"><span class="n">76%</span><p>Of dispensers already refer complicated cases to a facility.</p></div>
-      </div>
-      <p class="src">59% of women own a phone, 13% used the internet in the past year, and 80% can read, so the first responder holds the app and the mother gets an SMS or a voice call. Sources: Embrey et al., PLOS ONE 2016; Tanzania DHS-MIS 2022 (women aged 15–49).</p>
-    </div>
-    <div class="pager"><button class="btn" data-go="home">← Home</button><button class="btn solid" data-go="how">Next: How it works →</button></div>
+    <p class="src">Sources: WHO Global Health Observatory 2024; Embrey et al., PLOS ONE 2016; Crump et al., PLOS NTDs, northern Tanzania.</p>
+    <div class="next"><button class="btn solid" data-go="solution">The solution →</button></div>
   </div>
 </section>
 
-<!-- HOW -->
-<section class="panel" id="how" role="tabpanel" aria-labelledby="t-how" hidden>
+<section class="panel" id="solution" role="tabpanel" aria-labelledby="t-solution" hidden>
   <div class="wrap">
-    <div class="head"><p class="eyebrow">How it works</p><h2>Noor at the drug shop, in flight mode</h2>
-      <p class="lede">Every screen below was recorded with the network off, using the Tanzania demo setup and 105 real clinics around Hai from OpenStreetMap. Swipe sideways for every step.</p></div>
-    <div class="journey" tabindex="0" aria-label="The journey, step by step">
-      <figure class="step"><div class="phone"><img src="img/start.webp" alt="Choose who is using the app" width="780" height="1688"></div><figcaption><span class="k">Step 1</span><h3>Set up once</h3><p>Country, district, role, work ID and languages, saved on the phone.</p></figcaption></figure>
-      <figure class="step"><div class="phone"><img src="img/identity_phone.webp" alt="Registration with a required phone number, or NIDA number" width="780" height="1688"></div><figcaption><span class="k">Step 2</span><h3>Register her</h3><p>A phone number is required. With no phone, her NIDA national ID lets the clinic find her and confirms her age.</p></figcaption></figure>
-      <figure class="step"><div class="phone"><img src="img/net_questions.webp" alt="Simple keypad questions" width="780" height="1688"></div><figcaption><span class="k">Step 3</span><h3>Simple questions</h3><p>One tap each: mosquito net, drinking water, distance to the clinic, pregnancy and family planning.</p></figcaption></figure>
-      <figure class="step"><div class="phone"><img src="img/ai_words.webp" alt="Her own words typed in Swahili" width="780" height="1688"></div><figcaption><span class="k">Step 4</span><h3>Her own words</h3><p>She describes the problem in Swahili. The small AI turns it into items from a fixed list to confirm or remove.</p></figcaption></figure>
-      <figure class="step"><div class="phone"><img src="img/result_confirmed.webp" alt="Flags with sources and Confirm or Override" width="780" height="1688"></div><figcaption><span class="k">Step 5</span><h3>Rules decide, a person confirms</h3><p>Each flag shows its guideline source. The first responder confirms or overrides every one.</p></figcaption></figure>
-      <figure class="step"><div class="phone"><img src="img/clinician_view.webp" alt="Clinician view with draft ICD-10 codes" width="780" height="1688"></div><figcaption><span class="k">Step 6</span><h3>Clinician view</h3><p>Conditions to rule out with draft ICD-10 codes, each marked "clinician to confirm".</p></figcaption></figure>
-      <figure class="step"><div class="phone"><img src="img/sms.webp" alt="Referral with time, code and Swahili SMS" width="780" height="1688"></div><figcaption><span class="k">Step 7</span><h3>Referral and SMS</h3><p>Nearest suitable clinic, a time by urgency, and a code. The SMS waits until there is signal.</p></figcaption></figure>
-      <figure class="step"><div class="phone"><img src="img/go_now.webp" alt="GO NOW with a paper slip" width="780" height="1688"></div><figcaption><span class="k">Danger signs</span><h3>Go now</h3><p>Headache, blurred vision and swelling after 20 weeks: Go now, with a paper slip. No slot or signal needed.</p></figcaption></figure>
-      <figure class="step"><div class="phone"><img src="img/clinic_referrals.webp" alt="Clinic dashboard with referrals" width="780" height="1688"></div><figcaption><span class="k">Step 8</span><h3>The clinic is ready</h3><p>When the signal returns, the queue syncs and the clinic sees her note before she arrives.</p></figcaption></figure>
+    <div class="head"><p class="eyebrow">Solution</p><h2>Triage and referral at the drug shop. Offline.</h2></div>
+    <div class="steps">
+      <figure><div class="phone"><img src="img/ai_words.webp" alt="Her words in Swahili, read by the small AI" width="780" height="1688" loading="lazy"></div><figcaption><h3>She speaks Swahili</h3><p>A small AI on the phone understands her words.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/result_confirmed.webp" alt="Flags with guideline sources, confirmed by the dispenser" width="780" height="1688" loading="lazy"></div><figcaption><h3>Rules set urgency</h3><p>Guideline-based rules decide. The dispenser confirms.</p></figcaption></figure>
+      <figure><div class="phone"><img src="img/sms.webp" alt="Referral to Machame Hospital with time, code and SMS" width="780" height="1688" loading="lazy"></div><figcaption><h3>She gets an SMS</h3><p>Clinic, time and code. Her note reaches the clinic first.</p></figcaption></figure>
     </div>
-    <div class="head"><h3 style="font-size:clamp(24px,3vw,30px)">Three answers, never a diagnosis</h3></div>
-    <div class="tiers">
-      <div class="tier"><span class="pill go">Go now</span><p>Hospital immediately, with a paper referral. Never waits for a slot or a network.</p></div>
-      <div class="tier"><span class="pill today">Refer today · within 3 days</span><p>A booked slot with the day and time. Her note arrives first.</p></div>
-      <div class="tier"><span class="pill ok">Not sure · ask the clinic</span><p>When the AI is unsure or no rule matches, the app says so and offers to ask the clinic.</p></div>
-    </div>
-    <div class="band sky who">
-      <div><span class="eyebrow">The mother sees</span><h3>Where, when, and her code</h3><p>No symptoms and no diagnosis in her SMS or voice call.</p></div>
-      <div><span class="eyebrow">The first responder sees</span><h3>Urgency and the reason</h3><p>Every reason carries its guideline source.</p></div>
-      <div><span class="eyebrow">The clinician sees</span><h3>Conditions to rule out</h3><p>Draft codes such as <code class="icd">A27.9</code> or <code class="icd">A23.9</code>, to confirm or change.</p></div>
-    </div>
-    <div class="head"><p class="eyebrow">What it aims to do</p><h3 style="font-size:clamp(24px,3vw,30px)">One answer for each part of the brief</h3></div>
-    <div class="aims">
-      <div class="aim"><span class="ans">too few clinicians</span><h3>Ease overcrowding</h3><p>Arrivals are sorted and booked.</p></div>
-      <div class="aim"><span class="ans">not up to date</span><h3>Guide clinicians</h3><p>Sourced guidelines, with draft ICD-10 codes to confirm.</p></div>
-      <div class="aim"><span class="ans">no tests on site</span><h3>Flag what to test</h3><p>Symptoms, exposures and season point to what to rule out.</p></div>
-      <div class="aim"><span class="ans">little time, heavy records</span><h3>Better appointments</h3><p>A structured note arrives before she does.</p></div>
-      <div class="aim"><span class="ans">long distances</span><h3>Right clinic, first time</h3><p>A booked slot, or Go now for danger signs.</p></div>
-      <div class="aim"><span class="ans">low digital literacy</span><h3>Reach her simply</h3><p>SMS or a voice call in her language.</p></div>
-    </div>
-    <div class="pager"><button class="btn" data-go="problem">← The problem</button><button class="btn solid" data-go="ai">Next: Small AI →</button></div>
-  </div>
-</section>
-
-<!-- AI -->
-<section class="panel" id="ai" role="tabpanel" aria-labelledby="t-ai" hidden>
-  <div class="wrap">
-    <div class="head"><p class="eyebrow">The small AI</p><h2>It listens to her own words, and says when it is unsure</h2>
-      <p class="lede">A model under 1 MB runs on the phone with no internet. It maps each phrase to a fixed list of 21 symptoms and exposures, with how sure it is. It never decides urgency; written rules do that.</p></div>
-    <div class="ai">
+    <div class="aiband">
+      <div class="head"><p class="eyebrow">The small AI</p><h3 style="font-size:clamp(24px,3vw,32px)">Small enough for a basic phone. Honest when unsure.</h3>
+        <p class="soft">A 660 KB model reads her Swahili words with no internet. It picks from a fixed list of symptoms and exposures. Below 40% confidence it says “Not sure”. It never decides urgency.</p></div>
       <div class="reads">
-        <div class="read"><q lang="sw">Nimemeza mseto lakini homa bado ipo</q><span class="en">I took malaria tablets but the fever is still there</span><div class="row"><span>Fever not cleared by malaria treatment</span><span>94%</span></div><div class="meter"><i style="width:94%"></i></div></div>
-        <div class="read"><q lang="sw">Kuna panya wengi nyumbani</q><span class="en">There are many rats at home</span><div class="row"><span>Rats, flood or stream water</span><span>92%</span></div><div class="meter"><i style="width:92%"></i></div></div>
-        <div class="read unsure"><q lang="sw">Nimechoka</q><span class="en">I'm tired</span><div class="row"><span>Not sure: ask her again</span><span>13%</span></div><div class="meter"><i style="width:13%"></i></div></div>
-        <p class="src">The tick marks the 40% line. Below it, the app shows Not sure instead of guessing.</p>
-      </div>
-      <dl class="specs">
-        <div><dt>660 KB</dt><dd>Character n-gram TF-IDF and logistic regression, trained in Python and run in TypeScript on the phone</dd></div>
-        <div><dt>21</dt><dd>Symptoms and exposures it can name, plus "other"</dd></div>
-        <div><dt>0.40</dt><dd>Confidence threshold. Below it: Not sure</dd></div>
-        <div><dt>58%</dt><dd>Accuracy on held-out synthetic phrases; 75% when confident. Real phrases from mothers are needed before a pilot</dd></div>
-        <div><dt>Next</dt><dd>Swahili voice-to-text on the phone, so the note writes itself as she speaks</dd></div>
-      </dl>
-    </div>
-    <div class="band peach head">
-      <p class="eyebrow">Tailored care</p>
-      <h3 style="font-size:clamp(24px,3vw,30px)">Care shaped by what she is exposed to</h3>
-      <div class="exp">
-        <div><b>Animals</b><p>Cows or goats at home, animal births, sick animals<span>Fever with animals: check zoonoses such as brucellosis and Q fever</span></p></div>
-        <div><b>Rats, flood water</b><p>Rats at home, flood or stream water, muddy fields<span>Fever with this: check leptospirosis</span></p></div>
-        <div><b>Mosquitoes, water</b><p>Net last night; drinking water source<span>Malaria and diarrhoea risk go in the note</span></p></div>
-        <div><b>Pregnancy</b><p>Could she be pregnant; family planning<span>So the clinic knows which medicines are safe</span></p></div>
-        <div><b>Farm work</b><p>Heavy, moderate, or mostly sitting<span>Context for the clinician</span></p></div>
-        <div><b>Season, outbreaks</b><p>Weekly counts by ward<span>Rising clusters flagged across clinics</span></p></div>
+        <div class="read"><q lang="sw">Nimemeza mseto lakini homa bado ipo</q><div class="row"><span>Fever not cleared by malaria pills</span><span>94%</span></div><div class="meter"><i style="width:94%"></i></div></div>
+        <div class="read unsure"><q lang="sw">Nimechoka</q><div class="row"><span>Not sure: ask again</span><span>13%</span></div><div class="meter"><i style="width:13%"></i></div></div>
       </div>
     </div>
-    <div class="pager"><button class="btn" data-go="how">← How it works</button><button class="btn solid" data-go="safety">Next: Safety →</button></div>
+    <div class="head"><p class="eyebrow">Who it helps</p></div>
+    <div class="three">
+      <div class="card"><span class="k">Mothers</span><h3>The right clinic, first time</h3><p>Clinic, time and code by SMS. No diagnosis, no health details.</p></div>
+      <div class="card"><span class="k">Clinicians</span><h3>Up-to-date guidance</h3><p>Her note arrives first, with conditions to rule out and draft ICD-10 codes. Rules follow Tanzanian and WHO guidelines, cite their source, and update on every phone at the next sync.</p></div>
+      <div class="card"><span class="k">District &amp; regional health officers</span><h3>Outbreaks seen early</h3><p>Anonymous weekly counts by ward. Rising clusters alert nearby clinics and the surveillance officer, who approves each escalation.</p></div>
+    </div>
+    <div class="chips" aria-label="Key features">
+      <span style="--i:0">Works with no internet</span><span style="--i:1">Go now for danger signs</span><span style="--i:2">Phone or NIDA registration</span><span style="--i:3">Swahili, English, French</span><span style="--i:4">105 real clinics</span><span style="--i:5">A person confirms every flag</span>
+    </div>
+    <div class="next"><button class="btn solid" data-go="business">The business →</button></div>
   </div>
 </section>
 
-<!-- SAFETY -->
-<section class="panel" id="safety" role="tabpanel" aria-labelledby="t-safety" hidden>
+<section class="panel" id="business" role="tabpanel" aria-labelledby="t-business" hidden>
   <div class="wrap">
-    <div class="head"><p class="eyebrow">Responsible AI</p><h2>Safety is built in, and tested</h2>
-      <p class="lede">The brief's Responsible AI test is pass or fail. These six rules are written into the code and checked by 128 automated tests on every change.</p></div>
-    <div class="rules">
-      <div class="rule"><h3>No AI advice</h3><p>Every flag and next step comes from a written rule and shows its source.</p></div>
-      <div class="rule"><h3>No diagnosis to her</h3><p>Only the clinician sees draft ICD-10 codes, each to be confirmed.</p></div>
-      <div class="rule"><h3>Not sure is allowed</h3><p>Low confidence or no matching rule means: ask her again, or ask the clinic.</p></div>
-      <div class="rule"><h3>A person decides</h3><p>Every flag is confirmed. Every escalation is approved with a work ID.</p></div>
-      <div class="rule"><h3>Urgent never waits</h3><p>Go now shows at once with a paper referral, whatever the network.</p></div>
-      <div class="rule"><h3>Her data stays hers</h3><p>On the phone until sync. No health details in any SMS; NIDA masked; the district sees only counts.</p></div>
+    <div class="head"><p class="eyebrow">Business</p><h2>Free for mothers. Paid by health programmes.</h2></div>
+    <div class="three">
+      <div class="card"><span class="k">Who pays</span><h3>NGOs, districts, insurers</h3><p>Organisations that gain when mothers reach care early.</p></div>
+      <div class="card"><span class="k">How</span><h3>Per referral or per district</h3><p>About $24,000 a year per district at $1 a referral. Illustrative; the pilot sets price.</p></div>
+      <div class="card"><span class="k">Market</span><h3>2.4M births a year</h3><p>In Tanzania, served by 9,000+ accredited drug shops.</p></div>
     </div>
-    <div class="band mint split">
-      <div class="head">
-        <p class="eyebrow">From one drug shop to the district</p>
-        <h3 style="font-size:clamp(24px,3vw,30px)">Outbreaks seen early, escalated by a person</h3>
-        <ol class="flow">
-          <li><span>Each referral adds an anonymous count: ward, syndrome, week.</span></li>
-          <li><span>A cluster is flagged when cases pass the 4-week average plus two standard deviations.</span></li>
-          <li><span>Clinics within 25 km get a guidance card from WHO surveillance guidelines.</span></li>
-          <li><span>The escalation to the district officer stays a draft until a person approves it with their work ID.</span></li>
-        </ol>
-        <p class="src">In the demo: fever with rash in one ward, week 40, 7 cases against a threshold of 2.4. <span class="sample">Sample data</span></p>
-      </div>
-      <div class="pair">
-        <div class="phone"><img src="img/outbreak.webp" alt="Outbreak watch: fever with rash, 7 cases against a threshold of 2.4" width="780" height="1688"></div>
-        <div class="phone"><img src="img/approved.webp" alt="Escalation approved with the approver's work ID" width="780" height="1688"></div>
-      </div>
-    </div>
-    <div class="head"><p class="eyebrow">Real field problems</p><h3 style="font-size:clamp(24px,3vw,30px)">Built for the day things go wrong</h3></div>
-    <div class="probs">
-      <div class="prob"><h3>There is no signal</h3><p>Everything runs offline. Referrals, notes and SMS wait on the phone and send when the network returns. A paper slip works in the meantime.</p></div>
-      <div class="prob"><h3>She has no phone</h3><p>Her NIDA national ID stands in. Its first eight digits are her birth date, so the app checks the age she gives.</p></div>
-      <div class="prob"><h3>AI doesn't speak her language</h3><p>For Kichaga, Maa and others: keypad answers and voices recorded by the community. The interface works in Swahili and English, with a French draft.</p></div>
-      <div class="prob"><h3>The clinic is full</h3><p>A booked slot and a note that arrives first. Danger signs skip the queue with Go now.</p></div>
-    </div>
-    <div class="pager"><button class="btn" data-go="ai">← Small AI</button><button class="btn solid" data-go="pilot">Next: Evidence &amp; pilot →</button></div>
+    <div class="head"><p class="eyebrow">Roadmap</p></div>
+    <ol class="road">
+      <li class="done"><span class="when">Oct 2026</span><b>MVP built</b><p>World Bank × Hack-Nation hackathon</p></li>
+      <li class="now"><span class="when">Q1 2027</span><b>Validate</b><p>Field interviews, clinical review</p></li>
+      <li><span class="when">Q2–Q3 2027</span><b>Pilot in Hai</b><p>Drug shops and linked clinics</p></li>
+      <li><span class="when">2028</span><b>Scale</b><p>District contracts, then region</p></li>
+    </ol>
+    <p class="src">Sources: UN World Population Prospects 2024 (via <a href="https://measuredworld.com/countries/tanzania/births/births-trends" target="_blank" rel="noopener">Measured World</a>); Embrey et al., PLOS ONE 2016.</p>
+    <div class="next"><button class="btn solid" data-go="team">The team →</button></div>
   </div>
 </section>
 
-<!-- PILOT -->
-<section class="panel" id="pilot" role="tabpanel" aria-labelledby="t-pilot" hidden>
-  <div class="wrap">
-    <div class="head"><p class="eyebrow">Evidence we build on</p><h2>Built on programmes that worked</h2></div>
-    <div class="prior">
-      <div><h3>Afya-Tek</h3><span class="where">Kibaha, Tanzania · 2020–23</span><p>Linked 110 drug shops, 240 health workers and 53 facilities; 89% of referrals completed.</p><p class="take">Digital referral from drug shops works</p></div>
-      <div><h3>m-mama</h3><span class="where">Tanzania · national</span><p>Call centre and community taxis for emergencies. Shinyanga maternal deaths fell from 60 (2015) to 15 (2021).</p><p class="take">Transport is the life-saving step</p></div>
-      <div><h3>Wazazi Nipendeni</h3><span class="where">Tanzania · 2012</span><p>Free Swahili SMS for mothers: 1.3 million registered and 86 million messages by 2016.</p><p class="take">Mothers read Swahili SMS</p></div>
-      <div><h3>MomConnect</h3><span class="where">South Africa · 2014</span><p>Registered at the first visit; SMS was about three-quarters of running costs.</p><p class="take">Keep SMS short and few</p></div>
-    </div>
-    <p class="src">Sources: BMC Health Services Research 2024 (Afya-Tek); Munishi et al., PLOS Global Public Health 2023 (m-mama); The Compass for SBC (Wazazi Nipendeni); Barron et al., BMJ Global Health 2018 (MomConnect).</p>
-    <div class="band sky head">
-      <p class="eyebrow">Pilot · Hai, Kilimanjaro</p>
-      <h3 style="font-size:clamp(24px,3vw,30px)">Where we start, and what is not done yet</h3>
-      <p class="lede">Co-founder Juanita Ndyamukama is from Tanzania. Hai, on the slopes of Kilimanjaro, looks like Noor's world: coffee and maize farms, drug shops linked to dispensaries and hospitals, and national systems (DHIS2 and eIDSR) that already use ICD-10.</p>
-      <div class="two">
-        <div><h3>The plan</h3><ul>
-          <li><b>Prepare:</b> co-design with dispensers, nurses and mothers; ethics approval; clinical and Swahili review; local-language audio.</li>
-          <li><b>Run:</b> drug shops and their linked facilities, with an implementation facilitator, an incentive per completed referral, and transport support.</li>
-          <li><b>Measure:</b> referral completion (Afya-Tek benchmark 89%), time to clinic, minutes per mother (about 7 expected), same-day care for danger signs, AI accuracy on real phrases.</li>
-        </ul></div>
-        <div><h3>Not done yet</h3><ul>
-          <li>AI training phrases are written by the team, not yet real speech.</li>
-          <li>Swahili and French wording await native-speaker review.</li>
-          <li>Rules and ICD-10 codes await clinician review.</li>
-          <li>Outbreak counts and clinic time slots in the demo are sample data.</li>
-          <li>Next to build: Swahili voice-to-text, a live SMS gateway, a link to DHIS2.</li>
-        </ul></div>
-      </div>
-    </div>
-    <div class="pager"><button class="btn" data-go="safety">← Safety</button><button class="btn solid" data-go="team">Next: Team →</button></div>
-  </div>
-</section>
-
-<!-- TEAM -->
 <section class="panel" id="team" role="tabpanel" aria-labelledby="t-team" hidden>
   <div class="wrap">
     <div class="team">
-      <figure><img src="img/team.jpg" alt="Erica Stephens and Juanita Ndyamukama outside the Johns Hopkins School of Medicine" width="768" height="1024"><figcaption>Erica and Juanita at Johns Hopkins, Baltimore</figcaption></figure>
+      <img src="img/team.jpg" alt="Erica Stephens and Juanita Ndyamukama at Johns Hopkins" width="768" height="1024" loading="lazy">
       <div class="people">
-        <div class="head"><p class="eyebrow">Amara Health</p><h2>Maternal and child health for hard-to-reach places</h2></div>
-        <div class="person"><h3>Erica Stephens</h3><p>Co-founder, Amara Health · Johns Hopkins Bloomberg School of Public Health</p>
-          <a class="li" href="https://www.linkedin.com/in/ericasstephens/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="currentColor"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 10v7" stroke="var(--card)" stroke-width="2" stroke-linecap="round"/></svg>Erica on LinkedIn</a></div>
-        <div class="person"><h3>Juanita Ndyamukama</h3><p>Co-founder, Amara Health · Johns Hopkins Bloomberg School of Public Health · from Tanzania</p>
-          <a class="li" href="https://www.linkedin.com/in/juanita-ndyamukama/" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="currentColor"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 10v7" stroke="var(--card)" stroke-width="2" stroke-linecap="round"/></svg>Juanita on LinkedIn</a></div>
+        <div class="head"><p class="eyebrow">Team</p><h2>Meet the founders</h2></div>
+        <div class="person"><h3>Erica Stephens</h3><p>Co-founder · Johns Hopkins Bloomberg School of Public Health</p><a class="li" href="https://www.linkedin.com/in/ericasstephens/" target="_blank" rel="noopener">LinkedIn →</a></div>
+        <div class="person"><h3>Juanita Ndyamukama</h3><p>Co-founder · Johns Hopkins Bloomberg School of Public Health · Tanzanian</p><a class="li" href="https://www.linkedin.com/in/juanita-ndyamukama/" target="_blank" rel="noopener">LinkedIn →</a></div>
+        <p class="src">Built on proven programmes: Afya-Tek, m-mama, Wazazi Nipendeni and MomConnect.</p>
       </div>
     </div>
-    <div class="band mint contact">
-      <div><h3>Open it on your phone</h3><p class="soft">Choose "Use the Tanzania demo setup" and start.</p></div>
-      <div class="btns">
-        <a class="btn solid" href="https://ericastephens.github.io/amara-first-contact/?welcome" target="_blank" rel="noopener">Try the live demo</a>
-        <a class="btn" href="https://github.com/ericastephens/amara-first-contact" target="_blank" rel="noopener">Code on GitHub</a>
-      </div>
-    </div>
-    <div class="pager"><button class="btn" data-go="pilot">← Evidence &amp; pilot</button><button class="btn gold" data-go="partner">Partner with us →</button></div>
+    <div class="next"><button class="btn gold" data-go="contact">Partner with us →</button></div>
   </div>
 </section>
 
-<!-- PARTNER -->
-<section class="panel" id="partner" role="tabpanel" aria-labelledby="t-partner" hidden>
+<section class="panel" id="contact" role="tabpanel" aria-labelledby="t-contact" hidden>
   <div class="wrap">
-    <div class="head"><p class="eyebrow">Partner with us</p><h2>Help us take the first door to the right care, starting in Hai</h2>
-      <p class="lede">The app works today. To pilot it safely with real mothers, we need people who know the place, the medicine and the language. Here is who we are looking for, and what each partner gets.</p></div>
-    <div class="asks">
-      <div class="ask"><span class="k">Health system</span><h3>District and regional health teams</h3><p>Host the pilot in Hai, set referral pathways, and agree how alerts reach the surveillance officer.</p><p class="give">You get: referrals that arrive with a note, and anonymous weekly counts by ward.</p></div>
-      <div class="ask"><span class="k">First responders</span><h3>Drug shops, CHWs and dispensaries</h3><p>Co-design the screens and test them in a real day's work.</p><p class="give">You get: a referral tool that works offline, and an incentive per completed referral.</p></div>
-      <div class="ask"><span class="k">Clinical</span><h3>Clinicians and pharmacists</h3><p>Review the 26 rules, the danger signs and the draft ICD-10 codes against Tanzanian guidelines.</p><p class="give">You get: named credit as clinical reviewers, and a say in what the app flags.</p></div>
-      <div class="ask"><span class="k">Language</span><h3>Swahili, Kichaga and Maa speakers</h3><p>Review the Swahili, and record short audio prompts for mothers who do not read.</p><p class="give">You get: recordings returned to the community, so future speech models can learn your language.</p></div>
-      <div class="ask"><span class="k">Delivery</span><h3>SMS, transport and digital health partners</h3><p>An SMS gateway, a link to DHIS2 and eIDSR, and emergency transport for Go now cases.</p><p class="give">You get: an open-source tool that plugs into systems already in use.</p></div>
-      <div class="ask"><span class="k">Funding and research</span><h3>Funders and universities</h3><p>Support the pilot: an implementation facilitator, incentives, ethics approval and evaluation.</p><p class="give">You get: pilot results measured against the Afya-Tek benchmark.</p></div>
-    </div>
-    <div class="band peach contact">
-      <div class="head" style="gap:6px"><h3>Get in touch</h3><p class="soft">Send Erica or Juanita a message on LinkedIn and tell us how you would like to work together.</p></div>
-      <div class="btns">
+    <div class="contact">
+      <p class="eyebrow">Contact</p>
+      <h2>Help us pilot in Hai.</h2>
+      <p class="lede">We're looking for pilot funding, clinical reviewers, district health teams and a Tanzanian implementing partner.</p>
+      <div class="ctas" style="margin-top:4px">
         <a class="btn gold" href="https://www.linkedin.com/in/ericasstephens/" target="_blank" rel="noopener">Message Erica</a>
         <a class="btn" href="https://www.linkedin.com/in/juanita-ndyamukama/" target="_blank" rel="noopener">Message Juanita</a>
+        <a class="btn" href="https://ericastephens.github.io/amara-first-contact/?welcome" target="_blank" rel="noopener">Try the demo</a>
       </div>
     </div>
-    <div class="pager"><button class="btn" data-go="team">← Team</button><button class="btn" data-go="home">Back to Home</button></div>
   </div>
 </section>
 
@@ -567,15 +336,14 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
 
 <footer>
   <div class="wrap">
-    <p>Built for Challenge 04 (Health) of the Small AI for Development Hackathon, World Bank × Hack-Nation, 3–4 October 2026. Noor is from the brief and is fictional; the places named (Machame, Hai District, Machame Hospital, Kisereni Dispensary) are real. All patient data in the demo is synthetic; screens marked Sample data use made-up counts and slots. Clinic locations © OpenStreetMap contributors.</p>
-    <p>Not a medical device. The app does not diagnose; a clinician makes every clinical decision.</p>
-    <p>© 2026 Amara Health · Erica Stephens and Juanita Ndyamukama</p>
+    <p>Prototype built at the World Bank × Hack-Nation Small AI for Development Hackathon, October 2026. Demo uses sample data. Not a medical device: a clinician makes every clinical decision. Clinics © OpenStreetMap contributors.</p>
+    <p>© 2026 Amara Health</p>
   </div>
 </footer>
 
 <script>
 (function(){
-  var ids=['home','problem','how','ai','safety','pilot','team','partner'];
+  var ids=['home','problem','solution','business','team','contact'];
   var tabs=document.querySelectorAll('.tab');
   var current='home';
   function show(id,push){
@@ -583,22 +351,45 @@ footer .wrap{display:flex;flex-direction:column;gap:10px}
     current=id;
     ids.forEach(function(x){ var p=document.getElementById(x); if(p) p.hidden=(x!==id); });
     tabs.forEach(function(t){ var on=t.getAttribute('aria-controls')===id; t.setAttribute('aria-selected',on?'true':'false'); t.tabIndex=on?0:-1; });
-    var sel=document.getElementById('t-'+id); var bar=document.querySelector('.tabs');
+    var sel=document.getElementById('t-'+id), bar=document.querySelector('.tabs');
     if(sel&&bar){ bar.scrollLeft=sel.offsetLeft-bar.clientWidth/2+sel.offsetWidth/2; }
     document.querySelectorAll('video').forEach(function(v){ if(!v.closest('#'+id)) v.pause(); });
     if(push){ try{ history.replaceState(null,'','#'+id); }catch(e){} window.scrollTo(0,0); }
+    moveInd(); animate(document.getElementById(id));
   }
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function moveInd(){
+    var ind=document.querySelector('.ind'), sel=document.querySelector('.tab[aria-selected="true"]');
+    if(!ind||!sel) return;
+    ind.style.width=sel.offsetWidth+'px';
+    ind.style.transform='translate('+sel.offsetLeft+'px,'+(sel.offsetTop+(sel.offsetHeight-38)/2)+'px)';
+  }
+  function animate(panel){
+    if(!panel) return;
+    panel.classList.remove('in'); void panel.offsetWidth; panel.classList.add('in');
+    if(reduce) return;
+    panel.querySelectorAll('[data-count]').forEach(function(el){
+      var to=parseFloat(el.getAttribute('data-count')), dec=parseInt(el.getAttribute('data-dec')||'0',10), t0=null, dur=1100;
+      function step(ts){ if(!t0) t0=ts; var k=Math.min(1,(ts-t0)/dur), e=1-Math.pow(1-k,3);
+        el.textContent=(to*e).toFixed(dec); if(k<1) requestAnimationFrame(step); else el.textContent=to.toFixed(dec); }
+      requestAnimationFrame(step);
+    });
+  }
+  window.addEventListener('resize',moveInd);
+  window.addEventListener('scroll',function(){ var h=document.querySelector('header.top'); if(h) h.classList.toggle('scrolled',window.scrollY>8); },{passive:true});
   tabs.forEach(function(t,i){
     t.addEventListener('click',function(){ show(t.getAttribute('aria-controls'),true); });
     t.addEventListener('keydown',function(e){ var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!d) return; var n=tabs[(i+d+tabs.length)%tabs.length]; n.focus(); show(n.getAttribute('aria-controls'),true); });
   });
-  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); show(b.getAttribute('data-go'),true); }); });
-  // swipe left or right between tabs on phones
+  document.querySelectorAll('[data-go]').forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); show(b.getAttribute('data-go'),b.id!=='watch'); }); });
   var main=document.querySelector('main'), sx=null, sy=null;
-  main.addEventListener('touchstart',function(e){ if(e.target.closest('.journey,.tbl,video')){sx=null;return;} sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
+  main.addEventListener('touchstart',function(e){ if(e.target.closest('video,.steps')){sx=null;return;} sx=e.touches[0].clientX; sy=e.touches[0].clientY; },{passive:true});
   main.addEventListener('touchend',function(e){ if(sx===null) return; var dx=e.changedTouches[0].clientX-sx, dy=e.changedTouches[0].clientY-sy; if(Math.abs(dx)>70&&Math.abs(dx)>2*Math.abs(dy)){ var n=ids.indexOf(current)+(dx<0?1:-1); if(n>=0&&n<ids.length) show(ids[n],true); } sx=null; },{passive:true});
   window.addEventListener('hashchange',function(){ show(location.hash.slice(1),false); window.scrollTo(0,0); });
-  show((location.hash||'#home').slice(1),false);
-  window.scrollTo(0,0); window.addEventListener('load',function(){ window.scrollTo(0,0); });
+  try{ if('scrollRestoration' in history) history.scrollRestoration='manual'; }catch(e){}
+  var h=(location.hash||'#home').slice(1); if(h==='watch') h='home';
+  show(h,false);
+  window.scrollTo(0,0); window.addEventListener('load',function(){ setTimeout(function(){ window.scrollTo(0,0); moveInd(); },50); });
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(moveInd);
 })();
 </script>
