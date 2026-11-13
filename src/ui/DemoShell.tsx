@@ -35,6 +35,8 @@ function useWide(min = 900): boolean {
 }
 
 interface Props {
+  onHome: () => void;
+  onWelcome: () => void;
   view: ShellView;
   hasReferral: boolean;
   onView: (v: ShellView) => void;
@@ -42,7 +44,7 @@ interface Props {
   children: ReactNode;
 }
 
-export function DemoShell({ view, hasReferral, onView, onPatient, children }: Props) {
+export function DemoShell({ onHome, onWelcome, view, hasReferral, onView, onPatient, children }: Props) {
   const wide = useWide();
   const [open, setOpen] = useState(false);
   const { lang, setLang } = useI18n();
@@ -58,7 +60,16 @@ export function DemoShell({ view, hasReferral, onView, onPatient, children }: Pr
     setLang("en");
   }, [wide, lang, setLang]);
 
-  const panel = <Companion view={view} hasReferral={hasReferral} onView={(v) => { onView(v); setOpen(false); }} onPatient={(id) => { onPatient(id); setOpen(false); }} />;
+  const panel = (
+    <Companion
+      onHome={() => { onHome(); setOpen(false); }}
+      onWelcome={() => { onWelcome(); setOpen(false); }}
+      view={view}
+      hasReferral={hasReferral}
+      onView={(v) => { onView(v); setOpen(false); }}
+      onPatient={(id) => { onPatient(id); setOpen(false); }}
+    />
+  );
 
   if (!wide)
     return (
@@ -87,10 +98,10 @@ export function DemoShell({ view, hasReferral, onView, onPatient, children }: Pr
   return (
     <div className="shell">
       <div className="shell-top">
-        <div className="shell-brand">
+        <button type="button" className="shell-brand" onClick={onHome} title="Back to the app's start screen">
           <strong>Amara First Contact</strong>
           <span>Interactive demo · runs offline on the phone</span>
-        </div>
+        </button>
         <Switcher view={view} hasReferral={hasReferral} onView={onView} />
       </div>
       <div className="shell-grid">
@@ -127,7 +138,7 @@ function Switcher({ view, hasReferral, onView }: { view: ShellView; hasReferral:
   );
 }
 
-function Companion({ view, hasReferral, onView, onPatient }: Omit<Props, "children">) {
+function Companion({ onHome, onWelcome, view, hasReferral, onView, onPatient }: Omit<Props, "children">) {
   const { lang, setLang } = useI18n();
   const net = useNetwork();
   const sync = useSyncStatus();
@@ -210,6 +221,19 @@ function Companion({ view, hasReferral, onView, onPatient }: Omit<Props, "childr
           })}
         </ol>
       </section>
+
+      <section className="cmp-card">
+        <p className="cmp-k">Work ID</p>
+        <p className="cmp-note">
+          The worker's licence or staff number, printed on every referral and outbreak approval so the clinic and district know who sent it. In the demo, <b>ADDO-KLM-0421</b> is a sample for Rehema, a drug shop dispenser in Kilimanjaro.
+        </p>
+      </section>
+
+      <nav className="cmp-nav" aria-label="Go to">
+        <button type="button" onClick={onHome}>⌂ App start screen</button>
+        <button type="button" onClick={onWelcome}>← App welcome page</button>
+        <a href={`${import.meta.env.BASE_URL}story/`}>Project website ↗</a>
+      </nav>
 
       <p className="cmp-foot">Demo data is synthetic. The app never gives a diagnosis to the mother; a person confirms every flag.</p>
     </div>

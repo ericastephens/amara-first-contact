@@ -67,6 +67,9 @@ export function Start({
         <button type="button" className="link" onClick={onWelcome}>
           ← {t("start.welcome")}
         </button>
+        <a className="link" href={`${import.meta.env.BASE_URL}story/`}>
+          {t("start.website")} ↗
+        </a>
       </div>
       {showSettings && (
         <Card>

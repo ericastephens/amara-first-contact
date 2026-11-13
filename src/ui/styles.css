@@ -397,3 +397,9 @@ pre.note { white-space: pre-wrap; font-size: 0.8rem; background: var(--bg); padd
 .langswitch span { margin-right: auto; }
 .langswitch button { border: 1px solid var(--sh-line, #ECE2D3); background: var(--sh-card, #fff); color: inherit; font: 600 .82rem/1 inherit; padding: 7px 10px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s; }
 .langswitch button.on { background: var(--sh-green, #17765A); border-color: var(--sh-green, #17765A); color: #fff; }
+
+.shell-brand { border: 0; background: transparent; color: inherit; text-align: left; padding: 0; cursor: pointer; font: inherit; }
+.shell-brand:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.cmp-nav { display: flex; flex-wrap: wrap; gap: 8px; }
+.cmp-nav button, .cmp-nav a { border: 1px solid var(--sh-line, #ECE2D3); background: var(--sh-card, #fff); color: var(--sh-green-ink, #0F5743); font: 600 .85rem/1 inherit; padding: 9px 12px; border-radius: 999px; cursor: pointer; text-decoration: none; transition: background .2s, transform .2s; }
+.cmp-nav button:hover, .cmp-nav a:hover { background: var(--sh-mint, #EEF7F2); transform: translateY(-1px); }
