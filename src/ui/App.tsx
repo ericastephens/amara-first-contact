@@ -159,7 +159,14 @@ export function App() {
   };
 
   return (
-    <DemoShell view={view} hasReferral={!!lastReferralId} onView={onView} onPatient={(id) => void startDemo(id)}>
+    <DemoShell
+      onHome={() => setScreen({ name: "start" })}
+      onWelcome={() => setGate("landing")}
+      view={view}
+      hasReferral={!!lastReferralId}
+      onView={onView}
+      onPatient={(id) => void startDemo(id)}
+    >
     <div className="app">
       <TopBar onHome={() => setScreen({ name: "start" })} onLock={() => setLocked(true)} />
       {error && (

@@ -1,5 +1,5 @@
 // Public landing page: shown before setup and before the PIN. No patient data here.
-import { demoSetup, getSetup, saveSetup } from "../setup/setup";
+import { demoSetup, getSetup, saveSetup, DEMO_WORK_ID } from "../setup/setup";
 import { UI_NATIVE, uiCoverage, uiLanguages } from "../languages/packs";
 import { loadNearby } from "../facilities/registry";
 import { demoNowIso, demoToday } from "../sync/clock";
@@ -85,6 +85,7 @@ export function Landing({
             {onContinue && saved && (
               <button type="button" className="btn primary" onClick={onContinue}>
                 {t("landing.continue", { id: saved.workId })}
+                {saved.workId === DEMO_WORK_ID && ` (${t("landing.sample")})`}
               </button>
             )}
             <button type="button" className={onContinue ? "btn secondary" : "btn primary"} onClick={onStart}>
@@ -95,6 +96,9 @@ export function Landing({
             </button>
           </div>
           <p className="muted small">{t("landing.once")}</p>
+          <a className="link small" href={`${import.meta.env.BASE_URL}story/`}>
+            {t("landing.website")} →
+          </a>
         </div>
 
         <figure className="hero-phone" aria-label={t("landing.sms.label")}>

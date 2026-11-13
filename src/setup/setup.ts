@@ -163,6 +163,9 @@ export function validSetup(s: Partial<Setup>): s is Setup {
   return (s.patientLangs?.length ?? 0) > 0;
 }
 
+/** Work ID used by the demo setup. It is a sample, not a real licence number. */
+export const DEMO_WORK_ID = "ADDO-KLM-0421";
+
 /** The quick demo setup used in the video: Tanzania, Kilimanjaro, drug shop, Swahili. */
 export function demoSetup(now: string): Setup {
   const c = countryByIso("TZ")!;
@@ -174,7 +177,7 @@ export function demoSetup(now: string): Setup {
     district: "Hai",
     role: "drug_shop",
     workerName: "Rehema (sample)",
-    workId: "ADDO-KLM-0421",
+    workId: DEMO_WORK_ID,
     staffLang: "sw",
     patientLangs: [pick("sw"), pick("en"), pick("chagga")],
     // A drug shop on the coffee slopes near Machame, Hai (approximate position, for the demo only).
