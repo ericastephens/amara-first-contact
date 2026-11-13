@@ -22,6 +22,8 @@ import { Setup } from "./Setup";
 import { Start, type Role } from "./Start";
 import { getSetup, onSetupChange, saveSetup, type Setup as SetupData } from "../setup/setup";
 import { TopBar } from "./TopBar";
+import { DemoShell, type ShellView } from "./DemoShell";
+import { DEMO_BY_CASE, DEMO_PATIENTS } from "./demoPatients";
 
 type Screen =
   | { name: "start" }
@@ -32,14 +34,8 @@ type Screen =
   | { name: "clinician" }
   | { name: "district" };
 
-// Synthetic names for the scripted demo patients.
-const DEMO_NAMES: Record<string, string> = { demo_1: "Noor", demo_2: "Amina", demo_3: "Zawadi" };
-// What each demo patient says in her own words. The intent model reads this live in the demo:
+// Scripted demo patients live in ./demoPatients. What each says is read live by the intent model:
 // it is the key AI moment, so demo mode starts at the free-text step instead of the result.
-const DEMO_TEXT: Record<string, string> = {
-  demo_2: "Kichwa kinaniuma sana, naona giza giza, miguu imevimba, na nimechoka",
-  demo_3: "Mtoto ana homa na vipele mwili mzima",
-};
 
 function readCuff(): boolean {
   try {
@@ -63,6 +59,7 @@ export function App() {
   const [screen, setScreen] = useState<Screen>({ name: "start" });
   const [hasCuff, setHasCuffState] = useState(readCuff);
   const [error, setError] = useState<string | null>(null);
+  const [lastReferralId, setLastReferralId] = useState<string | null>(null);
 
   useEffect(() => {
     void seedServer().then(notify);
@@ -86,6 +83,7 @@ export function App() {
       const plan = await planReferral(result, demoToday(), localTime(demoNow()));
       if (!plan) throw new Error("No suitable facility found");
       const { referral } = await createReferral(enc, result, decisions, plan, demoNowIso());
+      setLastReferralId(referral.id);
       setScreen({ name: "referral", referralId: referral.id });
     } catch (e) {
       setError(String(e));
@@ -94,12 +92,13 @@ export function App() {
 
   const startDemo = async (caseId: string) => {
     const c = testCases.cases.find((x) => x.id === caseId)!;
-    const enc = encounterFromCase(c.id, c.encounter, demoNowIso(), uid("enc"), DEMO_NAMES[caseId] ?? "Mama");
+    const demo = DEMO_BY_CASE[caseId];
+    const enc = encounterFromCase(c.id, c.encounter, demoNowIso(), uid("enc"), demo?.name ?? "Mama");
     // Start from her words: the model suggests chips, the responder confirms them, then the questions follow.
     enc.answers = {
       ...answersForSymptoms(questionnaires, enc.group, c.encounter.symptoms),
       ...enc.answers,
-      q_complaint: DEMO_TEXT[caseId] ?? c.encounter.free_text ?? "",
+      q_complaint: demo?.sw ?? c.encounter.free_text ?? "",
     };
     enc.chips = [];
     enc.uncertainChips = [];
@@ -150,7 +149,17 @@ export function App() {
 
   if (locked) return <PinLock onUnlock={() => setLocked(false)} />;
 
+  const view: ShellView =
+    screen.name === "referral" ? "sms" : screen.name === "clinician" ? "clinic" : screen.name === "district" ? "district" : "shop";
+  const onView = (v: ShellView) => {
+    if (v === "shop") setScreen({ name: "demo" });
+    else if (v === "sms" && lastReferralId) setScreen({ name: "referral", referralId: lastReferralId });
+    else if (v === "clinic") setScreen({ name: "clinician" });
+    else if (v === "district") setScreen({ name: "district" });
+  };
+
   return (
+    <DemoShell view={view} hasReferral={!!lastReferralId} onView={onView} onPatient={(id) => void startDemo(id)}>
     <div className="app">
       <TopBar onHome={() => setScreen({ name: "start" })} onLock={() => setLocked(true)} />
       {error && (
@@ -173,16 +182,18 @@ export function App() {
         {screen.name === "demo" && (
           <div className="screen">
             <h1>{t("start.demo")}</h1>
-            {["demo_1", "demo_2", "demo_3"].map((id) => {
+            {DEMO_PATIENTS.map((p) => {
+              const id = p.caseId;
               const c = testCases.cases.find((x) => x.id === id)!;
               const r = evaluate(rulesDoc, icd10, c.encounter);
               return (
                 <Card key={id}>
                   <div className="row between">
-                    <strong>{DEMO_NAMES[id]}</strong>
+                    <strong>{p.name}</strong>
                     <UrgencyPill urgency={r.urgency} label={urgencyLabel(rulesDoc, r.urgency, lang)} />
                   </div>
-                  <p className="small">{c.label}</p>
+                  <p className="small demo-sw" lang="sw">“{p.sw}”</p>
+                  {lang !== "sw" && <p className="small muted">{p.en}</p>}
                   <button type="button" className="btn primary" onClick={() => void startDemo(id)}>
                     ▶ {t("next")}
                   </button>
@@ -217,5 +228,6 @@ export function App() {
         {screen.name === "district" && <District />}
       </main>
     </div>
+    </DemoShell>
   );
 }
