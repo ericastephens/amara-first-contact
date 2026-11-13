@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Amara First Contact · Investor brief</title>
+<style>
+@font-face{font-family:'Public Sans';src:url(fonts/public-sans.woff2) format('woff2');font-weight:100 900}
+@font-face{font-family:'Source Serif 4';src:url(fonts/source-serif-4.woff2) format('woff2');font-weight:200 900}
+@font-face{font-family:'JetBrains Mono';src:url(fonts/jetbrains-mono-500.woff2) format('woff2');font-weight:500}
+@page{size:Letter;margin:0}
+:root{--bg:#FFFAF3;--mint:#EEF7F2;--peach:#FFF1E4;--sky:#EEF5FA;--card:#FFFFFF;--line:#ECE2D3;--ink:#2E3A36;--soft:#5F6E68;--green:#17765A;--green-ink:#0F5743;--gold:#E9A23B;--amber:#9A5B00;--plum:#7B2D4B;--blue:#1F5C7A}
+*{box-sizing:border-box;margin:0}
+html,body{background:var(--bg);color:var(--ink);font:9.1pt/1.38 'Public Sans',sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:8.5in;height:11in;padding:0 .45in .32in;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.kitenge{height:7px;margin:0 -.45in;background:repeating-linear-gradient(90deg,var(--plum) 0 22px,var(--gold) 22px 34px,var(--green) 34px 56px,var(--blue) 56px 68px)}
+h1,h2,h3{font-family:'Source Serif 4',serif;color:var(--green-ink);font-weight:600}
+.top{display:flex;justify-content:space-between;align-items:flex-end;padding-top:14px;gap:16px}
+.top h1{font-size:22pt;line-height:1}
+.top h1 em{color:var(--amber);font-style:italic}
+.tag{font:600 7.4pt 'Public Sans';letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.top .r{text-align:right;font-size:8.4pt;color:var(--soft)}
+.lede{font-size:10.2pt;line-height:1.4;color:var(--ink)}
+.row{display:grid;gap:8px}
+.c3{grid-template-columns:repeat(3,1fr)} .c2{grid-template-columns:1fr 1fr} .c4{grid-template-columns:repeat(4,1fr)}
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:7px 10px;display:flex;flex-direction:column;gap:3px}
+.band{border-radius:12px;padding:8px 10px;display:flex;flex-direction:column;gap:6px}
+.mint{background:var(--mint)} .peach{background:var(--peach)} .sky{background:var(--sky)}
+.n{font:600 17pt/1 'Source Serif 4';color:var(--green)} .n small{font-size:8.5pt;color:var(--soft);font-weight:400}
+h3{font-size:10.6pt;line-height:1.2}
+.s{font-size:8.2pt;color:var(--soft);line-height:1.35}
+.mono{font:500 7.6pt 'JetBrains Mono';color:var(--amber)}
+ul{padding-left:14px;display:flex;flex-direction:column;gap:2px}
+.steps{counter-reset:k}
+.steps .box h3::before{counter-increment:k;content:counter(k) "  ";font:500 8pt 'JetBrains Mono';color:var(--amber)}
+.road{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.road div{border-top:3px solid var(--line);padding-top:5px} .road .d{border-color:var(--green)} .road .now{border-color:var(--gold)}
+.foot{margin-top:auto;display:flex;justify-content:space-between;gap:12px;font-size:7.6pt;color:var(--soft);border-top:1px solid var(--line);padding-top:6px}
+a{color:var(--green);text-decoration:none}
+</style></head><body><div class="page">
+<div class="kitenge"></div>
+<div class="top">
+  <div><p class="tag">Amara Health · Africa programme · Investor brief</p><h1>Amara First Contact: right care from the <em>first door.</em></h1></div>
+  <div class="r">Hai, Kilimanjaro, Tanzania<br>November 2026</div>
+</div>
+<p class="lede">An offline AI app that helps accredited drug shops (ADDOs) and community health workers in rural Tanzania triage and refer mothers and children to the right clinic, on a low-cost Android phone with no internet.</p>
+
+<div class="row c3">
+  <div class="box"><p class="tag">Problem</p><span class="n">4.4 <small>/ 10,000</small></span><p class="s">Health workers per 10,000 people in Tanzania; WHO recommends 44.5.</p></div>
+  <div class="box"><p class="tag">First stop</p><span class="n">31%</span><p class="s">Of people go to a drug shop first when ill, more than to a public facility.</p></div>
+  <div class="box"><p class="tag">Missed</p><span class="n">60.7% <small>vs 1.6%</small></span><p class="s">Severe fevers diagnosed as malaria vs. those that were malaria (northern Tanzania).</p></div>
+</div>
+
+<div class="band mint">
+  <p class="tag">Solution</p>
+  <div class="row c3 steps">
+    <div class="box"><h3>She speaks Swahili</h3><p class="s">A 660 KB intent model on the phone maps her words to a fixed list of symptoms and exposures. Below 40% confidence it says "Not sure".</p></div>
+    <div class="box"><h3>Rules set urgency</h3><p class="s">Sourced Tanzanian and WHO guideline rules decide: Go now, refer today, or within 3 days. The dispenser confirms every flag.</p></div>
+    <div class="box"><h3>She gets an SMS</h3><p class="s">Clinic, time and code, no health details. Her note and draft ICD-10 codes reach the clinician first; anonymous counts flag outbreaks.</p></div>
+  </div>
+</div>
+
+<div class="row c2">
+  <div class="band peach">
+    <p class="tag">Business model</p>
+    <p><b>Free for mothers. Paid by health programmes.</b> NGO and donor programmes first (setup + per site), then per completed referral, district licences and insurers.</p>
+    <div class="row c2">
+      <div class="box"><span class="n">$24k</span><p class="s">A year per district: 100 sites × 20 referrals/month × $1. Illustrative.</p></div>
+      <div class="box"><span class="n">$1 <small>vs ~$170</small></span><p class="s">Referral vs. one m-mama emergency transport (Munishi 2023).</p></div>
+    </div>
+  </div>
+  <div class="band sky">
+    <p class="tag">Market</p>
+    <div class="row c2">
+      <div class="box"><span class="n">~$4M <small>/yr</small></span><p class="s">Tanzania potential: ~170 district councils × $24k. Illustrative.</p></div>
+      <div class="box"><span class="n">2.4M</span><p class="s">Births a year in Tanzania; 9,000+ accredited drug shops.</p></div>
+    </div>
+    <p class="s">Beachhead: Hai District → Kilimanjaro → Tanzania → Kenya, Uganda, Rwanda.</p>
+  </div>
+</div>
+
+<div class="row c3">
+  <div class="box"><p class="tag">Why we win</p><h3>Fully offline AI</h3><p class="s">Triage needs no data or signal; only the SMS needs a network.</p></div>
+  <div class="box"><p class="tag">Why we win</p><h3>At the drug shop counter</h3><p class="s">Catches mothers where they go first, before an emergency. Complements m-mama and Afya-Tek.</p></div>
+  <div class="box"><p class="tag">Why we win</p><h3>Swahili built for clinics</h3><p class="s">An intent model for how mothers describe symptoms and exposures, with sourced rules on top.</p></div>
+</div>
+
+<div class="row c2">
+  <div class="box">
+    <p class="tag">Traction &amp; roadmap</p>
+    <div class="road">
+      <div class="d"><p class="mono">Oct 2026</p><h3>MVP</h3><p class="s">Built at the World Bank × Hack-Nation hackathon</p></div>
+      <div class="now"><p class="mono">Q1 2027</p><h3>Validate</h3><p class="s">ADDO interviews, clinical review, NIMR ethics</p></div>
+      <div><p class="mono">Q2–Q3 2027</p><h3>Hai pilot</h3><p class="s">Drug shops and linked facilities</p></div>
+      <div><p class="mono">2028</p><h3>Scale</h3><p class="s">District contracts, then region</p></div>
+    </div>
+  </div>
+  <div class="box">
+    <p class="tag">The ask</p>
+    <ul class="s"><li>Pilot funding: phones, training, SMS, a facilitator in Hai</li><li>Clinical reviewers and an implementing partner in Tanzania</li><li>Introductions to district and regional health teams</li></ul>
+    <p class="s"><b>Governance:</b> non-diagnostic triage; clinicians decide. We will confirm TMDA's classification of decision-support software before the pilot.</p>
+  </div>
+</div>
+
+<div class="row c2">
+  <div class="box"><p class="tag">Team</p><p><b>Juanita Ndyamukama</b> · Co-founder · Johns Hopkins Bloomberg School of Public Health · Tanzanian</p><p><b>Erica Stephens</b> · Co-founder · Johns Hopkins Bloomberg School of Public Health</p></div>
+  <div class="box"><p class="tag">See it</p><p>Website: <a href="https://ericastephens.github.io/amara-first-contact/story/">ericastephens.github.io/amara-first-contact/story</a></p><p>Live demo: <a href="https://ericastephens.github.io/amara-first-contact/?welcome">ericastephens.github.io/amara-first-contact</a></p><p>LinkedIn: <a href="https://www.linkedin.com/in/juanita-ndyamukama/">juanita-ndyamukama</a> · <a href="https://www.linkedin.com/in/ericasstephens/">ericasstephens</a></p></div>
+</div>
+
+<div class="foot"><span>Sources: WHO GHO 2024; Embrey et al., PLOS ONE 2016; Crump et al., PLOS NTDs; UN WPP 2024; Munishi et al., PLOS Glob Public Health 2023; ICLD 2025, CLGF (councils). Figures marked illustrative are hypotheses to test in the pilot.</span><span>© 2026 Amara Health</span></div>
+</div></body></html>

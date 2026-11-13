@@ -182,6 +182,30 @@ header.top.scrolled{box-shadow:0 10px 30px -18px var(--shadow)}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .hero h1 em{color:var(--amber);background:none}
 }
+/* investor additions */
+.badge{font:500 12px var(--mono);background:var(--today-bg);color:var(--amber);padding:2px 8px;border-radius:999px;margin-left:2px}
+.btn .badge{background:color-mix(in srgb,var(--gold) 22%,transparent)}
+.card .n.sm{font-size:clamp(34px,4vw,46px)}
+.calcline{font:500 12.5px var(--mono);color:var(--soft);border-top:1px dashed var(--line);padding-top:10px;margin-top:auto}
+.moat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;counter-reset:m}
+.moat div{counter-increment:m;border-top:3px solid var(--gold);padding-top:14px;display:flex;flex-direction:column;gap:6px}
+.moat h3{font-size:20px;display:flex;gap:10px;align-items:baseline}
+.moat h3::before{content:counter(m,decimal-leading-zero);font:500 13px var(--mono);color:var(--amber)}
+.moat p{font-size:15.5px;color:var(--soft)}
+@media (max-width:820px){.moat{grid-template-columns:minmax(0,1fr)}}
+.ready{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.ready ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.ready li{display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;font-size:15.5px;align-items:start}
+.ready li::before{content:"";width:20px;height:20px;border-radius:50%;margin-top:2px;border:2px solid var(--line);background:var(--card)}
+.ready li.ok::before{background:var(--green);border-color:var(--green);box-shadow:inset 0 0 0 4px var(--card)}
+.ready li.go::before{border-color:var(--gold);background:var(--today-bg)}
+.ready h3{font-size:18px;margin-bottom:10px}
+@media (max-width:760px){.ready{grid-template-columns:minmax(0,1fr)}}
+.gov{display:grid;grid-template-columns:34px minmax(0,1fr);gap:14px;align-items:start;background:var(--sky);border-radius:18px;padding:18px 20px;font-size:15px}
+.gov svg{color:var(--green)}
+.panel.in .moat>*,.panel.in .ready>*,.panel.in .gov{animation:rise .7s cubic-bezier(.2,.8,.2,1) both}
+.panel.in .moat>*:nth-child(2),.panel.in .ready>*:nth-child(2){animation-delay:.1s}
+.panel.in .moat>*:nth-child(3){animation-delay:.2s}
 footer{padding-block:24px 32px;border-top:1px solid var(--line);font-size:13px;color:var(--soft)}
 footer .wrap{display:flex;flex-direction:column;gap:6px}
 </style>
@@ -200,7 +224,7 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
       <button class="tab" role="tab" id="t-solution" aria-controls="solution" aria-selected="false">Solution</button>
       <button class="tab" role="tab" id="t-business" aria-controls="business" aria-selected="false">Business</button>
       <button class="tab" role="tab" id="t-team" aria-controls="team" aria-selected="false">Team</button>
-      <button class="tab" role="tab" id="t-contact" aria-controls="contact" aria-selected="false">Contact</button>
+      <button class="tab" role="tab" id="t-contact" aria-controls="contact" aria-selected="false">Pilot &amp; contact</button>
     </nav>
   </div>
 </header>
@@ -216,7 +240,8 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
         <p class="lede">An offline AI app that helps drug shops in rural Tanzania refer mothers and children to the right clinic.</p>
         <div class="ctas">
           <a class="btn solid" href="https://ericastephens.github.io/amara-first-contact/?welcome" target="_blank" rel="noopener">Try the demo</a>
-          <a class="btn" href="#watch" data-go="home" onclick="setTimeout(function(){document.getElementById('watch').scrollIntoView({behavior:'smooth'})},10)">Watch 1:30</a>
+          <a class="btn" href="#watch" data-go="home" onclick="setTimeout(function(){document.getElementById('watch').scrollIntoView({behavior:'smooth'})},10)">Watch the demo <span class="badge">1:30</span></a>
+          <a class="btn gold" href="amara-first-contact-brief.pdf" target="_blank" rel="noopener">Investor brief (PDF)</a>
         </div>
       </div>
       <div class="stage">
@@ -231,7 +256,7 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
     <div class="film" id="watch">
       <video controls preload="none" playsinline poster="media/simulation-poster.webp" src="media/simulation.mp4" aria-label="Simulation: three mothers, one small AI"></video>
       <div class="head">
-        <p class="eyebrow">Watch</p>
+        <p class="eyebrow">Watch · <span class="badge">1:30</span></p>
         <h3 style="font-size:28px">Three mothers, one drug shop</h3>
         <p class="soft">A fever, a risky pregnancy and a baby's vaccines, each sent to the right care.</p>
       </div>
@@ -286,18 +311,30 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
   <div class="wrap">
     <div class="head"><p class="eyebrow">Business</p><h2>Free for mothers. Paid by health programmes.</h2></div>
     <div class="three">
-      <div class="card"><span class="k">Who pays</span><h3>NGOs, districts, insurers</h3><p>Organisations that gain when mothers reach care early.</p></div>
-      <div class="card"><span class="k">How</span><h3>Per referral or per district</h3><p>About $24,000 a year per district at $1 a referral. Illustrative; the pilot sets price.</p></div>
-      <div class="card"><span class="k">Market</span><h3>2.4M births a year</h3><p>In Tanzania, served by 9,000+ accredited drug shops.</p></div>
+      <div class="card"><span class="k">Who pays</span><h3>NGOs, districts, insurers</h3><p>Organisations that gain when mothers reach care early. Mothers never pay.</p></div>
+      <div class="card"><span class="k">Unit economics</span><span class="n sm">$24k</span><p>A year per district: 100 drug shops and CHWs × 20 completed referrals a month × $1.</p><span class="calcline">Illustrative · the pilot sets the price</span></div>
+      <div class="card"><span class="k">Payer value</span><span class="n sm">$1 <small>vs ~$170</small></span><p>A referral that catches danger early, against about $170 for one emergency transport in Tanzania's m-mama programme.</p><span class="calcline">Munishi et al., PLOS Glob Public Health 2023</span></div>
+    </div>
+    <div class="head"><p class="eyebrow">Market</p></div>
+    <div class="three">
+      <div class="card"><span class="k">Tanzania potential</span><span class="n sm">~$4M <small>a year</small></span><p>~170 district councils × $24k. Serving 2.4M births a year and 9,000+ accredited drug shops.</p><span class="calcline">Illustrative · councils counted 169–184 by source</span></div>
+      <div class="card"><span class="k">Beachhead</span><span class="n sm">Hai</span><p>One district in Kilimanjaro, then the region: coffee and maize farms, drug shops linked to clinics.</p></div>
+      <div class="card"><span class="k">Next markets</span><span class="n sm">East Africa</span><p>Kenya, Uganda and Rwanda, where pharmacies and drug shops are also a first stop. Sizing to follow.</p></div>
+    </div>
+    <div class="head"><p class="eyebrow">Why Amara wins</p><h3 style="font-size:clamp(24px,3vw,32px)">The gap others leave, and we fill</h3></div>
+    <div class="moat">
+      <div><h3>Fully offline AI</h3><p>Triage runs on a low-cost Android phone with no data or signal. Only the SMS needs a network.</p></div>
+      <div><h3>At the drug shop counter</h3><p>We meet mothers where they go first, before a problem becomes an emergency. m-mama handles the emergency; we aim to prevent it.</p></div>
+      <div><h3>Swahili built for clinics</h3><p>A Swahili intent model for how mothers describe symptoms and exposures, with sourced clinical rules on top. Field phrases from Hai come next.</p></div>
     </div>
     <div class="head"><p class="eyebrow">Roadmap</p></div>
     <ol class="road">
-      <li class="done"><span class="when">Oct 2026</span><b>MVP built</b><p>World Bank × Hack-Nation hackathon</p></li>
+      <li class="done"><span class="when">Oct 2026</span><b>MVP built</b><p>At the World Bank × Hack-Nation hackathon</p></li>
       <li class="now"><span class="when">Q1 2027</span><b>Validate</b><p>Field interviews, clinical review</p></li>
       <li><span class="when">Q2–Q3 2027</span><b>Pilot in Hai</b><p>Drug shops and linked clinics</p></li>
       <li><span class="when">2028</span><b>Scale</b><p>District contracts, then region</p></li>
     </ol>
-    <p class="src">Sources: UN World Population Prospects 2024 (via <a href="https://measuredworld.com/countries/tanzania/births/births-trends" target="_blank" rel="noopener">Measured World</a>); Embrey et al., PLOS ONE 2016.</p>
+    <p class="src">Sources: UN World Population Prospects 2024 (via <a href="https://measuredworld.com/countries/tanzania/births/births-trends" target="_blank" rel="noopener">Measured World</a>); Embrey et al., PLOS ONE 2016; council counts from <a href="https://cdn.icld.se/wp-content/uploads/20250922103623/ICLD-Country-Brief-Tanzania.pdf" target="_blank" rel="noopener">ICLD 2025</a> (169) and <a href="https://www.clgf.org.uk/regions/clgf-east-africa/tanzania" target="_blank" rel="noopener">CLGF</a> (172).</p>
     <div class="next"><button class="btn solid" data-go="team">The team →</button></div>
   </div>
 </section>
@@ -313,15 +350,32 @@ footer .wrap{display:flex;flex-direction:column;gap:6px}
         <p class="src">Built on proven programmes: Afya-Tek, m-mama, Wazazi Nipendeni and MomConnect.</p>
       </div>
     </div>
-    <div class="next"><button class="btn gold" data-go="contact">Partner with us →</button></div>
+    <div class="next"><button class="btn gold" data-go="contact">The Hai pilot →</button></div>
   </div>
 </section>
 
 <section class="panel" id="contact" role="tabpanel" aria-labelledby="t-contact" hidden>
   <div class="wrap">
+    <div class="head"><p class="eyebrow">Hai pilot · Deployment readiness</p><h2>Ready to pilot in Q2 2027.</h2></div>
+    <div class="ready">
+      <div class="card"><h3>In place</h3><ul>
+        <li class="ok">Working offline app, tested on 128 safety and logic checks</li>
+        <li class="ok">105 real health facilities mapped around Hai</li>
+        <li class="ok">Swahili, English and French interface</li>
+        <li class="ok">Referral flow to Machame Hospital in the demo</li>
+      </ul></div>
+      <div class="card"><h3>Before launch · Q1 2027</h3><ul>
+        <li class="go">Interviews with ADDO dispensers and CHWs in Hai</li>
+        <li class="go">Referral agreements with Machame Hospital and Hai facilities</li>
+        <li class="go">Ethics approval through NIMR</li>
+        <li class="go">Clinical and Swahili review of rules and messages</li>
+      </ul></div>
+    </div>
+    <div class="gov"><svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="m8.5 12 2.5 2.5 4.5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <p><b>Governance.</b> Non-diagnostic triage support: final clinical decisions stay with accredited clinicians, and every flag cites its guideline. Before the pilot we will confirm with the Tanzania Medicines and Medical Devices Authority (TMDA) how clinical decision support software is classified.</p></div>
     <div class="contact">
       <p class="eyebrow">Contact</p>
-      <h2>Help us pilot in Hai.</h2>
+      <h2>Partner on the Hai pilot.</h2>
       <p class="lede">We're looking for pilot funding, clinical reviewers, district health teams and a Tanzanian implementing partner.</p>
       <div class="ctas" style="margin-top:4px">
         <a class="btn gold" href="https://www.linkedin.com/in/ericasstephens/" target="_blank" rel="noopener">Message Erica</a>
